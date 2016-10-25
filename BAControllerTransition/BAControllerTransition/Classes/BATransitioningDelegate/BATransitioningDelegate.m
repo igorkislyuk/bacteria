@@ -8,7 +8,7 @@
 
 #import "BATransitioningDelegate.h"
 
-#import "BAAnimationController.h"
+#import "BASimpleAnimationController.h"
 
 @interface BATransitioningDelegate ()
 
@@ -20,7 +20,8 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.animationController = [[BAAnimationController alloc] init];
+        self.simpleAnimationController = [[BASimpleAnimationController alloc] init];
+        self.simpleAnimationController.transitioningDelegate = self;
     }
     return self;
 }
@@ -28,7 +29,17 @@
 #pragma mark - UIViewControllerTransitioningDelegate
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    return self.animationController;
+    return self.simpleAnimationController;
+}
+
+#pragma mark - Methods
+
+- (void)setTime:(NSTimeInterval)timeInterval {
+    _duration = timeInterval;
+}
+
+- (void)preparePresentedFrom:(CGFloat)rightSideTrailingSpace {
+    [[self simpleAnimationController] setDistanceFromRight:rightSideTrailingSpace];
 }
 
 @end

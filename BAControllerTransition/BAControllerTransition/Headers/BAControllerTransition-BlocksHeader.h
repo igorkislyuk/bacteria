@@ -10,9 +10,14 @@
 #define BAControllerTransition_BlocksHeader_h
 
 //simple block wrapper
-typedef UIViewController* (^BATransitionEmpty)(void);
-#define BATransitionEmpty() ^UIViewController* ()
+typedef UIViewController* (^BAControllerTransitionEmpty)(void);
+#define BAControllerTransitionEmpty() ^UIViewController* ()
 
+typedef UIViewController* (^BAControllerTransitionTime)(NSTimeInterval);
+#define BAControllerTransitionTime(f) ^UIViewController* (NSTimeInterval f)
+
+typedef UIViewController* (^BAControllerTransitionDistance)(CGFloat);
+#define BAControllerTransitionDistance(f) ^UIViewController* (CGFloat f)
 
 
 #endif /* BAControllerTransition_BlocksHeader_h */

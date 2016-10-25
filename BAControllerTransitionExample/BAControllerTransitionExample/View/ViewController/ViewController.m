@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SecondViewController.h"
 
 #import <BAControllerTransition/BAControllerTransition.h>
 
@@ -24,12 +25,24 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self presentTestAlert];
+//    [self presentTestAlert];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)actionPresentSecond:(id)sender {
+    
+    //get second
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SecondViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SecondViewController class])];
+
+    secondViewController.fromRightPlain().transite(3.f);
+
+    [self presentViewController:secondViewController animated:YES completion:^{
+
+    }];
+    
+    
 }
+
+
 
 @end

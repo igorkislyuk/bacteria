@@ -11,24 +11,25 @@
 #import "UIViewController+BAControllerTransition.h"
 
 #import "BATransitioningDelegate.h"
-#import "BAAnimationController.h"
 
-@implementation UIViewController (BAControllerTransition)
+#import "BASimpleAnimationController.h"
 
-- (void)wrapWithTestAnimationController {
-    
-    self.transitioningDelegate = self.baTransitioningDelegate;
-    
+@interface UIViewController (BAControllerTransition_Private)
+
+@property (nonatomic, strong) BATransitioningDelegate *baTransitioningDelegate;
+
+@end
+
+@implementation UIViewController (BAControllerTransition_Private)
+
+- (void)setBATransitioningDelegate {
+    if (![self.transitioningDelegate isEqual:self.baTransitioningDelegate]) {
+        self.transitioningDelegate = self.baTransitioningDelegate;
+    }
 }
 
-// block callers
-- (BATransitionEmpty)simpleWrap {
-    BATransitionEmpty transition = BATransitionEmpty() {
-        [self wrapWithTestAnimationController];
-        return self;
-    };
+- (void)addConfiguration {
     
-    return transition;
 }
 
 #pragma mark - Properties
@@ -42,12 +43,49 @@
     
     if (transitioningDelegate == nil) {
         transitioningDelegate = [[BATransitioningDelegate alloc] init];
+        [self setBaTransitioningDelegate:transitioningDelegate];
     }
     
     return transitioningDelegate;
 }
 
-#pragma mark - Private methods
+@end
+
+@implementation UIViewController (BAControllerTransition)
+
+//main implementation here
+
+- (BAControllerTransitionEmpty)fromRightPlain {
+    BAControllerTransitionEmpty simple = BAControllerTransitionEmpty() {
+        
+        //just move from right side
+        CGFloat right = CGRectGetWidth(self.view.frame);
+        [[self baTransitioningDelegate] preparePresentedFrom:right];
+        
+        return self;
+        
+    };
+    return simple;
+}
+
+//- (BAControllerTransitionTime)right {
+//    
+//}
+
+- (BAControllerTransitionTime)transite {
+    BAControllerTransitionTime ttime = BAControllerTransitionTime(time) {
+        //set delegate
+        [self setBATransitioningDelegate];
+        
+        [[self baTransitioningDelegate] setTime:time];
+        
+        return self;
+    };
+    return ttime;
+}
+
+
+#pragma mark - Test methods
 
 - (void)presentTestAlert {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Test message" message:@"This message from framework" preferredStyle:UIAlertControllerStyleAlert];

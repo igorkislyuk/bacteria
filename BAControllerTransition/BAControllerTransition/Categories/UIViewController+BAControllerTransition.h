@@ -7,18 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "BAControllerTransition-BlocksHeader.h"
-
-@class BATransitioningDelegate;
 
 @interface UIViewController (BAControllerTransition)
 
-//@property (nonatomic, strong) BATransitioningDelegate *baTransitioningDelegate;
+#pragma mark - Complete section
+- (BAControllerTransitionEmpty)fromRightPlain;
 
-- (void)wrapWithTestAnimationController;
 
-- (BATransitionEmpty)simpleWrap;
+- (BAControllerTransitionEmpty)fromRightDefault;
+- (BAControllerTransitionDistance)right;
+
+/**
+ * Default is 0.3s
+ */
+- (BAControllerTransitionTime)transite;
 
 - (void)presentTestAlert;
 

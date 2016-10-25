@@ -8,11 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
-//classes
-@class BAAnimationController;
+//headers
+#import <BASimpleAnimationController.h>
 
-@interface BATransitioningDelegate : NSObject <UIViewControllerTransitioningDelegate>
+@protocol BATransitioningDelegate <NSObject>
 
-@property (nonatomic, strong) BAAnimationController *animationController;
+- (NSTimeInterval)duration;
+
+@end
+
+@interface BATransitioningDelegate : NSObject <UIViewControllerTransitioningDelegate, BATransitioningDelegate>
+
+@property (nonatomic, assign, readonly) NSTimeInterval duration;
+
+@property (nonatomic, strong) BASimpleAnimationController *simpleAnimationController;
+
+//methods
+- (void)setTime:(NSTimeInterval)timeInterval;
+
+- (void)preparePresentedFrom:(CGFloat)rightSideTrailingSpace;
 
 @end
