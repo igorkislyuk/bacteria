@@ -19,5 +19,8 @@ typedef UIViewController* (^BAControllerTransitionTime)(NSTimeInterval);
 typedef UIViewController* (^BAControllerTransitionDistance)(CGFloat);
 #define BAControllerTransitionDistance(f) ^UIViewController* (CGFloat f)
 
+typedef UIViewController* (^BAControllerTransitionLocation)(CGPoint);
+#define BAControllerTransitionLocation(f) ^UIViewController* (CGPoint f)
+
 
 #endif /* BAControllerTransition_BlocksHeader_h */

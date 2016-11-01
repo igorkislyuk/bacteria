@@ -13,6 +13,7 @@
 @interface BASimpleAnimationController ()
 
 @property (nonatomic, assign) CGFloat right;
+@property (nonatomic, assign) CGFloat top;
 
 @end
 
@@ -34,20 +35,27 @@
     //configure fromVC
     [containerView addSubview:toVC.view];
 
-    CGFloat tx = self.right;
-    toVC.view.transform = CGAffineTransformMakeTranslation(tx, 0);
+//    CGFloat tx = self.right;
+//    CGFloat ty = self.top;
+    
+    toVC.view.transform = CGAffineTransformMakeTranslation(self.point.x, self.point.y);
     
     [UIView animateWithDuration:[self.transitioningDelegate duration] animations:^{
         toVC.view.transform = CGAffineTransformIdentity;
-        fromVC.view.transform = CGAffineTransformMakeTranslation(-tx, 0);
+        fromVC.view.transform = CGAffineTransformMakeTranslation(-self.point.x, -self.point.y);
     } completion:^(BOOL finished) {
-        //TODO: check values
+        fromVC.view.transform = CGAffineTransformIdentity;
+        
         [transitionContext completeTransition:YES];
     }];
 }
 
-- (void)setDistanceFromRight:(CGFloat)right {
-    self.right = right;
+- (void)setXDistance:(CGFloat)distance {
+    self.right = distance;
+}
+
+- (void)setYDistance:(CGFloat)distance {
+    self.top = distance;
 }
 
 @end

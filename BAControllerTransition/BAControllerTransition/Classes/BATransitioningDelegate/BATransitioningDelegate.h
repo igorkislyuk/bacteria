@@ -11,6 +11,7 @@
 //headers
 #import <BASimpleAnimationController.h>
 
+//TODO: rename to instance [all but not protocol]
 @protocol BATransitioningDelegate <NSObject>
 
 - (NSTimeInterval)duration;
@@ -26,6 +27,9 @@
 //methods
 - (void)setTime:(NSTimeInterval)timeInterval;
 
-- (void)preparePresentedFrom:(CGFloat)rightSideTrailingSpace;
+- (void)preparePresentedFromX:(CGFloat)xOffset;
+- (void)preparePresentedFromY:(CGFloat)yOffset;
+
+- (void)preparePresentedFromPoint:(CGPoint)point;
 
 @end

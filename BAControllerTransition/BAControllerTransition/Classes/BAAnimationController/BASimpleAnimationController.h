@@ -11,11 +11,17 @@
 
 @protocol BATransitioningDelegate;
 
+//TODO: rename to presenting controller
 @interface BASimpleAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
 
 // todo: create an protocol
 @property (nonatomic, weak) id <BATransitioningDelegate> transitioningDelegate;
 
-- (void)setDistanceFromRight:(CGFloat)right;
+- (void)setXDistance:(CGFloat)distance;
+
+- (void)setYDistance:(CGFloat)distance;
+
+//untested
+@property (nonatomic, assign) CGPoint point;
 
 @end

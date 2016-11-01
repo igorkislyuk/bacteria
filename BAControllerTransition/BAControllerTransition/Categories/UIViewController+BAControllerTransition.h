@@ -11,18 +11,29 @@
 
 @interface UIViewController (BAControllerTransition)
 
+//from / to
+//right and left
+//plain / complex
+
 #pragma mark - Complete section
 - (BAControllerTransitionEmpty)fromRightPlain;
+- (BAControllerTransitionEmpty)fromLeftPlain;
 
-
-- (BAControllerTransitionEmpty)fromRightDefault;
-- (BAControllerTransitionDistance)right;
-
-/**
- * Default is 0.3s
- */
+/** Default is 0.3s */
 - (BAControllerTransitionTime)transite;
+
+#pragma mark - Unstable
+
+- (BAControllerTransitionEmpty)fromTopPlain;
+- (BAControllerTransitionEmpty)fromBottomPlain;
+- (BAControllerTransitionLocation)fromLocation;
 
 - (void)presentTestAlert;
 
 @end
+
+// TODOS
+
+// todo: clear simple animation using from location
+// todo: made to location
+// todo: made autorevert for dismissed controller

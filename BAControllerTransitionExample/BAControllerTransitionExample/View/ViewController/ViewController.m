@@ -34,7 +34,7 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SecondViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SecondViewController class])];
 
-    secondViewController.fromRightPlain().transite(3.f);
+    secondViewController.fromLocation(CGPointMake(CGRectGetWidth(self.view.bounds) / 2, CGRectGetHeight(self.view.bounds))).transite(.5f);
 
     [self presentViewController:secondViewController animated:YES completion:^{
 

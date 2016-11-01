@@ -38,8 +38,16 @@
     _duration = timeInterval;
 }
 
-- (void)preparePresentedFrom:(CGFloat)rightSideTrailingSpace {
-    [[self simpleAnimationController] setDistanceFromRight:rightSideTrailingSpace];
+- (void)preparePresentedFromX:(CGFloat)xOffset {
+    [[self simpleAnimationController] setXDistance:xOffset];
+}
+
+- (void)preparePresentedFromY:(CGFloat)yOffset {
+    [[self simpleAnimationController] setYDistance:yOffset];
+}
+
+- (void)preparePresentedFromPoint:(CGPoint)point {
+    [[self simpleAnimationController] setPoint:point];
 }
 
 @end

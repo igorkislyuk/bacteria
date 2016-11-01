@@ -59,18 +59,60 @@
     BAControllerTransitionEmpty simple = BAControllerTransitionEmpty() {
         
         //just move from right side
-        CGFloat right = CGRectGetWidth(self.view.frame);
-        [[self baTransitioningDelegate] preparePresentedFrom:right];
+        CGFloat right = CGRectGetWidth(self.view.bounds);
+        [[self baTransitioningDelegate] preparePresentedFromX:right];
         
         return self;
         
     };
     return simple;
 }
+- (BAControllerTransitionEmpty)fromLeftPlain {
+    BAControllerTransitionEmpty fromLeftPlain = BAControllerTransitionEmpty() {
+        
+        //just move from left side
+        CGFloat left = -CGRectGetWidth(self.view.bounds);
+        [[self baTransitioningDelegate] preparePresentedFromX:left];
+        
+        return self;
+    };
+    return fromLeftPlain;
+}
 
-//- (BAControllerTransitionTime)right {
-//    
-//}
+//TODO: fix this
+- (BAControllerTransitionEmpty)fromTopPlain {
+    BAControllerTransitionEmpty fromTopPlain = BAControllerTransitionEmpty() {
+        
+        //just move from top side
+        CGFloat top = CGRectGetHeight(self.view.bounds);
+        [[self baTransitioningDelegate] preparePresentedFromX:top];
+        
+        return self;
+    };
+    return fromTopPlain;
+}
+- (BAControllerTransitionEmpty)fromBottomPlain {
+    BAControllerTransitionEmpty fromBottomPlain = BAControllerTransitionEmpty() {
+        
+        //just move from bottom side
+        CGFloat bottom = CGRectGetHeight(self.view.bounds);
+        [[self baTransitioningDelegate] preparePresentedFromY:bottom];
+        
+        return self;
+    };
+    return fromBottomPlain;
+}
+
+- (BAControllerTransitionLocation)fromLocation {
+    BAControllerTransitionLocation fromLocation = BAControllerTransitionLocation(point) {
+        
+        //just move from point
+        [[self baTransitioningDelegate] preparePresentedFromPoint:point];
+        
+        return self;
+    };
+    return fromLocation;
+}
 
 - (BAControllerTransitionTime)transite {
     BAControllerTransitionTime ttime = BAControllerTransitionTime(time) {
