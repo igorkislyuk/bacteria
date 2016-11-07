@@ -12,7 +12,7 @@
 
 @interface BATransitioningDelegate ()
 
-
+@property (nonatomic, strong) BASimpleAnimationController *simpleAnimationController;
 
 @end
 
@@ -34,20 +34,8 @@
 
 #pragma mark - Methods
 
-- (void)setTime:(NSTimeInterval)timeInterval {
-    _duration = timeInterval;
-}
-
-- (void)preparePresentedFromX:(CGFloat)xOffset {
-    [[self simpleAnimationController] setXDistance:xOffset];
-}
-
-- (void)preparePresentedFromY:(CGFloat)yOffset {
-    [[self simpleAnimationController] setYDistance:yOffset];
-}
-
 - (void)preparePresentedFromPoint:(CGPoint)point {
-    [[self simpleAnimationController] setPoint:point];
+    self.simpleAnimationController.point = point;
 }
 
 @end

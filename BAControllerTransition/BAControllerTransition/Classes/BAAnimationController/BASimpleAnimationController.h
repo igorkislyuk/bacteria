@@ -17,11 +17,6 @@
 // todo: create an protocol
 @property (nonatomic, weak) id <BATransitioningDelegate> transitioningDelegate;
 
-- (void)setXDistance:(CGFloat)distance;
-
-- (void)setYDistance:(CGFloat)distance;
-
-//untested
 @property (nonatomic, assign) CGPoint point;
 
 @end

@@ -55,55 +55,55 @@
 
 //main implementation here
 
-- (BAControllerTransitionEmpty)fromRightPlain {
-    BAControllerTransitionEmpty simple = BAControllerTransitionEmpty() {
+- (BAControllerTransitionEmpty)fromRightSide {
+    BAControllerTransitionEmpty fromRightSide = BAControllerTransitionEmpty() {
         
         //just move from right side
         CGFloat right = CGRectGetWidth(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromX:right];
+        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(CGRectGetWidth(self.view.bounds), 0)];
         
         return self;
         
     };
-    return simple;
+    return fromRightSide;
 }
-- (BAControllerTransitionEmpty)fromLeftPlain {
-    BAControllerTransitionEmpty fromLeftPlain = BAControllerTransitionEmpty() {
+- (BAControllerTransitionEmpty)fromLeftSide {
+    BAControllerTransitionEmpty fromLeftSide = BAControllerTransitionEmpty() {
         
         //just move from left side
         CGFloat left = -CGRectGetWidth(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromX:left];
+        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(-CGRectGetWidth(self.view.bounds), 0)];
         
         return self;
     };
-    return fromLeftPlain;
+    return fromLeftSide;
 }
 
 //TODO: fix this
-- (BAControllerTransitionEmpty)fromTopPlain {
-    BAControllerTransitionEmpty fromTopPlain = BAControllerTransitionEmpty() {
+- (BAControllerTransitionEmpty)fromTopSide {
+    BAControllerTransitionEmpty fromTopSide = BAControllerTransitionEmpty() {
         
         //just move from top side
         CGFloat top = CGRectGetHeight(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromX:top];
+        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(0, -CGRectGetHeight(self.view.bounds))];
         
         return self;
     };
-    return fromTopPlain;
+    return fromTopSide;
 }
-- (BAControllerTransitionEmpty)fromBottomPlain {
-    BAControllerTransitionEmpty fromBottomPlain = BAControllerTransitionEmpty() {
+- (BAControllerTransitionEmpty)fromBottomSide {
+    BAControllerTransitionEmpty fromBottomSide = BAControllerTransitionEmpty() {
         
         //just move from bottom side
         CGFloat bottom = CGRectGetHeight(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromY:bottom];
+        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(0, CGRectGetHeight(self.view.bounds))];
         
         return self;
     };
-    return fromBottomPlain;
+    return fromBottomSide;
 }
 
-- (BAControllerTransitionLocation)fromLocation {
+- (BAControllerTransitionLocation)fromPoint {
     BAControllerTransitionLocation fromLocation = BAControllerTransitionLocation(point) {
         
         //just move from point
@@ -119,7 +119,7 @@
         //set delegate
         [self setBATransitioningDelegate];
         
-        [[self baTransitioningDelegate] setTime:time];
+        self.baTransitioningDelegate.duration = time;
         
         return self;
     };

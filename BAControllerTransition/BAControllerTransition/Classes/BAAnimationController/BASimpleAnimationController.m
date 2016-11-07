@@ -17,7 +17,9 @@
 
 @end
 
-@implementation BASimpleAnimationController
+@implementation BASimpleAnimationController {
+    CGPoint _point;
+}
 
 #pragma mark - UIViewControllerAnimatedTransitioning
 
@@ -28,15 +30,11 @@
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
 
     UIView *containerView = [transitionContext containerView];
-
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     //configure fromVC
     [containerView addSubview:toVC.view];
-
-//    CGFloat tx = self.right;
-//    CGFloat ty = self.top;
     
     toVC.view.transform = CGAffineTransformMakeTranslation(self.point.x, self.point.y);
     
@@ -44,18 +42,12 @@
         toVC.view.transform = CGAffineTransformIdentity;
         fromVC.view.transform = CGAffineTransformMakeTranslation(-self.point.x, -self.point.y);
     } completion:^(BOOL finished) {
+        
         fromVC.view.transform = CGAffineTransformIdentity;
         
         [transitionContext completeTransition:YES];
+        
     }];
-}
-
-- (void)setXDistance:(CGFloat)distance {
-    self.right = distance;
-}
-
-- (void)setYDistance:(CGFloat)distance {
-    self.top = distance;
 }
 
 @end
