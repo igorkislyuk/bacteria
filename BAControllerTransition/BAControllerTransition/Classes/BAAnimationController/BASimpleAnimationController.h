@@ -11,12 +11,11 @@
 
 @protocol BATransitioningDelegate;
 
-//TODO: rename to presenting controller
 @interface BASimpleAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
 
-// todo: create an protocol
 @property (nonatomic, weak) id <BATransitioningDelegate> transitioningDelegate;
 
-@property (nonatomic, assign) CGPoint point;
+@property (nonatomic, assign) CGPoint fromPoint;
+@property (nonatomic, assign) CGPoint toPoint;
 
 @end

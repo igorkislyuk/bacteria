@@ -10,13 +10,13 @@
 
 #import "UIViewController+BAControllerTransition.h"
 
-#import "BATransitioningDelegate.h"
+#import "BATransitioningController.h"
 
 #import "BASimpleAnimationController.h"
 
 @interface UIViewController (BAControllerTransition_Private)
 
-@property (nonatomic, strong) BATransitioningDelegate *baTransitioningDelegate;
+@property (nonatomic, strong) BATransitioningController *baTransitioningDelegate;
 
 @end
 
@@ -34,15 +34,15 @@
 
 #pragma mark - Properties
 
-- (void)setBaTransitioningDelegate:(BATransitioningDelegate *)baTransitioningDelegate {
+- (void)setBaTransitioningDelegate:(BATransitioningController *)baTransitioningDelegate {
     objc_setAssociatedObject(self, @selector(baTransitioningDelegate), baTransitioningDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BATransitioningDelegate *)baTransitioningDelegate {
-    BATransitioningDelegate* transitioningDelegate = objc_getAssociatedObject(self, @selector(baTransitioningDelegate));
+- (BATransitioningController *)baTransitioningDelegate {
+    BATransitioningController* transitioningDelegate = objc_getAssociatedObject(self, @selector(baTransitioningDelegate));
     
     if (transitioningDelegate == nil) {
-        transitioningDelegate = [[BATransitioningDelegate alloc] init];
+        transitioningDelegate = [[BATransitioningController alloc] init];
         [self setBaTransitioningDelegate:transitioningDelegate];
     }
     
@@ -55,63 +55,71 @@
 
 //main implementation here
 
+- (BAControllerTransitionLocation)fromPoint {
+    BAControllerTransitionLocation fromLocation = BAControllerTransitionLocation(point) {
+
+        //just move from point
+        [[self baTransitioningDelegate] preparePresentedFromPoint:point];
+
+        return self;
+    };
+    return fromLocation;
+}
+
 - (BAControllerTransitionEmpty)fromRightSide {
     BAControllerTransitionEmpty fromRightSide = BAControllerTransitionEmpty() {
-        
+
         //just move from right side
         CGFloat right = CGRectGetWidth(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(CGRectGetWidth(self.view.bounds), 0)];
-        
+        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(right, 0)];
+
         return self;
-        
+
     };
     return fromRightSide;
 }
 - (BAControllerTransitionEmpty)fromLeftSide {
     BAControllerTransitionEmpty fromLeftSide = BAControllerTransitionEmpty() {
-        
+
         //just move from left side
         CGFloat left = -CGRectGetWidth(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(-CGRectGetWidth(self.view.bounds), 0)];
-        
+        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(left, 0)];
+
         return self;
     };
     return fromLeftSide;
 }
-
-//TODO: fix this
 - (BAControllerTransitionEmpty)fromTopSide {
     BAControllerTransitionEmpty fromTopSide = BAControllerTransitionEmpty() {
-        
+
         //just move from top side
-        CGFloat top = CGRectGetHeight(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(0, -CGRectGetHeight(self.view.bounds))];
-        
+        CGFloat top = -CGRectGetHeight(self.view.bounds);
+        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(0, top)];
+
         return self;
     };
     return fromTopSide;
 }
 - (BAControllerTransitionEmpty)fromBottomSide {
     BAControllerTransitionEmpty fromBottomSide = BAControllerTransitionEmpty() {
-        
+
         //just move from bottom side
         CGFloat bottom = CGRectGetHeight(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(0, CGRectGetHeight(self.view.bounds))];
-        
+        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(0, bottom)];
+
         return self;
     };
     return fromBottomSide;
 }
 
-- (BAControllerTransitionLocation)fromPoint {
-    BAControllerTransitionLocation fromLocation = BAControllerTransitionLocation(point) {
-        
-        //just move from point
-        [[self baTransitioningDelegate] preparePresentedFromPoint:point];
-        
+- (BAControllerTransitionLocation)toPoint {
+    BAControllerTransitionLocation toPoint = BAControllerTransitionLocation(point) {
+
+        [[self baTransitioningDelegate] prepareDismissedToPoint:point];
+
         return self;
     };
-    return fromLocation;
+    return toPoint;
 }
 
 - (BAControllerTransitionTime)transite {

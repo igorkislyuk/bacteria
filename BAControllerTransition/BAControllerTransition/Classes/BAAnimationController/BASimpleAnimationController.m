@@ -8,7 +8,7 @@
 
 #import "BASimpleAnimationController.h"
 
-#import "BATransitioningDelegate.h"
+#import "BATransitioningController.h"
 
 @interface BASimpleAnimationController ()
 
@@ -32,18 +32,32 @@
     UIView *containerView = [transitionContext containerView];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+
+    CGPoint point;
     
-    //configure fromVC
-    [containerView addSubview:toVC.view];
+    UIView *dismissView = fromVC.view;
+    UIView *presentView = toVC.view;
     
-    toVC.view.transform = CGAffineTransformMakeTranslation(self.point.x, self.point.y);
+    if ([self.transitioningDelegate presenting]) {
+
+        [containerView addSubview:presentView];
+        point = self.fromPoint;
+        
+
+    } else {
+        point = CGPointMake(self.toPoint.x, self.toPoint.y);
+        
+        [containerView insertSubview:presentView belowSubview:dismissView];
+    }
+
+    presentView.transform = CGAffineTransformMakeTranslation(point.x, point.y);
     
     [UIView animateWithDuration:[self.transitioningDelegate duration] animations:^{
-        toVC.view.transform = CGAffineTransformIdentity;
-        fromVC.view.transform = CGAffineTransformMakeTranslation(-self.point.x, -self.point.y);
+        presentView.transform = CGAffineTransformIdentity;
+        dismissView.transform = CGAffineTransformMakeTranslation(-point.x, -point.y);
     } completion:^(BOOL finished) {
         
-        fromVC.view.transform = CGAffineTransformIdentity;
+        dismissView.transform = CGAffineTransformIdentity;
         
         [transitionContext completeTransition:YES];
         

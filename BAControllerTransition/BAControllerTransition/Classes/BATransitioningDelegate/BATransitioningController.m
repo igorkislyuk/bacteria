@@ -6,17 +6,19 @@
 //  Copyright © 2016 Igor Kislyuk. All rights reserved.
 //
 
-#import "BATransitioningDelegate.h"
+#import "BATransitioningController.h"
 
 #import "BASimpleAnimationController.h"
 
-@interface BATransitioningDelegate ()
+@interface BATransitioningController ()
 
 @property (nonatomic, strong) BASimpleAnimationController *simpleAnimationController;
 
 @end
 
-@implementation BATransitioningDelegate
+@implementation BATransitioningController {
+    BOOL _presenting;
+}
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -29,13 +31,28 @@
 #pragma mark - UIViewControllerTransitioningDelegate
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    _presenting = YES;
     return self.simpleAnimationController;
+}
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    _presenting = NO;
+    return self.simpleAnimationController;
+}
+
+
+- (BOOL)presenting {
+    return _presenting;
 }
 
 #pragma mark - Methods
 
 - (void)preparePresentedFromPoint:(CGPoint)point {
-    self.simpleAnimationController.point = point;
+    self.simpleAnimationController.fromPoint = point;
+}
+
+- (void)prepareDismissedToPoint:(CGPoint)point {
+    self.simpleAnimationController.toPoint = point;
 }
 
 @end

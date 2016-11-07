@@ -11,17 +11,19 @@
 //headers
 #import <BASimpleAnimationController.h>
 
-//TODO: rename to instance [all but not protocol]
 @protocol BATransitioningDelegate <NSObject>
 
 - (NSTimeInterval)duration;
 
+- (BOOL)presenting;
+
 @end
 
-@interface BATransitioningDelegate : NSObject <UIViewControllerTransitioningDelegate, BATransitioningDelegate>
+@interface BATransitioningController : NSObject <UIViewControllerTransitioningDelegate, BATransitioningDelegate>
 
 @property (nonatomic, assign) NSTimeInterval duration;
 
 - (void)preparePresentedFromPoint:(CGPoint)point;
+- (void)prepareDismissedToPoint:(CGPoint)point;
 
 @end

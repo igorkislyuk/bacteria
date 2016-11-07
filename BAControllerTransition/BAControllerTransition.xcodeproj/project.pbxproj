@@ -12,8 +12,8 @@
 		ED3EF7711DB822A6006258FD /* UIViewController+BAControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF7681DB822A6006258FD /* UIViewController+BAControllerTransition.m */; };
 		ED3EF7721DB822A6006258FD /* BASimpleAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3EF76B1DB822A6006258FD /* BASimpleAnimationController.h */; };
 		ED3EF7731DB822A6006258FD /* BASimpleAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF76C1DB822A6006258FD /* BASimpleAnimationController.m */; };
-		ED3EF7741DB822A6006258FD /* BATransitioningDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3EF76E1DB822A6006258FD /* BATransitioningDelegate.h */; };
-		ED3EF7751DB822A6006258FD /* BATransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF76F1DB822A6006258FD /* BATransitioningDelegate.m */; };
+		ED3EF7741DB822A6006258FD /* BATransitioningController.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3EF76E1DB822A6006258FD /* BATransitioningController.h */; };
+		ED3EF7751DB822A6006258FD /* BATransitioningController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF76F1DB822A6006258FD /* BATransitioningController.m */; };
 		ED3EF7A01DB82810006258FD /* BAControllerTransition-BlocksHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3EF7771DB823E6006258FD /* BAControllerTransition-BlocksHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -25,8 +25,8 @@
 		ED3EF7681DB822A6006258FD /* UIViewController+BAControllerTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BAControllerTransition.m"; sourceTree = "<group>"; };
 		ED3EF76B1DB822A6006258FD /* BASimpleAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BASimpleAnimationController.h; sourceTree = "<group>"; };
 		ED3EF76C1DB822A6006258FD /* BASimpleAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BASimpleAnimationController.m; sourceTree = "<group>"; };
-		ED3EF76E1DB822A6006258FD /* BATransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATransitioningDelegate.h; sourceTree = "<group>"; };
-		ED3EF76F1DB822A6006258FD /* BATransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATransitioningDelegate.m; sourceTree = "<group>"; };
+		ED3EF76E1DB822A6006258FD /* BATransitioningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATransitioningController.h; sourceTree = "<group>"; };
+		ED3EF76F1DB822A6006258FD /* BATransitioningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATransitioningController.m; sourceTree = "<group>"; };
 		ED3EF7771DB823E6006258FD /* BAControllerTransition-BlocksHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BAControllerTransition-BlocksHeader.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,8 +99,8 @@
 		ED3EF76D1DB822A6006258FD /* BATransitioningDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				ED3EF76E1DB822A6006258FD /* BATransitioningDelegate.h */,
-				ED3EF76F1DB822A6006258FD /* BATransitioningDelegate.m */,
+				ED3EF76E1DB822A6006258FD /* BATransitioningController.h */,
+				ED3EF76F1DB822A6006258FD /* BATransitioningController.m */,
 			);
 			path = BATransitioningDelegate;
 			sourceTree = "<group>";
@@ -124,7 +124,7 @@
 				ED3EF7701DB822A6006258FD /* UIViewController+BAControllerTransition.h in Headers */,
 				ED3EF7A01DB82810006258FD /* BAControllerTransition-BlocksHeader.h in Headers */,
 				ED3EF7721DB822A6006258FD /* BASimpleAnimationController.h in Headers */,
-				ED3EF7741DB822A6006258FD /* BATransitioningDelegate.h in Headers */,
+				ED3EF7741DB822A6006258FD /* BATransitioningController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +197,7 @@
 			files = (
 				ED3EF7711DB822A6006258FD /* UIViewController+BAControllerTransition.m in Sources */,
 				ED3EF7731DB822A6006258FD /* BASimpleAnimationController.m in Sources */,
-				ED3EF7751DB822A6006258FD /* BATransitioningDelegate.m in Sources */,
+				ED3EF7751DB822A6006258FD /* BATransitioningController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

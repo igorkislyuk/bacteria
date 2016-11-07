@@ -29,7 +29,8 @@ typedef void (^ViewControllerPresentingBlock)(UIViewController *viewController);
             @"fromLeftSide" : ^(UIViewController *viewController){viewController.fromLeftSide().transite(1.5f);},
             @"fromTopSide" : ^(UIViewController *viewController){viewController.fromTopSide().transite(1.5f);},
             @"fromBottomSide" : ^(UIViewController *viewController){viewController.fromBottomSide().transite(1.5f);},
-            @"fromPoint - {100, 100}" : ^(UIViewController *viewController) {viewController.fromPoint(CGPointMake(100, 100)).transite(1.5f);}
+            @"fromPoint - {100, 100}" : ^(UIViewController *viewController) {viewController.fromPoint(CGPointMake(100, 100)).transite(1.5f);},
+            @"toPoint - {0,0}" : ^(UIViewController *viewController) {viewController.toPoint(CGPointMake(CGRectGetWidth(self.view.bounds), 0)).fromLeftSide().transite(1.5f);},
 
     };
 
@@ -65,7 +66,6 @@ typedef void (^ViewControllerPresentingBlock)(UIViewController *viewController);
 
     }];
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSource.allKeys.count;
