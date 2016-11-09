@@ -18,6 +18,7 @@
 
 @implementation BATransitioningController {
     BOOL _presenting;
+    BATransitionType _pType, _dType;
 }
 
 - (instancetype)init {
@@ -40,10 +41,24 @@
     return self.simpleAnimationController;
 }
 
+#pragma mark - BATransitioningDelegate
 
 - (BOOL)presenting {
     return _presenting;
 }
+
+- (void)setPresentedType:(BATransitionType)type {
+    _pType = type;
+}
+
+- (void)setDismissedType:(BATransitionType)type {
+    _dType = type;
+}
+
+- (BATransitionType)transitionType {
+    return _presenting ? _pType : _dType;
+}
+
 
 #pragma mark - Methods
 

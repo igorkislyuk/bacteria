@@ -55,6 +55,7 @@
 
 //main implementation here
 
+//core functionality
 - (BAControllerTransitionLocation)fromPoint {
     BAControllerTransitionLocation fromLocation = BAControllerTransitionLocation(point) {
 
@@ -65,7 +66,34 @@
     };
     return fromLocation;
 }
+- (BAControllerTransitionLocation)toPoint {
+    BAControllerTransitionLocation toPoint = BAControllerTransitionLocation(point) {
 
+        [[self baTransitioningDelegate] prepareDismissedToPoint:point];
+
+        return self;
+    };
+    return toPoint;
+}
+
+- (BAControllerTransitionType)typeFrom {
+    BAControllerTransitionType transitionType = BAControllerTransitionType(type) {
+        [[self baTransitioningDelegate] setPresentedType:type];
+        return self;
+    };
+    return transitionType;
+}
+
+- (BAControllerTransitionType)typeTo {
+    BAControllerTransitionType transitionType = BAControllerTransitionType(type) {
+        [[self baTransitioningDelegate] setDismissedType:type];
+        return self;
+    };
+    return transitionType;
+}
+
+
+//fine from transitions
 - (BAControllerTransitionEmpty)fromRightSide {
     BAControllerTransitionEmpty fromRightSide = BAControllerTransitionEmpty() {
 
@@ -112,15 +140,44 @@
     return fromBottomSide;
 }
 
-- (BAControllerTransitionLocation)toPoint {
-    BAControllerTransitionLocation toPoint = BAControllerTransitionLocation(point) {
+//fine to transitions
+- (BAControllerTransitionEmpty)toRightSide {
+    BAControllerTransitionEmpty toRightSide = BAControllerTransitionEmpty() {
 
-        [[self baTransitioningDelegate] prepareDismissedToPoint:point];
+        [[self baTransitioningDelegate] prepareDismissedToPoint:CGPointMake(CGRectGetWidth(self.view.bounds), 0)];
 
         return self;
     };
-    return toPoint;
+    return toRightSide;
 }
+- (BAControllerTransitionEmpty)toLeftSide {
+    BAControllerTransitionEmpty toLeftSide = BAControllerTransitionEmpty() {
+
+        [[self baTransitioningDelegate] prepareDismissedToPoint:CGPointMake(-CGRectGetWidth(self.view.bounds), 0)];
+
+        return self;
+    };
+    return toLeftSide;
+}
+- (BAControllerTransitionEmpty)toTopSide {
+    BAControllerTransitionEmpty toTopSide = BAControllerTransitionEmpty() {
+
+        [[self baTransitioningDelegate] prepareDismissedToPoint:CGPointMake(0, -CGRectGetHeight(self.view.bounds))];
+
+        return self;
+    };
+    return toTopSide;
+}
+- (BAControllerTransitionEmpty)toBottomSide {
+    BAControllerTransitionEmpty toBottomSide = BAControllerTransitionEmpty() {
+
+        [[self baTransitioningDelegate] prepareDismissedToPoint:CGPointMake(0, CGRectGetHeight(self.view.bounds))];
+
+        return self;
+    };
+    return toBottomSide;
+}
+
 
 - (BAControllerTransitionTime)transite {
     BAControllerTransitionTime ttime = BAControllerTransitionTime(time) {

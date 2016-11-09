@@ -15,7 +15,12 @@
 
 @property (nonatomic, weak) id <BATransitioningDelegate> transitioningDelegate;
 
+//Original point - initial location
+
+/**Point for presented controller*/
 @property (nonatomic, assign) CGPoint fromPoint;
+
+/**Point for dismissed controller*/
 @property (nonatomic, assign) CGPoint toPoint;
 
 @end

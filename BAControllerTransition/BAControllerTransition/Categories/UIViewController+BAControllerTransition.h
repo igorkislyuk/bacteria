@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import "Types.h"
 #import "BAControllerTransition-BlocksHeader.h"
 
 @interface UIViewController (BAControllerTransition)
@@ -21,19 +23,24 @@
 
 // specify an point from animation will be presented
 - (BAControllerTransitionLocation)fromPoint;
+- (BAControllerTransitionLocation)toPoint;
+
+/** default behaviour is parallel */
+- (BAControllerTransitionType)typeFrom;
+- (BAControllerTransitionType)typeTo;
 
 - (BAControllerTransitionEmpty)fromRightSide;
 - (BAControllerTransitionEmpty)fromLeftSide;
-
 - (BAControllerTransitionEmpty)fromTopSide;
 - (BAControllerTransitionEmpty)fromBottomSide;
 
-#pragma mark - Unstable
+- (BAControllerTransitionEmpty)toRightSide;
+- (BAControllerTransitionEmpty)toLeftSide;
+- (BAControllerTransitionEmpty)toTopSide;
+- (BAControllerTransitionEmpty)toBottomSide;
 
-- (BAControllerTransitionLocation)toPoint;
 
-
-//test section
+// test section
 - (void)presentTestAlert;
 
 @end
@@ -48,6 +55,8 @@
 
 // --version 0.0.2
 
+// todo: remove few methods. Create and enum for all sides.
+
 // todo: Flip animation
 // todo: revert flip?
 
@@ -55,18 +64,20 @@
 // todo: Pop from rectangle
 // tood: Reveal and pop from custom shape
 
-//todo: bounce
-//todo: alerts
-//todo: from bottoms
-//todo: add spring
+// todo: bounce
+// todo: alerts
+// todo: from bottoms
+// todo: add spring
 
 
 //--- Long box
 
+// todo: think about adjusting frames for views
+// todo: cross view animation
 // todo: create simple animation from corners
-//todo: modal transitions with
-//todo: i need good documentation after all of this
-//todo: think about version and configurations - it needs to be easy to modify whole library
-//todo: made test when controller deallocated - what happens with bacontroller transition objects. It's very important to...
-//todo: after release at cocoapods - create develop version
-//todo: clear all code
+// todo: modal transitions with
+// todo: i need good documentation after all of this
+// todo: think about version and configurations - it needs to be easy to modify whole library
+// todo: made test when controller deallocated - what happens with bacontroller transition objects. It's very important to...
+// todo: after release at cocoapods - create develop version
+// todo: clear all code & adjust headers

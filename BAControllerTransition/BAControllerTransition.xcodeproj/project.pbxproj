@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3927BB13155E181A88CE6F1A /* Types.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927BA85CF65486D7537AE39 /* Types.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED3EF75E1DB81F36006258FD /* BAControllerTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3EF75D1DB81F36006258FD /* BAControllerTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED3EF7701DB822A6006258FD /* UIViewController+BAControllerTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = ED3EF7671DB822A6006258FD /* UIViewController+BAControllerTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ED3EF7711DB822A6006258FD /* UIViewController+BAControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF7681DB822A6006258FD /* UIViewController+BAControllerTransition.m */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3927BA85CF65486D7537AE39 /* Types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
 		ED3EF75A1DB81F36006258FD /* BAControllerTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BAControllerTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3EF75D1DB81F36006258FD /* BAControllerTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAControllerTransition.h; sourceTree = "<group>"; };
 		ED3EF75F1DB81F36006258FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3927B87304E444E61128EF6C /* Inner */ = {
+			isa = PBXGroup;
+			children = (
+				3927BA85CF65486D7537AE39 /* Types.h */,
+			);
+			path = Inner;
+			sourceTree = "<group>";
+		};
 		ED3EF7501DB81F36006258FD = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				ED3EF7771DB823E6006258FD /* BAControllerTransition-BlocksHeader.h */,
+				3927B87304E444E61128EF6C /* Inner */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -123,6 +134,7 @@
 				ED3EF75E1DB81F36006258FD /* BAControllerTransition.h in Headers */,
 				ED3EF7701DB822A6006258FD /* UIViewController+BAControllerTransition.h in Headers */,
 				ED3EF7A01DB82810006258FD /* BAControllerTransition-BlocksHeader.h in Headers */,
+				3927BB13155E181A88CE6F1A /* Types.h in Headers */,
 				ED3EF7721DB822A6006258FD /* BASimpleAnimationController.h in Headers */,
 				ED3EF7741DB822A6006258FD /* BATransitioningController.h in Headers */,
 			);

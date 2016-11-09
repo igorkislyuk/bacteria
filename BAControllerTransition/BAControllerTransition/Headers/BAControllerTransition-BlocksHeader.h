@@ -9,6 +9,7 @@
 #ifndef BAControllerTransition_BlocksHeader_h
 #define BAControllerTransition_BlocksHeader_h
 
+
 //simple block wrapper
 typedef UIViewController* (^BAControllerTransitionEmpty)(void);
 #define BAControllerTransitionEmpty() ^UIViewController* ()
@@ -22,5 +23,7 @@ typedef UIViewController* (^BAControllerTransitionDistance)(CGFloat);
 typedef UIViewController* (^BAControllerTransitionLocation)(CGPoint);
 #define BAControllerTransitionLocation(f) ^UIViewController* (CGPoint f)
 
+typedef UIViewController* (^BAControllerTransitionType)(BATransitionType type);
+#define BAControllerTransitionType(t) ^UIViewController* (BATransitionType type)
 
 #endif /* BAControllerTransition_BlocksHeader_h */

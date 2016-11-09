@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Types.h"
+
 //headers
 #import <BASimpleAnimationController.h>
 
@@ -17,6 +19,8 @@
 
 - (BOOL)presenting;
 
+- (BATransitionType)transitionType;
+
 @end
 
 @interface BATransitioningController : NSObject <UIViewControllerTransitioningDelegate, BATransitioningDelegate>
@@ -25,5 +29,8 @@
 
 - (void)preparePresentedFromPoint:(CGPoint)point;
 - (void)prepareDismissedToPoint:(CGPoint)point;
+
+- (void)setPresentedType:(BATransitionType)type;
+- (void)setDismissedType:(BATransitionType)type;
 
 @end
