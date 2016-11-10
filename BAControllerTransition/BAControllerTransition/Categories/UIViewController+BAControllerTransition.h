@@ -49,9 +49,8 @@
 
 // --version 0.0.1
 
-// todo: made to location
+// todo: made corners plus shortcut all the methods. Convert in enum
 // todo: made autorevert for dismissed controller
-// todo: add two types: cover || pushing
 
 // --version 0.0.2
 
@@ -68,6 +67,9 @@
 // todo: alerts
 // todo: from bottoms
 // todo: add spring
+// todo: animation like in music
+// todo: adjust frames for different views
+// todo: https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
 
 //--- Long box
