@@ -19,6 +19,8 @@
 
 #pragma mark - Complete section
 
+//Current version - 0.0.1
+
 /** Default is 0.3s */
 - (BAControllerTransitionTime)transite;
 
@@ -41,14 +43,10 @@
 
 // TODOS
 
-// --version 0.0.1
-
 // todo: made corners
 // todo: made autorevert for dismissed controller
 
 // --version 0.0.2
-
-// todo: remove few methods. Create and enum for all sides.
 
 // todo: Flip animation
 // todo: revert flip?
