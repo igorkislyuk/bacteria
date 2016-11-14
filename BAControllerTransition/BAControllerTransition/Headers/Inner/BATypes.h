@@ -6,8 +6,8 @@
 //  Copyright (c) 2016 Igor Kislyuk. All rights reserved.
 //
 
-#ifndef Types_h
-#define Types_h
+#ifndef BATypes_h
+#define BATypes_h
 
 #import <objc/NSObjCRuntime.h>
 
@@ -16,11 +16,11 @@ typedef NS_ENUM(NSUInteger, BATransitionType) {
     BATransitionTypeCover = 1
 };
 
-typedef NS_ENUM(NSUInteger, BATransitionSide) {
-    BATransitionSideLeft,
-    BATransitionSideRight,
-    BATransitionSideTop,
-    BATransitionSideBottom
+typedef NS_ENUM(NSUInteger, BATransitionSideType) {
+    BATransitionSideTypeLeft,
+    BATransitionSideTypeRight,
+    BATransitionSideTypeTop,
+    BATransitionSideTypeBottom
 };
 
-#endif /* Types_h */
+#endif /* BATypes_h */

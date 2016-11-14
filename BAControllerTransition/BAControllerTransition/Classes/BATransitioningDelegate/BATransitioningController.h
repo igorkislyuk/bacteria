@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Types.h"
+#import "BATypes.h"
 
 //headers
 #import <BASimpleAnimationController.h>

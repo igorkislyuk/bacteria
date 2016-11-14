@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "Types.h"
+#import "BATypes.h"
 #import "BAControllerTransition-BlocksHeader.h"
 
 @interface UIViewController (BAControllerTransition)
@@ -18,8 +18,13 @@
 //plain / complex
 
 #pragma mark - Complete section
+
 /** Default is 0.3s */
 - (BAControllerTransitionTime)transite;
+
+//replace in one
+- (BAControllerTransitionSideType)plainFrom;
+- (BAControllerTransitionSideType)plainTo;
 
 // specify an point from animation will be presented
 - (BAControllerTransitionLocation)fromPoint;
@@ -28,17 +33,6 @@
 /** default behaviour is parallel */
 - (BAControllerTransitionType)typeFrom;
 - (BAControllerTransitionType)typeTo;
-
-- (BAControllerTransitionEmpty)fromRightSide;
-- (BAControllerTransitionEmpty)fromLeftSide;
-- (BAControllerTransitionEmpty)fromTopSide;
-- (BAControllerTransitionEmpty)fromBottomSide;
-
-- (BAControllerTransitionEmpty)toRightSide;
-- (BAControllerTransitionEmpty)toLeftSide;
-- (BAControllerTransitionEmpty)toTopSide;
-- (BAControllerTransitionEmpty)toBottomSide;
-
 
 // test section
 - (void)presentTestAlert;
@@ -49,7 +43,7 @@
 
 // --version 0.0.1
 
-// todo: made corners plus shortcut all the methods. Convert in enum
+// todo: made corners
 // todo: made autorevert for dismissed controller
 
 // --version 0.0.2

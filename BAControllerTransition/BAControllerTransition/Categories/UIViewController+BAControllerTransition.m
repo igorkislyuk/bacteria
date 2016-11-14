@@ -16,7 +16,7 @@
 
 @interface UIViewController (BAControllerTransition_Private)
 
-@property (nonatomic, strong) BATransitioningController *baTransitioningDelegate;
+@property(nonatomic, strong) BATransitioningController *baTransitioningDelegate;
 
 @end
 
@@ -29,7 +29,7 @@
 }
 
 - (void)addConfiguration {
-    
+
 }
 
 #pragma mark - Properties
@@ -39,13 +39,13 @@
 }
 
 - (BATransitioningController *)baTransitioningDelegate {
-    BATransitioningController* transitioningDelegate = objc_getAssociatedObject(self, @selector(baTransitioningDelegate));
-    
+    BATransitioningController *transitioningDelegate = objc_getAssociatedObject(self, @selector(baTransitioningDelegate));
+
     if (transitioningDelegate == nil) {
         transitioningDelegate = [[BATransitioningController alloc] init];
         [self setBaTransitioningDelegate:transitioningDelegate];
     }
-    
+
     return transitioningDelegate;
 }
 
@@ -66,6 +66,7 @@
     };
     return fromLocation;
 }
+
 - (BAControllerTransitionLocation)toPoint {
     BAControllerTransitionLocation toPoint = BAControllerTransitionLocation(point) {
 
@@ -94,88 +95,67 @@
 
 
 //fine from transitions
-- (BAControllerTransitionEmpty)fromRightSide {
-    BAControllerTransitionEmpty fromRightSide = BAControllerTransitionEmpty() {
+- (BAControllerTransitionSideType)plainFrom {
+    BAControllerTransitionSideType plainFrom = BAControllerTransitionSideType(sideType) {
 
-        //just move from right side
-        CGFloat right = CGRectGetWidth(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(right, 0)];
+        CGPoint fromPoint = CGPointZero;
 
-        return self;
+        CGFloat width = CGRectGetWidth(self.view.bounds);
+        CGFloat height = CGRectGetHeight(self.view.bounds);
 
-    };
-    return fromRightSide;
-}
-- (BAControllerTransitionEmpty)fromLeftSide {
-    BAControllerTransitionEmpty fromLeftSide = BAControllerTransitionEmpty() {
+        switch (sideType) {
+            case BATransitionSideTypeLeft:
+                fromPoint = CGPointMake(-width, 0);
+                break;
+            case BATransitionSideTypeRight:
+                fromPoint = CGPointMake(width, 0);
+                break;
+            case BATransitionSideTypeTop:
+                fromPoint = CGPointMake(0, -height);
+                break;
+            case BATransitionSideTypeBottom:
+                fromPoint = CGPointMake(0, height);
+                break;
+        }
 
-        //just move from left side
-        CGFloat left = -CGRectGetWidth(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(left, 0)];
-
-        return self;
-    };
-    return fromLeftSide;
-}
-- (BAControllerTransitionEmpty)fromTopSide {
-    BAControllerTransitionEmpty fromTopSide = BAControllerTransitionEmpty() {
-
-        //just move from top side
-        CGFloat top = -CGRectGetHeight(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(0, top)];
+        [[self baTransitioningDelegate] preparePresentedFromPoint:fromPoint];
 
         return self;
     };
-    return fromTopSide;
-}
-- (BAControllerTransitionEmpty)fromBottomSide {
-    BAControllerTransitionEmpty fromBottomSide = BAControllerTransitionEmpty() {
-
-        //just move from bottom side
-        CGFloat bottom = CGRectGetHeight(self.view.bounds);
-        [[self baTransitioningDelegate] preparePresentedFromPoint:CGPointMake(0, bottom)];
-
-        return self;
-    };
-    return fromBottomSide;
+    return plainFrom;
 }
 
 //fine to transitions
-- (BAControllerTransitionEmpty)toRightSide {
-    BAControllerTransitionEmpty toRightSide = BAControllerTransitionEmpty() {
+- (BAControllerTransitionSideType)plainTo {
+    BAControllerTransitionSideType plainTo = BAControllerTransitionSideType(sideType) {
 
-        [[self baTransitioningDelegate] prepareDismissedToPoint:CGPointMake(CGRectGetWidth(self.view.bounds), 0)];
+        CGPoint toPoint = CGPointZero;
 
-        return self;
-    };
-    return toRightSide;
-}
-- (BAControllerTransitionEmpty)toLeftSide {
-    BAControllerTransitionEmpty toLeftSide = BAControllerTransitionEmpty() {
+        CGFloat width = CGRectGetWidth(self.view.bounds);
+        CGFloat height = CGRectGetHeight(self.view.bounds);
 
-        [[self baTransitioningDelegate] prepareDismissedToPoint:CGPointMake(-CGRectGetWidth(self.view.bounds), 0)];
+        switch (sideType) {
 
-        return self;
-    };
-    return toLeftSide;
-}
-- (BAControllerTransitionEmpty)toTopSide {
-    BAControllerTransitionEmpty toTopSide = BAControllerTransitionEmpty() {
+            case BATransitionSideTypeLeft:
+                toPoint = CGPointMake(-width, 0);
+                break;
+            case BATransitionSideTypeRight:
+                toPoint = CGPointMake(width, 0);
+                break;
+            case BATransitionSideTypeTop:
+                toPoint = CGPointMake(0, -height);
+                break;
+            case BATransitionSideTypeBottom:
+                toPoint = CGPointMake(0, height);
+                break;
+        }
 
-        [[self baTransitioningDelegate] prepareDismissedToPoint:CGPointMake(0, -CGRectGetHeight(self.view.bounds))];
+        [[self baTransitioningDelegate] prepareDismissedToPoint:toPoint];
 
-        return self;
-    };
-    return toTopSide;
-}
-- (BAControllerTransitionEmpty)toBottomSide {
-    BAControllerTransitionEmpty toBottomSide = BAControllerTransitionEmpty() {
-
-        [[self baTransitioningDelegate] prepareDismissedToPoint:CGPointMake(0, CGRectGetHeight(self.view.bounds))];
 
         return self;
     };
-    return toBottomSide;
+    return plainTo;
 }
 
 
@@ -183,9 +163,9 @@
     BAControllerTransitionTime ttime = BAControllerTransitionTime(time) {
         //set delegate
         [self setBATransitioningDelegate];
-        
+
         self.baTransitioningDelegate.duration = time;
-        
+
         return self;
     };
     return ttime;
@@ -196,9 +176,9 @@
 
 - (void)presentTestAlert {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Test message" message:@"This message from framework" preferredStyle:UIAlertControllerStyleAlert];
-    
+
     [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
-    
+
     [self presentViewController:alertController animated:YES completion:nil];
 }
 

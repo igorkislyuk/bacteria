@@ -25,17 +25,17 @@ typedef void (^ViewControllerPresentingBlock)(UIViewController *viewController);
     [super viewDidLoad];
 
     self.dataSource = @{
-            @"fromRightSide-toLeftSide" : ^(UIViewController *viewController){viewController.fromRightSide().toLeftSide().transite(1.5f);},
-            @"fromLeftSide-toTopSide" : ^(UIViewController *viewController){viewController.fromLeftSide().toTopSide().transite(1.5f);},
-            @"fromTopSide-toBottomSide" : ^(UIViewController *viewController){viewController.fromTopSide().toBottomSide().transite(1.5f);},
-            @"fromBottomSide-toRightSide" : ^(UIViewController *viewController){viewController.fromBottomSide().toRightSide().transite(1.5f);},
-            @"fromPoint - {100, 100}-toLeftSide" : ^(UIViewController *viewController) {viewController.fromPoint(CGPointMake(100, 100)).toLeftSide().transite(1.5f);},
+            @"fromRightSide-toLeftSide" : ^(UIViewController *viewController){viewController.plainFrom(BATransitionSideTypeRight).plainTo(BATransitionSideTypeLeft).transite(1.5f);},
+            @"fromLeftSide-toTopSide" : ^(UIViewController *viewController){viewController.plainFrom(BATransitionSideTypeLeft).plainTo(BATransitionSideTypeTop).transite(1.5f);},
+            @"fromTopSide-toBottomSide" : ^(UIViewController *viewController){viewController.plainFrom(BATransitionSideTypeTop).plainTo(BATransitionSideTypeBottom).transite(1.5f);},
+            @"fromBottomSide-toRightSide" : ^(UIViewController *viewController){viewController.plainFrom(BATransitionSideTypeBottom).plainTo(BATransitionSideTypeRight).transite(1.5f);},
+            @"fromPoint - {100, 100}-toLeftSide" : ^(UIViewController *viewController) {viewController.fromPoint(CGPointMake(100, 100)).plainTo(BATransitionSideTypeLeft).transite(1.5f);},
             
             //new from 11-09
             @"N: fromPoint - {200, 200}-toPoint - {200, 200}" : ^(UIViewController *viewController) {viewController.fromPoint(CGPointMake(100, 100)).toPoint(CGPointMake(100, 100)).typeFrom(BATransitionTypeCover).transite(1.5f);},
-            @"N: from left cover - to left paraller" : ^(UIViewController *viewController) {viewController.fromLeftSide().toLeftSide().typeTo(BATransitionTypeParallel).typeFrom(BATransitionTypeCover).transite(1.5f);},
-            @"N: from r cov - to t par" : ^(UIViewController *viewController) {viewController.fromRightSide().typeFrom(BATransitionTypeCover).toTopSide().transite(1.5f);},
-            @"N: from b cov - to b cov" : ^(UIViewController *viewController) {viewController.fromBottomSide().toBottomSide().typeTo(BATransitionTypeCover).typeFrom(BATransitionTypeCover).transite(1.5f);},
+            @"N: from left cover - to left paraller" : ^(UIViewController *viewController) {viewController.plainFrom(BATransitionSideTypeLeft).plainTo(BATransitionSideTypeLeft).typeTo(BATransitionTypeParallel).typeFrom(BATransitionTypeCover).transite(1.5f);},
+            @"N: from r cov - to t par" : ^(UIViewController *viewController) {viewController.plainFrom(BATransitionSideTypeRight).typeFrom(BATransitionTypeCover).plainTo(BATransitionSideTypeTop).transite(1.5f);},
+            @"N: from b cov - to b cov" : ^(UIViewController *viewController) {viewController.plainFrom(BATransitionSideTypeBottom).plainTo(BATransitionSideTypeBottom).typeTo(BATransitionTypeCover).typeFrom(BATransitionTypeCover).transite(1.5f);},
 
     };
 

@@ -26,4 +26,7 @@ typedef UIViewController* (^BAControllerTransitionLocation)(CGPoint);
 typedef UIViewController* (^BAControllerTransitionType)(BATransitionType type);
 #define BAControllerTransitionType(t) ^UIViewController* (BATransitionType type)
 
+typedef UIViewController* (^BAControllerTransitionSideType)(BATransitionSideType sideType);
+#define BAControllerTransitionSideType(t) ^UIViewController* (BATransitionSideType sideType)
+
 #endif /* BAControllerTransition_BlocksHeader_h */
