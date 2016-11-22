@@ -11,30 +11,41 @@
 #import "BATypes.h"
 #import "BAControllerTransition-BlocksHeader.h"
 
+/**
+ Current version - 0.0.1
+ */
 @interface UIViewController (BAControllerTransition)
 
-//from / to
-//right and left
-//plain / complex
-
-#pragma mark - Complete section
-
-//Current version - 0.0.1
-
-/** Default is 0.3s */
+/**
+ Required. Specify an duration
+ */
 - (BAControllerTransitionTime)transite;
 
-//replace in one
+/**
+ Prepare view controller for presental within an specified direction.
+ */
 - (BAControllerTransitionSideType)plainFrom;
+
+/**
+ Prepare view controller for dismissal within a specified direction.
+ */
 - (BAControllerTransitionSideType)plainTo;
 
-// specify an point from animation will be presented
+/**
+ Otherwise, you can specify a concrete point for presental/dismissal
+ */
 - (BAControllerTransitionLocation)fromPoint;
 - (BAControllerTransitionLocation)toPoint;
 
-/** default behaviour is parallel */
+/**
+ Default behaviour is parallel
+ */
 - (BAControllerTransitionType)typeFrom;
 - (BAControllerTransitionType)typeTo;
+
+
+
+
 
 // test section
 - (void)presentTestAlert;
@@ -67,6 +78,7 @@
 //--- Long box
 
 // todo: think about adjusting frames for views
+// todo: animation within a collections and navigation controller 
 // todo: cross view animation
 // todo: create simple animation from corners
 // todo: modal transitions with

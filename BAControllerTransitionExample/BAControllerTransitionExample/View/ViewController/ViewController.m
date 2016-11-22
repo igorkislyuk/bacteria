@@ -36,7 +36,6 @@ typedef void (^ViewControllerPresentingBlock)(UIViewController *viewController);
             @"N: from left cover - to left paraller" : ^(UIViewController *viewController) {viewController.plainFrom(BATransitionSideTypeLeft).plainTo(BATransitionSideTypeLeft).typeTo(BATransitionTypeParallel).typeFrom(BATransitionTypeCover).transite(1.5f);},
             @"N: from r cov - to t par" : ^(UIViewController *viewController) {viewController.plainFrom(BATransitionSideTypeRight).typeFrom(BATransitionTypeCover).plainTo(BATransitionSideTypeTop).transite(1.5f);},
             @"N: from b cov - to b cov" : ^(UIViewController *viewController) {viewController.plainFrom(BATransitionSideTypeBottom).plainTo(BATransitionSideTypeBottom).typeTo(BATransitionTypeCover).typeFrom(BATransitionTypeCover).transite(1.5f);},
-
     };
 
 }
