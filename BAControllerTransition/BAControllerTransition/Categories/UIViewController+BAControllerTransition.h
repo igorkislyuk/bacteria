@@ -12,7 +12,7 @@
 #import "BAControllerTransition-BlocksHeader.h"
 
 /**
- Current version - 0.0.1
+ Current version - 0.1
  */
 @interface UIViewController (BAControllerTransition)
 
@@ -45,17 +45,19 @@
 
 
 
-
-
-// test section
-- (void)presentTestAlert;
-
 @end
 
 // TODOS
 
 // todo: made corners
+// todo: change from and to - dismissFrom / presentTo
+// todo: change example for deeper testing. M. b. try with expandable cells
 // todo: made autorevert for dismissed controller
+// todo: made bact renaming or bacteria
+
+// todo: remove code duplication
+
+// todo: add scalability
 
 // --version 0.0.2
 

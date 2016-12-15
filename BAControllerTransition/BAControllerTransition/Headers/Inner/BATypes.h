@@ -20,7 +20,13 @@ typedef NS_ENUM(NSUInteger, BATransitionSideType) {
     BATransitionSideTypeLeft,
     BATransitionSideTypeRight,
     BATransitionSideTypeTop,
-    BATransitionSideTypeBottom
+    BATransitionSideTypeBottom,
+
+    //corners
+    BATransitionSideTypeTopLeftCorner,
+    BATransitionSideTypeTopRightCorner,
+    BATransitionSideTypeBottomLeftCorner,
+    BATransitionSideTypeBottomRightCorner
 };
 
 #endif /* BATypes_h */

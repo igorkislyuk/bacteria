@@ -116,6 +116,18 @@
             case BATransitionSideTypeBottom:
                 fromPoint = CGPointMake(0, height);
                 break;
+            case BATransitionSideTypeTopLeftCorner:
+                fromPoint = CGPointMake(-width, -height);
+                break;
+            case BATransitionSideTypeTopRightCorner:
+                fromPoint = CGPointMake(width, -height);
+                break;
+            case BATransitionSideTypeBottomLeftCorner:
+                fromPoint = CGPointMake(-width, height);
+                break;
+            case BATransitionSideTypeBottomRightCorner:
+                fromPoint = CGPointMake(width, height);
+                break;
         }
 
         [[self baTransitioningDelegate] preparePresentedFromPoint:fromPoint];
@@ -147,6 +159,18 @@
                 break;
             case BATransitionSideTypeBottom:
                 toPoint = CGPointMake(0, height);
+                break;
+            case BATransitionSideTypeTopLeftCorner:
+                toPoint = CGPointMake(-width, -height);
+                break;
+            case BATransitionSideTypeTopRightCorner:
+                toPoint = CGPointMake(width, -height);
+                break;
+            case BATransitionSideTypeBottomLeftCorner:
+                toPoint = CGPointMake(-width, height);
+                break;
+            case BATransitionSideTypeBottomRightCorner:
+                toPoint = CGPointMake(width, height);
                 break;
         }
 
