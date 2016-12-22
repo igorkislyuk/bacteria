@@ -1,23 +1,23 @@
 //
-//  AnimationController.m
-//  BeautifulAnimationController
+//  BCTSimpleAnimationController.m
+//  Bacteria
 //
 //  Created by Igor on 24/09/16.
 //  Copyright © 2016 Igor Kislyuk. All rights reserved.
 //
 
-#import "BASimpleAnimationController.h"
+#import "BCTSimpleAnimationController.h"
 
-#import "BATransitioningController.h"
+#import "BCTTransitioningController.h"
 
-@interface BASimpleAnimationController ()
+@interface BCTSimpleAnimationController ()
 
 @property(nonatomic, assign) CGFloat right;
 @property(nonatomic, assign) CGFloat top;
 
 @end
 
-@implementation BASimpleAnimationController {
+@implementation BCTSimpleAnimationController {
     CGPoint _startPoint, _endPoint;
     UIView *_dismissView, *_presentView;
 }
@@ -55,10 +55,10 @@
     }
 
     switch ([self.transitioningDelegate transitionType]) {
-        case BATransitionTypeParallel:
+        case BCTTransitionTypeParallel:
             [self parallelTransition:transitionContext];
             break;
-        case BATransitionTypeCover:
+        case BCTTransitionTypeCover:
             [self coverTransition:transitionContext];
             break;
         default:

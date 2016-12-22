@@ -27,11 +27,11 @@ typedef void (^ViewControllerPresentingBlock)(UIViewController *viewController);
     self.dataSource = @{
             @"plainFrom(BATransitionSideTypeTopLeftCorner).plainTo(BATransitionSideTypeTopRightCorner)" : ^(UIViewController *viewController)
     {
-        viewController.plainFrom(BATransitionSideTypeTopLeftCorner).plainTo(BATransitionSideTypeTopRightCorner).transite(.5f);
+        viewController.plainFrom(BCTTransitionSideTypeTopLeftCorner).plainTo(BCTTransitionSideTypeTopRightCorner).transite(.5f);
     },
             @"plainFrom(BATransitionSideTypeBottomRightCorner).plainTo(BATransitionSideTypeBottomLeftCorner)" : ^(UIViewController *viewController)
     {
-                viewController.plainFrom(BATransitionSideTypeBottomRightCorner).plainTo(BATransitionSideTypeBottomLeftCorner).transite(1.5f);
+                viewController.plainFrom(BCTTransitionSideTypeBottomRightCorner).plainTo(BCTTransitionSideTypeBottomLeftCorner).transite(1.5f);
     }
     };
 

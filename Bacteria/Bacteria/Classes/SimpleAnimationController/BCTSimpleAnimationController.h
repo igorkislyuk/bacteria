@@ -1,6 +1,6 @@
 //
-//  AnimationController.h
-//  BeautifulAnimationController
+//  BCTSimpleAnimationController.h
+//  Bacteria
 //
 //  Created by Igor on 24/09/16.
 //  Copyright © 2016 Igor Kislyuk. All rights reserved.
@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol BATransitioningDelegate;
+@protocol BCTTransitioningDelegate;
 
-@interface BASimpleAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
+@interface BCTSimpleAnimationController : NSObject <UIViewControllerAnimatedTransitioning>
 
-@property (nonatomic, weak) id <BATransitioningDelegate> transitioningDelegate;
+@property (nonatomic, weak) id <BCTTransitioningDelegate> transitioningDelegate;
 
 //Original point - initial location
 

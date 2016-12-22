@@ -1,6 +1,6 @@
 //
-//  UIViewController+BAAnimationController.m
-//  BeautifulAnimationController
+//  UIViewController+Bacteria.m
+//  Bacteria
 //
 //  Created by Igor on 01/10/16.
 //  Copyright © 2016 Igor Kislyuk. All rights reserved.
@@ -10,13 +10,13 @@
 
 #import "UIViewController+Bacteria.h"
 
-#import "BATransitioningController.h"
+#import "BCTTransitioningController.h"
 
-#import "BASimpleAnimationController.h"
+#import "BCTSimpleAnimationController.h"
 
 @interface UIViewController (Bacteria_Private)
 
-@property(nonatomic, strong) BATransitioningController *baTransitioningDelegate;
+@property(nonatomic, strong) BCTTransitioningController *baTransitioningDelegate;
 
 @end
 
@@ -34,15 +34,15 @@
 
 #pragma mark - Properties
 
-- (void)setBaTransitioningDelegate:(BATransitioningController *)baTransitioningDelegate {
+- (void)setBaTransitioningDelegate:(BCTTransitioningController *)baTransitioningDelegate {
     objc_setAssociatedObject(self, @selector(baTransitioningDelegate), baTransitioningDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BATransitioningController *)baTransitioningDelegate {
-    BATransitioningController *transitioningDelegate = objc_getAssociatedObject(self, @selector(baTransitioningDelegate));
+- (BCTTransitioningController *)baTransitioningDelegate {
+    BCTTransitioningController *transitioningDelegate = objc_getAssociatedObject(self, @selector(baTransitioningDelegate));
 
     if (transitioningDelegate == nil) {
-        transitioningDelegate = [[BATransitioningController alloc] init];
+        transitioningDelegate = [[BCTTransitioningController alloc] init];
         [self setBaTransitioningDelegate:transitioningDelegate];
     }
 
@@ -56,8 +56,8 @@
 //main implementation here
 
 //core functionality
-- (BAControllerTransitionLocation)fromPoint {
-    BAControllerTransitionLocation fromLocation = BAControllerTransitionLocation(point) {
+- (BCTControllerTransitionLocation)fromPoint {
+    BCTControllerTransitionLocation fromLocation = BCTControllerTransitionLocation(point) {
 
         //just move from point
         [[self baTransitioningDelegate] preparePresentedFromPoint:point];
@@ -67,8 +67,8 @@
     return fromLocation;
 }
 
-- (BAControllerTransitionLocation)toPoint {
-    BAControllerTransitionLocation toPoint = BAControllerTransitionLocation(point) {
+- (BCTControllerTransitionLocation)toPoint {
+    BCTControllerTransitionLocation toPoint = BCTControllerTransitionLocation(point) {
 
         [[self baTransitioningDelegate] prepareDismissedToPoint:point];
 
@@ -77,16 +77,16 @@
     return toPoint;
 }
 
-- (BAControllerTransitionType)typeFrom {
-    BAControllerTransitionType transitionType = BAControllerTransitionType(type) {
+- (BCTControllerTransitionType)typeFrom {
+    BCTControllerTransitionType transitionType = BCTControllerTransitionType(type) {
         [[self baTransitioningDelegate] setPresentedType:type];
         return self;
     };
     return transitionType;
 }
 
-- (BAControllerTransitionType)typeTo {
-    BAControllerTransitionType transitionType = BAControllerTransitionType(type) {
+- (BCTControllerTransitionType)typeTo {
+    BCTControllerTransitionType transitionType = BCTControllerTransitionType(type) {
         [[self baTransitioningDelegate] setDismissedType:type];
         return self;
     };
@@ -95,8 +95,8 @@
 
 
 //fine from transitions
-- (BAControllerTransitionSideType)plainFrom {
-    BAControllerTransitionSideType plainFrom = BAControllerTransitionSideType(sideType) {
+- (BCTControllerTransitionSideType)plainFrom {
+    BCTControllerTransitionSideType plainFrom = BCTControllerTransitionSideType(sideType) {
 
         CGPoint fromPoint = CGPointZero;
 
@@ -104,28 +104,28 @@
         CGFloat height = CGRectGetHeight(self.view.bounds);
 
         switch (sideType) {
-            case BATransitionSideTypeLeft:
+            case BCTTransitionSideTypeLeft:
                 fromPoint = CGPointMake(-width, 0);
                 break;
-            case BATransitionSideTypeRight:
+            case BCTTransitionSideTypeRight:
                 fromPoint = CGPointMake(width, 0);
                 break;
-            case BATransitionSideTypeTop:
+            case BCTTransitionSideTypeTop:
                 fromPoint = CGPointMake(0, -height);
                 break;
-            case BATransitionSideTypeBottom:
+            case BCTTransitionSideTypeBottom:
                 fromPoint = CGPointMake(0, height);
                 break;
-            case BATransitionSideTypeTopLeftCorner:
+            case BCTTransitionSideTypeTopLeftCorner:
                 fromPoint = CGPointMake(-width, -height);
                 break;
-            case BATransitionSideTypeTopRightCorner:
+            case BCTTransitionSideTypeTopRightCorner:
                 fromPoint = CGPointMake(width, -height);
                 break;
-            case BATransitionSideTypeBottomLeftCorner:
+            case BCTTransitionSideTypeBottomLeftCorner:
                 fromPoint = CGPointMake(-width, height);
                 break;
-            case BATransitionSideTypeBottomRightCorner:
+            case BCTTransitionSideTypeBottomRightCorner:
                 fromPoint = CGPointMake(width, height);
                 break;
         }
@@ -138,8 +138,8 @@
 }
 
 //fine to transitions
-- (BAControllerTransitionSideType)plainTo {
-    BAControllerTransitionSideType plainTo = BAControllerTransitionSideType(sideType) {
+- (BCTControllerTransitionSideType)plainTo {
+    BCTControllerTransitionSideType plainTo = BCTControllerTransitionSideType(sideType) {
 
         CGPoint toPoint = CGPointZero;
 
@@ -148,28 +148,28 @@
 
         switch (sideType) {
 
-            case BATransitionSideTypeLeft:
+            case BCTTransitionSideTypeLeft:
                 toPoint = CGPointMake(-width, 0);
                 break;
-            case BATransitionSideTypeRight:
+            case BCTTransitionSideTypeRight:
                 toPoint = CGPointMake(width, 0);
                 break;
-            case BATransitionSideTypeTop:
+            case BCTTransitionSideTypeTop:
                 toPoint = CGPointMake(0, -height);
                 break;
-            case BATransitionSideTypeBottom:
+            case BCTTransitionSideTypeBottom:
                 toPoint = CGPointMake(0, height);
                 break;
-            case BATransitionSideTypeTopLeftCorner:
+            case BCTTransitionSideTypeTopLeftCorner:
                 toPoint = CGPointMake(-width, -height);
                 break;
-            case BATransitionSideTypeTopRightCorner:
+            case BCTTransitionSideTypeTopRightCorner:
                 toPoint = CGPointMake(width, -height);
                 break;
-            case BATransitionSideTypeBottomLeftCorner:
+            case BCTTransitionSideTypeBottomLeftCorner:
                 toPoint = CGPointMake(-width, height);
                 break;
-            case BATransitionSideTypeBottomRightCorner:
+            case BCTTransitionSideTypeBottomRightCorner:
                 toPoint = CGPointMake(width, height);
                 break;
         }
@@ -183,8 +183,8 @@
 }
 
 
-- (BAControllerTransitionTime)transite {
-    BAControllerTransitionTime ttime = BAControllerTransitionTime(time) {
+- (BCTControllerTransitionTime)transite {
+    BCTControllerTransitionTime ttime = BCTControllerTransitionTime(time) {
         //set delegate
         [self setBATransitioningDelegate];
 

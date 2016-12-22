@@ -1,29 +1,29 @@
 //
-//  BATransitioningDelegate.m
-//  BeautifulAnimationController
+//  BCTTransitioningDelegate.m
+//  Bacteria
 //
 //  Created by Igor on 01/10/16.
 //  Copyright © 2016 Igor Kislyuk. All rights reserved.
 //
 
-#import "BATransitioningController.h"
+#import "BCTTransitioningController.h"
 
-#import "BASimpleAnimationController.h"
+#import "BCTSimpleAnimationController.h"
 
-@interface BATransitioningController ()
+@interface BCTTransitioningController ()
 
-@property (nonatomic, strong) BASimpleAnimationController *simpleAnimationController;
+@property (nonatomic, strong) BCTSimpleAnimationController *simpleAnimationController;
 
 @end
 
-@implementation BATransitioningController {
+@implementation BCTTransitioningController {
     BOOL _presenting;
-    BATransitionType _pType, _dType;
+    BCTTransitionType _pType, _dType;
 }
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.simpleAnimationController = [[BASimpleAnimationController alloc] init];
+        self.simpleAnimationController = [[BCTSimpleAnimationController alloc] init];
         self.simpleAnimationController.transitioningDelegate = self;
     }
     return self;
@@ -41,21 +41,21 @@
     return self.simpleAnimationController;
 }
 
-#pragma mark - BATransitioningDelegate
+#pragma mark - BCTTransitioningDelegate
 
 - (BOOL)presenting {
     return _presenting;
 }
 
-- (void)setPresentedType:(BATransitionType)type {
+- (void)setPresentedType:(BCTTransitionType)type {
     _pType = type;
 }
 
-- (void)setDismissedType:(BATransitionType)type {
+- (void)setDismissedType:(BCTTransitionType)type {
     _dType = type;
 }
 
-- (BATransitionType)transitionType {
+- (BCTTransitionType)transitionType {
     return _presenting ? _pType : _dType;
 }
 

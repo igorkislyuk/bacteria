@@ -1,6 +1,6 @@
 //
-//  UIViewController+BAAnimationController.h
-//  BeautifulAnimationController
+//  UIViewController+Bacteria.h
+//  Bacteria
 //
 //  Created by Igor on 01/10/16.
 //  Copyright © 2016 Igor Kislyuk. All rights reserved.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "BCTTypes.h"
-#import "BAControllerTransition-BlocksHeader.h"
+#import "BCT-BlocksHeader.h"
 
 /**
  Current version - 0.0.1
@@ -19,29 +19,29 @@
 /**
  Required. Specify an duration
  */
-- (BAControllerTransitionTime)transite;
+- (BCTControllerTransitionTime)transite;
 
 /**
  Prepare view controller for presental within an specified direction.
  */
-- (BAControllerTransitionSideType)plainFrom;
+- (BCTControllerTransitionSideType)plainFrom;
 
 /**
  Prepare view controller for dismissal within a specified direction.
  */
-- (BAControllerTransitionSideType)plainTo;
+- (BCTControllerTransitionSideType)plainTo;
 
 /**
  Otherwise, you can specify a concrete point for presental/dismissal
  */
-- (BAControllerTransitionLocation)fromPoint;
-- (BAControllerTransitionLocation)toPoint;
+- (BCTControllerTransitionLocation)fromPoint;
+- (BCTControllerTransitionLocation)toPoint;
 
 /**
  Default behaviour is parallel
  */
-- (BAControllerTransitionType)typeFrom;
-- (BAControllerTransitionType)typeTo;
+- (BCTControllerTransitionType)typeFrom;
+- (BCTControllerTransitionType)typeTo;
 
 
 
