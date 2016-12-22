@@ -95,7 +95,7 @@
 
 
 //fine from transitions
-- (BCTControllerTransitionSideType)plainFrom {
+- (BCTControllerTransitionSideType)presentFrom {
     BCTControllerTransitionSideType plainFrom = BCTControllerTransitionSideType(sideType) {
 
         CGPoint fromPoint = CGPointZero;
@@ -138,7 +138,7 @@
 }
 
 //fine to transitions
-- (BCTControllerTransitionSideType)plainTo {
+- (BCTControllerTransitionSideType)dismissTo {
     BCTControllerTransitionSideType plainTo = BCTControllerTransitionSideType(sideType) {
 
         CGPoint toPoint = CGPointZero;

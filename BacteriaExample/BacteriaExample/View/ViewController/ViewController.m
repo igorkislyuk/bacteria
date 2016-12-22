@@ -25,24 +25,16 @@ typedef void (^ViewControllerPresentingBlock)(UIViewController *viewController);
     [super viewDidLoad];
 
     self.dataSource = @{
-            @"plainFrom(BATransitionSideTypeTopLeftCorner).plainTo(BATransitionSideTypeTopRightCorner)" : ^(UIViewController *viewController)
+            @"test" : ^(UIViewController *viewController)
     {
-        viewController.plainFrom(BCTTransitionSideTypeTopLeftCorner).plainTo(BCTTransitionSideTypeTopRightCorner).transite(.5f);
-    },
-            @"plainFrom(BATransitionSideTypeBottomRightCorner).plainTo(BATransitionSideTypeBottomLeftCorner)" : ^(UIViewController *viewController)
-    {
-                viewController.plainFrom(BCTTransitionSideTypeBottomRightCorner).plainTo(BCTTransitionSideTypeBottomLeftCorner).transite(1.5f);
+        viewController.presentFrom(BCTTransitionSideTypeBottomRightCorner).dismissTo(BCTTransitionSideTypeBottomRightCorner).transite(.5f);
     }
     };
 
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-//    [self presentTestAlert];
-}
-
 - (SecondViewController *)getController {
+ 
     //get second
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SecondViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SecondViewController class])];
