@@ -32,10 +32,9 @@
 - (BCTControllerTransitionSideType)dismissTo;
 
 /**
- * Set reverse for dismissing. E.g. if we present from bottom - dismissal will be to bottom
- * @return
+ * Set reverse for another action. If you set present from - reverse will add dismiss, and vice versa.
  */
-- (BCTControllerTransitionEmpty)reverseDismiss;
+- (BCTControllerTransitionEmpty)reverse;
 
 /**
  Otherwise, you can specify a concrete point for presental/dismissal
@@ -54,13 +53,13 @@
 @end
 
 // TODO
-// todo: remove code duplication
 
-// todo: add scalability
 // todo: change example for deeper testing. M. b. try with expandable cells
 
+// todo: reverse prese
+
+// todo: add scale
 // todo: Flip animation
-// todo: revert flip?
 
 // todo: Safari like animation
 // todo: Pop from rectangle
@@ -71,19 +70,17 @@
 // todo: from bottoms
 // todo: add spring
 // todo: animation like in music
-// todo: adjust frames for different views
 // todo: https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
-
-//--- Long box
-
 // todo: think about adjusting frames for views
-// todo: animation within a collections and navigation controller 
+// todo: animation within a collections and navigation controller
 // todo: cross view animation
-// todo: create simple animation from corners
 // todo: modal transitions with
-// todo: i need good documentation after all of this
-// todo: think about version and configurations - it needs to be easy to modify whole library
-// todo: made test when controller deallocated - what happens with bacontroller transition objects. It's very important to...
-// todo: after release at cocoapods - create develop version
-// todo: clear all code & adjust headers
+
+// todo: made test when controller deallocated - what happens with bacteria controller transition objects. It's very important to...
+
+// todo: remove code duplication
+// todo: code cleanup & adjust headers
+
+// todo: documentation
+// todo: release

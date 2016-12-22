@@ -190,10 +190,19 @@
     return ttime;
 }
 
-- (BCTControllerTransitionEmpty)reverseDismiss {
+- (BCTControllerTransitionEmpty)reverse {
     return ^UIViewController * {
-        NSParameterAssert([[self bctTransitioningDelegate] presentedSideType]);
-        self.dismissTo(self.bctTransitioningDelegate.presentedSideType);
+
+        BCTTransitionSideType dismissedSideType = self.bctTransitioningDelegate.dismissedSideType;
+        BCTTransitionSideType presentedSideType = self.bctTransitioningDelegate.presentedSideType;
+
+        if (presentedSideType && !dismissedSideType) {
+            self.dismissTo(presentedSideType);
+        } else if (!presentedSideType && dismissedSideType) {
+            self.presentFrom(dismissedSideType);
+        } else {
+            //do nothing
+        }
         return self;
     };
 }

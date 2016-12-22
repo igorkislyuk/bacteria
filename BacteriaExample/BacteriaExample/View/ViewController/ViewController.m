@@ -27,7 +27,7 @@ typedef void (^ViewControllerPresentingBlock)(UIViewController *viewController);
     self.dataSource = @{
             @"test" : ^(UIViewController *viewController)
     {
-        viewController.presentFrom(BCTTransitionSideTypeRight).reverseDismiss().transite(.5f);
+        viewController.dismissTo(BCTTransitionSideTypeTop).reverse().transite(.5f);
     }
     };
 
