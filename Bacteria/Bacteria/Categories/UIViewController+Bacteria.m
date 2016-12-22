@@ -8,19 +8,19 @@
 
 #import <objc/runtime.h>
 
-#import "UIViewController+BAControllerTransition.h"
+#import "UIViewController+Bacteria.h"
 
 #import "BATransitioningController.h"
 
 #import "BASimpleAnimationController.h"
 
-@interface UIViewController (BAControllerTransition_Private)
+@interface UIViewController (Bacteria_Private)
 
 @property(nonatomic, strong) BATransitioningController *baTransitioningDelegate;
 
 @end
 
-@implementation UIViewController (BAControllerTransition_Private)
+@implementation UIViewController (Bacteria_Private)
 
 - (void)setBATransitioningDelegate {
     if (![self.transitioningDelegate isEqual:self.baTransitioningDelegate]) {
@@ -51,7 +51,7 @@
 
 @end
 
-@implementation UIViewController (BAControllerTransition)
+@implementation UIViewController (Bacteria)
 
 //main implementation here
 

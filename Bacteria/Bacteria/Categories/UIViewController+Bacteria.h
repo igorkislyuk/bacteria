@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BATypes.h"
+#import "BCTTypes.h"
 #import "BAControllerTransition-BlocksHeader.h"
 
 /**
- Current version - 0.1
+ Current version - 0.0.1
  */
-@interface UIViewController (BAControllerTransition)
+@interface UIViewController (Bacteria)
 
 /**
  Required. Specify an duration
@@ -66,7 +66,7 @@
 
 // todo: Safari like animation
 // todo: Pop from rectangle
-// tood: Reveal and pop from custom shape
+// todo: Reveal and pop from custom shape
 
 // todo: bounce
 // todo: alerts

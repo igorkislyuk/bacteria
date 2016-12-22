@@ -8,19 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		ED1B7B071DBEEE8900F309B7 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1B7B061DBEEE8900F309B7 /* SecondViewController.m */; };
+		ED38F5EB1E0C7F28009F1AF8 /* Bacteria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED38F5EA1E0C7F28009F1AF8 /* Bacteria.framework */; };
 		ED3EF7861DB825F8006258FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF7851DB825F8006258FD /* main.m */; };
 		ED3EF7891DB825F8006258FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF7881DB825F8006258FD /* AppDelegate.m */; };
 		ED3EF78C1DB825F8006258FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF78B1DB825F8006258FD /* ViewController.m */; };
 		ED3EF78F1DB825F8006258FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3EF78D1DB825F8006258FD /* Main.storyboard */; };
 		ED3EF7911DB825F8006258FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED3EF7901DB825F8006258FD /* Assets.xcassets */; };
 		ED3EF7941DB825F8006258FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3EF7921DB825F8006258FD /* LaunchScreen.storyboard */; };
-		ED3EF79F1DB82707006258FD /* BAControllerTransition.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED3EF79E1DB82707006258FD /* BAControllerTransition.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED1B7B051DBEEE8900F309B7 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		ED1B7B061DBEEE8900F309B7 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		ED3EF7811DB825F8006258FD /* BAControllerTransitionExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BAControllerTransitionExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED38F5EA1E0C7F28009F1AF8 /* Bacteria.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bacteria.framework; path = "../Bacteria/build/Debug-iphoneos/Bacteria.framework"; sourceTree = "<group>"; };
+		ED3EF7811DB825F8006258FD /* BacteriaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BacteriaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3EF7851DB825F8006258FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED3EF7871DB825F8006258FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ED3EF7881DB825F8006258FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -30,7 +31,6 @@
 		ED3EF7901DB825F8006258FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED3EF7931DB825F8006258FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED3EF7951DB825F8006258FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ED3EF79E1DB82707006258FD /* BAControllerTransition.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BAControllerTransition.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/BAControllerTransition-cmershqrunjbtqacpgzyupuuoplk/Build/Products/Debug-iphonesimulator/BAControllerTransition.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,38 +38,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED3EF79F1DB82707006258FD /* BAControllerTransition.framework in Frameworks */,
+				ED38F5EB1E0C7F28009F1AF8 /* Bacteria.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED38F5E91E0C7F28009F1AF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ED38F5EA1E0C7F28009F1AF8 /* Bacteria.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ED3EF7781DB825F8006258FD = {
 			isa = PBXGroup;
 			children = (
-				ED3EF7831DB825F8006258FD /* BAControllerTransitionExample */,
+				ED3EF7831DB825F8006258FD /* BacteriaExample */,
 				ED3EF7821DB825F8006258FD /* Products */,
-				ED3EF79E1DB82707006258FD /* BAControllerTransition.framework */,
+				ED38F5E91E0C7F28009F1AF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		ED3EF7821DB825F8006258FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ED3EF7811DB825F8006258FD /* BAControllerTransitionExample.app */,
+				ED3EF7811DB825F8006258FD /* BacteriaExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ED3EF7831DB825F8006258FD /* BAControllerTransitionExample */ = {
+		ED3EF7831DB825F8006258FD /* BacteriaExample */ = {
 			isa = PBXGroup;
 			children = (
 				ED3EF79C1DB826C7006258FD /* AppDelegate */,
 				ED3EF7841DB825F8006258FD /* Supporting Files */,
 				ED3EF79D1DB826CE006258FD /* View */,
 			);
-			path = BAControllerTransitionExample;
+			path = BacteriaExample;
 			sourceTree = "<group>";
 		};
 		ED3EF7841DB825F8006258FD /* Supporting Files */ = {
@@ -86,10 +94,10 @@
 		ED3EF79B1DB826C0006258FD /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				ED3EF78A1DB825F8006258FD /* ViewController.h */,
-				ED3EF78B1DB825F8006258FD /* ViewController.m */,
 				ED1B7B051DBEEE8900F309B7 /* SecondViewController.h */,
 				ED1B7B061DBEEE8900F309B7 /* SecondViewController.m */,
+				ED3EF78A1DB825F8006258FD /* ViewController.h */,
+				ED3EF78B1DB825F8006258FD /* ViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -115,9 +123,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ED3EF7801DB825F8006258FD /* BAControllerTransitionExample */ = {
+		ED3EF7801DB825F8006258FD /* BacteriaExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ED3EF7981DB825F8006258FD /* Build configuration list for PBXNativeTarget "BAControllerTransitionExample" */;
+			buildConfigurationList = ED3EF7981DB825F8006258FD /* Build configuration list for PBXNativeTarget "BacteriaExample" */;
 			buildPhases = (
 				ED3EF77D1DB825F8006258FD /* Sources */,
 				ED3EF77E1DB825F8006258FD /* Frameworks */,
@@ -127,9 +135,9 @@
 			);
 			dependencies = (
 			);
-			name = BAControllerTransitionExample;
+			name = BacteriaExample;
 			productName = BAControllerTransitionExample;
-			productReference = ED3EF7811DB825F8006258FD /* BAControllerTransitionExample.app */;
+			productReference = ED3EF7811DB825F8006258FD /* BacteriaExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -146,7 +154,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ED3EF77C1DB825F8006258FD /* Build configuration list for PBXProject "BAControllerTransitionExample" */;
+			buildConfigurationList = ED3EF77C1DB825F8006258FD /* Build configuration list for PBXProject "BacteriaExample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -159,7 +167,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ED3EF7801DB825F8006258FD /* BAControllerTransitionExample */,
+				ED3EF7801DB825F8006258FD /* BacteriaExample */,
 			);
 		};
 /* End PBXProject section */
@@ -301,10 +309,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "BAControllerTransitionExample/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/BacteriaExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dev.Igor.BAControllerTransitionExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.igorkislyuk.BacteriaExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -313,10 +321,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "BAControllerTransitionExample/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/BacteriaExample/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dev.Igor.BAControllerTransitionExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.igorkislyuk.BacteriaExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -324,7 +332,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ED3EF77C1DB825F8006258FD /* Build configuration list for PBXProject "BAControllerTransitionExample" */ = {
+		ED3EF77C1DB825F8006258FD /* Build configuration list for PBXProject "BacteriaExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED3EF7961DB825F8006258FD /* Debug */,
@@ -333,7 +341,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ED3EF7981DB825F8006258FD /* Build configuration list for PBXNativeTarget "BAControllerTransitionExample" */ = {
+		ED3EF7981DB825F8006258FD /* Build configuration list for PBXNativeTarget "BacteriaExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ED3EF7991DB825F8006258FD /* Debug */,
