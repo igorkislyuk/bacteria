@@ -25,6 +25,9 @@
 
 @property (nonatomic, assign) NSTimeInterval duration;
 
+@property (nonatomic) BCTTransitionSideType presentedSideType;
+@property (nonatomic) BCTTransitionSideType dismissedSideType;
+
 - (void)preparePresentedFromPoint:(CGPoint)point;
 - (void)prepareDismissedToPoint:(CGPoint)point;
 

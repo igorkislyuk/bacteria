@@ -32,6 +32,12 @@
 - (BCTControllerTransitionSideType)dismissTo;
 
 /**
+ * Set reverse for dismissing. E.g. if we present from bottom - dismissal will be to bottom
+ * @return
+ */
+- (BCTControllerTransitionEmpty)reverseDismiss;
+
+/**
  Otherwise, you can specify a concrete point for presental/dismissal
  */
 - (BCTControllerTransitionLocation)fromPoint;
@@ -48,9 +54,6 @@
 @end
 
 // TODO
-
-// todo: made autorevert for dismissed controller
-
 // todo: remove code duplication
 
 // todo: add scalability
