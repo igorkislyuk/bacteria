@@ -56,8 +56,6 @@
 
 // todo: change example for deeper testing. M. b. try with expandable cells
 
-// todo: reverse prese
-
 // todo: add scale
 // todo: Flip animation
 
