@@ -24,8 +24,13 @@
     self = [super init];
     if (self) {
         _row = row;
+        _row.block = self;
+
         _additionalRows = additionalRows;
-        
+        for (__kindof AnimationRowModel *row in _additionalRows) {
+            row.block = self;
+        }
+
         _count = 1;
     }
 

@@ -6,9 +6,8 @@
 #import "AnimationRowModel.h"
 
 
-@implementation AnimationRowModel {
+@implementation AnimationRowModel
 
-}
 - (instancetype)initWithValues:(NSArray *)values {
     self = [super init];
     if (self) {

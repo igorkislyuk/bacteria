@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3927B0A883D14B69315E8113 /* AnimationSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B055CCC8A8AA535EB96B /* AnimationSectionModel.m */; };
 		3927B2A63A95A5E469918025 /* AnimationBlockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BF0E5C83AB892F4658AD /* AnimationBlockModel.m */; };
-		3927B7417DD69E822E67E08A /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B00819F74EDCB73D8395 /* DataSource.m */; };
+		3927B94F2B02B55BD1C4A77E /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B15E1005D81ACF20C4AB /* DataSource.m */; };
 		3927BA9EB48E39E66C155F39 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B173EEFB04A139AA7644 /* InitialViewController.m */; };
 		3927BCE9C7B0684949D19083 /* AnimationRowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B6708F8F940A24A8B206 /* AnimationRowModel.m */; };
 		3927BD24A0C42F3F5F104FDE /* PresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B043046504D890E41340 /* PresentedViewController.m */; };
@@ -19,13 +19,28 @@
 		ED3EF78F1DB825F8006258FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3EF78D1DB825F8006258FD /* Main.storyboard */; };
 		ED3EF7911DB825F8006258FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED3EF7901DB825F8006258FD /* Assets.xcassets */; };
 		ED3EF7941DB825F8006258FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3EF7921DB825F8006258FD /* LaunchScreen.storyboard */; };
+		EDCEB3CA1E155AC000F24D6A /* Bacteria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCEB3C91E155AC000F24D6A /* Bacteria.framework */; };
+		EDCEB3CB1E155AC000F24D6A /* Bacteria.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EDCEB3C91E155AC000F24D6A /* Bacteria.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EDCEB3CC1E155AC000F24D6A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EDCEB3CB1E155AC000F24D6A /* Bacteria.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		3927B00654A710A1CDCDD320 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
-		3927B00819F74EDCB73D8395 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		3927B043046504D890E41340 /* PresentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentedViewController.m; sourceTree = "<group>"; };
 		3927B055CCC8A8AA535EB96B /* AnimationSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationSectionModel.m; sourceTree = "<group>"; };
+		3927B15E1005D81ACF20C4AB /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		3927B173EEFB04A139AA7644 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
 		3927B6708F8F940A24A8B206 /* AnimationRowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationRowModel.m; sourceTree = "<group>"; };
 		3927B8557874FCF556C87D21 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
@@ -33,6 +48,7 @@
 		3927B8E37C81C6CC67BB467C /* AnimationBlockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationBlockModel.h; sourceTree = "<group>"; };
 		3927B8F900E988DA00A08284 /* AnimationSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationSectionModel.h; sourceTree = "<group>"; };
 		3927BA29D317C2432E002A9F /* PresentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentedViewController.h; sourceTree = "<group>"; };
+		3927BCFDF3B7C20443A96078 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
 		3927BF0E5C83AB892F4658AD /* AnimationBlockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationBlockModel.m; sourceTree = "<group>"; };
 		ED38F5EA1E0C7F28009F1AF8 /* Bacteria.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bacteria.framework; path = "../Bacteria/build/Debug-iphoneos/Bacteria.framework"; sourceTree = "<group>"; };
 		ED3EF7811DB825F8006258FD /* BacteriaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BacteriaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +59,7 @@
 		ED3EF7901DB825F8006258FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED3EF7931DB825F8006258FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED3EF7951DB825F8006258FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDCEB3C91E155AC000F24D6A /* Bacteria.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bacteria.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED38F5EB1E0C7F28009F1AF8 /* Bacteria.framework in Frameworks */,
+				EDCEB3CA1E155AC000F24D6A /* Bacteria.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,17 +84,10 @@
 				3927B8DC11886979553ECBC1 /* AnimationRowModel.h */,
 				3927BF0E5C83AB892F4658AD /* AnimationBlockModel.m */,
 				3927B8E37C81C6CC67BB467C /* AnimationBlockModel.h */,
+				3927BCFDF3B7C20443A96078 /* DataSource.h */,
+				3927B15E1005D81ACF20C4AB /* DataSource.m */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		3927BECBE2A6E1F21C315106 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				3927B00819F74EDCB73D8395 /* DataSource.m */,
-				3927B00654A710A1CDCDD320 /* DataSource.h */,
-			);
-			path = DataSource;
 			sourceTree = "<group>";
 		};
 		ED38F5E91E0C7F28009F1AF8 /* Frameworks */ = {
@@ -90,6 +101,7 @@
 		ED3EF7781DB825F8006258FD = {
 			isa = PBXGroup;
 			children = (
+				EDCEB3C91E155AC000F24D6A /* Bacteria.framework */,
 				ED3EF7831DB825F8006258FD /* BacteriaExample */,
 				ED3EF7821DB825F8006258FD /* Products */,
 				ED38F5E91E0C7F28009F1AF8 /* Frameworks */,
@@ -111,7 +123,6 @@
 				ED3EF7841DB825F8006258FD /* Supporting Files */,
 				ED3EF79D1DB826CE006258FD /* Interface */,
 				3927BB185CE95A921A005C03 /* Model */,
-				3927BECBE2A6E1F21C315106 /* DataSource */,
 			);
 			path = BacteriaExample;
 			sourceTree = "<group>";
@@ -158,6 +169,7 @@
 				ED3EF77D1DB825F8006258FD /* Sources */,
 				ED3EF77E1DB825F8006258FD /* Frameworks */,
 				ED3EF77F1DB825F8006258FD /* Resources */,
+				EDCEB3CC1E155AC000F24D6A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -179,6 +191,7 @@
 				TargetAttributes = {
 					ED3EF7801DB825F8006258FD = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = NVZGWL564Q;
 					};
 				};
 			};
@@ -224,8 +237,8 @@
 				3927BA9EB48E39E66C155F39 /* InitialViewController.m in Sources */,
 				3927B0A883D14B69315E8113 /* AnimationSectionModel.m in Sources */,
 				3927BCE9C7B0684949D19083 /* AnimationRowModel.m in Sources */,
-				3927B7417DD69E822E67E08A /* DataSource.m in Sources */,
 				3927B2A63A95A5E469918025 /* AnimationBlockModel.m in Sources */,
+				3927B94F2B02B55BD1C4A77E /* DataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,10 +353,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NVZGWL564Q;
 				INFOPLIST_FILE = "$(SRCROOT)/BacteriaExample/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.igorkislyuk.BacteriaExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.igorkislyuk.test.BacteriaExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -352,10 +366,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NVZGWL564Q;
 				INFOPLIST_FILE = "$(SRCROOT)/BacteriaExample/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.igorkislyuk.BacteriaExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.igorkislyuk.test.BacteriaExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

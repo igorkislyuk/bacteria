@@ -10,15 +10,13 @@
 @interface AnimationBlockModel : NSObject
 
 //as default block always show only one cell.
+- (instancetype)initWithRow:(AnimationRowModel *)row additionalRows:(NSArray *)additionalRows;
+
 - (NSInteger)count;
 - (AnimationRowModel *)rowAtIndex:(NSInteger)index;
 
+@property (nonatomic, assign, readonly) BOOL collapsed;
 - (void)collapse;
 - (void)expand;
-
-@property (nonatomic, assign, readonly) BOOL collapsed;
-
-- (instancetype)initWithRow:(AnimationRowModel *)row additionalRows:(NSArray *)additionalRows;
-
 
 @end

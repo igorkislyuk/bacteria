@@ -21,11 +21,11 @@
     presenting.name = @"Presenting";
 
     //second section for dismiss
-    AnimationSectionModel *dismissing = [AnimationSectionModel default];
-    dismissing.name = @"Dismissing";
+//    AnimationSectionModel *dismissing = [AnimationSectionModel default];
+//    dismissing.name = @"Dismissing";
 
     //each with 2 elements
-    dataSource.sections = @[presenting, dismissing];
+    dataSource.sections = @[presenting];
 
     return dataSource;
 }

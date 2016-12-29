@@ -14,10 +14,12 @@
 #import "DataSource.h"
 #import "AnimationSectionModel.h"
 #import "AnimationRowModel.h"
+#import "AnimationBlockModel.h"
 
 @interface InitialViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) DataSource *dataSource;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @end
 
@@ -46,13 +48,27 @@
 
 #pragma mark - Helpers
 
+- (AnimationBlockModel *)blockForIndexPath:(NSIndexPath *)indexPath {
+    //get row
+    AnimationRowModel *rowModel = [[self.dataSource sectionAtIndex:indexPath.section] rowAtIndex:indexPath.row];
+    return rowModel.block;
+}
+
 #pragma mark - Table delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    AnimationBlockModel *blockModel = [self blockForIndexPath:indexPath];
 
+    if (blockModel.collapsed) {
+        [blockModel expand];
+    } else {
+        [blockModel collapse];
+    }
+
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Table Data Source
