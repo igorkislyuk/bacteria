@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  InitialViewController.h
 //  BAControllerTransitionExample
 //
 //  Created by Igor on 20/10/16.
@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface InitialViewController : UIViewController
 
 @end
 

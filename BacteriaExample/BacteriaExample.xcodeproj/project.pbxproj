@@ -7,26 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED1B7B071DBEEE8900F309B7 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED1B7B061DBEEE8900F309B7 /* SecondViewController.m */; };
+		3927B0A883D14B69315E8113 /* AnimationSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B055CCC8A8AA535EB96B /* AnimationSectionModel.m */; };
+		3927B2A63A95A5E469918025 /* AnimationBlockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BF0E5C83AB892F4658AD /* AnimationBlockModel.m */; };
+		3927B7417DD69E822E67E08A /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B00819F74EDCB73D8395 /* DataSource.m */; };
+		3927BA9EB48E39E66C155F39 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B173EEFB04A139AA7644 /* InitialViewController.m */; };
+		3927BCE9C7B0684949D19083 /* AnimationRowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B6708F8F940A24A8B206 /* AnimationRowModel.m */; };
+		3927BD24A0C42F3F5F104FDE /* PresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B043046504D890E41340 /* PresentedViewController.m */; };
 		ED38F5EB1E0C7F28009F1AF8 /* Bacteria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED38F5EA1E0C7F28009F1AF8 /* Bacteria.framework */; };
 		ED3EF7861DB825F8006258FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF7851DB825F8006258FD /* main.m */; };
 		ED3EF7891DB825F8006258FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF7881DB825F8006258FD /* AppDelegate.m */; };
-		ED3EF78C1DB825F8006258FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3EF78B1DB825F8006258FD /* ViewController.m */; };
 		ED3EF78F1DB825F8006258FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3EF78D1DB825F8006258FD /* Main.storyboard */; };
 		ED3EF7911DB825F8006258FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED3EF7901DB825F8006258FD /* Assets.xcassets */; };
 		ED3EF7941DB825F8006258FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3EF7921DB825F8006258FD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ED1B7B051DBEEE8900F309B7 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		ED1B7B061DBEEE8900F309B7 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		3927B00654A710A1CDCDD320 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		3927B00819F74EDCB73D8395 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		3927B043046504D890E41340 /* PresentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresentedViewController.m; sourceTree = "<group>"; };
+		3927B055CCC8A8AA535EB96B /* AnimationSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationSectionModel.m; sourceTree = "<group>"; };
+		3927B173EEFB04A139AA7644 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
+		3927B6708F8F940A24A8B206 /* AnimationRowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationRowModel.m; sourceTree = "<group>"; };
+		3927B8557874FCF556C87D21 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
+		3927B8DC11886979553ECBC1 /* AnimationRowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationRowModel.h; sourceTree = "<group>"; };
+		3927B8E37C81C6CC67BB467C /* AnimationBlockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationBlockModel.h; sourceTree = "<group>"; };
+		3927B8F900E988DA00A08284 /* AnimationSectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationSectionModel.h; sourceTree = "<group>"; };
+		3927BA29D317C2432E002A9F /* PresentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentedViewController.h; sourceTree = "<group>"; };
+		3927BF0E5C83AB892F4658AD /* AnimationBlockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationBlockModel.m; sourceTree = "<group>"; };
 		ED38F5EA1E0C7F28009F1AF8 /* Bacteria.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bacteria.framework; path = "../Bacteria/build/Debug-iphoneos/Bacteria.framework"; sourceTree = "<group>"; };
 		ED3EF7811DB825F8006258FD /* BacteriaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BacteriaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3EF7851DB825F8006258FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED3EF7871DB825F8006258FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ED3EF7881DB825F8006258FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		ED3EF78A1DB825F8006258FD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		ED3EF78B1DB825F8006258FD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		ED3EF78E1DB825F8006258FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED3EF7901DB825F8006258FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED3EF7931DB825F8006258FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,6 +57,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3927BB185CE95A921A005C03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3927B055CCC8A8AA535EB96B /* AnimationSectionModel.m */,
+				3927B8F900E988DA00A08284 /* AnimationSectionModel.h */,
+				3927B6708F8F940A24A8B206 /* AnimationRowModel.m */,
+				3927B8DC11886979553ECBC1 /* AnimationRowModel.h */,
+				3927BF0E5C83AB892F4658AD /* AnimationBlockModel.m */,
+				3927B8E37C81C6CC67BB467C /* AnimationBlockModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3927BECBE2A6E1F21C315106 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				3927B00819F74EDCB73D8395 /* DataSource.m */,
+				3927B00654A710A1CDCDD320 /* DataSource.h */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		ED38F5E91E0C7F28009F1AF8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,7 +109,9 @@
 			children = (
 				ED3EF79C1DB826C7006258FD /* AppDelegate */,
 				ED3EF7841DB825F8006258FD /* Supporting Files */,
-				ED3EF79D1DB826CE006258FD /* View */,
+				ED3EF79D1DB826CE006258FD /* Interface */,
+				3927BB185CE95A921A005C03 /* Model */,
+				3927BECBE2A6E1F21C315106 /* DataSource */,
 			);
 			path = BacteriaExample;
 			sourceTree = "<group>";
@@ -91,17 +127,6 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		ED3EF79B1DB826C0006258FD /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				ED1B7B051DBEEE8900F309B7 /* SecondViewController.h */,
-				ED1B7B061DBEEE8900F309B7 /* SecondViewController.m */,
-				ED3EF78A1DB825F8006258FD /* ViewController.h */,
-				ED3EF78B1DB825F8006258FD /* ViewController.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		ED3EF79C1DB826C7006258FD /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,13 +136,16 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		ED3EF79D1DB826CE006258FD /* View */ = {
+		ED3EF79D1DB826CE006258FD /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				ED3EF79B1DB826C0006258FD /* ViewController */,
 				ED3EF78D1DB825F8006258FD /* Main.storyboard */,
+				3927B8557874FCF556C87D21 /* InitialViewController.h */,
+				3927BA29D317C2432E002A9F /* PresentedViewController.h */,
+				3927B043046504D890E41340 /* PresentedViewController.m */,
+				3927B173EEFB04A139AA7644 /* InitialViewController.m */,
 			);
-			path = View;
+			path = Interface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,10 +218,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED1B7B071DBEEE8900F309B7 /* SecondViewController.m in Sources */,
-				ED3EF78C1DB825F8006258FD /* ViewController.m in Sources */,
 				ED3EF7891DB825F8006258FD /* AppDelegate.m in Sources */,
 				ED3EF7861DB825F8006258FD /* main.m in Sources */,
+				3927BD24A0C42F3F5F104FDE /* PresentedViewController.m in Sources */,
+				3927BA9EB48E39E66C155F39 /* InitialViewController.m in Sources */,
+				3927B0A883D14B69315E8113 /* AnimationSectionModel.m in Sources */,
+				3927BCE9C7B0684949D19083 /* AnimationRowModel.m in Sources */,
+				3927B7417DD69E822E67E08A /* DataSource.m in Sources */,
+				3927B2A63A95A5E469918025 /* AnimationBlockModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +238,6 @@
 				ED3EF78E1DB825F8006258FD /* Base */,
 			);
 			name = Main.storyboard;
-			path = .;
 			sourceTree = "<group>";
 		};
 		ED3EF7921DB825F8006258FD /* LaunchScreen.storyboard */ = {

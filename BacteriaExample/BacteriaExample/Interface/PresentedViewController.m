@@ -1,18 +1,18 @@
 //
-//  SecondViewController.m
+//  PresentedViewController.m
 //  BAControllerTransitionExample
 //
 //  Created by Igor on 25/10/16.
 //  Copyright © 2016 Igor Kislyuk. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "PresentedViewController.h"
 
-@interface SecondViewController ()
+@interface PresentedViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation PresentedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
