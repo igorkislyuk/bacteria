@@ -12,21 +12,21 @@
 #import <objc/NSObjCRuntime.h>
 
 typedef NS_ENUM(NSUInteger, BCTTransitionType) {
-    BCTTransitionTypeParallel = 0, //default
+    BCTTransitionTypeParallel = 0, //defaultForAnimationType
     BCTTransitionTypeCover = 1
 };
 
 typedef NS_ENUM(NSUInteger, BCTTransitionSideType) {
-    BCTTransitionSideTypeLeft,
-    BCTTransitionSideTypeRight,
-    BCTTransitionSideTypeTop,
-    BCTTransitionSideTypeBottom,
+    BCTTransitionSideTypeLeft = 0,
+    BCTTransitionSideTypeRight = 1,
+    BCTTransitionSideTypeTop = 2,
+    BCTTransitionSideTypeBottom = 3,
 
     //corners
-    BCTTransitionSideTypeTopLeftCorner,
-    BCTTransitionSideTypeTopRightCorner,
-    BCTTransitionSideTypeBottomLeftCorner,
-    BCTTransitionSideTypeBottomRightCorner
+    BCTTransitionSideTypeTopLeftCorner = 4,
+    BCTTransitionSideTypeTopRightCorner = 5,
+    BCTTransitionSideTypeBottomLeftCorner = 6,
+    BCTTransitionSideTypeBottomRightCorner = 7
 };
 
 #endif /* BCTTypes_h */

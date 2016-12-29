@@ -56,6 +56,18 @@
 
 }
 
+- (NSUInteger)numberOfSelectedValue {
+    NSInteger index = 0;
+    for (AnimationRowModel *row in self.additionalRows) {
+        if ([row.values isEqualToArray:self.row.values]) {
+            //return
+            index = [self.additionalRows indexOfObject:row];
+            break;
+        }
+    }
+    return index;
+}
+
 
 - (void)collapse {
 

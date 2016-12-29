@@ -10,7 +10,7 @@
 
 @interface AnimationSectionModel : NSObject
 
-+ (instancetype)default;
++ (instancetype)defaultForAnimationType;
 
 @property (nonatomic, copy) NSString *name;
 

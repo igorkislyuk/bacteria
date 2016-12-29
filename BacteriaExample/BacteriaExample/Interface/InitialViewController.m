@@ -20,6 +20,7 @@
 
 @property (nonatomic, strong) DataSource *dataSource;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UISlider *timeSlider;
 
 @end
 
@@ -43,7 +44,18 @@
 #pragma mark - IBActions
 
 - (IBAction)actionShowNextController:(id)sender {
-    [self presentViewController:[self getController] animated:YES completion:nil];
+
+    PresentedViewController *controllerToPresent = [self getController];
+
+    //get first row
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    AnimationBlockModel *blockModel = [self blockForIndexPath:indexPath];
+
+
+    controllerToPresent.presentFrom([blockModel numberOfSelectedValue]).transite(self.timeSlider.value);
+    
+    
+    [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 
 #pragma mark - Helpers
@@ -54,6 +66,11 @@
     return rowModel.block;
 }
 
+- (AnimationRowModel *)modelForIndexPath:(NSIndexPath *)indexPath {
+    AnimationRowModel *rowModel = [[self.dataSource sectionAtIndex:indexPath.section] rowAtIndex:indexPath.row];
+    return rowModel;
+}
+
 #pragma mark - Table delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,7 +79,7 @@
 
     //get the block & model
     AnimationBlockModel *block = [self blockForIndexPath:indexPath];
-    AnimationRowModel *row = [self modelAtIndexPath:indexPath];
+    AnimationRowModel *row = [self modelForIndexPath:indexPath];
 
     [block setValueFromAdditional:row.values];
 
@@ -76,6 +93,10 @@
 }
 
 #pragma mark - Table Data Source
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [self.dataSource sectionAtIndex:section].name;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.dataSource count];
@@ -91,7 +112,7 @@
     NSString *text = @"";
 
     //get model
-    AnimationRowModel *rowModel = [self modelAtIndexPath:indexPath];
+    AnimationRowModel *rowModel = [self modelForIndexPath:indexPath];
 
 
     if (rowModel.values.count > 1) {
@@ -105,11 +126,6 @@
     cell.textLabel.text = text;
 
     return cell;
-}
-
-- (AnimationRowModel *)modelAtIndexPath:(NSIndexPath *)indexPath {
-    AnimationRowModel *rowModel = [[self.dataSource sectionAtIndex:indexPath.section] rowAtIndex:indexPath.row];
-    return rowModel;
 }
 
 

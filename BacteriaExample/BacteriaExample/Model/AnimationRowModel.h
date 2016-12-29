@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 
 @class AnimationBlockModel;
+
 @interface AnimationRowModel : NSObject
 
 @property (nonatomic) NSArray<__kindof NSString *> *values;

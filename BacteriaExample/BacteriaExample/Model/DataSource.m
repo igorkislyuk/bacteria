@@ -17,15 +17,15 @@
     DataSource *dataSource = [[DataSource alloc] init];
 
     //first section for presenting
-    AnimationSectionModel *presenting = [AnimationSectionModel default];
-    presenting.name = @"Presenting";
+    AnimationSectionModel *presenting = [AnimationSectionModel defaultForAnimationType];
+    presenting.name = @"Animation type for present";
 
     //second section for dismiss
-//    AnimationSectionModel *dismissing = [AnimationSectionModel default];
-//    dismissing.name = @"Dismissing";
+    AnimationSectionModel *dismissing = [AnimationSectionModel defaultForAnimationType];
+    dismissing.name = @"Animation type for dismiss";
 
     //each with 2 elements
-    dataSource.sections = @[presenting];
+    dataSource.sections = @[presenting, dismissing];
 
     return dataSource;
 }
