@@ -66,7 +66,7 @@
 
     //block
     AnimationBlockModel *typeBlock = [[AnimationBlockModel alloc] initWithRow:defaultRow additionalRows:@[leftRow]];
-    [typeBlock expand];
+    [typeBlock collapse];
 
 
     return [[self alloc] initWithBlocks:@[typeBlock]];

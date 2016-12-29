@@ -68,18 +68,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSString *text;
+    NSString *text = @"";
 
     //get model
     AnimationRowModel *rowModel = [[self.dataSource sectionAtIndex:indexPath.section] rowAtIndex:indexPath.row];
 
 
     if (rowModel.values.count > 1) {
-        text = [rowModel.values firstObject];
-    } else {
         for (NSString *string in rowModel.values) {
-            text = [text stringByAppendingString:string];
+            text = [text stringByAppendingString:[NSString stringWithFormat:@"%@ ", string]];
         }
+    } else {
+        text = [rowModel.values firstObject];
     }
 
     cell.textLabel.text = text;
