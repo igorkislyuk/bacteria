@@ -47,11 +47,14 @@
     AnimationBlockModel *blockModel = [self.blocks objectAtIndex:blockIndex];
 
     while (indexCopy > blockModel.count) {
-        //get next block
-        blockModel = [self.blocks objectAtIndex:blockIndex + 1];
-
         //decrease
-        indexCopy -= [blockModel count];
+        indexCopy -= blockModel.count;
+
+        //increase
+        blockIndex += 1;
+        
+        //get next block
+        blockModel = [self.blocks objectAtIndex:blockIndex];
     }
 
     return [blockModel rowAtIndex:indexCopy];
@@ -76,9 +79,20 @@
     //block
     AnimationBlockModel *typeBlock = [[AnimationBlockModel alloc] initWithRow:defaultRow
                                                                additionalRows:@[t, l, b, r, tlc, blc, brc, trc]];
-    [typeBlock collapse];
 
     return [[self alloc] initWithBlocks:@[typeBlock]];
+}
+
++ (instancetype)defaultForTransitionType {
+    
+    AnimationRowModel *defaultRow2 = [[AnimationRowModel alloc] initWithValues:@[@"Default"]];
+    AnimationRowModel *parallel = [[AnimationRowModel alloc] initWithValues:@[@"Parallel"]];
+    AnimationRowModel *cover = [[AnimationRowModel alloc] initWithValues:@[@"Cover"]];
+    
+    AnimationBlockModel *coverBlock = [[AnimationBlockModel alloc] initWithRow:defaultRow2
+                                                                additionalRows:@[parallel, cover]];
+    
+    return [[self alloc] initWithBlocks:@[coverBlock]];
 }
 
 

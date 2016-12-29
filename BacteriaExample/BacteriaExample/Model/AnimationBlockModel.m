@@ -23,6 +23,7 @@
 - (instancetype)initWithRow:(AnimationRowModel *)row additionalRows:(NSArray *)additionalRows {
     self = [super init];
     if (self) {
+        //set row link
         _row = row;
         _row.block = self;
 
@@ -32,6 +33,7 @@
         }
 
         _count = 1;
+        _collapsed = YES;
     }
 
     return self;

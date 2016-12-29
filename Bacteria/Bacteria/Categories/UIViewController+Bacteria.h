@@ -45,16 +45,14 @@
 /**
  Default behaviour is parallel
  */
-- (BCTControllerTransitionType)typeFrom;
-- (BCTControllerTransitionType)typeTo;
+- (BCTControllerTransitionType)withPresentedTransitionType;
+- (BCTControllerTransitionType)withDismissedTransitionType;
 
 
 
 @end
 
 // TODO
-
-// todo: change example for deeper testing. M. b. try with expandable cells
 
 // todo: add scale
 // todo: Flip animation

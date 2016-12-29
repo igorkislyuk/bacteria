@@ -24,8 +24,14 @@
     AnimationSectionModel *dismissing = [AnimationSectionModel defaultForAnimationType];
     dismissing.name = @"Dismiss to";
 
+    AnimationSectionModel *presentingTransition = [AnimationSectionModel defaultForTransitionType];
+    presentingTransition.name = @"Transition for presentation";
+    
+    AnimationSectionModel *dismissedTransition = [AnimationSectionModel defaultForTransitionType];
+    presentingTransition.name = @"Transition for dismissal";
+    
     //each with 2 elements
-    dataSource.sections = @[presenting, dismissing];
+    dataSource.sections = @[presenting, dismissing, presentingTransition, dismissedTransition];
 
     return dataSource;
 }

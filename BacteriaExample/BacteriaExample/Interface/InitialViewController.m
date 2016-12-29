@@ -48,15 +48,17 @@
     PresentedViewController *controllerToPresent = [self getController];
 
     //get first row
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    AnimationBlockModel *blockModel = [self blockForIndexPath:indexPath];
-
-    NSIndexPath *dismissedIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-    AnimationBlockModel *dismissedBlockModel = [self blockForIndexPath:dismissedIndexPath];
+    AnimationBlockModel *blockModel = [self blockForIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    AnimationBlockModel *dismissedBlockModel = [self blockForIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+    
+    AnimationBlockModel *presentedCover = [self blockForIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+    AnimationBlockModel *dismissedCover = [self blockForIndexPath:[NSIndexPath indexPathForRow:1 inSection:3]];
 
     controllerToPresent.
             presentFrom([blockModel numberOfSelectedValue]).
             dismissTo([dismissedBlockModel numberOfSelectedValue]).
+            withPresentedTransitionType([presentedCover numberOfSelectedValue]).
+            withDismissedTransitionType([dismissedCover numberOfSelectedValue]).
             transite(self.timeSlider.value);
     
     

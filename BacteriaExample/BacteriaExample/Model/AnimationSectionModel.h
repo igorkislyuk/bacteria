@@ -11,12 +11,13 @@
 @interface AnimationSectionModel : NSObject
 
 + (instancetype)defaultForAnimationType;
++ (instancetype)defaultForTransitionType;
 
 @property (nonatomic, copy) NSString *name;
 
 - (NSInteger)count;
 
-- (AnimationBlockModel *)blockAtIndex:(NSInteger)index;
+//- (AnimationBlockModel *)blockAtIndex:(NSInteger)index;
 - (AnimationRowModel *)rowAtIndex:(NSUInteger)index;
 
 - (instancetype)initWithBlocks:(NSArray<__kindof AnimationBlockModel *> *)blocks;

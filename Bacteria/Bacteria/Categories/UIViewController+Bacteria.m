@@ -70,7 +70,7 @@
     return toPoint;
 }
 
-- (BCTControllerTransitionType)typeFrom {
+- (BCTControllerTransitionType)withPresentedTransitionType {
     BCTControllerTransitionType transitionType = BCTControllerTransitionType(type) {
         [[self bctTransitioningDelegate] setPresentedType:type];
         return self;
@@ -78,7 +78,7 @@
     return transitionType;
 }
 
-- (BCTControllerTransitionType)typeTo {
+- (BCTControllerTransitionType)withDismissedTransitionType {
     BCTControllerTransitionType transitionType = BCTControllerTransitionType(type) {
         [[self bctTransitioningDelegate] setDismissedType:type];
         return self;
