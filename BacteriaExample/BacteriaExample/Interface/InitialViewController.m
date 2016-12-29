@@ -51,8 +51,13 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     AnimationBlockModel *blockModel = [self blockForIndexPath:indexPath];
 
+    NSIndexPath *dismissedIndexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+    AnimationBlockModel *dismissedBlockModel = [self blockForIndexPath:dismissedIndexPath];
 
-    controllerToPresent.presentFrom([blockModel numberOfSelectedValue]).transite(self.timeSlider.value);
+    controllerToPresent.
+            presentFrom([blockModel numberOfSelectedValue]).
+            dismissTo([dismissedBlockModel numberOfSelectedValue]).
+            transite(self.timeSlider.value);
     
     
     [self presentViewController:controllerToPresent animated:YES completion:nil];

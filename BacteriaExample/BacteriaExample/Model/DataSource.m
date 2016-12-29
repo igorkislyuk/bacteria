@@ -18,11 +18,11 @@
 
     //first section for presenting
     AnimationSectionModel *presenting = [AnimationSectionModel defaultForAnimationType];
-    presenting.name = @"Animation type for present";
+    presenting.name = @"Present from";
 
     //second section for dismiss
     AnimationSectionModel *dismissing = [AnimationSectionModel defaultForAnimationType];
-    dismissing.name = @"Animation type for dismiss";
+    dismissing.name = @"Dismiss to";
 
     //each with 2 elements
     dataSource.sections = @[presenting, dismissing];

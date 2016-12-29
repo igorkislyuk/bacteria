@@ -17,16 +17,16 @@ typedef NS_ENUM(NSUInteger, BCTTransitionType) {
 };
 
 typedef NS_ENUM(NSUInteger, BCTTransitionSideType) {
-    BCTTransitionSideTypeLeft = 0,
-    BCTTransitionSideTypeRight = 1,
-    BCTTransitionSideTypeTop = 2,
-    BCTTransitionSideTypeBottom = 3,
+    BCTTransitionSideTypeTop = 0,
+    BCTTransitionSideTypeLeft = 1,
+    BCTTransitionSideTypeBottom = 2,
+    BCTTransitionSideTypeRight = 3,
 
     //corners
     BCTTransitionSideTypeTopLeftCorner = 4,
-    BCTTransitionSideTypeTopRightCorner = 5,
-    BCTTransitionSideTypeBottomLeftCorner = 6,
-    BCTTransitionSideTypeBottomRightCorner = 7
+    BCTTransitionSideTypeBottomLeftCorner = 5,
+    BCTTransitionSideTypeBottomRightCorner = 6,
+    BCTTransitionSideTypeTopRightCorner = 7,
 };
 
 #endif /* BCTTypes_h */
