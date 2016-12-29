@@ -15,6 +15,8 @@
 - (NSInteger)count;
 - (AnimationRowModel *)rowAtIndex:(NSInteger)index;
 
+- (void)setValueFromAdditional:(NSArray *)values;
+
 @property (nonatomic, assign, readonly) BOOL collapsed;
 - (void)collapse;
 - (void)expand;

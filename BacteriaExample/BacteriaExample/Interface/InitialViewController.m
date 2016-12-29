@@ -60,12 +60,16 @@
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    AnimationBlockModel *blockModel = [self blockForIndexPath:indexPath];
+    //get the block & model
+    AnimationBlockModel *block = [self blockForIndexPath:indexPath];
+    AnimationRowModel *row = [self modelAtIndexPath:indexPath];
 
-    if (blockModel.collapsed) {
-        [blockModel expand];
+    [block setValueFromAdditional:row.values];
+
+    if (block.collapsed) {
+        [block expand];
     } else {
-        [blockModel collapse];
+        [block collapse];
     }
 
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -87,7 +91,7 @@
     NSString *text = @"";
 
     //get model
-    AnimationRowModel *rowModel = [[self.dataSource sectionAtIndex:indexPath.section] rowAtIndex:indexPath.row];
+    AnimationRowModel *rowModel = [self modelAtIndexPath:indexPath];
 
 
     if (rowModel.values.count > 1) {
@@ -100,8 +104,12 @@
 
     cell.textLabel.text = text;
 
-
     return cell;
+}
+
+- (AnimationRowModel *)modelAtIndexPath:(NSIndexPath *)indexPath {
+    AnimationRowModel *rowModel = [[self.dataSource sectionAtIndex:indexPath.section] rowAtIndex:indexPath.row];
+    return rowModel;
 }
 
 

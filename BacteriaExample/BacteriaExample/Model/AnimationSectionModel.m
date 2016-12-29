@@ -62,12 +62,15 @@
 
     //type
     AnimationRowModel *defaultRow = [[AnimationRowModel alloc] initWithValues:@[@"Default"]];
-    AnimationRowModel *leftRow = [[AnimationRowModel alloc] initWithValues:@[@"Left", @"Right", @"Top", @"Bottom"]];
+
+    AnimationRowModel *leftRow = [[AnimationRowModel alloc] initWithValues:@[@"Left"]];
+    AnimationRowModel *rightRow = [[AnimationRowModel alloc] initWithValues:@[@"Right"]];
+    AnimationRowModel *topRow = [[AnimationRowModel alloc] initWithValues:@[@"Top"]];
+    AnimationRowModel *bottomRow = [[AnimationRowModel alloc] initWithValues:@[@"Bottom"]];
 
     //block
-    AnimationBlockModel *typeBlock = [[AnimationBlockModel alloc] initWithRow:defaultRow additionalRows:@[leftRow]];
+    AnimationBlockModel *typeBlock = [[AnimationBlockModel alloc] initWithRow:defaultRow additionalRows:@[leftRow, rightRow, topRow, bottomRow]];
     [typeBlock collapse];
-
 
     return [[self alloc] initWithBlocks:@[typeBlock]];
 }

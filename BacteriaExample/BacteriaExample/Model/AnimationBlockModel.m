@@ -50,6 +50,13 @@
     }
 }
 
+- (void)setValueFromAdditional:(NSArray *)values {
+
+    self.row.values = values;
+
+}
+
+
 - (void)collapse {
 
     self.collapsed = YES;
