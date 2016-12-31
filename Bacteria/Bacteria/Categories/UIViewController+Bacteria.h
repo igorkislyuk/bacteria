@@ -54,6 +54,8 @@
 
 // TODO
 
+// todo: we have got a big problem in using custom segues
+
 // todo: add scale
 // todo: Flip animation
 
