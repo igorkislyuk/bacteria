@@ -54,31 +54,16 @@
 
 // TODO
 
-// todo: we have got a big problem in using custom segues
+// todo: add scale for current animation
+// todo: flip animation with no scale. Only with type from where to flip
+// todo: safari like animation. Search in github for examples. So we could simply intergrate
+// todo: pop from custom shape
 
-// todo: add scale
-// todo: Flip animation
-
-// todo: Safari like animation
-// todo: Pop from rectangle
-// todo: Reveal and pop from custom shape
-
-// todo: bounce
-// todo: alerts
-// todo: from bottoms
-// todo: add spring
-// todo: animation like in music
 // todo: https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
-// todo: think about adjusting frames for views
-// todo: animation within a collections and navigation controller
-// todo: cross view animation
-// todo: modal transitions with
+// todo: review all code
+// todo: readme
 
-// todo: made test when controller deallocated - what happens with bacteria controller transition objects. It's very important to...
+// LONG
 
-// todo: remove code duplication
-// todo: code cleanup & adjust headers
-
-// todo: documentation
-// todo: release
+// todo: Segues, spring, interactivity. Animations for collections and navigations

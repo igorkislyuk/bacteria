@@ -29,6 +29,10 @@
     return self;
 }
 
+- (void)dealloc {
+//    NSLog(@"%@ - %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+}
+
 #pragma mark - UIViewControllerTransitioningDelegate
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
