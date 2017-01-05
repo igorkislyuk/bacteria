@@ -9,19 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #import "BCTTypes.h"
-#import "BCTSimpleAnimationController.h"
 
-@protocol BCTTransitioningDelegate <NSObject>
-
-- (NSTimeInterval)duration;
-
-- (BOOL)presenting;
-
-- (BCTTransitionType)transitionType;
-
-@end
-
-@interface BCTTransitioningController : NSObject <UIViewControllerTransitioningDelegate, BCTTransitioningDelegate>
+@interface BCTTransitioningController : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
 @property (nonatomic, assign) NSTimeInterval duration;
 

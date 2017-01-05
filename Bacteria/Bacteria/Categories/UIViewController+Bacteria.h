@@ -45,9 +45,11 @@
 /**
  Default behaviour is parallel
  */
-- (BCTControllerTransitionType)withPresentedTransitionType;
-- (BCTControllerTransitionType)withDismissedTransitionType;
+- (BacteriaTransitionBlock)withPresentedTransitionType;
+- (BacteriaTransitionBlock)withDismissedTransitionType;
 
+
+- (BacteriaScaleBlock)presentationScale;
 
 
 @end

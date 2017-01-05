@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		ED38F5DC1E0C7E21009F1AF8 /* UIViewController+Bacteria.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5CD1E0C7E21009F1AF8 /* UIViewController+Bacteria.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		ED38F5DD1E0C7E21009F1AF8 /* UIViewController+Bacteria.m in Sources */ = {isa = PBXBuildFile; fileRef = ED38F5CE1E0C7E21009F1AF8 /* UIViewController+Bacteria.m */; };
-		ED38F5DE1E0C7E21009F1AF8 /* BCTSimpleAnimationController.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5D11E0C7E21009F1AF8 /* BCTSimpleAnimationController.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		ED38F5DF1E0C7E21009F1AF8 /* BCTSimpleAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED38F5D21E0C7E21009F1AF8 /* BCTSimpleAnimationController.m */; };
 		ED38F5E01E0C7E21009F1AF8 /* BCTTransitioningController.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5D41E0C7E21009F1AF8 /* BCTTransitioningController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		ED38F5E11E0C7E21009F1AF8 /* BCTTransitioningController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED38F5D51E0C7E21009F1AF8 /* BCTTransitioningController.m */; };
 		ED38F5E21E0C7E21009F1AF8 /* BCT-BlocksHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5D71E0C7E21009F1AF8 /* BCT-BlocksHeader.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -22,8 +20,6 @@
 /* Begin PBXFileReference section */
 		ED38F5CD1E0C7E21009F1AF8 /* UIViewController+Bacteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Bacteria.h"; sourceTree = "<group>"; };
 		ED38F5CE1E0C7E21009F1AF8 /* UIViewController+Bacteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Bacteria.m"; sourceTree = "<group>"; };
-		ED38F5D11E0C7E21009F1AF8 /* BCTSimpleAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTSimpleAnimationController.h; sourceTree = "<group>"; };
-		ED38F5D21E0C7E21009F1AF8 /* BCTSimpleAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTSimpleAnimationController.m; sourceTree = "<group>"; };
 		ED38F5D41E0C7E21009F1AF8 /* BCTTransitioningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTTransitioningController.h; sourceTree = "<group>"; };
 		ED38F5D51E0C7E21009F1AF8 /* BCTTransitioningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTTransitioningController.m; sourceTree = "<group>"; };
 		ED38F5D71E0C7E21009F1AF8 /* BCT-BlocksHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BCT-BlocksHeader.h"; sourceTree = "<group>"; };
@@ -68,19 +64,9 @@
 		ED38F5CF1E0C7E21009F1AF8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ED38F5D01E0C7E21009F1AF8 /* SimpleAnimationController */,
 				ED38F5D31E0C7E21009F1AF8 /* TransitioningDelegate */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		ED38F5D01E0C7E21009F1AF8 /* SimpleAnimationController */ = {
-			isa = PBXGroup;
-			children = (
-				ED38F5D11E0C7E21009F1AF8 /* BCTSimpleAnimationController.h */,
-				ED38F5D21E0C7E21009F1AF8 /* BCTSimpleAnimationController.m */,
-			);
-			path = SimpleAnimationController;
 			sourceTree = "<group>";
 		};
 		ED38F5D31E0C7E21009F1AF8 /* TransitioningDelegate */ = {
@@ -136,7 +122,6 @@
 				ED38F5E21E0C7E21009F1AF8 /* BCT-BlocksHeader.h in Headers */,
 				ED38F5E31E0C7E21009F1AF8 /* BCTTypes.h in Headers */,
 				ED38F5E01E0C7E21009F1AF8 /* BCTTransitioningController.h in Headers */,
-				ED38F5DE1E0C7E21009F1AF8 /* BCTSimpleAnimationController.h in Headers */,
 				ED38F5DC1E0C7E21009F1AF8 /* UIViewController+Bacteria.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,7 +199,6 @@
 			files = (
 				ED38F5E11E0C7E21009F1AF8 /* BCTTransitioningController.m in Sources */,
 				ED38F5DD1E0C7E21009F1AF8 /* UIViewController+Bacteria.m in Sources */,
-				ED38F5DF1E0C7E21009F1AF8 /* BCTSimpleAnimationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,37 +12,35 @@
 
 #import "BCTTransitioningController.h"
 
-#import "BCTSimpleAnimationController.h"
-
 @interface UIViewController (Bacteria_Private)
 
-@property(nonatomic, strong) BCTTransitioningController *bctTransitioningDelegate;
+@property(nonatomic, strong) BCTTransitioningController *transitioningController;
 
 @end
 
 @implementation UIViewController (Bacteria_Private)
 
-- (void)setBCTTransitioningDelegate {
-    if (![self.transitioningDelegate isEqual:self.bctTransitioningDelegate]) {
-        self.transitioningDelegate = self.bctTransitioningDelegate;
+- (void)setTransitioningDelegate {
+    if (![self.transitioningDelegate isEqual:self.transitioningController]) {
+        self.transitioningDelegate = self.transitioningController;
     }
 }
 
 #pragma mark - Properties
 
-- (void)setBctTransitioningDelegate:(BCTTransitioningController *)baTransitioningDelegate {
-    objc_setAssociatedObject(self, @selector(bctTransitioningDelegate), baTransitioningDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setTransitioningController:(BCTTransitioningController *)transitioningController {
+    objc_setAssociatedObject(self, @selector(transitioningController), transitioningController, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BCTTransitioningController *)bctTransitioningDelegate {
-    BCTTransitioningController *transitioningDelegate = objc_getAssociatedObject(self, @selector(bctTransitioningDelegate));
+- (BCTTransitioningController *)transitioningController {
+    BCTTransitioningController *transitioningController = objc_getAssociatedObject(self, @selector(transitioningController));
 
-    if (transitioningDelegate == nil) {
-        transitioningDelegate = [[BCTTransitioningController alloc] init];
-        [self setBctTransitioningDelegate:transitioningDelegate];
+    if (transitioningController == nil) {
+        transitioningController = [[BCTTransitioningController alloc] init];
+        [self setTransitioningController:transitioningController];
     }
 
-    return transitioningDelegate;
+    return transitioningController;
 }
 
 @end
@@ -53,7 +51,7 @@
     BCTControllerTransitionLocation fromLocation = BCTControllerTransitionLocation(point) {
 
         //just move from point
-        [[self bctTransitioningDelegate] preparePresentedFromPoint:point];
+        [self.transitioningController preparePresentedFromPoint:point];
 
         return self;
     };
@@ -63,34 +61,44 @@
 - (BCTControllerTransitionLocation)toPoint {
     BCTControllerTransitionLocation toPoint = BCTControllerTransitionLocation(point) {
 
-        [[self bctTransitioningDelegate] prepareDismissedToPoint:point];
+        [self.transitioningController prepareDismissedToPoint:point];
 
         return self;
     };
     return toPoint;
 }
 
-- (BCTControllerTransitionType)withPresentedTransitionType {
-    BCTControllerTransitionType transitionType = BCTControllerTransitionType(type) {
-        [[self bctTransitioningDelegate] setPresentedType:type];
+- (BacteriaTransitionBlock)withPresentedTransitionType {
+    BacteriaTransitionBlock transitionType = BCTControllerTransitionType(type) {
+        [self.transitioningController setPresentedType:type];
         return self;
     };
     return transitionType;
 }
 
-- (BCTControllerTransitionType)withDismissedTransitionType {
-    BCTControllerTransitionType transitionType = BCTControllerTransitionType(type) {
-        [[self bctTransitioningDelegate] setDismissedType:type];
+- (BacteriaTransitionBlock)withDismissedTransitionType {
+    BacteriaTransitionBlock transitionType = BCTControllerTransitionType(type) {
+        [self.transitioningController setDismissedType:type];
         return self;
     };
     return transitionType;
 }
+
+- (BacteriaScaleBlock)presentationScale {
+    return ^UIViewController *(CGFloat initialScale, CGFloat finalScale) {
+
+//        [[self bctTransitioningController] ]
+
+        return self;
+    };
+}
+
 
 - (BCTControllerTransitionSideType)presentFrom {
     BCTControllerTransitionSideType plainFrom = BCTControllerTransitionSideType(sideType) {
 
         //save
-        [[self bctTransitioningDelegate] setPresentedSideType:sideType];
+        [self.transitioningController setPresentedSideType:sideType];
 
         CGPoint fromPoint = CGPointZero;
 
@@ -124,7 +132,7 @@
                 break;
         }
 
-        [[self bctTransitioningDelegate] preparePresentedFromPoint:fromPoint];
+        [[self transitioningController] preparePresentedFromPoint:fromPoint];
 
         return self;
     };
@@ -135,7 +143,7 @@
     BCTControllerTransitionSideType plainTo = BCTControllerTransitionSideType(sideType) {
 
         //save
-        [[self bctTransitioningDelegate] setDismissedSideType:sideType];
+        [[self transitioningController] setDismissedSideType:sideType];
 
         CGPoint toPoint = CGPointZero;
 
@@ -170,7 +178,7 @@
                 break;
         }
 
-        [[self bctTransitioningDelegate] prepareDismissedToPoint:toPoint];
+        [[self transitioningController] prepareDismissedToPoint:toPoint];
 
 
         return self;
@@ -181,9 +189,9 @@
 - (BCTControllerTransitionTime)transite {
     BCTControllerTransitionTime ttime = BCTControllerTransitionTime(time) {
         //set delegate
-        [self setBCTTransitioningDelegate];
+        [self setTransitioningDelegate];
 
-        self.bctTransitioningDelegate.duration = time;
+        self.transitioningController.duration = time;
 
         return self;
     };
@@ -193,8 +201,8 @@
 - (BCTControllerTransitionEmpty)reverse {
     return ^UIViewController * {
 
-        BCTTransitionSideType dismissedSideType = self.bctTransitioningDelegate.dismissedSideType;
-        BCTTransitionSideType presentedSideType = self.bctTransitioningDelegate.presentedSideType;
+        BCTTransitionSideType dismissedSideType = self.transitioningController.dismissedSideType;
+        BCTTransitionSideType presentedSideType = self.transitioningController.presentedSideType;
 
         if (presentedSideType && !dismissedSideType) {
             self.dismissTo(presentedSideType);

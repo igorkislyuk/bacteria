@@ -9,7 +9,6 @@
 #ifndef BCT_BlocksHeader_h
 #define BCT_BlocksHeader_h
 
-
 //simple block wrapper
 typedef UIViewController* (^BCTControllerTransitionEmpty)(void);
 #define BCTControllerTransitionEmpty() ^UIViewController* ()
@@ -17,13 +16,13 @@ typedef UIViewController* (^BCTControllerTransitionEmpty)(void);
 typedef UIViewController* (^BCTControllerTransitionTime)(NSTimeInterval);
 #define BCTControllerTransitionTime(f) ^UIViewController* (NSTimeInterval f)
 
-typedef UIViewController* (^BCTControllerTransitionDistance)(CGFloat);
-#define BCTControllerTransitionDistance(f) ^UIViewController* (CGFloat f)
+typedef UIViewController* (^BacteriaScaleBlock)(CGFloat, CGFloat);
+#define BacteriaScaleBlock(from, to) ^UIViewController* (CGFloat from, CGFloat to)
 
 typedef UIViewController* (^BCTControllerTransitionLocation)(CGPoint);
 #define BCTControllerTransitionLocation(f) ^UIViewController* (CGPoint f)
 
-typedef UIViewController* (^BCTControllerTransitionType)(BCTTransitionType type);
+typedef UIViewController* (^BacteriaTransitionBlock)(BCTTransitionType type);
 #define BCTControllerTransitionType(t) ^UIViewController* (BCTTransitionType type)
 
 typedef UIViewController* (^BCTControllerTransitionSideType)(BCTTransitionSideType sideType);
