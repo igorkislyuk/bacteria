@@ -12,7 +12,7 @@
 #import <objc/NSObjCRuntime.h>
 
 typedef NS_ENUM(NSUInteger, BCTTransitionType) {
-    BCTTransitionTypeParallel = 0, //defaultForAnimationType
+    BCTTransitionTypeParallel = 0, //default
     BCTTransitionTypeCover = 1
 };
 

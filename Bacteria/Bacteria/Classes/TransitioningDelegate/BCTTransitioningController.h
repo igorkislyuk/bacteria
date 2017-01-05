@@ -14,11 +14,11 @@
 
 @property (nonatomic, assign) NSTimeInterval duration;
 
+@property (nonatomic, assign) CGPoint presentFromPoint;
+@property (nonatomic, assign) CGPoint dismissToPoint;
+
 @property (nonatomic) BCTTransitionSideType presentedSideType;
 @property (nonatomic) BCTTransitionSideType dismissedSideType;
-
-- (void)preparePresentedFromPoint:(CGPoint)point;
-- (void)prepareDismissedToPoint:(CGPoint)point;
 
 - (void)setPresentedType:(BCTTransitionType)type;
 - (void)setDismissedType:(BCTTransitionType)type;

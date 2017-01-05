@@ -7,13 +7,10 @@
 //
 
 #import "BCTTransitioningController.h"
+#import "BCTParallelLocationPerformer.h"
 
 
 @interface BCTTransitioningController ()
-
-@property (nonatomic, assign) CGPoint fromPoint;
-
-@property (nonatomic, assign) CGPoint toPoint;
 
 @end
 
@@ -22,6 +19,15 @@
     BCTTransitionType _pType, _dType;
     CGPoint _startPoint, _endPoint;
     UIView *_dismissView, *_presentView;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+
+    }
+
+    return self;
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate
@@ -36,39 +42,50 @@
     return self;
 }
 
-#pragma mark - BCTTransitioningDelegate
-
-- (BOOL)presenting {
-    return _presenting;
-}
-
-- (void)setPresentedType:(BCTTransitionType)type {
-    _pType = type;
-}
-
-- (void)setDismissedType:(BCTTransitionType)type {
-    _dType = type;
-}
-
-- (BCTTransitionType)transitionType {
-    return _presenting ? _pType : _dType;
-}
-
-#pragma mark - Methods
-
-- (void)preparePresentedFromPoint:(CGPoint)point {
-    self.fromPoint = point;
-}
-
-- (void)prepareDismissedToPoint:(CGPoint)point {
-    self.toPoint = point;
-}
+#pragma mark - Animated transitioning
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
     return self.duration;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
+
+//    //get start values
+//    UIView *containerView = [transitionContext containerView];
+//    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+//    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+//
+//    //Moves from start to end
+//    _startPoint = CGPointZero;
+//    _endPoint = CGPointZero;
+//    _dismissView = fromVC.view;
+//    _presentView = toVC.view;
+//
+//    if (_presenting) {
+//
+//        [containerView addSubview:_presentView];
+//
+//        _startPoint = self.fromPoint;
+//    } else {
+//
+//        _endPoint = self.toPoint;
+//
+//        [containerView insertSubview:_presentView belowSubview:_dismissView];
+//    }
+//
+//    switch (self.transitionType) {
+//        case BCTTransitionTypeParallel:
+//            [self parallelTransition:transitionContext];
+//            break;
+//        case BCTTransitionTypeCover:
+//            [self coverTransition:transitionContext];
+//            break;
+//        default:
+//            NSLog(@"support this type of transition");
+//    }
+
+
+    //perform simple object wrapping
 
     //get start values
     UIView *containerView = [transitionContext containerView];
@@ -81,31 +98,49 @@
     _dismissView = fromVC.view;
     _presentView = toVC.view;
 
-    BOOL presenting = self.presenting;
+//    if (_presenting) {
+    [containerView addSubview:_presentView];
+    _startPoint = self.presentFromPoint;
+//    } else {
+//        _endPoint = self.toPoint;
+//        [containerView insertSubview:_presentView belowSubview:_dismissView];
+//    }
 
-    if (presenting) {
+    CGFloat dx = _startPoint.x - _endPoint.x;
+    CGFloat dy = _startPoint.y - _endPoint.y;
 
-        [containerView addSubview:_presentView];
 
-        _startPoint = self.fromPoint;
-    } else {
 
-        _endPoint = self.toPoint;
+    CGAffineTransform originPTransform = _presentView.transform;
+    CGAffineTransform originDTransform = _dismissView.transform;
 
-        [containerView insertSubview:_presentView belowSubview:_dismissView];
-    }
+    _presentView.transform = CGAffineTransformTranslate(originPTransform, dx, dy);
 
-    switch (self.transitionType) {
-        case BCTTransitionTypeParallel:
-            [self parallelTransition:transitionContext];
-            break;
-        case BCTTransitionTypeCover:
-            [self coverTransition:transitionContext];
-            break;
-        default:
-            NSLog(@"support this type of transition");
-    }
+    [UIView animateWithDuration:self.duration animations:^{
 
+        _presentView.transform = originPTransform;
+
+        _dismissView.transform = CGAffineTransformTranslate(originDTransform, -dx, -dy);
+
+    }                completion:^(BOOL finished) {
+
+        _dismissView.transform = originDTransform;
+
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+
+    }];
+}
+
+- (void)setPresentedType:(BCTTransitionType)type {
+    _pType = type;
+}
+
+- (void)setDismissedType:(BCTTransitionType)type {
+    _dType = type;
+}
+
+- (BCTTransitionType)transitionType {
+    return _presenting ? _pType : _dType;
 }
 
 - (void)parallelTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -131,8 +166,7 @@
     dy = _startPoint.y - _endPoint.y;
 
     UIView *view;
-    BOOL presenting = self.presenting;
-    if (presenting) {
+    if (_presenting) {
         view = _presentView;
     } else {
         view = _dismissView;
@@ -140,7 +174,7 @@
         dy = -dy;
     }
 
-    [self cover_animatePresentedView:view dx:dx dy:dy reversed:!presenting inAnimationBlock:nil inCompletionBlock:block];
+    [self cover_animatePresentedView:view dx:dx dy:dy reversed:!_presenting inAnimationBlock:nil inCompletionBlock:block];
 
 }
 
@@ -217,6 +251,14 @@
         }
 
     }];
+}
+
+#pragma mark - Performers
+
+- (id <BCTLocationPerformer>)locationPerformerOfType:(BCTTransitionType)transitionType {
+
+    return [[BCTParallelLocationPerformer alloc] init];
+
 }
 
 @end

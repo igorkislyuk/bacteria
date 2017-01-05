@@ -51,7 +51,7 @@
     BCTControllerTransitionLocation fromLocation = BCTControllerTransitionLocation(point) {
 
         //just move from point
-        [self.transitioningController preparePresentedFromPoint:point];
+        self.transitioningController.presentFromPoint = point;
 
         return self;
     };
@@ -61,7 +61,7 @@
 - (BCTControllerTransitionLocation)toPoint {
     BCTControllerTransitionLocation toPoint = BCTControllerTransitionLocation(point) {
 
-        [self.transitioningController prepareDismissedToPoint:point];
+        self.transitioningController.dismissToPoint = point;
 
         return self;
     };
@@ -131,8 +131,7 @@
                 fromPoint = CGPointMake(width, height);
                 break;
         }
-
-        [[self transitioningController] preparePresentedFromPoint:fromPoint];
+        self.transitioningController.presentFromPoint = fromPoint;
 
         return self;
     };
@@ -178,7 +177,7 @@
                 break;
         }
 
-        [[self transitioningController] prepareDismissedToPoint:toPoint];
+        self.transitioningController.dismissToPoint = toPoint;
 
 
         return self;

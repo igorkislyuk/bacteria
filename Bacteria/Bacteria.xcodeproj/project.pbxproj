@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3927B7447B68DA7ADDCB5C88 /* BCTParallelLocationPerformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B3A12DDF652668C15460 /* BCTParallelLocationPerformer.m */; };
+		3927B7A6F6D200874D7AD848 /* BCTParallelLocationPerformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927BD40FC4453A8CA6CD5F8 /* BCTParallelLocationPerformer.h */; };
+		3927BCB064745F829F9E7C04 /* BCTLocationPerformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B6C86CA8E3F35DEE365C /* BCTLocationPerformer.h */; };
 		ED38F5DC1E0C7E21009F1AF8 /* UIViewController+Bacteria.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5CD1E0C7E21009F1AF8 /* UIViewController+Bacteria.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		ED38F5DD1E0C7E21009F1AF8 /* UIViewController+Bacteria.m in Sources */ = {isa = PBXBuildFile; fileRef = ED38F5CE1E0C7E21009F1AF8 /* UIViewController+Bacteria.m */; };
 		ED38F5E01E0C7E21009F1AF8 /* BCTTransitioningController.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5D41E0C7E21009F1AF8 /* BCTTransitioningController.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3927B3A12DDF652668C15460 /* BCTParallelLocationPerformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTParallelLocationPerformer.m; sourceTree = "<group>"; };
+		3927B6C86CA8E3F35DEE365C /* BCTLocationPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTLocationPerformer.h; sourceTree = "<group>"; };
+		3927BD40FC4453A8CA6CD5F8 /* BCTParallelLocationPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTParallelLocationPerformer.h; sourceTree = "<group>"; };
 		ED38F5CD1E0C7E21009F1AF8 /* UIViewController+Bacteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Bacteria.h"; sourceTree = "<group>"; };
 		ED38F5CE1E0C7E21009F1AF8 /* UIViewController+Bacteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Bacteria.m"; sourceTree = "<group>"; };
 		ED38F5D41E0C7E21009F1AF8 /* BCTTransitioningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTTransitioningController.h; sourceTree = "<group>"; };
@@ -40,6 +46,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3927B778EE7ECE69D6D95FDD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3927B6C86CA8E3F35DEE365C /* BCTLocationPerformer.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		3927BBBD278C87044742CBC6 /* Performers */ = {
+			isa = PBXGroup;
+			children = (
+				3927B3A12DDF652668C15460 /* BCTParallelLocationPerformer.m */,
+				3927BD40FC4453A8CA6CD5F8 /* BCTParallelLocationPerformer.h */,
+			);
+			path = Performers;
+			sourceTree = "<group>";
+		};
 		ED38F5CA1E0C7E21009F1AF8 /* Bacteria */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				ED38F5D31E0C7E21009F1AF8 /* TransitioningDelegate */,
+				3927B778EE7ECE69D6D95FDD /* Protocols */,
+				3927BBBD278C87044742CBC6 /* Performers */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -123,6 +148,8 @@
 				ED38F5E31E0C7E21009F1AF8 /* BCTTypes.h in Headers */,
 				ED38F5E01E0C7E21009F1AF8 /* BCTTransitioningController.h in Headers */,
 				ED38F5DC1E0C7E21009F1AF8 /* UIViewController+Bacteria.h in Headers */,
+				3927BCB064745F829F9E7C04 /* BCTLocationPerformer.h in Headers */,
+				3927B7A6F6D200874D7AD848 /* BCTParallelLocationPerformer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +226,7 @@
 			files = (
 				ED38F5E11E0C7E21009F1AF8 /* BCTTransitioningController.m in Sources */,
 				ED38F5DD1E0C7E21009F1AF8 /* UIViewController+Bacteria.m in Sources */,
+				3927B7447B68DA7ADDCB5C88 /* BCTParallelLocationPerformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
