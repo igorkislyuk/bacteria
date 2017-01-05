@@ -12,6 +12,8 @@
 
 @interface BCTTransitioningController ()
 
+@property (nonatomic) BCTParallelLocationPerformer *parallelLocationPerformer;
+
 @end
 
 @implementation BCTTransitioningController {
@@ -24,7 +26,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-
     }
 
     return self;
@@ -109,22 +110,27 @@
     CGFloat dx = _startPoint.x - _endPoint.x;
     CGFloat dy = _startPoint.y - _endPoint.y;
 
+    CGPoint point = CGPointMake(dx, dy);
 
+//    CGAffineTransform originPTransform = _presentView.transform;
+//    CGAffineTransform originDTransform = _dismissView.transform;
 
-    CGAffineTransform originPTransform = _presentView.transform;
-    CGAffineTransform originDTransform = _dismissView.transform;
-
-    _presentView.transform = CGAffineTransformTranslate(originPTransform, dx, dy);
+    self.parallelLocationPerformer = [[BCTParallelLocationPerformer alloc] initWithPresentedView:_presentView dismissedView:_dismissView offsetPoint:point];
+//    _presentView.transform = CGAffineTransformTranslate(originPTransform, dx, dy);
+    _presentView = [self.parallelLocationPerformer presentedViewBefore];
 
     [UIView animateWithDuration:self.duration animations:^{
 
-        _presentView.transform = originPTransform;
+//        _presentView.transform = originPTransform;
+        _presentView = [self.parallelLocationPerformer presentedViewAfter];
 
-        _dismissView.transform = CGAffineTransformTranslate(originDTransform, -dx, -dy);
+//        _dismissView.transform = CGAffineTransformTranslate(originDTransform, -dx, -dy);
+        [self.parallelLocationPerformer dismissedViewAfter];
 
     }                completion:^(BOOL finished) {
 
-        _dismissView.transform = originDTransform;
+//        _dismissView.transform = originDTransform;
+        [self.parallelLocationPerformer dismissedViewBefore];
 
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
 

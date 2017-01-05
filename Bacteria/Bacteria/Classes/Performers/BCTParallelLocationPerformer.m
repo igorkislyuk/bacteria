@@ -5,23 +5,53 @@
 
 #import "BCTParallelLocationPerformer.h"
 
-@implementation BCTParallelLocationPerformer
-
-- (UIView *)presentedViewBeforeWith:(UIView *)view withOffset:(CGPoint)point {
-    return nil;
+@implementation BCTParallelLocationPerformer {
+    CGAffineTransform _pTransform, _dTransform;
 }
 
-- (UIView *)dismissedViewBeforeWith:(UIView *)view withOffset:(CGPoint)point {
-    return nil;
+
+- (instancetype)initWithPresentedView:(UIView *)presentedView dismissedView:(UIView *)dismissedView offsetPoint:(CGPoint)offsetPoint {
+
+    self = [super init];
+    if (self) {
+        _presentedView = presentedView;
+        _dismissedView = dismissedView;
+        _offsetPoint = offsetPoint;
+
+        //generate transforms
+        _pTransform = presentedView.transform;
+        _dTransform = dismissedView.transform;
+    }
+
+    return self;
 }
 
-- (UIView *)presentedViewAfterWith:(UIView *)view withOffset:(CGPoint)point {
-    return nil;
+- (UIView *)presentedViewBefore {
+
+    UIView *result = self.presentedView;
+    result.transform = CGAffineTransformTranslate(_pTransform, self.offsetPoint.x, self.offsetPoint.y);
+    return result;
 }
 
-- (UIView *)dismissedViewAfterWith:(UIView *)view withOffset:(CGPoint)point {
-    return nil;
+- (UIView *)dismissedViewBefore {
+
+    UIView *result = self.dismissedView;
+    result.transform = _dTransform;
+    return result;
 }
 
+- (UIView *)presentedViewAfter {
+
+    UIView *result = self.presentedView;
+    result.transform = _pTransform;
+    return result;
+}
+
+- (UIView *)dismissedViewAfter {
+
+    UIView *result = self.dismissedView;
+    result.transform = CGAffineTransformTranslate(_dTransform, -self.offsetPoint.x, -self.offsetPoint.y);
+    return result;
+}
 
 @end

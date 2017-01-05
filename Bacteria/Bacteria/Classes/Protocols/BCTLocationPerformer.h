@@ -7,13 +7,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol BCTLocationPerformer <NSObject>
-@required
 
 
-- (UIView *)presentedViewBeforeWith:(UIView *)view withOffset:(CGPoint)point;
-- (UIView *)dismissedViewBeforeWith:(UIView *)view withOffset:(CGPoint)point;
-
-- (UIView *)presentedViewAfterWith:(UIView *)view withOffset:(CGPoint)point;
-- (UIView *)dismissedViewAfterWith:(UIView *)view withOffset:(CGPoint)point;
 
 @end
