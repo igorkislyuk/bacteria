@@ -29,7 +29,8 @@
 - (UIView *)presentedViewBefore {
 
     UIView *result = self.presentedView;
-    result.transform = CGAffineTransformTranslate(_pTransform, self.offsetPoint.x, self.offsetPoint.y);
+    CGAffineTransform transform = CGAffineTransformTranslate(_pTransform, self.offsetPoint.x, self.offsetPoint.y);
+    result.transform = CGAffineTransformScale(transform, 0.5, 0.5);
     return result;
 }
 

@@ -56,7 +56,10 @@
 
 // TODO
 
-// todo: add scale for current animation
+// todo: config another part with scale. and restore functionality. create one protocol for cgaffine matrix and 2
+// another for 3d matrix and view for each state
+
+
 // todo: flip animation with no scale. Only with type from where to flip
 // todo: safari like animation. Search in github for examples. So we could simply intergrate
 // todo: pop from custom shape
