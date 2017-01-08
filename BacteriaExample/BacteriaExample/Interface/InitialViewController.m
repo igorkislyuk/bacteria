@@ -61,8 +61,8 @@
 //    dismissTo(BCTTransitionSideTypeTop).
     withPresentedTransitionType([presentedCover numberOfSelectedValue]).
     withDismissedTransitionType([dismissedCover numberOfSelectedValue]).
-//    startScale(0.5, 0.5).
-//    endScale(0.5, 0.5).
+    startScale(0.1, 0.1).
+    endScale(0.9, 0.9).
     transite(self.timeSlider.value);
     
     

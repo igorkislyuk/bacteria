@@ -56,12 +56,8 @@
 
 // TODO
 
-// todo: config another part with scale. and restore functionality. create one protocol for cgaffine matrix and 2
-// another for 3d matrix and view for each state
-
-
+// todo: safari like animation.
 // todo: flip animation with no scale. Only with type from where to flip
-// todo: safari like animation. Search in github for examples. So we could simply intergrate
 // todo: pop from custom shape
 
 // todo: https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
