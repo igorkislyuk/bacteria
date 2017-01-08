@@ -51,7 +51,7 @@
     BCTControllerTransitionLocation fromLocation = BCTControllerTransitionLocation(point) {
 
         //just move from point
-        self.transitioningController.presentFromPoint = point;
+        self.transitioningController.presentStartPoint = point;
 
         return self;
     };
@@ -61,7 +61,7 @@
 - (BCTControllerTransitionLocation)toPoint {
     BCTControllerTransitionLocation toPoint = BCTControllerTransitionLocation(point) {
 
-        self.transitioningController.dismissToPoint = point;
+        self.transitioningController.dismissEndPoint = point;
 
         return self;
     };
@@ -70,7 +70,7 @@
 
 - (BacteriaTransitionBlock)withPresentedTransitionType {
     BacteriaTransitionBlock transitionType = BCTControllerTransitionType(type) {
-        [self.transitioningController setPresentedType:type];
+        [self.transitioningController setPresentType:type];
         return self;
     };
     return transitionType;
@@ -78,7 +78,7 @@
 
 - (BacteriaTransitionBlock)withDismissedTransitionType {
     BacteriaTransitionBlock transitionType = BCTControllerTransitionType(type) {
-        [self.transitioningController setDismissedType:type];
+        [self.transitioningController setDismissType:type];
         return self;
     };
     return transitionType;
@@ -105,7 +105,7 @@
     BCTControllerTransitionSideType plainFrom = BCTControllerTransitionSideType(sideType) {
 
         //save
-        [self.transitioningController setPresentedSideType:sideType];
+        self.transitioningController.presentSideType = sideType;
 
         CGPoint fromPoint = CGPointZero;
 
@@ -138,7 +138,7 @@
                 fromPoint = CGPointMake(width, height);
                 break;
         }
-        self.transitioningController.presentFromPoint = fromPoint;
+        self.transitioningController.presentStartPoint = fromPoint;
 
         return self;
     };
@@ -149,7 +149,7 @@
     BCTControllerTransitionSideType plainTo = BCTControllerTransitionSideType(sideType) {
 
         //save
-        [[self transitioningController] setDismissedSideType:sideType];
+        self.transitioningController.dismissSideType = sideType;
 
         CGPoint toPoint = CGPointZero;
 
@@ -184,7 +184,7 @@
                 break;
         }
 
-        self.transitioningController.dismissToPoint = toPoint;
+        self.transitioningController.dismissEndPoint = toPoint;
 
 
         return self;
@@ -207,8 +207,8 @@
 - (BCTControllerTransitionEmpty)reverse {
     return ^UIViewController * {
 
-        BCTTransitionSideType dismissedSideType = self.transitioningController.dismissedSideType;
-        BCTTransitionSideType presentedSideType = self.transitioningController.presentedSideType;
+        BCTTransitionSideType dismissedSideType = self.transitioningController.dismissSideType;
+        BCTTransitionSideType presentedSideType = self.transitioningController.presentSideType;
 
         if (presentedSideType && !dismissedSideType) {
             self.dismissTo(presentedSideType);

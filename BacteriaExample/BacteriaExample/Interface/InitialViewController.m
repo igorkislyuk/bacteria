@@ -55,12 +55,15 @@
     AnimationBlockModel *dismissedCover = [self blockForIndexPath:[NSIndexPath indexPathForRow:1 inSection:3]];
 
     controllerToPresent.
-            presentFrom([blockModel numberOfSelectedValue]).
-            dismissTo([dismissedBlockModel numberOfSelectedValue]).
-            withPresentedTransitionType([presentedCover numberOfSelectedValue]).
-            withDismissedTransitionType([dismissedCover numberOfSelectedValue]).
-            startScale(0.5, 0.5).
-            transite(self.timeSlider.value);
+    //            presentFrom([blockModel numberOfSelectedValue]).
+    //            dismissTo([dismissedBlockModel numberOfSelectedValue]).
+    presentFrom(BCTTransitionSideTypeTop).
+    dismissTo(BCTTransitionSideTypeTop).
+    withPresentedTransitionType([presentedCover numberOfSelectedValue]).
+    withDismissedTransitionType([dismissedCover numberOfSelectedValue]).
+    startScale(0.5, 0.5).
+    endScale(0.5, 0.5).
+    transite(self.timeSlider.value);
     
     
     [self presentViewController:controllerToPresent animated:YES completion:nil];

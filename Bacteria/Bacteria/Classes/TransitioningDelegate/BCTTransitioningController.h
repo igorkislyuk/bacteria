@@ -12,19 +12,24 @@
 
 @interface BCTTransitioningController : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
+//duration of transition
 @property (nonatomic, assign) NSTimeInterval duration;
 
-@property (nonatomic, assign) CGPoint presentFromPoint;
-@property (nonatomic, assign) CGPoint dismissToPoint;
+//points for animation process
+@property (nonatomic, assign) CGPoint presentStartPoint;
+@property (nonatomic, assign) CGPoint dismissEndPoint;
 
-@property (nonatomic) BCTTransitionSideType presentedSideType;
-@property (nonatomic) BCTTransitionSideType dismissedSideType;
+//parallel or cover
+@property (nonatomic, assign) BCTTransitionType presentType;
+@property (nonatomic, assign) BCTTransitionType dismissType;
 
-- (void)setPresentedType:(BCTTransitionType)type;
-- (void)setDismissedType:(BCTTransitionType)type;
+//for "reverse" functional
+@property (nonatomic, assign) BCTTransitionSideType presentSideType;
+@property (nonatomic, assign) BCTTransitionSideType dismissSideType;
 
-- (void)setStartScale:(CGSize)scale;
-- (void)setEndScale:(CGSize)scale;
+//scale: units
+@property (nonatomic, assign) CGSize startScale;
+@property (nonatomic, assign) CGSize endScale;
 
 
 @end
