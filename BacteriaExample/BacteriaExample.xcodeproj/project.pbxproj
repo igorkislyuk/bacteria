@@ -152,9 +152,9 @@
 			children = (
 				ED3EF78D1DB825F8006258FD /* Main.storyboard */,
 				3927B8557874FCF556C87D21 /* InitialViewController.h */,
+				3927B173EEFB04A139AA7644 /* InitialViewController.m */,
 				3927BA29D317C2432E002A9F /* PresentedViewController.h */,
 				3927B043046504D890E41340 /* PresentedViewController.m */,
-				3927B173EEFB04A139AA7644 /* InitialViewController.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";

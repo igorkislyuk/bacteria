@@ -67,7 +67,7 @@
     self.dismissView = fromVC.view;
     self.presentView = toVC.view;
 
-    //create local variables
+    //create local point locations - both are CGPointZero
     CGPoint _startLocationPoint, _endLocationPoint;
 
     //necessary logic for adding / moving & location
@@ -88,7 +88,7 @@
     CGPoint point = CGPointMake(dx, dy);
 
     //create performer
-    self.performer = [self locationPerformerOfType:[self transitionType] withPoint:point];
+    self.performer = [self locationPerformerOfType:[self transitionTypeWithPresenting] withPoint:point];
 
     //request initial state of new view
     self.presentView = [self.performer presentedViewBefore];
@@ -113,7 +113,7 @@
 
 #pragma mark - Helpers
 
-- (BCTTransitionType)transitionType {
+- (BCTTransitionType)transitionTypeWithPresenting {
     return self.presenting ? self.presentType : self.dismissType;
 }
 
