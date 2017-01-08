@@ -12,7 +12,7 @@
 
 @interface BCTTransitioningController ()
 
-@property (nonatomic) BCTParallelLocationPerformer *parallelLocationPerformer;
+@property (nonatomic) id<BCTViewPerformer> locationPerformer;
 
 @end
 
@@ -21,11 +21,17 @@
     BCTTransitionType _pType, _dType;
     CGPoint _startPoint, _endPoint;
     UIView *_dismissView, *_presentView;
+
+    CGSize _startScale, _endScale;
 }
 
 - (instancetype)init {
     self = [super init];
     if (self) {
+
+        _startScale = CGSizeMake(1, 1);
+        _endScale = CGSizeMake(1, 1);
+
     }
 
     return self;
@@ -107,30 +113,33 @@
 //        [containerView insertSubview:_presentView belowSubview:_dismissView];
 //    }
 
-    CGFloat dx = _startPoint.x - _endPoint.x;
-    CGFloat dy = _startPoint.y - _endPoint.y;
-
-    CGPoint point = CGPointMake(dx, dy);
+    CGPoint point = CGPointMake(_startPoint.x - _endPoint.x, _startPoint.y - _endPoint.y);
 
 //    CGAffineTransform originPTransform = _presentView.transform;
 //    CGAffineTransform originDTransform = _dismissView.transform;
 
-    self.parallelLocationPerformer = [[BCTParallelLocationPerformer alloc] initWithPresentedView:_presentView dismissedView:_dismissView offsetPoint:point];
+    //create performer
+    self.locationPerformer = [[BCTParallelLocationPerformer alloc] initWithPresentedView:_presentView dismissedView:_dismissView];
+
+    self.locationPerformer.offsetPoint = point;
+    self.locationPerformer.startScale = _startScale;
+    self.locationPerformer.endScale = _endScale;
+
 //    _presentView.transform = CGAffineTransformTranslate(originPTransform, dx, dy);
-    _presentView = [self.parallelLocationPerformer presentedViewBefore];
+    _presentView = [self.locationPerformer presentedViewBefore];
 
     [UIView animateWithDuration:self.duration animations:^{
 
 //        _presentView.transform = originPTransform;
-        _presentView = [self.parallelLocationPerformer presentedViewAfter];
+        _presentView = [self.locationPerformer presentedViewAfter];
 
 //        _dismissView.transform = CGAffineTransformTranslate(originDTransform, -dx, -dy);
-        [self.parallelLocationPerformer dismissedViewAfter];
+        [self.locationPerformer dismissedViewAfter];
 
     }                completion:^(BOOL finished) {
 
 //        _dismissView.transform = originDTransform;
-        [self.parallelLocationPerformer dismissedViewBefore];
+        [self.locationPerformer dismissedViewBefore];
 
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
 
@@ -144,6 +153,15 @@
 - (void)setDismissedType:(BCTTransitionType)type {
     _dType = type;
 }
+
+- (void)setStartScale:(CGSize)scale {
+    _startScale = scale;
+}
+
+- (void)setEndScale:(CGSize)scale {
+    _endScale = scale;
+}
+
 
 - (BCTTransitionType)transitionType {
     return _presenting ? _pType : _dType;
@@ -261,7 +279,7 @@
 
 #pragma mark - Performers
 
-- (id <BCTLocationPerformer>)locationPerformerOfType:(BCTTransitionType)transitionType {
+- (id <BCTViewPerformer>)locationPerformerOfType:(BCTTransitionType)transitionType {
 
     return [[BCTParallelLocationPerformer alloc] init];
 

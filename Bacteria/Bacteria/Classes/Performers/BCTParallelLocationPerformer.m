@@ -9,14 +9,14 @@
     CGAffineTransform _pTransform, _dTransform;
 }
 
-
-- (instancetype)initWithPresentedView:(UIView *)presentedView dismissedView:(UIView *)dismissedView offsetPoint:(CGPoint)offsetPoint {
+- (instancetype)initWithPresentedView:(UIView *)presentedView dismissedView:(UIView *)dismissedView {
 
     self = [super init];
     if (self) {
         _presentedView = presentedView;
         _dismissedView = dismissedView;
-        _offsetPoint = offsetPoint;
+
+        _offsetPoint = CGPointZero;
 
         //generate transforms
         _pTransform = presentedView.transform;
@@ -29,8 +29,10 @@
 - (UIView *)presentedViewBefore {
 
     UIView *result = self.presentedView;
+    
     CGAffineTransform transform = CGAffineTransformTranslate(_pTransform, self.offsetPoint.x, self.offsetPoint.y);
-    result.transform = CGAffineTransformScale(transform, 0.5, 0.5);
+    result.transform = CGAffineTransformScale(transform, self.startScale.width, self.startScale.height);
+    
     return result;
 }
 
@@ -51,7 +53,11 @@
 - (UIView *)dismissedViewAfter {
 
     UIView *result = self.dismissedView;
-    result.transform = CGAffineTransformTranslate(_dTransform, -self.offsetPoint.x, -self.offsetPoint.y);
+
+    CGAffineTransform transform = CGAffineTransformTranslate(_dTransform, -self.offsetPoint.x, -self.offsetPoint.y);
+    transform = CGAffineTransformScale(transform, self.endScale.width, self.endScale.height);
+    result.transform = transform;
+    
     return result;
 }
 

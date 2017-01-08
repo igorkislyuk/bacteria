@@ -48,8 +48,8 @@
 - (BacteriaTransitionBlock)withPresentedTransitionType;
 - (BacteriaTransitionBlock)withDismissedTransitionType;
 
-
-- (BacteriaScaleBlock)presentationScale;
+- (BacteriaScaleBlock)startScale; //measure in units
+- (BacteriaScaleBlock)endScale;
 
 
 @end

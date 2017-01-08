@@ -3,25 +3,31 @@
 // Copyright (c) 2017 Igor Kislyuk. All rights reserved.
 //
 
-#import "BCTLocationPerformer.h"
+#import "BCTViewPerformer.h"
 
-@interface BCTParallelLocationPerformer : NSObject <BCTLocationPerformer>
-
-// two views
-// one point
+@interface BCTParallelLocationPerformer : NSObject <BCTViewPerformer>
 
 @property (nonatomic, strong, readonly) UIView *presentedView;
 @property (nonatomic, strong, readonly) UIView *dismissedView;
 
-@property (nonatomic, readonly) CGPoint offsetPoint;
+@property (nonatomic, assign) CGPoint offsetPoint;
 
-- (instancetype)initWithPresentedView:(UIView *)presentedView dismissedView:(UIView *)dismissedView offsetPoint:(CGPoint)offsetPoint;
+/**
+ * Means initial scale for presented view
+ */
+@property (nonatomic, assign) CGSize startScale; //default to 1
+
+/**
+ * It's final scale for dismissed view
+ */
+@property (nonatomic, assign) CGSize endScale; //default to 1
+
+- (instancetype)initWithPresentedView:(UIView *)presentedView dismissedView:(UIView *)dismissedView;
 
 - (UIView *)presentedViewBefore;
 - (UIView *)dismissedViewBefore;
 - (UIView *)presentedViewAfter;
 - (UIView *)dismissedViewAfter;
-
 
 
 @end

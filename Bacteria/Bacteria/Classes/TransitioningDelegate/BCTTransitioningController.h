@@ -23,4 +23,8 @@
 - (void)setPresentedType:(BCTTransitionType)type;
 - (void)setDismissedType:(BCTTransitionType)type;
 
+- (void)setStartScale:(CGSize)scale;
+- (void)setEndScale:(CGSize)scale;
+
+
 @end
