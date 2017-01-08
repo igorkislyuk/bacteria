@@ -3,10 +3,9 @@
 // Copyright (c) 2017 Igor Kislyuk. All rights reserved.
 //
 
-#import "BCTParallelLocationPerformer.h"
+#import "BCTBasicViewPerformer.h"
 
-@implementation BCTParallelLocationPerformer {
-    CGAffineTransform _pTransform, _dTransform;
+@implementation BCTBasicViewPerformer {
 }
 
 - (instancetype)initWithPresentedView:(UIView *)presentedView dismissedView:(UIView *)dismissedView {
@@ -19,8 +18,8 @@
         _offsetPoint = CGPointZero;
 
         //generate transforms
-        _pTransform = presentedView.transform;
-        _dTransform = dismissedView.transform;
+        _presentedTransform = presentedView.transform;
+        _dismissedTransform = dismissedView.transform;
     }
 
     return self;
@@ -30,7 +29,7 @@
 
     UIView *result = self.presentedView;
     
-    CGAffineTransform transform = CGAffineTransformTranslate(_pTransform, self.offsetPoint.x, self.offsetPoint.y);
+    CGAffineTransform transform = CGAffineTransformTranslate(self.presentedTransform, self.offsetPoint.x, self.offsetPoint.y);
     result.transform = CGAffineTransformScale(transform, self.startScale.width, self.startScale.height);
     
     return result;
@@ -39,14 +38,14 @@
 - (UIView *)dismissedViewBefore {
 
     UIView *result = self.dismissedView;
-    result.transform = _dTransform;
+    result.transform = self.dismissedTransform;
     return result;
 }
 
 - (UIView *)presentedViewAfter {
 
     UIView *result = self.presentedView;
-    result.transform = _pTransform;
+    result.transform = self.presentedTransform;
     return result;
 }
 
@@ -54,9 +53,8 @@
 
     UIView *result = self.dismissedView;
 
-    CGAffineTransform transform = CGAffineTransformTranslate(_dTransform, -self.offsetPoint.x, -self.offsetPoint.y);
-    transform = CGAffineTransformScale(transform, self.endScale.width, self.endScale.height);
-    result.transform = transform;
+    CGAffineTransform transform = CGAffineTransformTranslate(self.dismissedTransform, -self.offsetPoint.x, -self.offsetPoint.y);
+    result.transform = CGAffineTransformScale(transform, self.endScale.width, self.endScale.height);
     
     return result;
 }

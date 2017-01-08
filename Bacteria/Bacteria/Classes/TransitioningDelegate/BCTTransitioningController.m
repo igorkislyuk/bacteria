@@ -7,17 +7,19 @@
 //
 
 #import "BCTTransitioningController.h"
-#import "BCTParallelLocationPerformer.h"
+#import "BCTBasicViewPerformer.h"
+#import "BCTCoverViewDismissal.h"
+#import "BCTCoverViewPresenter.h"
 
 
 @interface BCTTransitioningController ()
 
 @property(nonatomic) id <BCTViewPerformer> performer;
 
-@property (nonatomic, assign) BOOL presenting;
+@property(nonatomic, assign) BOOL presenting;
 
-@property (nonatomic, strong) UIView *dismissView;
-@property (nonatomic, strong) UIView *presentView;
+@property(nonatomic, strong) UIView *dismissView;
+@property(nonatomic, strong) UIView *presentView;
 
 @end
 
@@ -68,15 +70,22 @@
     self.presentView = toVC.view;
 
     //create local point locations - both are CGPointZero
-    CGPoint _startLocationPoint, _endLocationPoint;
+    CGPoint _startLocationPoint = CGPointZero, _endLocationPoint = CGPointZero;
 
     //necessary logic for adding / moving & location
     if (self.presenting) {
+
         [containerView addSubview:self.presentView];
 
         _startLocationPoint = self.presentStartPoint;
 
+        self.performer = [self viewPresenterWithType:self.presentType];
+
     } else {
+
+        //create performer
+        self.performer = [self viewDismissalWithType:self.dismissType];
+
         [containerView insertSubview:self.presentView belowSubview:self.dismissView];
 
         _endLocationPoint = self.dismissEndPoint;
@@ -87,8 +96,10 @@
     CGFloat dy = _startLocationPoint.y - _endLocationPoint.y;
     CGPoint point = CGPointMake(dx, dy);
 
-    //create performer
-    self.performer = [self locationPerformerOfType:[self transitionTypeWithPresenting] withPoint:point];
+    //common part
+    self.performer.offsetPoint = point;
+    self.performer.startScale = self.startScale;
+    self.performer.endScale = self.endScale;
 
     //request initial state of new view
     self.presentView = [self.performer presentedViewBefore];
@@ -113,22 +124,34 @@
 
 #pragma mark - Helpers
 
-- (BCTTransitionType)transitionTypeWithPresenting {
-    return self.presenting ? self.presentType : self.dismissType;
+- (id <BCTViewPerformer>)viewPresenterWithType:(BCTTransitionType)transitionType {
+
+    id <BCTViewPerformer> result;
+    switch (transitionType) {
+
+        case BCTTransitionTypeParallel:
+            result = [[BCTBasicViewPerformer alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
+            break;
+        case BCTTransitionTypeCover:
+            result = [[BCTCoverViewPresenter alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
+            break;
+    }
+
+    return result;
 }
 
-- (id <BCTViewPerformer>)locationPerformerOfType:(BCTTransitionType)transitionType withPoint:(CGPoint)point {
+- (id <BCTViewPerformer>)viewDismissalWithType:(BCTTransitionType)transitionType {
 
-    // todo: condition here
+    id <BCTViewPerformer> result;
+    switch (transitionType) {
 
-    id <BCTViewPerformer> result = [[BCTParallelLocationPerformer alloc]
-            initWithPresentedView:self.presentView
-                    dismissedView:self.dismissView];
-
-    //common part
-    result.offsetPoint = point;
-    result.startScale = self.startScale;
-    result.endScale = self.endScale;
+        case BCTTransitionTypeParallel:
+            result = [[BCTBasicViewPerformer alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
+            break;
+        case BCTTransitionTypeCover:
+            result = [[BCTCoverViewDismissal alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
+            break;
+    }
 
     return result;
 }

@@ -5,10 +5,12 @@
 
 #import "BCTViewPerformer.h"
 
-@interface BCTParallelLocationPerformer : NSObject <BCTViewPerformer>
+@interface BCTBasicViewPerformer : NSObject <BCTViewPerformer>
 
 @property (nonatomic, strong, readonly) UIView *presentedView;
 @property (nonatomic, strong, readonly) UIView *dismissedView;
+
+@property (nonatomic, assign, readonly) CGAffineTransform presentedTransform, dismissedTransform;
 
 @property (nonatomic, assign) CGPoint offsetPoint;
 
