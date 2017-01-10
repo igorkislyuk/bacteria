@@ -3,9 +3,9 @@
 // Copyright (c) 2017 Igor Kislyuk. All rights reserved.
 //
 
-#import "BCTViewPerformer.h"
+#import <UIKit/UIKit.h>
 
-@interface BCTBasicViewPerformer : NSObject <BCTViewPerformer>
+@interface BCTBasicViewPerformer : NSObject
 
 @property (nonatomic, strong, readonly) UIView *presentedView;
 @property (nonatomic, strong, readonly) UIView *dismissedView;
@@ -25,11 +25,5 @@
 @property (nonatomic, assign) CGSize endScale; //default to 1
 
 - (instancetype)initWithPresentedView:(UIView *)presentedView dismissedView:(UIView *)dismissedView;
-
-- (UIView *)presentedViewBefore;
-- (UIView *)dismissedViewBefore;
-- (UIView *)presentedViewAfter;
-- (UIView *)dismissedViewAfter;
-
 
 @end

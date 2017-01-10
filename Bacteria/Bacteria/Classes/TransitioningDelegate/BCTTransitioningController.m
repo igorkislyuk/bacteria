@@ -7,9 +7,15 @@
 //
 
 #import "BCTTransitioningController.h"
+
+#import "BCTViewPerformer.h"
 #import "BCTBasicViewPerformer.h"
+
 #import "BCTCoverViewDismissal.h"
 #import "BCTCoverViewPresenter.h"
+
+#import "BCTParallelViewPresenter.h"
+#import "BCTParallelViewDismissal.h"
 
 
 @interface BCTTransitioningController ()
@@ -130,7 +136,7 @@
     switch (transitionType) {
 
         case BCTTransitionTypeParallel:
-            result = [[BCTBasicViewPerformer alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
+            result = [[BCTParallelViewPresenter alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
             break;
         case BCTTransitionTypeCover:
             result = [[BCTCoverViewPresenter alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
@@ -146,7 +152,7 @@
     switch (transitionType) {
 
         case BCTTransitionTypeParallel:
-            result = [[BCTBasicViewPerformer alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
+            result = [[BCTParallelViewDismissal alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
             break;
         case BCTTransitionTypeCover:
             result = [[BCTCoverViewDismissal alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];

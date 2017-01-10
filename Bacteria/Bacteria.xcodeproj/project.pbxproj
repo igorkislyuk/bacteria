@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		3927B778A7D67DD38FFA16DA /* BCTCoverViewDismissal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B62D007ACDD530207B8E /* BCTCoverViewDismissal.h */; };
 		3927B86B03242FBE7DE07841 /* BCTCoverViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BA16D43769A5275FA919 /* BCTCoverViewPresenter.m */; };
+		3927B98D095046FF6F9418D2 /* BCTParallelViewDismissal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BD1CFE2D91D2B70C4BA4 /* BCTParallelViewDismissal.m */; };
+		3927B9912B6F2B9651AD6A36 /* BCTParallelViewPresenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B2B7A7394A62BDAB45AF /* BCTParallelViewPresenter.h */; };
 		3927BA747E299C493D07E308 /* BCTBasicViewPerformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BE9F036192F0CC9D6301 /* BCTBasicViewPerformer.m */; };
 		3927BCB064745F829F9E7C04 /* BCTViewPerformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B6C86CA8E3F35DEE365C /* BCTViewPerformer.h */; };
+		3927BDAE263D9CA2F226C395 /* BCTParallelViewDismissal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927BC8FB4C8DFF344C2084D /* BCTParallelViewDismissal.h */; };
 		3927BE39B32EFA3B92890D93 /* BCTCoverViewDismissal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BBF5D85613E24663A0E4 /* BCTCoverViewDismissal.m */; };
+		3927BEB2FDCA74185DA79C6F /* BCTParallelViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BA25BD6D0370A61A2EEC /* BCTParallelViewPresenter.m */; };
 		3927BEC18299DF24CB66BB26 /* BCTBasicViewPerformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B1147BF69CFCE4C90118 /* BCTBasicViewPerformer.h */; };
 		3927BEF22B720B49C1A5AE39 /* BCTCoverViewPresenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927BE01ECD8BC8612782F0B /* BCTCoverViewPresenter.h */; };
 		ED38F5DC1E0C7E21009F1AF8 /* UIViewController+Bacteria.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5CD1E0C7E21009F1AF8 /* UIViewController+Bacteria.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -26,10 +30,14 @@
 
 /* Begin PBXFileReference section */
 		3927B1147BF69CFCE4C90118 /* BCTBasicViewPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTBasicViewPerformer.h; sourceTree = "<group>"; };
+		3927B2B7A7394A62BDAB45AF /* BCTParallelViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTParallelViewPresenter.h; sourceTree = "<group>"; };
 		3927B62D007ACDD530207B8E /* BCTCoverViewDismissal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTCoverViewDismissal.h; sourceTree = "<group>"; };
 		3927B6C86CA8E3F35DEE365C /* BCTViewPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTViewPerformer.h; sourceTree = "<group>"; };
 		3927BA16D43769A5275FA919 /* BCTCoverViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTCoverViewPresenter.m; sourceTree = "<group>"; };
+		3927BA25BD6D0370A61A2EEC /* BCTParallelViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTParallelViewPresenter.m; sourceTree = "<group>"; };
 		3927BBF5D85613E24663A0E4 /* BCTCoverViewDismissal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTCoverViewDismissal.m; sourceTree = "<group>"; };
+		3927BC8FB4C8DFF344C2084D /* BCTParallelViewDismissal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTParallelViewDismissal.h; sourceTree = "<group>"; };
+		3927BD1CFE2D91D2B70C4BA4 /* BCTParallelViewDismissal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTParallelViewDismissal.m; sourceTree = "<group>"; };
 		3927BE01ECD8BC8612782F0B /* BCTCoverViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTCoverViewPresenter.h; sourceTree = "<group>"; };
 		3927BE9F036192F0CC9D6301 /* BCTBasicViewPerformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTBasicViewPerformer.m; sourceTree = "<group>"; };
 		ED38F5CD1E0C7E21009F1AF8 /* UIViewController+Bacteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Bacteria.h"; sourceTree = "<group>"; };
@@ -78,8 +86,20 @@
 			children = (
 				3927BFD03B2196500B0C9DF9 /* Basic */,
 				3927B20BDF6D3A26DA13EC20 /* Cover */,
+				3927BF39822BAFC7298B5BE0 /* Parallel */,
 			);
 			path = Performers;
+			sourceTree = "<group>";
+		};
+		3927BF39822BAFC7298B5BE0 /* Parallel */ = {
+			isa = PBXGroup;
+			children = (
+				3927BA25BD6D0370A61A2EEC /* BCTParallelViewPresenter.m */,
+				3927B2B7A7394A62BDAB45AF /* BCTParallelViewPresenter.h */,
+				3927BD1CFE2D91D2B70C4BA4 /* BCTParallelViewDismissal.m */,
+				3927BC8FB4C8DFF344C2084D /* BCTParallelViewDismissal.h */,
+			);
+			path = Parallel;
 			sourceTree = "<group>";
 		};
 		3927BFD03B2196500B0C9DF9 /* Basic */ = {
@@ -180,6 +200,8 @@
 				3927BEC18299DF24CB66BB26 /* BCTBasicViewPerformer.h in Headers */,
 				3927BEF22B720B49C1A5AE39 /* BCTCoverViewPresenter.h in Headers */,
 				3927B778A7D67DD38FFA16DA /* BCTCoverViewDismissal.h in Headers */,
+				3927B9912B6F2B9651AD6A36 /* BCTParallelViewPresenter.h in Headers */,
+				3927BDAE263D9CA2F226C395 /* BCTParallelViewDismissal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +281,8 @@
 				3927BA747E299C493D07E308 /* BCTBasicViewPerformer.m in Sources */,
 				3927B86B03242FBE7DE07841 /* BCTCoverViewPresenter.m in Sources */,
 				3927BE39B32EFA3B92890D93 /* BCTCoverViewDismissal.m in Sources */,
+				3927BEB2FDCA74185DA79C6F /* BCTParallelViewPresenter.m in Sources */,
+				3927B98D095046FF6F9418D2 /* BCTParallelViewDismissal.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

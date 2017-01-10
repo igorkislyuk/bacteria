@@ -4,6 +4,7 @@
 //
 
 #import "BCTBasicViewPerformer.h"
+#import "BCTViewPerformer.h"
 
-@interface BCTCoverViewDismissal : BCTBasicViewPerformer
+@interface BCTCoverViewDismissal : BCTBasicViewPerformer <BCTViewPerformer>
 @end
