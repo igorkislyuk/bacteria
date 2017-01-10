@@ -17,7 +17,7 @@ typedef UIViewController* (^BCTControllerTransitionTime)(NSTimeInterval);
 #define BCTControllerTransitionTime(f) ^UIViewController* (NSTimeInterval f)
 
 typedef UIViewController* (^BacteriaScaleBlock)(CGFloat, CGFloat);
-#define BacteriaScaleBlock(x, y) ^UIViewController* (CGFloat x, CGFloat y)
+#define BacteriaScaleBlock(value1, value2) ^UIViewController* (CGFloat value1, CGFloat value2)
 
 typedef UIViewController* (^BCTControllerTransitionLocation)(CGPoint);
 #define BCTControllerTransitionLocation(f) ^UIViewController* (CGPoint f)

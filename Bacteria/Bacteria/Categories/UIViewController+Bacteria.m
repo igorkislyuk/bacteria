@@ -84,20 +84,22 @@
     return transitionType;
 }
 
-- (BacteriaScaleBlock)startScale {
-    return ^UIViewController *(CGFloat x, CGFloat y) {
+- (BacteriaScaleBlock)presentStartScale {
+    BacteriaScaleBlock scaleBlock = BacteriaScaleBlock(x, y) {
         [self.transitioningController setStartScale:CGSizeMake(x, y)];
         return self;
     };
+    return scaleBlock;
 }
 
-- (BacteriaScaleBlock)endScale {
-    return ^UIViewController *(CGFloat x, CGFloat y) {
+- (BacteriaScaleBlock)dismissEndScale {
+    BacteriaScaleBlock scaleBlock = BacteriaScaleBlock(x, y) {
 
         [self.transitioningController setEndScale:CGSizeMake(x, y)];
 
         return self;
     };
+    return scaleBlock;
 }
 
 

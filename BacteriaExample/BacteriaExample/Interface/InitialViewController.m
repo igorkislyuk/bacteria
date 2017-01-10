@@ -22,6 +22,12 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISlider *timeSlider;
 
+@property (nonatomic, weak) IBOutlet UISlider *startXSlider;
+@property (nonatomic, weak) IBOutlet UISlider *startYSlider;
+
+@property (nonatomic, weak) IBOutlet UISlider *endXSlider;
+@property (nonatomic, weak) IBOutlet UISlider *endYSlider;
+
 @end
 
 @implementation InitialViewController
@@ -61,8 +67,8 @@
 //    dismissTo(BCTTransitionSideTypeTop).
     withPresentedTransitionType([presentedCover numberOfSelectedValue]).
     withDismissedTransitionType([dismissedCover numberOfSelectedValue]).
-    startScale(0.1, 0.1).
-    endScale(0.9, 0.9).
+    presentStartScale(self.startXSlider.value, self.startYSlider.value).
+    dismissEndScale(self.endXSlider.value, self.endYSlider.value).
     transite(self.timeSlider.value);
     
     

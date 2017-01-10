@@ -48,8 +48,16 @@
 - (BacteriaTransitionBlock)withPresentedTransitionType;
 - (BacteriaTransitionBlock)withDismissedTransitionType;
 
-- (BacteriaScaleBlock)startScale; //measure in units
-- (BacteriaScaleBlock)endScale;
+/**
+ * Scale factor, that will be applied to presented view. End scale for view for view is {1, 1}.
+ * Measure in units
+ */
+- (BacteriaScaleBlock)presentStartScale;
+
+/**
+ * Scale factor for end view. Initial scale of that view {1, 1}
+ */
+- (BacteriaScaleBlock)dismissEndScale;
 
 
 @end
