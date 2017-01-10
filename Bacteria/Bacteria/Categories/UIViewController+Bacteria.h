@@ -68,3 +68,4 @@
 // LONG
 
 // todo: Segues, spring, interactivity. Animations for collections and navigations
+// todo: add support for colors when perform screen transitions

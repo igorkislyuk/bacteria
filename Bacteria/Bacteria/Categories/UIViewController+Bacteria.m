@@ -107,38 +107,8 @@
         //save
         self.transitioningController.presentSideType = sideType;
 
-        CGPoint fromPoint = CGPointZero;
-
-        CGFloat width = CGRectGetWidth(self.view.bounds);
-        CGFloat height = CGRectGetHeight(self.view.bounds);
-
-        switch (sideType) {
-            case BCTTransitionSideTypeLeft:
-                fromPoint = CGPointMake(-width, 0);
-                break;
-            case BCTTransitionSideTypeRight:
-                fromPoint = CGPointMake(width, 0);
-                break;
-            case BCTTransitionSideTypeTop:
-                fromPoint = CGPointMake(0, -height);
-                break;
-            case BCTTransitionSideTypeBottom:
-                fromPoint = CGPointMake(0, height);
-                break;
-            case BCTTransitionSideTypeTopLeftCorner:
-                fromPoint = CGPointMake(-width, -height);
-                break;
-            case BCTTransitionSideTypeTopRightCorner:
-                fromPoint = CGPointMake(width, -height);
-                break;
-            case BCTTransitionSideTypeBottomLeftCorner:
-                fromPoint = CGPointMake(-width, height);
-                break;
-            case BCTTransitionSideTypeBottomRightCorner:
-                fromPoint = CGPointMake(width, height);
-                break;
-        }
-        self.transitioningController.presentStartPoint = fromPoint;
+        //get
+        self.transitioningController.presentStartPoint = [self pointWithSideType:sideType];
 
         return self;
     };
@@ -151,40 +121,8 @@
         //save
         self.transitioningController.dismissSideType = sideType;
 
-        CGPoint toPoint = CGPointZero;
-
-        CGFloat width = CGRectGetWidth(self.view.bounds);
-        CGFloat height = CGRectGetHeight(self.view.bounds);
-
-        switch (sideType) {
-
-            case BCTTransitionSideTypeLeft:
-                toPoint = CGPointMake(-width, 0);
-                break;
-            case BCTTransitionSideTypeRight:
-                toPoint = CGPointMake(width, 0);
-                break;
-            case BCTTransitionSideTypeTop:
-                toPoint = CGPointMake(0, -height);
-                break;
-            case BCTTransitionSideTypeBottom:
-                toPoint = CGPointMake(0, height);
-                break;
-            case BCTTransitionSideTypeTopLeftCorner:
-                toPoint = CGPointMake(-width, -height);
-                break;
-            case BCTTransitionSideTypeTopRightCorner:
-                toPoint = CGPointMake(width, -height);
-                break;
-            case BCTTransitionSideTypeBottomLeftCorner:
-                toPoint = CGPointMake(-width, height);
-                break;
-            case BCTTransitionSideTypeBottomRightCorner:
-                toPoint = CGPointMake(width, height);
-                break;
-        }
-
-        self.transitioningController.dismissEndPoint = toPoint;
+        //get
+        self.transitioningController.dismissEndPoint = [self pointWithSideType:sideType];
 
 
         return self;
@@ -221,14 +159,44 @@
     };
 }
 
-#pragma mark - Test methods
+#pragma mark - Helpers
 
-- (void)presentTestAlert {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Test message" message:@"This message from framework" preferredStyle:UIAlertControllerStyleAlert];
+- (CGPoint)pointWithSideType:(BCTTransitionSideType)sideType {
 
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+    CGPoint point = CGPointZero;
 
-    [self presentViewController:alertController animated:YES completion:nil];
+    CGFloat width = CGRectGetWidth(self.view.bounds);
+    CGFloat height = CGRectGetHeight(self.view.bounds);
+
+    switch (sideType) {
+
+        case BCTTransitionSideTypeLeft:
+            point = CGPointMake(-width, 0);
+            break;
+        case BCTTransitionSideTypeRight:
+            point = CGPointMake(width, 0);
+            break;
+        case BCTTransitionSideTypeTop:
+            point = CGPointMake(0, -height);
+            break;
+        case BCTTransitionSideTypeBottom:
+            point = CGPointMake(0, height);
+            break;
+        case BCTTransitionSideTypeTopLeftCorner:
+            point = CGPointMake(-width, -height);
+            break;
+        case BCTTransitionSideTypeTopRightCorner:
+            point = CGPointMake(width, -height);
+            break;
+        case BCTTransitionSideTypeBottomLeftCorner:
+            point = CGPointMake(-width, height);
+            break;
+        case BCTTransitionSideTypeBottomRightCorner:
+            point = CGPointMake(width, height);
+            break;
+    }
+
+    return point;
 }
 
 @end
