@@ -59,6 +59,8 @@
  */
 - (BacteriaScaleBlock)dismissEndScale;
 
+- (BCTControllerTransitionEmpty)safari;
+
 
 @end
 
@@ -71,6 +73,7 @@
 // todo: https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
 // todo: review all code
+// todo: replace all bct -> bacteria
 // todo: readme
 
 // LONG

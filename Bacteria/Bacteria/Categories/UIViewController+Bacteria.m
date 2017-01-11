@@ -102,6 +102,15 @@
     return scaleBlock;
 }
 
+- (BCTControllerTransitionEmpty)safari {
+    return ^UIViewController * {
+
+//        self.transitioningController;
+
+        return self;
+    };
+}
+
 
 - (BCTControllerTransitionSideType)presentFrom {
     BCTControllerTransitionSideType plainFrom = BCTControllerTransitionSideType(sideType) {
