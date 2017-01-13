@@ -7,11 +7,8 @@
 #import <UIKit/UIKit.h>
 
 @protocol BCTViewPerformer <NSObject>
+
 @required
-
-@property (nonatomic, assign) CGPoint offsetPoint;
-@property (nonatomic, assign) CGSize startScale, endScale; // in units
-
 - (UIView *)presentedViewBefore;
 - (UIView *)dismissedViewBefore;
 - (UIView *)presentedViewAfter;

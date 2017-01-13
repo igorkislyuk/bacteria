@@ -20,7 +20,7 @@
 
 @interface BCTTransitioningController ()
 
-@property(nonatomic) id <BCTViewPerformer> performer;
+@property(nonatomic) BCTBasicViewPerformer<BCTViewPerformer> *performer;
 
 @property(nonatomic, assign) BOOL presenting;
 
