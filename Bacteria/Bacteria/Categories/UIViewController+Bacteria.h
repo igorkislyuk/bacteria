@@ -66,7 +66,14 @@
 
 // TODO
 
-// todo: safari like animation.
+// todo: safari like animation
+/*
+ we need separate some concepts of animation
+ display from all sides?
+ ideal value - minus 17 degrees of X asix
+ will it be customizable
+ how process will be ongoing
+*/
 // todo: flip animation with no scale. Only with type from where to flip
 // todo: pop from custom shape
 
