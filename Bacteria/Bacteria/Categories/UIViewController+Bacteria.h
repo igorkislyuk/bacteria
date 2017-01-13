@@ -76,6 +76,8 @@
 // todo: replace all bct -> bacteria
 // todo: readme
 
+// todo: idea to remain some views on container
+
 // LONG
 
 // todo: Segues, spring, interactivity. Animations for collections and navigations
