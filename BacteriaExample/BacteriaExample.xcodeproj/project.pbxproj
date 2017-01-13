@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3927B0A883D14B69315E8113 /* AnimationSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B055CCC8A8AA535EB96B /* AnimationSectionModel.m */; };
 		3927B2A63A95A5E469918025 /* AnimationBlockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BF0E5C83AB892F4658AD /* AnimationBlockModel.m */; };
+		3927B58BAE0D4BF7D110A45F /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B2DB00B8785C4FF4064D /* TestViewController.m */; };
 		3927B94F2B02B55BD1C4A77E /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B15E1005D81ACF20C4AB /* DataSource.m */; };
 		3927BA9EB48E39E66C155F39 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B173EEFB04A139AA7644 /* InitialViewController.m */; };
 		3927BCE9C7B0684949D19083 /* AnimationRowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B6708F8F940A24A8B206 /* AnimationRowModel.m */; };
@@ -42,6 +43,7 @@
 		3927B055CCC8A8AA535EB96B /* AnimationSectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationSectionModel.m; sourceTree = "<group>"; };
 		3927B15E1005D81ACF20C4AB /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		3927B173EEFB04A139AA7644 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
+		3927B2DB00B8785C4FF4064D /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		3927B6708F8F940A24A8B206 /* AnimationRowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationRowModel.m; sourceTree = "<group>"; };
 		3927B8557874FCF556C87D21 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
 		3927B8DC11886979553ECBC1 /* AnimationRowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationRowModel.h; sourceTree = "<group>"; };
@@ -50,6 +52,7 @@
 		3927BA29D317C2432E002A9F /* PresentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresentedViewController.h; sourceTree = "<group>"; };
 		3927BCFDF3B7C20443A96078 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
 		3927BF0E5C83AB892F4658AD /* AnimationBlockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationBlockModel.m; sourceTree = "<group>"; };
+		3927BF16221428E739CFE849 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		ED38F5EA1E0C7F28009F1AF8 /* Bacteria.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bacteria.framework; path = "../Bacteria/build/Debug-iphoneos/Bacteria.framework"; sourceTree = "<group>"; };
 		ED3EF7811DB825F8006258FD /* BacteriaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BacteriaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3EF7851DB825F8006258FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				3927B173EEFB04A139AA7644 /* InitialViewController.m */,
 				3927BA29D317C2432E002A9F /* PresentedViewController.h */,
 				3927B043046504D890E41340 /* PresentedViewController.m */,
+				3927BF16221428E739CFE849 /* TestViewController.h */,
+				3927B2DB00B8785C4FF4064D /* TestViewController.m */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -239,6 +244,7 @@
 				3927BCE9C7B0684949D19083 /* AnimationRowModel.m in Sources */,
 				3927B2A63A95A5E469918025 /* AnimationBlockModel.m in Sources */,
 				3927B94F2B02B55BD1C4A77E /* DataSource.m in Sources */,
+				3927B58BAE0D4BF7D110A45F /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
