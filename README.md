@@ -1,10 +1,14 @@
 # BACTERIA
 
-## It's framework for easy perform custom modal viewcontroller transitions.
-
-## Current version - 0.1 (Alpha)
+**It's framework for easy perform custom modal viewcontroller transitions. Current version - 0.1 (Alpha)**
 
 ## Short feature list
+
+* support all side modal controller presentation
+* support scaling for present and dismiss controller
+* support different transition types (parallel, cover)
+* support reverse dismissal / reverse presentation
+* ...to be continued
 
 ## Functionality
 
