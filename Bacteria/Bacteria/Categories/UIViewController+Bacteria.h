@@ -66,24 +66,21 @@
 
 // TODO
 
-// todo: safari like animation
+// todo: todo section in readme
+// todo: safari like animation. Only from top. Separate presentation from dismissal - no customization. only present - dismiss.
 /*
- we need separate some concepts of animation
- display from all sides?
  ideal value - minus 17 degrees of X asix
- will it be customizable
- how process will be ongoing
 */
-// todo: flip animation with no scale. Only with type from where to flip
-// todo: pop from custom shape
 
-// todo: https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
+// todo: view retaining for presentation process.
+
+// todo: flip animation. another type of transition along with parallel, cover.
+
+// todo: pop from custom shape - https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
 // todo: review all code
 // todo: replace all bct -> bacteria
 // todo: readme
-
-// todo: idea to remain some views on container
 
 // LONG
 
