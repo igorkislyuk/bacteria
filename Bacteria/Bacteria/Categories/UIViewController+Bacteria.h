@@ -12,7 +12,7 @@
 #import "BCT-BlocksHeader.h"
 
 /**
- Current version - 0.0.1
+ Current version - 0.1
  */
 @interface UIViewController (Bacteria)
 
@@ -81,8 +81,3 @@
 // todo: review all code
 // todo: replace all bct -> bacteria
 // todo: readme
-
-// LONG
-
-// todo: Segues, spring, interactivity. Animations for collections and navigations
-// todo: add support for colors when perform screen transitions
