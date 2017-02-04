@@ -147,7 +147,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqx-Pa-edh">
-                                <rect key="frame" x="88" y="234" width="200" height="200"/>
+                                <rect key="frame" x="88" y="40" width="200" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRH-Al-6QR">
                                         <rect key="frame" x="78.5" y="89.5" width="42" height="21"/>
@@ -194,8 +194,8 @@
                             <constraint firstItem="nDw-N2-Cfz" firstAttribute="top" secondItem="K52-Ex-d5h" secondAttribute="bottom" constant="20" id="B7t-1X-VGV"/>
                             <constraint firstItem="I73-2F-Xk4" firstAttribute="trailing" secondItem="B3Q-XQ-X9t" secondAttribute="trailing" id="CU3-T8-wNx"/>
                             <constraint firstItem="bqx-Pa-edh" firstAttribute="centerX" secondItem="lsU-20-KWH" secondAttribute="centerX" id="LHm-1S-n9c"/>
-                            <constraint firstItem="bqx-Pa-edh" firstAttribute="centerY" secondItem="lsU-20-KWH" secondAttribute="centerY" id="UKS-7A-IBh"/>
                             <constraint firstItem="2z5-Kk-neO" firstAttribute="centerX" secondItem="lsU-20-KWH" secondAttribute="centerX" id="dIH-65-25G"/>
+                            <constraint firstItem="bqx-Pa-edh" firstAttribute="top" secondItem="yuY-9U-HjM" secondAttribute="bottom" constant="20" id="gOp-aK-O4x"/>
                             <constraint firstItem="I73-2F-Xk4" firstAttribute="leading" secondItem="B3Q-XQ-X9t" secondAttribute="leading" id="hZw-3n-grH"/>
                             <constraint firstItem="2z5-Kk-neO" firstAttribute="leading" secondItem="lsU-20-KWH" secondAttribute="leading" constant="20" symbolic="YES" id="hpH-ra-uqf"/>
                             <constraint firstAttribute="trailing" secondItem="2z5-Kk-neO" secondAttribute="trailing" constant="20" symbolic="YES" id="iiD-av-8er"/>

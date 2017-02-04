@@ -66,14 +66,14 @@
 
 // TODO
 
-// todo: todo section in readme
+
 // todo: safari like animation. Only from top. Separate presentation from dismissal - no customization. only present - dismiss.
 /*
  ideal value - minus 17 degrees of X asix
 */
 
 // todo: view retaining for presentation process.
-
+// todo: reverse check.
 // todo: flip animation. another type of transition along with parallel, cover.
 
 // todo: pop from custom shape - https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app

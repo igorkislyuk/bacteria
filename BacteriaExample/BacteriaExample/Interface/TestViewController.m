@@ -61,7 +61,7 @@
     NSLog(@"%f with original angle %f", result, [self angleFromSlider:self.angleSlider]);
     
     transform3D = CATransform3DRotate(transform3D, result, x, y, z);
-    
+    transform3D = CATransform3DTranslate(transform3D, -20, 0, 0);
     
     self.testView.layer.transform = transform3D;
     
