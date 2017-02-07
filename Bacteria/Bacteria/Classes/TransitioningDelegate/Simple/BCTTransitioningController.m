@@ -33,14 +33,10 @@
 
 }
 
-- (instancetype)init {
-
+- (instancetype)initWithValueObtainer:(id <BCTTransitioning>)valueObtainer {
     self = [super init];
     if (self) {
-
-        _startScale = CGSizeMake(1, 1);
-        _endScale = CGSizeMake(1, 1);
-
+        _valueObtainer = valueObtainer;
     }
 
     return self;
@@ -61,7 +57,7 @@
 #pragma mark - Animated transitioning
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return self.duration;
+    return self.valueObtainer.duration;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -83,18 +79,18 @@
 
         [containerView addSubview:self.presentView];
 
-        _startLocationPoint = self.presentStartPoint;
+        _startLocationPoint = self.valueObtainer.presentStartPoint;
 
-        self.performer = [self viewPresenterWithType:self.presentType];
+        self.performer = [self viewPresenterWithType:self.valueObtainer.presentType];
 
     } else {
 
         //create performer
-        self.performer = [self viewDismissalWithType:self.dismissType];
+        self.performer = [self viewDismissalWithType:self.valueObtainer.dismissType];
 
         [containerView insertSubview:self.presentView belowSubview:self.dismissView];
 
-        _endLocationPoint = self.dismissEndPoint;
+        _endLocationPoint = self.valueObtainer.dismissEndPoint;
     }
 
     //count differences
@@ -104,13 +100,13 @@
 
     //common part
     self.performer.offsetPoint = point;
-    self.performer.startScale = self.startScale;
-    self.performer.endScale = self.endScale;
+    self.performer.startScale = self.valueObtainer.startScale;
+    self.performer.endScale = self.valueObtainer.endScale;
 
     //request initial state of new view
     self.presentView = [self.performer presentedViewBefore];
 
-    [UIView animateWithDuration:self.duration animations:^{
+    [UIView animateWithDuration:self.valueObtainer.duration animations:^{
 
         //request final state of new view
         self.presentView = [self.performer presentedViewAfter];

@@ -34,13 +34,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.dataSource = [DataSource default];
-
+    
 }
 
 - (PresentedViewController *)getController {
- 
+    
     //get second
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     PresentedViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([PresentedViewController class])];
@@ -50,21 +50,21 @@
 #pragma mark - IBActions
 
 - (IBAction)actionShowNextController:(id)sender {
-
+    
     PresentedViewController *controllerToPresent = [self getController];
-
+    
     //get first row
     AnimationBlockModel *blockModel = [self blockForIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     AnimationBlockModel *dismissedBlockModel = [self blockForIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
     
     AnimationBlockModel *presentedCover = [self blockForIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
     AnimationBlockModel *dismissedCover = [self blockForIndexPath:[NSIndexPath indexPathForRow:1 inSection:3]];
-
+    
     controllerToPresent.
     presentFrom([blockModel numberOfSelectedValue]).
     dismissTo([dismissedBlockModel numberOfSelectedValue]).
-//    presentFrom(BCTTransitionSideTypeTop).
-//    dismissTo(BCTTransitionSideTypeTop).
+    //    presentFrom(BCTTransitionSideTypeTop).
+    //    dismissTo(BCTTransitionSideTypeTop).
     withPresentedTransitionType([presentedCover numberOfSelectedValue]).
     withDismissedTransitionType([dismissedCover numberOfSelectedValue]).
     presentStartScale(self.startXSlider.value, self.startYSlider.value).
@@ -72,6 +72,12 @@
     transite(self.timeSlider.value);
     
     
+    [self presentViewController:controllerToPresent animated:YES completion:nil];
+}
+
+- (IBAction)actionSafari:(id)sender {
+    PresentedViewController *controllerToPresent = [self getController];
+    controllerToPresent.safari().transite(1.0f);
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 
@@ -91,21 +97,21 @@
 #pragma mark - Table delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     //get the block & model
     AnimationBlockModel *block = [self blockForIndexPath:indexPath];
     AnimationRowModel *row = [self modelForIndexPath:indexPath];
-
+    
     [block setValueFromAdditional:row.values];
-
+    
     if (block.collapsed) {
         [block expand];
     } else {
         [block collapse];
     }
-
+    
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
@@ -125,13 +131,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
+    
     NSString *text = @"";
-
+    
     //get model
     AnimationRowModel *rowModel = [self modelForIndexPath:indexPath];
-
-
+    
+    
     if (rowModel.values.count > 1) {
         for (NSString *string in rowModel.values) {
             text = [text stringByAppendingString:[NSString stringWithFormat:@"%@ ", string]];
@@ -139,9 +145,9 @@
     } else {
         text = [rowModel.values firstObject];
     }
-
+    
     cell.textLabel.text = text;
-
+    
     return cell;
 }
 

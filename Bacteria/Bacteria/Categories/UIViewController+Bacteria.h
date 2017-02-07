@@ -12,7 +12,7 @@
 #import "BCT-BlocksHeader.h"
 
 /**
- Current version - 0.1
+ Current version - 0.2
  */
 @interface UIViewController (Bacteria)
 
@@ -59,6 +59,7 @@
  */
 - (BacteriaScaleBlock)dismissEndScale;
 
+// block all other properties. //todo: add for each method method that will reset safari like value
 - (BCTControllerTransitionEmpty)safari;
 
 
@@ -66,11 +67,10 @@
 
 // TODO
 
+// todo: just implement right stuff
 
 // todo: safari like animation. Only from top. Separate presentation from dismissal - no customization. only present - dismiss.
-/*
- ideal value - minus 17 degrees of X asix
-*/
+// ideal value - minus 17 degrees of X asix
 
 // todo: view retaining for presentation process.
 // todo: reverse check.
@@ -78,6 +78,6 @@
 
 // todo: pop from custom shape - https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
-// todo: review all code
+// todo: review all architecture.
 // todo: replace all bct -> bacteria
 // todo: readme

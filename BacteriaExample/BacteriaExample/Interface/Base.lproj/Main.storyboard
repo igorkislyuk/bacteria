@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AmF-GT-CQK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -89,6 +89,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0Q-dv-mAc">
+                                <rect key="frame" x="315" y="629" width="40" height="30"/>
+                                <state key="normal" title="Safari"/>
+                                <connections>
+                                    <action selector="actionSafari:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxy-WD-jEO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -106,6 +113,7 @@
                             <constraint firstItem="f3Q-vp-Pay" firstAttribute="centerY" secondItem="wSE-q8-Kts" secondAttribute="centerY" id="OQ3-da-7fK"/>
                             <constraint firstItem="ARJ-D4-Xjk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OnI-pl-1ho"/>
                             <constraint firstItem="GkE-mU-pD9" firstAttribute="top" secondItem="wSE-q8-Kts" secondAttribute="bottom" constant="8" symbolic="YES" id="Oqt-y7-jWS"/>
+                            <constraint firstItem="N0Q-dv-mAc" firstAttribute="centerY" secondItem="mp9-4G-VCv" secondAttribute="centerY" id="PvA-c2-2pd"/>
                             <constraint firstAttribute="trailing" secondItem="IPl-ko-UUA" secondAttribute="trailing" id="QAz-Sg-LGQ"/>
                             <constraint firstItem="xEu-5j-cpD" firstAttribute="leading" secondItem="wSE-q8-Kts" secondAttribute="leading" id="RPI-OE-kLY"/>
                             <constraint firstItem="7dm-Is-OcC" firstAttribute="leading" secondItem="1py-6h-loF" secondAttribute="leading" id="Rf1-Zz-exd"/>
@@ -116,6 +124,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mp9-4G-VCv" secondAttribute="bottom" constant="8" id="aqT-BX-Z6r"/>
                             <constraint firstItem="f3Q-vp-Pay" firstAttribute="leading" secondItem="wSE-q8-Kts" secondAttribute="trailing" constant="20" id="feW-MM-PAV"/>
                             <constraint firstItem="mp9-4G-VCv" firstAttribute="top" secondItem="ARJ-D4-Xjk" secondAttribute="bottom" constant="8" id="gmH-x8-h5U"/>
+                            <constraint firstAttribute="trailing" secondItem="N0Q-dv-mAc" secondAttribute="trailing" constant="20" symbolic="YES" id="lhu-QU-ZF5"/>
                             <constraint firstItem="r8m-2H-UUn" firstAttribute="centerY" secondItem="7dm-Is-OcC" secondAttribute="centerY" id="pEE-1I-jDU"/>
                             <constraint firstItem="1py-6h-loF" firstAttribute="top" secondItem="7dm-Is-OcC" secondAttribute="bottom" constant="8" symbolic="YES" id="s7G-AT-Kno"/>
                             <constraint firstItem="f3Q-vp-Pay" firstAttribute="width" secondItem="wSE-q8-Kts" secondAttribute="width" id="xI4-7z-Ox7"/>

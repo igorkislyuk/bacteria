@@ -1,17 +1,17 @@
 //
-//  BCTTransitioningDelegate.h
-//  Bacteria
-//
-//  Created by Igor on 01/10/16.
-//  Copyright © 2016 Igor Kislyuk. All rights reserved.
+// Created by Igor on 07/02/2017.
+// Copyright (c) 2017 Igor Kislyuk. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-
 #import "BCTTypes.h"
+#import "BCTTransitioning.h"
 
-@interface BCTTransitioningController : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface BCTTransitioningFactory : NSObject <BCTTransitioning>
 
+- (id<UIViewControllerTransitioningDelegate>)transitioningDelegate;
+
+//params for storing values
 //duration of transition
 @property (nonatomic, assign) NSTimeInterval duration;
 
@@ -31,5 +31,7 @@
 @property (nonatomic, assign) CGSize startScale;
 @property (nonatomic, assign) CGSize endScale;
 
+//bool indicator for safari
+@property (nonatomic, assign) BOOL safariLike;
 
 @end

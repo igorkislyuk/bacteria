@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3927B25CD8F6813B68D8FB5B /* BCTTransitioningFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B554D9D6D384BAFE3841 /* BCTTransitioningFactory.h */; };
+		3927B458635ACF66E44622BF /* BCTTransitioningFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B90D97E66B751ED4C98C /* BCTTransitioningFactory.m */; };
+		3927B5372D3CB9A4DE6985ED /* BCTTransitioningController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927BC284BA00D70292F1B44 /* BCTTransitioningController.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		3927B64D019DA8A09D550A59 /* BCTTransitioning.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B9AA1E954DB9D181E076 /* BCTTransitioning.h */; };
 		3927B778A7D67DD38FFA16DA /* BCTCoverViewDismissal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B62D007ACDD530207B8E /* BCTCoverViewDismissal.h */; };
 		3927B86B03242FBE7DE07841 /* BCTCoverViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BA16D43769A5275FA919 /* BCTCoverViewPresenter.m */; };
 		3927B98D095046FF6F9418D2 /* BCTParallelViewDismissal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BD1CFE2D91D2B70C4BA4 /* BCTParallelViewDismissal.m */; };
@@ -18,10 +22,11 @@
 		3927BEB2FDCA74185DA79C6F /* BCTParallelViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BA25BD6D0370A61A2EEC /* BCTParallelViewPresenter.m */; };
 		3927BEC18299DF24CB66BB26 /* BCTBasicViewPerformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B1147BF69CFCE4C90118 /* BCTBasicViewPerformer.h */; };
 		3927BEF22B720B49C1A5AE39 /* BCTCoverViewPresenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927BE01ECD8BC8612782F0B /* BCTCoverViewPresenter.h */; };
+		3927BEF4E4B88554590C8D36 /* BCTTransitioningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B8262308D47AA624BB68 /* BCTTransitioningController.m */; };
+		3927BEFDD3F317FDBD3CD523 /* BCTSafariTransitioningController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B7DFBD9E2B79C40116DF /* BCTSafariTransitioningController.h */; };
+		3927BF89AE36F11E4C564246 /* BCTSafariTransitioningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B839822D92CAB19C5009 /* BCTSafariTransitioningController.m */; };
 		ED38F5DC1E0C7E21009F1AF8 /* UIViewController+Bacteria.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5CD1E0C7E21009F1AF8 /* UIViewController+Bacteria.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		ED38F5DD1E0C7E21009F1AF8 /* UIViewController+Bacteria.m in Sources */ = {isa = PBXBuildFile; fileRef = ED38F5CE1E0C7E21009F1AF8 /* UIViewController+Bacteria.m */; };
-		ED38F5E01E0C7E21009F1AF8 /* BCTTransitioningController.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5D41E0C7E21009F1AF8 /* BCTTransitioningController.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		ED38F5E11E0C7E21009F1AF8 /* BCTTransitioningController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED38F5D51E0C7E21009F1AF8 /* BCTTransitioningController.m */; };
 		ED38F5E21E0C7E21009F1AF8 /* BCT-BlocksHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5D71E0C7E21009F1AF8 /* BCT-BlocksHeader.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		ED38F5E31E0C7E21009F1AF8 /* BCTTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = ED38F5D91E0C7E21009F1AF8 /* BCTTypes.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		ED38F5E41E0C7E21009F1AF8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED38F5DA1E0C7E21009F1AF8 /* Info.plist */; };
@@ -31,19 +36,24 @@
 /* Begin PBXFileReference section */
 		3927B1147BF69CFCE4C90118 /* BCTBasicViewPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTBasicViewPerformer.h; sourceTree = "<group>"; };
 		3927B2B7A7394A62BDAB45AF /* BCTParallelViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTParallelViewPresenter.h; sourceTree = "<group>"; };
+		3927B554D9D6D384BAFE3841 /* BCTTransitioningFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTTransitioningFactory.h; sourceTree = "<group>"; };
 		3927B62D007ACDD530207B8E /* BCTCoverViewDismissal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTCoverViewDismissal.h; sourceTree = "<group>"; };
 		3927B6C86CA8E3F35DEE365C /* BCTViewPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTViewPerformer.h; sourceTree = "<group>"; };
+		3927B7DFBD9E2B79C40116DF /* BCTSafariTransitioningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTSafariTransitioningController.h; sourceTree = "<group>"; };
+		3927B8262308D47AA624BB68 /* BCTTransitioningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTTransitioningController.m; sourceTree = "<group>"; };
+		3927B839822D92CAB19C5009 /* BCTSafariTransitioningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTSafariTransitioningController.m; sourceTree = "<group>"; };
+		3927B90D97E66B751ED4C98C /* BCTTransitioningFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTTransitioningFactory.m; sourceTree = "<group>"; };
+		3927B9AA1E954DB9D181E076 /* BCTTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTTransitioning.h; sourceTree = "<group>"; };
 		3927BA16D43769A5275FA919 /* BCTCoverViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTCoverViewPresenter.m; sourceTree = "<group>"; };
 		3927BA25BD6D0370A61A2EEC /* BCTParallelViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTParallelViewPresenter.m; sourceTree = "<group>"; };
 		3927BBF5D85613E24663A0E4 /* BCTCoverViewDismissal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTCoverViewDismissal.m; sourceTree = "<group>"; };
+		3927BC284BA00D70292F1B44 /* BCTTransitioningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTTransitioningController.h; sourceTree = "<group>"; };
 		3927BC8FB4C8DFF344C2084D /* BCTParallelViewDismissal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTParallelViewDismissal.h; sourceTree = "<group>"; };
 		3927BD1CFE2D91D2B70C4BA4 /* BCTParallelViewDismissal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTParallelViewDismissal.m; sourceTree = "<group>"; };
 		3927BE01ECD8BC8612782F0B /* BCTCoverViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTCoverViewPresenter.h; sourceTree = "<group>"; };
 		3927BE9F036192F0CC9D6301 /* BCTBasicViewPerformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTBasicViewPerformer.m; sourceTree = "<group>"; };
 		ED38F5CD1E0C7E21009F1AF8 /* UIViewController+Bacteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Bacteria.h"; sourceTree = "<group>"; };
 		ED38F5CE1E0C7E21009F1AF8 /* UIViewController+Bacteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Bacteria.m"; sourceTree = "<group>"; };
-		ED38F5D41E0C7E21009F1AF8 /* BCTTransitioningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTTransitioningController.h; sourceTree = "<group>"; };
-		ED38F5D51E0C7E21009F1AF8 /* BCTTransitioningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTTransitioningController.m; sourceTree = "<group>"; };
 		ED38F5D71E0C7E21009F1AF8 /* BCT-BlocksHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BCT-BlocksHeader.h"; sourceTree = "<group>"; };
 		ED38F5D91E0C7E21009F1AF8 /* BCTTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTTypes.h; sourceTree = "<group>"; };
 		ED38F5DA1E0C7E21009F1AF8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,6 +91,25 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		3927B8AB73E2D4192DDC566C /* Safari */ = {
+			isa = PBXGroup;
+			children = (
+				3927B7DFBD9E2B79C40116DF /* BCTSafariTransitioningController.h */,
+				3927B839822D92CAB19C5009 /* BCTSafariTransitioningController.m */,
+			);
+			path = Safari;
+			sourceTree = "<group>";
+		};
+		3927BB857407924A60F57B82 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				3927B90D97E66B751ED4C98C /* BCTTransitioningFactory.m */,
+				3927B554D9D6D384BAFE3841 /* BCTTransitioningFactory.h */,
+				3927B9AA1E954DB9D181E076 /* BCTTransitioning.h */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		3927BBBD278C87044742CBC6 /* Performers */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +118,15 @@
 				3927BF39822BAFC7298B5BE0 /* Parallel */,
 			);
 			path = Performers;
+			sourceTree = "<group>";
+		};
+		3927BDEA3C4A7C442E478C98 /* Simple */ = {
+			isa = PBXGroup;
+			children = (
+				3927BC284BA00D70292F1B44 /* BCTTransitioningController.h */,
+				3927B8262308D47AA624BB68 /* BCTTransitioningController.m */,
+			);
+			path = Simple;
 			sourceTree = "<group>";
 		};
 		3927BF39822BAFC7298B5BE0 /* Parallel */ = {
@@ -145,8 +183,9 @@
 		ED38F5D31E0C7E21009F1AF8 /* TransitioningDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				ED38F5D41E0C7E21009F1AF8 /* BCTTransitioningController.h */,
-				ED38F5D51E0C7E21009F1AF8 /* BCTTransitioningController.m */,
+				3927BDEA3C4A7C442E478C98 /* Simple */,
+				3927B8AB73E2D4192DDC566C /* Safari */,
+				3927BB857407924A60F57B82 /* Factory */,
 			);
 			path = TransitioningDelegate;
 			sourceTree = "<group>";
@@ -194,7 +233,6 @@
 				ED38F5E71E0C7E28009F1AF8 /* Bacteria.h in Headers */,
 				ED38F5E21E0C7E21009F1AF8 /* BCT-BlocksHeader.h in Headers */,
 				ED38F5E31E0C7E21009F1AF8 /* BCTTypes.h in Headers */,
-				ED38F5E01E0C7E21009F1AF8 /* BCTTransitioningController.h in Headers */,
 				ED38F5DC1E0C7E21009F1AF8 /* UIViewController+Bacteria.h in Headers */,
 				3927BCB064745F829F9E7C04 /* BCTViewPerformer.h in Headers */,
 				3927BEC18299DF24CB66BB26 /* BCTBasicViewPerformer.h in Headers */,
@@ -202,6 +240,10 @@
 				3927B778A7D67DD38FFA16DA /* BCTCoverViewDismissal.h in Headers */,
 				3927B9912B6F2B9651AD6A36 /* BCTParallelViewPresenter.h in Headers */,
 				3927BDAE263D9CA2F226C395 /* BCTParallelViewDismissal.h in Headers */,
+				3927B5372D3CB9A4DE6985ED /* BCTTransitioningController.h in Headers */,
+				3927BEFDD3F317FDBD3CD523 /* BCTSafariTransitioningController.h in Headers */,
+				3927B25CD8F6813B68D8FB5B /* BCTTransitioningFactory.h in Headers */,
+				3927B64D019DA8A09D550A59 /* BCTTransitioning.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,13 +318,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED38F5E11E0C7E21009F1AF8 /* BCTTransitioningController.m in Sources */,
 				ED38F5DD1E0C7E21009F1AF8 /* UIViewController+Bacteria.m in Sources */,
 				3927BA747E299C493D07E308 /* BCTBasicViewPerformer.m in Sources */,
 				3927B86B03242FBE7DE07841 /* BCTCoverViewPresenter.m in Sources */,
 				3927BE39B32EFA3B92890D93 /* BCTCoverViewDismissal.m in Sources */,
 				3927BEB2FDCA74185DA79C6F /* BCTParallelViewPresenter.m in Sources */,
 				3927B98D095046FF6F9418D2 /* BCTParallelViewDismissal.m in Sources */,
+				3927BEF4E4B88554590C8D36 /* BCTTransitioningController.m in Sources */,
+				3927BF89AE36F11E4C564246 /* BCTSafariTransitioningController.m in Sources */,
+				3927B458635ACF66E44622BF /* BCTTransitioningFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
