@@ -59,7 +59,7 @@
  */
 - (BacteriaScaleBlock)dismissEndScale;
 
-// block all other properties. //todo: add for each method method that will reset safari like value
+// block all other properties
 - (BCTControllerTransitionEmpty)safari;
 
 
@@ -67,6 +67,7 @@
 
 // TODO
 
+// todo: add for each method method that will reset safari like value
 // todo: just implement right stuff
 
 // todo: safari like animation. Only from top. Separate presentation from dismissal - no customization. only present - dismiss.
@@ -78,6 +79,7 @@
 
 // todo: pop from custom shape - https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
+// todo: setup travis
 // todo: review all architecture and all props
 // todo: replace all bct -> bacteria
 // todo: readme

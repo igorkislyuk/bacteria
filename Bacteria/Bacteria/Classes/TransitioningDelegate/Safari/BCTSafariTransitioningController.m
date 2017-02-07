@@ -54,26 +54,34 @@
     UIView *containerView = [transitionContext containerView];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-
-    //store views
-
-    CATransform3D fromTransform = fromVC.view.layer.transform;
-
-    fromTransform = CATransform3DRotate(fromTransform, DEGREES_TO_RADIANS(-17), 1, 0, 0);
-
-    fromTransform = CATransform3DTranslate(fromTransform, 0, -100, 0);
-
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
-
-    animation.duration = self.valueObtainer.duration;
-    animation.fromValue = [NSValue valueWithCATransform3D:fromVC.view.layer.transform];
-    animation.toValue = [NSValue valueWithCATransform3D:fromTransform];
-
-    fromVC.view.layer.transform = fromTransform;
-    [fromVC.view.layer addAnimation:animation forKey:nil];
     
+    //get snapshot
+
+    CATransform3D perspective = CATransform3DIdentity;
+    perspective.m34 = 1.f / -1800.f;
+    containerView.layer.sublayerTransform = perspective;
+
+    CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform"];
+
+    CATransform3D transform3D = fromVC.view.layer.transform;
+    transform3D = CATransform3DScale(transform3D, 0.75, 0.75, 1);
+    transform3D = CATransform3DRotate(transform3D, DEGREES_TO_RADIANS(-25), 1, 0, 0);
+
+    scale.fromValue = [NSValue valueWithCATransform3D:fromVC.view.layer.transform];
+    scale.toValue = [NSValue valueWithCATransform3D:transform3D];
+
+    scale.duration = self.valueObtainer.duration / 2;
+
+    scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+    [fromVC.view.layer addAnimation:scale forKey:nil];
+
+
+
+//    [fromVClayer addAnimation:animation forKey:nil];
+
     //create animation
-    animation.delegate = self;
+//    animation.delegate = self;
 
     self.transitionContext = transitionContext;
 }
@@ -82,7 +90,7 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
 
-    [self.transitionContext completeTransition:![self.transitionContext transitionWasCancelled]];
+//    [self.transitionContext completeTransition:![self.transitionContext transitionWasCancelled]];
 
 }
 
