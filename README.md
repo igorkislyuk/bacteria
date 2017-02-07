@@ -8,6 +8,7 @@
 * support scaling for present and dismiss controller
 * support different transition types (parallel, cover)
 * support reverse dismissal / reverse presentation
+* support safari-like controller transitions
 * ...to be continued
 
 ## Functionality
