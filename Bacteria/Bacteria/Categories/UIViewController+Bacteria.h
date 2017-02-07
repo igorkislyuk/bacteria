@@ -78,6 +78,6 @@
 
 // todo: pop from custom shape - https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
-// todo: review all architecture.
+// todo: review all architecture and all props
 // todo: replace all bct -> bacteria
 // todo: readme

@@ -21,7 +21,7 @@
     }
 
     _transitioningController = [[BCTTransitioningController alloc] initWithValueObtainer:self];
-    _safariTransitioningController = [[BCTSafariTransitioningController alloc] init];
+    _safariTransitioningController = [[BCTSafariTransitioningController alloc] initWithValueObtainer:self];
 
     return self;
 }

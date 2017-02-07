@@ -77,7 +77,7 @@
 
 - (IBAction)actionSafari:(id)sender {
     PresentedViewController *controllerToPresent = [self getController];
-    controllerToPresent.safari().transite(1.0f);
+    controllerToPresent.safari().transite(2.0f);
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 
