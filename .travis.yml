@@ -2,7 +2,7 @@ language: objective-c
 
 osx_image: xcode8.2
 
-script: xcodebuild clean build -sdk iphonesimulator -workspace Bacteria.xcworkspace -scheme Bacteria
+script: xcodebuild clean build -sdk iphonesimulator -workspace Bacteria.xcworkspace -scheme BacteriaExample
 
 notifications:
   email:
