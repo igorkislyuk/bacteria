@@ -9,25 +9,25 @@
 
 #import "BCTTransitioning.h"
 
-@interface BCTSafariTransitioningController() <CAAnimationDelegate>
+@interface BCTSafariTransitioningController () <CAAnimationDelegate>
 
 @property(nonatomic, assign) BOOL presenting;
 
-@property (nonatomic, strong) id <UIViewControllerContextTransitioning> transitionContext;
+@property(nonatomic, strong) id <UIViewControllerContextTransitioning> transitionContext;
 
-@property (nonatomic, strong) NSMutableSet *views;
+@property(nonatomic, strong) NSMutableSet *viewsToRemove;
+@property(nonatomic, strong) NSMutableArray *viewsToAdd;
 
 @end
 
-@implementation BCTSafariTransitioningController {
-    
-}
+@implementation BCTSafariTransitioningController
 
 - (instancetype)initWithValueObtainer:(id <BCTTransitioning>)valueObtainer {
     self = [super init];
     if (self) {
         _valueObtainer = valueObtainer;
-        _views = [[NSMutableSet alloc] init];
+        _viewsToAdd = [[NSMutableArray alloc] init];
+        _viewsToRemove = [[NSMutableSet alloc] init];
     }
 
     return self;
@@ -42,7 +42,7 @@
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     self.presenting = NO;
-    return self;
+    return nil;
 }
 
 #pragma mark - Animated transitioning
@@ -57,68 +57,85 @@
     UIView *containerView = [transitionContext containerView];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    
-    //get snapshot
-    if (self.presenting) {
-
-        [containerView addSubview:toVC.view];
-
-    } else {
-
-        [containerView insertSubview:toVC.view belowSubview:fromVC.view];
-    }
 
     //perspective
     CATransform3D perspective = CATransform3DIdentity;
     perspective.m34 = 1.f / -1800.f;
     containerView.layer.sublayerTransform = perspective;
 
-    //create animation view
-    UIView *snapshotView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
-    [containerView addSubview:snapshotView];
+    //create snaps
+    UIView *oldSnapshotView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
+    [containerView addSubview:oldSnapshotView];
 
-//    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-//
-//    CATransform3D transform3D = snapshotView.layer.transform;
-//    transform3D = CATransform3DScale(transform3D, 0.75, 0.75, 1);
-//    transform3D = CATransform3DRotate(transform3D, DEGREES_TO_RADIANS(-25), 1, 0, 0);
-//
-//    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:snapshotView.layer.transform];
-//    scaleAnimation.toValue = [NSValue valueWithCATransform3D:transform3D];
-//
-//    scaleAnimation.duration = self.valueObtainer.duration / 2;
-//
-//    scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//
-//    [snapshotView.layer addAnimation:scaleAnimation forKey:nil];
-    //    scaleAnimation.delegate = self;
+    UIView *newSnapshotView = [toVC.view snapshotViewAfterScreenUpdates:YES];
+    [containerView addSubview:newSnapshotView];
+
+    //remove
+    [fromVC.view removeFromSuperview];
+
+    //interval
+    NSTimeInterval duration = self.valueObtainer.duration / 2;
+
+    //animation part 1
+    CABasicAnimation *oldAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+
+    CATransform3D transform3D = oldSnapshotView.layer.transform;
+    oldAnimation.fromValue = [NSValue valueWithCATransform3D:transform3D];
+    oldAnimation.toValue = [NSValue valueWithCATransform3D:[self transformForPageWith:transform3D]];
+    oldAnimation.duration = duration;
+    oldAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+//    oldAnimation.delegate = self;
+    [oldSnapshotView.layer addAnimation:oldAnimation forKey:nil];
+
+    //animation part 2
+    CABasicAnimation *newAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+
+    CATransform3D newTransform = newSnapshotView.layer.transform;
+    newTransform = [self transformForPageWith:newTransform];
+    newTransform = CATransform3DTranslate(newTransform, 0, [[UIScreen mainScreen] bounds].size.height - 100.f, 0);
     
-    [UIView animateWithDuration:self.valueObtainer.duration animations:^{
-        snapshotView.transform = CGAffineTransformMakeTranslation(0, -200);
-    } completion:^(BOOL finished) {
-        
-        [snapshotView removeFromSuperview];
-        
-        [self.transitionContext completeTransition:![self.transitionContext transitionWasCancelled]];
-        
-    }];
+    newSnapshotView.layer.transform = newTransform;
     
-//    [self.views addObject:snapshotView];
+    newAnimation.fromValue = [NSValue valueWithCATransform3D:newTransform];
+    newAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    newAnimation.duration = duration;
+    newAnimation.beginTime = CACurrentMediaTime() + duration;
+    newAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+    newAnimation.delegate = self;
+
+    [newSnapshotView.layer addAnimation:newAnimation forKey:nil];
+
+    [self.viewsToRemove addObject:oldSnapshotView];
+    [self.viewsToAdd addObject:toVC.view];
 
     //create animation
 
     self.transitionContext = transitionContext;
 }
 
+- (CATransform3D)transformForPageWith:(CATransform3D)transform3D {
+    CATransform3D result = transform3D;
+    result = CATransform3DScale(transform3D, 0.8, 0.75, 0.9);
+    result = CATransform3DRotate(transform3D, DEGREES_TO_RADIANS(-25), 1, 0, 0);
+    return result;
+}
+
 #pragma mark - Animation Delegate
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    NSLog(@"%s", sel_getName(_cmd));
 
-    
-
-    for (UIView *view in self.views) {
+    for (UIView *view in self.viewsToRemove) {
         [view removeFromSuperview];
     }
+
+    for (UIView *add in self.viewsToAdd) {
+        [[self.transitionContext containerView] addSubview:add];
+    }
+
+    [self.transitionContext completeTransition:YES];
 
 }
 
