@@ -3,7 +3,7 @@
 // Copyright (c) 2017 Igor Kislyuk. All rights reserved.
 //
 
-#define DEGREES_TO_RADIANS(degrees) ((M_PI * degrees)/180.f)
+#define DEGREES_TO_RADIANS(degrees) (CGFloat)((M_PI * degrees)/180.f)
 
 #import "BCTSafariTransitioningController.h"
 
@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) id <UIViewControllerContextTransitioning> transitionContext;
 
+@property (nonatomic, strong) NSMutableSet *views;
+
 @end
 
 @implementation BCTSafariTransitioningController {
@@ -25,6 +27,7 @@
     self = [super init];
     if (self) {
         _valueObtainer = valueObtainer;
+        _views = [[NSMutableSet alloc] init];
     }
 
     return self;
@@ -56,32 +59,53 @@
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     //get snapshot
+    if (self.presenting) {
 
+        [containerView addSubview:toVC.view];
+
+    } else {
+
+        [containerView insertSubview:toVC.view belowSubview:fromVC.view];
+    }
+
+    //perspective
     CATransform3D perspective = CATransform3DIdentity;
     perspective.m34 = 1.f / -1800.f;
     containerView.layer.sublayerTransform = perspective;
 
-    CABasicAnimation *scale = [CABasicAnimation animationWithKeyPath:@"transform"];
+    //create animation view
+    UIView *snapshotView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
+    [containerView addSubview:snapshotView];
 
-    CATransform3D transform3D = fromVC.view.layer.transform;
-    transform3D = CATransform3DScale(transform3D, 0.75, 0.75, 1);
-    transform3D = CATransform3DRotate(transform3D, DEGREES_TO_RADIANS(-25), 1, 0, 0);
-
-    scale.fromValue = [NSValue valueWithCATransform3D:fromVC.view.layer.transform];
-    scale.toValue = [NSValue valueWithCATransform3D:transform3D];
-
-    scale.duration = self.valueObtainer.duration / 2;
-
-    scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-
-    [fromVC.view.layer addAnimation:scale forKey:nil];
-
-
-
-//    [fromVClayer addAnimation:animation forKey:nil];
+//    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+//
+//    CATransform3D transform3D = snapshotView.layer.transform;
+//    transform3D = CATransform3DScale(transform3D, 0.75, 0.75, 1);
+//    transform3D = CATransform3DRotate(transform3D, DEGREES_TO_RADIANS(-25), 1, 0, 0);
+//
+//    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:snapshotView.layer.transform];
+//    scaleAnimation.toValue = [NSValue valueWithCATransform3D:transform3D];
+//
+//    scaleAnimation.duration = self.valueObtainer.duration / 2;
+//
+//    scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//
+//    [snapshotView.layer addAnimation:scaleAnimation forKey:nil];
+    //    scaleAnimation.delegate = self;
+    
+    [UIView animateWithDuration:self.valueObtainer.duration animations:^{
+        snapshotView.transform = CGAffineTransformMakeTranslation(0, -200);
+    } completion:^(BOOL finished) {
+        
+        [snapshotView removeFromSuperview];
+        
+        [self.transitionContext completeTransition:![self.transitionContext transitionWasCancelled]];
+        
+    }];
+    
+//    [self.views addObject:snapshotView];
 
     //create animation
-//    animation.delegate = self;
 
     self.transitionContext = transitionContext;
 }
@@ -90,7 +114,11 @@
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
 
-//    [self.transitionContext completeTransition:![self.transitionContext transitionWasCancelled]];
+    
+
+    for (UIView *view in self.views) {
+        [view removeFromSuperview];
+    }
 
 }
 
