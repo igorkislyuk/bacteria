@@ -119,7 +119,7 @@
 
         return self;
     };
-    return plainFrom;
+//    return plainFrom;
 }
 
 - (BCTControllerTransitionSideType)dismissTo {
