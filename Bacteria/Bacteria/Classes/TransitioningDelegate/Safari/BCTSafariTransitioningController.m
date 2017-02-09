@@ -20,7 +20,9 @@
 
 @end
 
-@implementation BCTSafariTransitioningController
+@implementation BCTSafariTransitioningController {
+    CABasicAnimation *_appearAnimation, *_dismissAnimation;
+}
 
 - (instancetype)initWithValueObtainer:(id <BCTTransitioning>)valueObtainer {
     self = [super init];
@@ -67,8 +69,12 @@
     UIView *oldSnapshotView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
     [containerView addSubview:oldSnapshotView];
 
+    oldSnapshotView.layer.zPosition = 0;
+    
+
     UIView *newSnapshotView = [toVC.view snapshotViewAfterScreenUpdates:YES];
-    [containerView addSubview:newSnapshotView];
+    [containerView insertSubview:newSnapshotView aboveSubview:oldSnapshotView];
+    newSnapshotView.layer.zPosition = 1.f;
 
     //remove
     [fromVC.view removeFromSuperview];
@@ -77,62 +83,82 @@
     NSTimeInterval duration = self.valueObtainer.duration / 2;
 
     //animation part 1
-    CABasicAnimation *oldAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
 
-    CATransform3D transform3D = oldSnapshotView.layer.transform;
-    oldAnimation.fromValue = [NSValue valueWithCATransform3D:transform3D];
-    oldAnimation.toValue = [NSValue valueWithCATransform3D:[self transformForPageWith:transform3D]];
-    oldAnimation.duration = duration;
-    oldAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-
-//    oldAnimation.delegate = self;
+    CABasicAnimation *oldAnimation = [self animationForDismissingViewWithDuration:duration];
+    oldSnapshotView.layer.transform = [self transformForPage];
     [oldSnapshotView.layer addAnimation:oldAnimation forKey:nil];
 
     //animation part 2
+    
+    CATransform3D startTransform = CATransform3DConcat([self transformForPage], CATransform3DMakeTranslation(0, 600, 0));
+    
+    newSnapshotView.layer.transform = startTransform;
     CABasicAnimation *newAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-
-    CATransform3D newTransform = newSnapshotView.layer.transform;
-    newTransform = [self transformForPageWith:newTransform];
-    newTransform = CATransform3DTranslate(newTransform, 0, [[UIScreen mainScreen] bounds].size.height - 100.f, 0);
-    
-    newSnapshotView.layer.transform = newTransform;
-    
-    newAnimation.fromValue = [NSValue valueWithCATransform3D:newTransform];
+    newAnimation.fromValue = [NSValue valueWithCATransform3D:startTransform];
     newAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
     newAnimation.duration = duration;
     newAnimation.beginTime = CACurrentMediaTime() + duration;
     newAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-
+    newAnimation.removedOnCompletion = NO;
     newAnimation.delegate = self;
-
+//
     [newSnapshotView.layer addAnimation:newAnimation forKey:nil];
+    
+    //animation for move layer up
+    CABasicAnimation *moveOldUpAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    moveOldUpAnimation.fromValue = [NSValue valueWithCATransform3D:oldSnapshotView.layer.transform];
+    moveOldUpAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DTranslate(oldSnapshotView.layer.transform, 0, -1200, 0)];
+    moveOldUpAnimation.duration = duration;
+    moveOldUpAnimation.beginTime = CACurrentMediaTime() + duration;
+    moveOldUpAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    [oldSnapshotView.layer addAnimation:moveOldUpAnimation forKey:nil];
+    
 
+    //delay
     [self.viewsToRemove addObject:oldSnapshotView];
-    [self.viewsToAdd addObject:toVC.view];
+    [self.viewsToRemove addObject:newSnapshotView];
 
-    //create animation
+    [self.viewsToAdd addObject:toVC.view];
 
     self.transitionContext = transitionContext;
 }
 
-- (CATransform3D)transformForPageWith:(CATransform3D)transform3D {
-    CATransform3D result = transform3D;
-    result = CATransform3DScale(transform3D, 0.8, 0.75, 0.9);
-    result = CATransform3DRotate(transform3D, DEGREES_TO_RADIANS(-25), 1, 0, 0);
-    return result;
+- (CABasicAnimation *)animationForDismissingViewWithDuration:(NSTimeInterval)duration {
+    CABasicAnimation *oldAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+
+    oldAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    oldAnimation.toValue = [NSValue valueWithCATransform3D:[self transformForPage]];
+    oldAnimation.duration = duration;
+    oldAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+//    oldAnimation.delegate = self;
+
+    return oldAnimation;
+}
+
+- (CATransform3D)transformForPage {
+    // were 0.8 & 0.75
+    CATransform3D scale = CATransform3DMakeScale(0.8, 0.75, 0.9);
+    CATransform3D rotate = CATransform3DMakeRotation(DEGREES_TO_RADIANS(-25), 1, 0, 0);
+    return CATransform3DConcat(scale, rotate);
 }
 
 #pragma mark - Animation Delegate
 
+- (void)animationDidStart:(CAAnimation *)anim {
+
+}
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     NSLog(@"%s", sel_getName(_cmd));
 
-    for (UIView *view in self.viewsToRemove) {
-        [view removeFromSuperview];
-    }
-
     for (UIView *add in self.viewsToAdd) {
         [[self.transitionContext containerView] addSubview:add];
+        [[self.transitionContext containerView] bringSubviewToFront:add];
+    }
+    
+    for (UIView *view in self.viewsToRemove) {
+        [view removeFromSuperview];
     }
 
     [self.transitionContext completeTransition:YES];
