@@ -72,6 +72,7 @@
 
 // todo: flip animation. another type of transition along with parallel, cover.
 // it will have anchor for flipping, so it means only 4 sides are supported: top/bottom & left/right
+// it will be cool to add scale for flipping
 
 // todo: pop from custom shape - https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 

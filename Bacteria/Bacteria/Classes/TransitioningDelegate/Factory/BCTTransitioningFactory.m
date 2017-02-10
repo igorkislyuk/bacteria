@@ -4,12 +4,12 @@
 //
 
 #import "BCTTransitioningFactory.h"
-#import "BCTSafariTransitioningController.h"
+
 #import "BCTTransitioningController.h"
+#import "BCTSafariTransitioningController.h"
+#import "BCTFlipTransitioningController.h"
 
 @implementation BCTTransitioningFactory {
-//    BCTTransitioningController *_transitioningController;
-//    BCTSafariTransitioningController *_safariTransitioningController;
 }
 
 - (instancetype)init {
@@ -19,14 +19,20 @@
         _endScale = CGSizeMake(1, 1);
     }
 
-//    _transitioningController = [[BCTTransitioningController alloc] initWithValueObtainer:self];
-//    _safariTransitioningController = [[BCTSafariTransitioningController alloc] initWithValueObtainer:self];
-
     return self;
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationController {
-    return self.safariLike ? [[BCTSafariTransitioningController alloc] initWithValueObtainer:self] : [[BCTTransitioningController alloc] initWithValueObtainer:self];
+    if (self.safariLike) {
+        return [[BCTSafariTransitioningController alloc] initWithValueObtainer:self];
+    } else {
+
+        if (self.presentType == BCTTransitionTypeFlip) {
+            return [[BCTFlipTransitioningController alloc] initWithValueObtainer:self];
+        } else {
+            return [[BCTTransitioningController alloc] initWithValueObtainer:self];
+        }
+    }
 }
 
 #pragma mark - Transitioning Delegate

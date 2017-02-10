@@ -3,9 +3,6 @@
 // Copyright (c) 2017 Igor Kislyuk. All rights reserved.
 //
 
-#define DEGREES_TO_RADIANS(degrees) (CGFloat)((M_PI * degrees)/180.f)
-
-
 #import "BCTSafariTransitioningController.h"
 
 #import "BCTTransitioning.h"
@@ -129,10 +126,6 @@
 }
 
 #pragma mark - Animation Delegate
-
-- (void)animationDidStart:(CAAnimation *)anim {
-    //empty
-}
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     NSLog(@"%s", sel_getName(_cmd));

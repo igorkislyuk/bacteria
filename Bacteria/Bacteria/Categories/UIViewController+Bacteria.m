@@ -14,7 +14,7 @@
 
 @interface UIViewController (Bacteria_Private)
 
-@property(nonatomic, strong) BCTTransitioningFactory *transitioningFactory;
+@property(nonatomic, strong) id<BCTTransitioning> transitioningFactory;
 
 @end
 
@@ -110,7 +110,7 @@
 - (BCTControllerTransitionEmpty)flipFromLeft {
     return ^UIViewController * {
 
-//        self.transitioningFactory.
+        self.transitioningFactory.presentType = BCTTransitionTypeFlip;
 
         return self;
     };

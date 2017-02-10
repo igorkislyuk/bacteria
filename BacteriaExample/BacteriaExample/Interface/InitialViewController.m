@@ -81,6 +81,12 @@
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 
+- (IBAction)actionFlipFromLeft:(id)sender {
+    PresentedViewController *controllerToPresent = [self getController];
+    controllerToPresent.flipFromLeft().transite(5.f);
+    [self presentViewController:controllerToPresent animated:YES completion:nil];
+}
+
 #pragma mark - Helpers
 
 - (AnimationBlockModel *)blockForIndexPath:(NSIndexPath *)indexPath {

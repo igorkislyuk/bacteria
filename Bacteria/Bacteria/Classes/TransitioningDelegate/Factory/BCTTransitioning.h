@@ -6,6 +6,8 @@
 #import <UIKit/UIKit.h>
 #import "BCTTypes.h"
 
+#define DEGREES_TO_RADIANS(degrees) (CGFloat)((M_PI * degrees)/180.f)
+
 @protocol BCTTransitioning <UIViewControllerTransitioningDelegate>
 
 //duration of transition
@@ -26,6 +28,9 @@
 //scale: units
 @property (nonatomic, assign) CGSize startScale;
 @property (nonatomic, assign) CGSize endScale;
+
+//bool indicator for safari
+@property (nonatomic, assign) BOOL safariLike;
 
 @property (nonatomic, assign) BOOL presenting;
 
