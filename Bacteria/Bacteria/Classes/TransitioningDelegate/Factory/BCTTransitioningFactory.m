@@ -7,7 +7,6 @@
 #import "BCTSafariTransitioningController.h"
 #import "BCTTransitioningController.h"
 
-
 @implementation BCTTransitioningFactory {
     BCTTransitioningController *_transitioningController;
     BCTSafariTransitioningController *_safariTransitioningController;
@@ -25,7 +24,6 @@
 
     return self;
 }
-
 
 - (id <UIViewControllerTransitioningDelegate>)transitioningDelegate {
     return self.safariLike ? _safariTransitioningController : _transitioningController;

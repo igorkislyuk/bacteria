@@ -11,13 +11,13 @@
 #import "BCTTransitioning.h"
 
 //constants
-static NSString *const kMovelUpAnimation = @"moveUpOldLayerAnimation";
+
 
 @interface BCTSafariTransitioningController () <CAAnimationDelegate>
 
 @property(nonatomic, assign) BOOL presenting;
-
 @property(nonatomic, strong) id <UIViewControllerContextTransitioning> transitionContext;
+
 @end
 
 @implementation BCTSafariTransitioningController {
@@ -43,7 +43,7 @@ static NSString *const kMovelUpAnimation = @"moveUpOldLayerAnimation";
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     self.presenting = NO;
-    return nil; //todo: self
+    return self;
 }
 
 #pragma mark - Animated transitioning
@@ -54,11 +54,18 @@ static NSString *const kMovelUpAnimation = @"moveUpOldLayerAnimation";
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
 
+    CGFloat koeff = self.presenting ? -1 : 1;
+    CGFloat exchangeTime = 0.45f;
+
+    //save
+    self.transitionContext = transitionContext;
+
     //get start values
     UIView *containerView = [transitionContext containerView];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
+    //perspective
     [self setPerspectiveIn:containerView enabled:YES];
 
     //create snaps
@@ -74,20 +81,16 @@ static NSString *const kMovelUpAnimation = @"moveUpOldLayerAnimation";
     [containerView insertSubview:newSnapshotView aboveSubview:oldSnapshotView];
     _presentSnaphotView = newSnapshotView;
 
-//    [containerView addSubview:_presentView];
-//    _presentView.alpha = 0.f;
-
-
     //---
 
     //interval
     NSTimeInterval duration = self.valueObtainer.duration;
-//    NSTimeInterval durationWithDelay = CACurrentMediaTime() + duration;
+
     //container height
     CGFloat height = CGRectGetHeight(containerView.bounds);
 
     //animation move to back & up
-    CATransform3D upTransform = CATransform3DTranslate([self transformForPage], 0, -height * 1.25f, 0);
+    CATransform3D upTransform = CATransform3DTranslate([self transformForPage], 0, koeff * height * 1.25f, 0);
     _dismissSnapshotView.layer.transform = upTransform;
 
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
@@ -98,29 +101,17 @@ static NSString *const kMovelUpAnimation = @"moveUpOldLayerAnimation";
             [NSValue valueWithCATransform3D:[self transformForPage]],
             [NSValue valueWithCATransform3D:upTransform],
     ];
-    animation.keyTimes = @[@(0.f), @(0.5), @(1.f)];
+    animation.keyTimes = @[@(0.f), @(exchangeTime), @(1.f)];
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
     [_dismissSnapshotView.layer addAnimation:animation forKey:nil];
 
 
     //animation appears from bottom
-    CATransform3D startTransform = CATransform3DConcat([self transformForPage], CATransform3DMakeTranslation(0, height, 0));
-//    _presentSnaphotView.layer.transform = startTransform;
-
-//    CABasicAnimation *animationFromBottom = [CABasicAnimation animationWithKeyPath:@"transform"];
-//    animationFromBottom.fromValue = [NSValue valueWithCATransform3D:startTransform];
-//    animationFromBottom.toValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-//    animationFromBottom.duration = duration;
-//    animationFromBottom.beginTime = durationWithDelay;
-//    animationFromBottom.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//    animationFromBottom.removedOnCompletion = NO;
-
-    //main animation to track progress
-//    animationFromBottom.delegate = self;
+    CATransform3D startTransform = CATransform3DConcat([self transformForPage], CATransform3DMakeTranslation(0, -koeff * height, 0));
 
     CAKeyframeAnimation *keyframeAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    keyframeAnimation.keyTimes =  @[@(0.5), @(1.f)];
+    keyframeAnimation.keyTimes =  @[@(exchangeTime), @(1.f)];
     keyframeAnimation.values = @[
             [NSValue valueWithCATransform3D:startTransform],
             [NSValue valueWithCATransform3D:CATransform3DIdentity],
@@ -130,8 +121,7 @@ static NSString *const kMovelUpAnimation = @"moveUpOldLayerAnimation";
     keyframeAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
 
     [_presentSnaphotView.layer addAnimation:keyframeAnimation forKey:nil];
-
-    self.transitionContext = transitionContext;
+    
 }
 
 - (CATransform3D)transformForPage {
@@ -154,7 +144,7 @@ static NSString *const kMovelUpAnimation = @"moveUpOldLayerAnimation";
 #pragma mark - Animation Delegate
 
 - (void)animationDidStart:(CAAnimation *)anim {
-
+    //empty
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
@@ -167,7 +157,7 @@ static NSString *const kMovelUpAnimation = @"moveUpOldLayerAnimation";
     [containerView insertSubview:_presentView belowSubview:_presentSnaphotView];
     [_presentSnaphotView removeFromSuperview];
 
-//    [_dismissSnapshotView removeFromSuperview];
+    [_dismissSnapshotView removeFromSuperview];
     [self.transitionContext completeTransition:YES];
 
 }
