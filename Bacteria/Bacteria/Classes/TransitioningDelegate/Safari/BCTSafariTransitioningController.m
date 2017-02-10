@@ -15,7 +15,6 @@
 
 @interface BCTSafariTransitioningController () <CAAnimationDelegate>
 
-@property(nonatomic, assign) BOOL presenting;
 @property(nonatomic, strong) id <UIViewControllerContextTransitioning> transitionContext;
 
 @end
@@ -34,18 +33,6 @@
     return self;
 }
 
-#pragma mark - UIViewControllerTransitioningDelegate
-
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    self.presenting = YES;
-    return self;
-}
-
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    self.presenting = NO;
-    return self;
-}
-
 #pragma mark - Animated transitioning
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -54,7 +41,7 @@
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
 
-    CGFloat koeff = self.presenting ? -1 : 1;
+    CGFloat koeff = self.valueObtainer.presenting ? -1 : 1;
     CGFloat exchangeTime = 0.45f;
 
     //save

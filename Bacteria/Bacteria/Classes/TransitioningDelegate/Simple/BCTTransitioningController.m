@@ -22,8 +22,6 @@
 
 @property(nonatomic) BCTBasicViewPerformer<BCTViewPerformer> *performer;
 
-@property(nonatomic, assign) BOOL presenting;
-
 @property(nonatomic, strong) UIView *dismissView;
 @property(nonatomic, strong) UIView *presentView;
 
@@ -39,18 +37,6 @@
         _valueObtainer = valueObtainer;
     }
 
-    return self;
-}
-
-#pragma mark - UIViewControllerTransitioningDelegate
-
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    self.presenting = YES;
-    return self;
-}
-
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    self.presenting = NO;
     return self;
 }
 
@@ -75,7 +61,7 @@
     CGPoint _startLocationPoint = CGPointZero, _endLocationPoint = CGPointZero;
 
     //necessary logic for adding / moving & location
-    if (self.presenting) {
+    if (self.valueObtainer.presenting) {
 
         [containerView addSubview:self.presentView];
 

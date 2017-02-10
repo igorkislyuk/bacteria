@@ -13,7 +13,8 @@
 
 typedef NS_ENUM(NSUInteger, BCTTransitionType) {
     BCTTransitionTypeParallel = 0, //default
-    BCTTransitionTypeCover = 1
+    BCTTransitionTypeCover = 1,
+    BCTTransitionTypeFlip = 2
 };
 
 typedef NS_ENUM(NSUInteger, BCTTransitionSideType) {

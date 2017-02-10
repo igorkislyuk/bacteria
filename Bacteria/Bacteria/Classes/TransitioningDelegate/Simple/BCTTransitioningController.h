@@ -11,10 +11,10 @@
 #import "BCTTypes.h"
 #import "BCTTransitioning.h"
 
-@interface BCTTransitioningController : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface BCTTransitioningController : NSObject <UIViewControllerAnimatedTransitioning>
 
-- (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithValueObtainer:(id <BCTTransitioning>)valueObtainer;
+
 @property (nonatomic, readonly, weak) id<BCTTransitioning> valueObtainer;
 
 @end

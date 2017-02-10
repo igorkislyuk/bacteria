@@ -9,8 +9,6 @@
 
 @interface BCTTransitioningFactory : NSObject <BCTTransitioning>
 
-- (id<UIViewControllerTransitioningDelegate>)transitioningDelegate;
-
 //params for storing values
 //duration of transition
 @property (nonatomic, assign) NSTimeInterval duration;
@@ -33,5 +31,7 @@
 
 //bool indicator for safari
 @property (nonatomic, assign) BOOL safariLike;
+
+@property (nonatomic, assign) BOOL presenting;
 
 @end

@@ -49,13 +49,29 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="NOy-Vx-BtH"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mp9-4G-VCv">
-                                <rect key="frame" x="159" y="629" width="56" height="30"/>
-                                <state key="normal" title="Transite"/>
-                                <connections>
-                                    <action selector="actionShowNextController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vag-OT-878"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="bbC-Yg-0l5">
+                                <rect key="frame" x="16" y="629" width="227" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mp9-4G-VCv">
+                                        <rect key="frame" x="0.0" y="0.0" width="56" height="30"/>
+                                        <state key="normal" title="Transite"/>
+                                        <connections>
+                                            <action selector="actionShowNextController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vag-OT-878"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0Q-dv-mAc">
+                                        <rect key="frame" x="78" y="0.0" width="40" height="30"/>
+                                        <state key="normal" title="Safari"/>
+                                        <connections>
+                                            <action selector="actionSafari:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxy-WD-jEO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5h-vb-Ddm">
+                                        <rect key="frame" x="140" y="0.0" width="87" height="30"/>
+                                        <state key="normal" title="Flip from left"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="2" translatesAutoresizingMaskIntoConstraints="NO" id="ARJ-D4-Xjk">
                                 <rect key="frame" x="14" y="591" width="347" height="31"/>
                             </slider>
@@ -89,20 +105,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0Q-dv-mAc">
-                                <rect key="frame" x="315" y="629" width="40" height="30"/>
-                                <state key="normal" title="Safari"/>
-                                <connections>
-                                    <action selector="actionSafari:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fxy-WD-jEO"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IPl-ko-UUA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4W8-y5-xAP"/>
                             <constraint firstItem="f3Q-vp-Pay" firstAttribute="trailing" secondItem="r8m-2H-UUn" secondAttribute="trailing" id="6Dl-3r-sOC"/>
-                            <constraint firstItem="mp9-4G-VCv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7H5-28-4Qy"/>
                             <constraint firstItem="ARJ-D4-Xjk" firstAttribute="top" secondItem="1py-6h-loF" secondAttribute="bottom" constant="8" id="98C-aq-X4K"/>
+                            <constraint firstItem="bbC-Yg-0l5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="A6v-Aa-xVk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bbC-Yg-0l5" secondAttribute="bottom" constant="8" id="B7N-jv-wj8"/>
                             <constraint firstItem="GkE-mU-pD9" firstAttribute="leading" secondItem="7dm-Is-OcC" secondAttribute="leading" id="Bl9-C4-jL4"/>
                             <constraint firstItem="IPl-ko-UUA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Fg7-Mk-ORO"/>
                             <constraint firstItem="wSE-q8-Kts" firstAttribute="leading" secondItem="GkE-mU-pD9" secondAttribute="leading" id="HpS-6P-xWR"/>
@@ -113,7 +123,6 @@
                             <constraint firstItem="f3Q-vp-Pay" firstAttribute="centerY" secondItem="wSE-q8-Kts" secondAttribute="centerY" id="OQ3-da-7fK"/>
                             <constraint firstItem="ARJ-D4-Xjk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="OnI-pl-1ho"/>
                             <constraint firstItem="GkE-mU-pD9" firstAttribute="top" secondItem="wSE-q8-Kts" secondAttribute="bottom" constant="8" symbolic="YES" id="Oqt-y7-jWS"/>
-                            <constraint firstItem="N0Q-dv-mAc" firstAttribute="centerY" secondItem="mp9-4G-VCv" secondAttribute="centerY" id="PvA-c2-2pd"/>
                             <constraint firstAttribute="trailing" secondItem="IPl-ko-UUA" secondAttribute="trailing" id="QAz-Sg-LGQ"/>
                             <constraint firstItem="xEu-5j-cpD" firstAttribute="leading" secondItem="wSE-q8-Kts" secondAttribute="leading" id="RPI-OE-kLY"/>
                             <constraint firstItem="7dm-Is-OcC" firstAttribute="leading" secondItem="1py-6h-loF" secondAttribute="leading" id="Rf1-Zz-exd"/>
@@ -121,10 +130,8 @@
                             <constraint firstItem="1py-6h-loF" firstAttribute="leading" secondItem="ARJ-D4-Xjk" secondAttribute="leading" id="UKZ-xf-Ara"/>
                             <constraint firstItem="ARJ-D4-Xjk" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Z5u-Oe-eaQ"/>
                             <constraint firstItem="r8m-2H-UUn" firstAttribute="leading" secondItem="7dm-Is-OcC" secondAttribute="trailing" constant="20" id="afp-H7-K9v"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mp9-4G-VCv" secondAttribute="bottom" constant="8" id="aqT-BX-Z6r"/>
+                            <constraint firstItem="bbC-Yg-0l5" firstAttribute="top" secondItem="ARJ-D4-Xjk" secondAttribute="bottom" constant="8" id="eQq-yv-24X"/>
                             <constraint firstItem="f3Q-vp-Pay" firstAttribute="leading" secondItem="wSE-q8-Kts" secondAttribute="trailing" constant="20" id="feW-MM-PAV"/>
-                            <constraint firstItem="mp9-4G-VCv" firstAttribute="top" secondItem="ARJ-D4-Xjk" secondAttribute="bottom" constant="8" id="gmH-x8-h5U"/>
-                            <constraint firstAttribute="trailing" secondItem="N0Q-dv-mAc" secondAttribute="trailing" constant="20" symbolic="YES" id="lhu-QU-ZF5"/>
                             <constraint firstItem="r8m-2H-UUn" firstAttribute="centerY" secondItem="7dm-Is-OcC" secondAttribute="centerY" id="pEE-1I-jDU"/>
                             <constraint firstItem="1py-6h-loF" firstAttribute="top" secondItem="7dm-Is-OcC" secondAttribute="bottom" constant="8" symbolic="YES" id="s7G-AT-Kno"/>
                             <constraint firstItem="f3Q-vp-Pay" firstAttribute="width" secondItem="wSE-q8-Kts" secondAttribute="width" id="xI4-7z-Ox7"/>
@@ -172,8 +179,8 @@
                                     <constraint firstAttribute="width" secondItem="bqx-Pa-edh" secondAttribute="height" multiplier="1:1" id="cCp-8u-xAx"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K52-Ex-d5h">
-                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K52-Ex-d5h">
+                                <rect key="frame" x="167" y="617" width="40" height="30"/>
                                 <state key="normal" title="Apply"/>
                                 <connections>
                                     <action selector="actionApply:" destination="AmF-GT-CQK" eventType="touchUpInside" id="OCW-sB-Sss"/>
@@ -258,7 +265,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1239" y="385"/>
+            <point key="canvasLocation" x="1237.5999999999999" y="384.55772113943033"/>
         </scene>
     </scenes>
 </document>

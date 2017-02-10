@@ -107,6 +107,15 @@
     };
 }
 
+- (BCTControllerTransitionEmpty)flipFromLeft {
+    return ^UIViewController * {
+
+//        self.transitioningFactory.
+
+        return self;
+    };
+}
+
 
 - (BCTControllerTransitionSideType)presentFrom {
     BCTControllerTransitionSideType plainFrom = BCTControllerTransitionSideType(sideType) {
@@ -142,7 +151,7 @@
 
         self.transitioningFactory.duration = time;
         
-        self.transitioningDelegate = [self.transitioningFactory transitioningDelegate];
+        self.transitioningDelegate = self.transitioningFactory;
 
         return self;
     };

@@ -7,9 +7,7 @@
 
 @protocol BCTTransitioning;
 
-@interface BCTSafariTransitioningController : NSObject <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate>
-
-- (instancetype)init NS_UNAVAILABLE;
+@interface BCTSafariTransitioningController : NSObject <UIViewControllerAnimatedTransitioning>
 
 - (instancetype)initWithValueObtainer:(id <BCTTransitioning>)valueObtainer;
 

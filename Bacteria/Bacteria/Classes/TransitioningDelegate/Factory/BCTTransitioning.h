@@ -6,7 +6,7 @@
 #import <UIKit/UIKit.h>
 #import "BCTTypes.h"
 
-@protocol BCTTransitioning <NSObject>
+@protocol BCTTransitioning <UIViewControllerTransitioningDelegate>
 
 //duration of transition
 @property (nonatomic, assign) NSTimeInterval duration;
@@ -26,5 +26,7 @@
 //scale: units
 @property (nonatomic, assign) CGSize startScale;
 @property (nonatomic, assign) CGSize endScale;
+
+@property (nonatomic, assign) BOOL presenting;
 
 @end

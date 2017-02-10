@@ -62,13 +62,17 @@
 // block all other properties
 - (BCTControllerTransitionEmpty)safari;
 
+// something for flip
+- (BCTControllerTransitionEmpty)flipFromLeft;
+
 
 @end
 
 // TODO
 
-// todo: safari like animation. Only from top. Separate presentation from dismissal - no customization. only present - dismiss.
 // todo: flip animation. another type of transition along with parallel, cover.
+// it will have anchor for flipping, so it means only 4 sides are supported: top/bottom & left/right
+
 // todo: pop from custom shape - https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
 // todo: add for each method method that will reset safari like value
