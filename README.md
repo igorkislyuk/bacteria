@@ -1,6 +1,6 @@
 # BACTERIA
 
-**It's framework for easy perform custom modal viewcontroller transitions. Current version - 0.1 (Alpha)**
+**It's framework for easy perform custom modal viewcontroller transitions. Current version - 0.2**
 
 ## Short feature list
 
@@ -17,13 +17,14 @@
 
 ## TODO Section
 
+- [ ] Add anchor point for flip presentation
 - [ ] Add interactivity. Users should easily embed transitions in gestures
 - [ ] Add support for segues, not only for modal code presentation
 - [ ] Add spring values for all kind of transitions
 - [ ] Add support for background color of container for transitions
 - [ ] Add blur for background container for transitions
 - [ ] Add transitions for collections
-- [ ] Add transition for viewControllers in navigation stack
+- [ ] Add transitions for viewControllers in navigation stack
 
 ## Historical notes
 
