@@ -77,6 +77,7 @@
 // todo: pop from custom shape - https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
 // todo: add for each method method that will reset safari like value
+// fixme: think about refactor simple controller to chain model with keyframes...
 // todo: just implement right stuff
 // todo: view retaining for presentation process.
 // todo: reverse check

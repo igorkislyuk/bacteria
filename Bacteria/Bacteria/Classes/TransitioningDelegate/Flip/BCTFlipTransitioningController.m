@@ -43,30 +43,19 @@
                                  options:UIViewKeyframeAnimationOptionCalculationModeCubic
                               animations:^{
 
-                                  CGFloat toWidth = CGRectGetWidth(toVC.view.bounds);
-                                  CGFloat fromWidth = CGRectGetWidth(fromVC.view.bounds);
-
                                   //prepare part
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.0f animations:^{
-                                      fromVC.view.layer.transform = CATransform3DMakeTranslation(fromWidth / 2, 0, 0);
-                                      fromVC.view.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
+                                      [self prepareViewFRTC:fromVC.view];
 
-                                      CATransform3D transform3D = CATransform3DIdentity;
-                                      transform3D = CATransform3DRotate(transform3D, (CGFloat) M_PI_2, 0, 1, 0);
-
-                                      toVC.view.layer.transform = transform3D;
-                                      toVC.view.layer.anchorPoint = CGPointMake(0.0f, 0.5f);
+                                      [self prepareViewFCTL:toVC.view];
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.5f animations:^{
-                                      CATransform3D transform3D = fromVC.view.layer.transform;
-                                      transform3D = CATransform3DTranslate(transform3D, - fromWidth / 2.0f, 0, 0);
-                                      transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 0, 1, 0);
-                                      fromVC.view.layer.transform = transform3D;
+                                      [self collapseViewFRTC:fromVC.view];
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.5f animations:^{
-                                      toVC.view.layer.transform = CATransform3DMakeTranslation(-toWidth / 2, 0, 0);
+                                      [self collapseViewFCTL:toVC.view];
                                   }];
 
 
@@ -75,16 +64,41 @@
                 //reset
                 containerView.layer.sublayerTransform = CATransform3DIdentity;
 
-                fromVC.view.layer.transform = CATransform3DIdentity;
-                toVC.view.layer.transform = CATransform3DIdentity;
-
-                fromVC.view.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
-                toVC.view.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
+                [self resetTransformAndAnchorFor:fromVC.view];
+                [self resetTransformAndAnchorFor:toVC.view];
 
                 [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
             }];
 
 
+}
+
+- (void)resetTransformAndAnchorFor:(UIView *)view {
+    view.layer.transform = CATransform3DIdentity;
+    view.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
+}
+
+// from center to left
+- (void)prepareViewFCTL:(UIView *)view {
+    view.layer.transform = CATransform3DMakeRotation((CGFloat) M_PI_2, 0, 1, 0);
+    view.layer.anchorPoint = CGPointMake(0.0f, 0.5f);
+}
+
+- (void)collapseViewFCTL:(UIView *)view {
+    view.layer.transform = CATransform3DMakeTranslation(-CGRectGetWidth(view.bounds) / 2, 0, 0);
+}
+
+// from right to center
+- (void)prepareViewFRTC:(UIView *)view {
+    view.layer.transform = CATransform3DMakeTranslation(CGRectGetWidth(view.bounds) / 2, 0, 0);
+    view.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
+}
+
+- (void)collapseViewFRTC:(UIView *)view {
+    CATransform3D transform3D = view.layer.transform;
+    transform3D = CATransform3DTranslate(transform3D, -CGRectGetWidth(view.bounds) / 2.0f, 0, 0);
+    transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 0, 1, 0);
+    view.layer.transform = transform3D;
 }
 
 @end
