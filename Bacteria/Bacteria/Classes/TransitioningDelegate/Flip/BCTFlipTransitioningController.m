@@ -7,6 +7,8 @@
 
 #import "BCTTransitioning.h"
 
+static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideType with unsupported side. Please contact maintainer";
+
 @implementation BCTFlipTransitioningController {
     UIView *_presentView, *_dismissView;
 }
@@ -77,37 +79,74 @@
 
 }
 
+#pragma mark - Animations
+
 - (void)prepareForFlipFromSide:(BCTTransitionSideType)sideType {
+
     if (sideType == BCTTransitionSideTypeRight) {
 
         [self prepareViewFRTC:_dismissView];
         [self prepareViewFCTL:_presentView];
-    } else  if (sideType == BCTTransitionSideTypeLeft) {
+    } else if (sideType == BCTTransitionSideTypeLeft) {
 
         [self prepareViewFLTC:_dismissView];
         [self prepareViewFCTR:_presentView];
+    } else if (sideType == BCTTransitionSideTypeTop) {
 
+        [self prepareViewFTTC:_dismissView];
+        [self prepareViewFCTB:_presentView];
+
+    } else if (sideType == BCTTransitionSideTypeBottom) {
+
+    } else {
+        NSLog(kBCTTransitionSideFlipFailMessage);
     }
 }
 
 - (void)animateFirstPartFromSide:(BCTTransitionSideType)sideType {
     if (sideType == BCTTransitionSideTypeRight) {
+
         [self animateViewFRTC:_dismissView];
     } else if (sideType == BCTTransitionSideTypeLeft) {
+
         [self animateViewFLTC:_dismissView];
+    } else if (sideType == BCTTransitionSideTypeTop) {
+
+        [self animateViewFTTC:_dismissView];
+
+    } else if (sideType == BCTTransitionSideTypeBottom) {
+
+    } else {
+        NSLog(kBCTTransitionSideFlipFailMessage);
     }
 }
 
 - (void)animateSecondPartFromSide:(BCTTransitionSideType)sideType {
     if (sideType == BCTTransitionSideTypeRight) {
+
         [self animateViewFCTL:_presentView];
     } else if (sideType == BCTTransitionSideTypeLeft) {
+
         [self animateViewFCTR:_presentView];
+    } else if (sideType == BCTTransitionSideTypeTop) {
+
+        [self animateViewFCTB:_presentView];
+
+    } else if (sideType == BCTTransitionSideTypeBottom) {
+
+    } else {
+        NSLog(kBCTTransitionSideFlipFailMessage);
     }
 }
 
+#pragma mark - Helpers
+
 - (CGFloat)halfWidth:(UIView *)view {
     return CGRectGetWidth(view.bounds) / 2.0f;
+}
+
+- (CGFloat)halfHeight:(UIView *)view {
+    return CGRectGetHeight(view.bounds) / 2.0f;
 }
 
 - (BCTTransitionSideType)transitionSideType {
@@ -122,6 +161,23 @@
         sideType = self.valueObtainer.dismissSideType;
     }
 
+    switch (sideType) {
+        case BCTTransitionSideTypeTopLeftCorner:
+            sideType = BCTTransitionSideTypeTop;
+            break;
+        case BCTTransitionSideTypeBottomLeftCorner:
+            sideType = BCTTransitionSideTypeLeft;
+            break;
+        case BCTTransitionSideTypeBottomRightCorner:
+            sideType = BCTTransitionSideTypeBottom;
+            break;
+        case BCTTransitionSideTypeTopRightCorner:
+            sideType = BCTTransitionSideTypeRight;
+            break;
+        default:
+            break;
+    }
+
     return sideType;
 }
 
@@ -130,9 +186,39 @@
     view.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
 }
 
+#pragma mark - Top animation
+
+//from top to center
+- (void)prepareViewFTTC:(UIView *)view {
+//    view.layer.transform = CATransform3DMakeTranslation(0, [self halfHeight:view], 0);
+//    view.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
+}
+
+- (void)animateViewFTTC:(UIView *)view {
+    CATransform3D transform3D = view.layer.transform;
+    transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 1, 0, 0);
+    view.layer.transform = transform3D;
+}
+
+//from center to bottom
+- (void)prepareViewFCTB:(UIView *)view {
+//    view.layer.anchorPoint = CGPointMake(0.5f, 0.0f);
+
+    CATransform3D transform3D = CATransform3DIdentity;
+//    transform3D = CATransform3DTranslate(transform3D, 0, - [self halfHeight:view], 0);
+    transform3D = CATransform3DRotate(transform3D, (CGFloat) M_PI_2, 1, 0, 0);
+    view.layer.transform = transform3D;
+}
+
+- (void)animateViewFCTB:(UIView *)view {
+    view.layer.transform = CATransform3DIdentity;
+}
+
+#pragma mark - Left animation
+
 //from left to center
 - (void)prepareViewFLTC:(UIView *)view {
-    view.layer.transform = CATransform3DMakeTranslation(- [self halfWidth:view], 0, 0);
+    view.layer.transform = CATransform3DMakeTranslation(-[self halfWidth:view], 0, 0);
     view.layer.anchorPoint = CGPointMake(0.0f, 0.5f);
 }
 
@@ -155,15 +241,7 @@
     view.layer.transform = CATransform3DMakeTranslation([self halfWidth:view], 0, 0);
 }
 
-//from center to left
-- (void)prepareViewFCTL:(UIView *)view {
-    view.layer.transform = CATransform3DMakeRotation((CGFloat) M_PI_2, 0, 1, 0);
-    view.layer.anchorPoint = CGPointMake(0.0f, 0.5f);
-}
-
-- (void)animateViewFCTL:(UIView *)view {
-    view.layer.transform = CATransform3DMakeTranslation(-[self halfWidth:view], 0, 0);
-}
+#pragma mark - Right animation
 
 //from right to center
 - (void)prepareViewFRTC:(UIView *)view {
@@ -176,6 +254,16 @@
     transform3D = CATransform3DTranslate(transform3D, -[self halfWidth:view], 0, 0);
     transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 0, 1, 0);
     view.layer.transform = transform3D;
+}
+
+//from center to left
+- (void)prepareViewFCTL:(UIView *)view {
+    view.layer.transform = CATransform3DMakeRotation((CGFloat) M_PI_2, 0, 1, 0);
+    view.layer.anchorPoint = CGPointMake(0.0f, 0.5f);
+}
+
+- (void)animateViewFCTL:(UIView *)view {
+    view.layer.transform = CATransform3DMakeTranslation(-[self halfWidth:view], 0, 0);
 }
 
 @end

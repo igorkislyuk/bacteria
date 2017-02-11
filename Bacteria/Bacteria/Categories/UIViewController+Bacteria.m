@@ -107,15 +107,6 @@
     };
 }
 
-- (BCTControllerTransitionEmpty)flipFromLeft {
-    return ^UIViewController * {
-
-        self.transitioningFactory.presentType = BCTTransitionTypeFlip;
-
-        return self;
-    };
-}
-
 
 - (BCTControllerTransitionSideType)presentFrom {
     BCTControllerTransitionSideType plainFrom = BCTControllerTransitionSideType(sideType) {

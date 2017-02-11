@@ -62,9 +62,6 @@
 // block all other properties
 - (BCTControllerTransitionEmpty)safari;
 
-// something for flip
-- (BCTControllerTransitionEmpty)flipFromLeft;
-
 
 @end
 
