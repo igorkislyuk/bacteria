@@ -55,11 +55,11 @@
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.5f animations:^{
-                                      [self collapseViewFRTC:_dismissView];
+                                      [self animateFirstPartFromSide:sideType];
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.5f animations:^{
-                                      [self collapseViewFCTL:_presentView];
+                                      [self animateSecondPartFromSide:sideType];
                                   }];
 
 
@@ -83,9 +83,31 @@
         [self prepareViewFRTC:_dismissView];
         [self prepareViewFCTL:_presentView];
     } else  if (sideType == BCTTransitionSideTypeLeft) {
-        
+
+        [self prepareViewFLTC:_dismissView];
+        [self prepareViewFCTR:_presentView];
 
     }
+}
+
+- (void)animateFirstPartFromSide:(BCTTransitionSideType)sideType {
+    if (sideType == BCTTransitionSideTypeRight) {
+        [self animateViewFRTC:_dismissView];
+    } else if (sideType == BCTTransitionSideTypeLeft) {
+        [self animateViewFLTC:_dismissView];
+    }
+}
+
+- (void)animateSecondPartFromSide:(BCTTransitionSideType)sideType {
+    if (sideType == BCTTransitionSideTypeRight) {
+        [self animateViewFCTL:_presentView];
+    } else if (sideType == BCTTransitionSideTypeLeft) {
+        [self animateViewFCTR:_presentView];
+    }
+}
+
+- (CGFloat)halfWidth:(UIView *)view {
+    return CGRectGetWidth(view.bounds) / 2.0f;
 }
 
 - (BCTTransitionSideType)transitionSideType {
@@ -108,25 +130,50 @@
     view.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
 }
 
-// from center to left
+//from left to center
+- (void)prepareViewFLTC:(UIView *)view {
+    view.layer.transform = CATransform3DMakeTranslation(- [self halfWidth:view], 0, 0);
+    view.layer.anchorPoint = CGPointMake(0.0f, 0.5f);
+}
+
+- (void)animateViewFLTC:(UIView *)view {
+    CATransform3D transform3D = view.layer.transform;
+    transform3D = CATransform3DTranslate(transform3D, [self halfWidth:view], 0, 0);
+    transform3D = CATransform3DRotate(transform3D, (CGFloat) M_PI_2, 0, 1, 0);
+    view.layer.transform = transform3D;
+}
+
+//from center to right
+- (void)prepareViewFCTR:(UIView *)view {
+    CATransform3D transform3D = CATransform3DIdentity;
+    transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 0, 1, 0);
+    view.layer.transform = transform3D;
+    view.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
+}
+
+- (void)animateViewFCTR:(UIView *)view {
+    view.layer.transform = CATransform3DMakeTranslation([self halfWidth:view], 0, 0);
+}
+
+//from center to left
 - (void)prepareViewFCTL:(UIView *)view {
     view.layer.transform = CATransform3DMakeRotation((CGFloat) M_PI_2, 0, 1, 0);
     view.layer.anchorPoint = CGPointMake(0.0f, 0.5f);
 }
 
-- (void)collapseViewFCTL:(UIView *)view {
-    view.layer.transform = CATransform3DMakeTranslation(-CGRectGetWidth(view.bounds) / 2, 0, 0);
+- (void)animateViewFCTL:(UIView *)view {
+    view.layer.transform = CATransform3DMakeTranslation(-[self halfWidth:view], 0, 0);
 }
 
-// from right to center
+//from right to center
 - (void)prepareViewFRTC:(UIView *)view {
-    view.layer.transform = CATransform3DMakeTranslation(CGRectGetWidth(view.bounds) / 2, 0, 0);
+    view.layer.transform = CATransform3DMakeTranslation([self halfWidth:view], 0, 0);
     view.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
 }
 
-- (void)collapseViewFRTC:(UIView *)view {
+- (void)animateViewFRTC:(UIView *)view {
     CATransform3D transform3D = view.layer.transform;
-    transform3D = CATransform3DTranslate(transform3D, -CGRectGetWidth(view.bounds) / 2.0f, 0, 0);
+    transform3D = CATransform3DTranslate(transform3D, -[self halfWidth:view], 0, 0);
     transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 0, 1, 0);
     view.layer.transform = transform3D;
 }
