@@ -84,32 +84,20 @@
 - (IBAction)actionAnimate:(id)sender {
     
     //prepare
+    self.testView.layer.anchorPoint = CGPointMake(0.5f, 0.0f);
+    BOOL geometryFlipped = self.testView.layer.isGeometryFlipped;
+    NSLog(@"geometryFlipped = %d", geometryFlipped);
     
-//    self.testView.layer.anchorPointZ = 1.0f;
-    self.testView.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
-//    self.testView.layer.position = CGPointMake(1.0f, 1.0f);
-//    self.testView.layer.position = CGPointMake(0.5f, 1.0f);
-    
-    self.testView.layer.transform = CATransform3DMakeTranslation(120.0f, 0, 0);
+    self.testView.layer.transform = CATransform3DMakeTranslation(0, -120.0f, 0);
     
     [UIView animateKeyframesWithDuration:3.0f delay:0 options:UIViewKeyframeAnimationOptionAutoreverse | UIViewKeyframeAnimationOptionRepeat animations:^{
-        
-//        [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.0f animations:^{
-//            self.testView2.layer.transform = CATransform3DMakeRotation(DEGREES_TO_RADIANS(120.0f), 0, 1, 0);
-//            self.testView.layer.transform = CATransform3DMakeRotation(DEGREES_TO_RADIANS(30.0f), 0, 1, 0);
-//        }];
-        
+
         [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:1.0f animations:^{
             CATransform3D transform3D = self.testView.layer.transform;
-            transform3D = CATransform3DTranslate(transform3D, -120.0f, 0.0f, 0.0f);
-            transform3D = CATransform3DRotate(transform3D, -M_PI_2, 0, 1, 0);
+            transform3D = CATransform3DTranslate(transform3D, 0, 120.0f, 0.0f);
+            transform3D = CATransform3DRotate(transform3D, -M_PI_2, 1, 0, 0);
             self.testView.layer.transform = transform3D;
         }];
-//        
-//        [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.5f animations:^{
-//            self.testView2.layer.transform = CATransform3DMakeRotation(DEGREES_TO_RADIANS(30.0f), 0, 1, 0);
-//        }];
-    
         
     } completion:^(BOOL finished) {
         

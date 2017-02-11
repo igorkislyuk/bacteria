@@ -190,28 +190,30 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
 
 //from top to center
 - (void)prepareViewFTTC:(UIView *)view {
-//    view.layer.transform = CATransform3DMakeTranslation(0, [self halfHeight:view], 0);
-//    view.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
+    view.layer.transform = CATransform3DMakeTranslation(0, -[self halfHeight:view], 0);
+    view.layer.anchorPoint = CGPointMake(0.5f, 0.0f);
 }
 
 - (void)animateViewFTTC:(UIView *)view {
     CATransform3D transform3D = view.layer.transform;
+    transform3D = CATransform3DTranslate(transform3D, 0, [self halfHeight:view], 0);
     transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 1, 0, 0);
     view.layer.transform = transform3D;
 }
 
 //from center to bottom
 - (void)prepareViewFCTB:(UIView *)view {
-//    view.layer.anchorPoint = CGPointMake(0.5f, 0.0f);
+    view.layer.anchorPoint = CGPointMake(0.5f, 1.0f);
 
     CATransform3D transform3D = CATransform3DIdentity;
-//    transform3D = CATransform3DTranslate(transform3D, 0, - [self halfHeight:view], 0);
     transform3D = CATransform3DRotate(transform3D, (CGFloat) M_PI_2, 1, 0, 0);
     view.layer.transform = transform3D;
 }
 
 - (void)animateViewFCTB:(UIView *)view {
-    view.layer.transform = CATransform3DIdentity;
+    CATransform3D transform3D = CATransform3DIdentity;
+    transform3D = CATransform3DTranslate(transform3D, 0, [self halfHeight:view], 0);
+    view.layer.transform = transform3D;
 }
 
 #pragma mark - Left animation
