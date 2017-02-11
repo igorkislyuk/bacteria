@@ -208,16 +208,11 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
 //from center to bottom
 - (void)prepareViewFCTB:(UIView *)view {
     view.layer.anchorPoint = CGPointMake(0.5f, 1.0f);
-
-    CATransform3D transform3D = CATransform3DIdentity;
-    transform3D = CATransform3DRotate(transform3D, (CGFloat) M_PI_2, 1, 0, 0);
-    view.layer.transform = transform3D;
+    view.layer.transform = CATransform3DMakeRotation((CGFloat) M_PI_2, 1, 0, 0);
 }
 
 - (void)animateViewFCTB:(UIView *)view {
-    CATransform3D transform3D = CATransform3DIdentity;
-    transform3D = CATransform3DTranslate(transform3D, 0, [self halfHeight:view], 0);
-    view.layer.transform = transform3D;
+    view.layer.transform = CATransform3DMakeTranslation(0, [self halfHeight:view], 0);
 }
 
 #pragma mark - Bottom animation
@@ -238,16 +233,11 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
 //from center to top
 - (void)prepareViewFCTT:(UIView *)view {
     view.layer.anchorPoint = CGPointMake(0.5f, 0.0f);
-
-    CATransform3D transform3D = CATransform3DIdentity;
-    transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 1, 0, 0);
-    view.layer.transform = transform3D;
+    view.layer.transform = CATransform3DMakeRotation((CGFloat) -M_PI_2, 1, 0, 0);
 }
 
 - (void)animateViewFCTT:(UIView *)view {
-    CATransform3D transform3D = CATransform3DIdentity;
-    transform3D = CATransform3DTranslate(transform3D, 0, -[self halfHeight:view], 0);
-    view.layer.transform = transform3D;
+    view.layer.transform = CATransform3DMakeTranslation(0, -[self halfHeight:view], 0);
 }
 
 #pragma mark - Left animation
@@ -267,9 +257,7 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
 
 //from center to right
 - (void)prepareViewFCTR:(UIView *)view {
-    CATransform3D transform3D = CATransform3DIdentity;
-    transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 0, 1, 0);
-    view.layer.transform = transform3D;
+    view.layer.transform = CATransform3DMakeRotation((CGFloat) -M_PI_2, 0, 1, 0);
     view.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
 }
 
