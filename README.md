@@ -30,7 +30,7 @@
 
 ## Historical notes
 
-Bacteria initially stands for *B*eautiful *A*nimation *C*ontroller *T*ransition. After some time it was renamed to Bacteria, for short and convenience. In other meaning, it can stands for *Ba*sic *C*ontroller *T*ransitions.
+Bacteria initially stands for **B**eautiful **A**nimation **C**ontroller **T**ransition. After some time it was renamed to Bacteria, for short and convenience. In other meaning, it can stands for **Ba**sic **C**ontroller **T**ransitions.
 
 ## Contributors
 
