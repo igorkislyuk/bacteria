@@ -81,8 +81,8 @@
 
 - (IBAction)actionFlipFromLeft:(id)sender {
     PresentedViewController *controllerToPresent = [self getController];
-    controllerToPresent.presentFrom(BCTTransitionSideTypeTop).withPresentedTransitionType(BCTTransitionTypeFlip).
-            dismissTo(BCTTransitionSideTypeBottomLeftCorner).withDismissedTransitionType(BCTTransitionTypeFlip).
+    controllerToPresent.presentFrom(BCTTransitionSideTypeBottomRightCorner).withPresentedTransitionType(BCTTransitionTypeFlip).
+            dismissTo(BCTTransitionSideTypeBottom).withDismissedTransitionType(BCTTransitionTypeFlip).
             transite(self.timeSlider.value);
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }

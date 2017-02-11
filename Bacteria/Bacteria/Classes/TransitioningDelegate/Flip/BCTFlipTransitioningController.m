@@ -98,6 +98,8 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
 
     } else if (sideType == BCTTransitionSideTypeBottom) {
 
+        [self prepareViewFBTC:_dismissView];
+        [self prepareViewFCTT:_presentView];
     } else {
         NSLog(kBCTTransitionSideFlipFailMessage);
     }
@@ -116,6 +118,7 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
 
     } else if (sideType == BCTTransitionSideTypeBottom) {
 
+        [self animateViewFBTC:_dismissView];
     } else {
         NSLog(kBCTTransitionSideFlipFailMessage);
     }
@@ -134,6 +137,7 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
 
     } else if (sideType == BCTTransitionSideTypeBottom) {
 
+        [self animateViewFCTT:_presentView];
     } else {
         NSLog(kBCTTransitionSideFlipFailMessage);
     }
@@ -213,6 +217,36 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
 - (void)animateViewFCTB:(UIView *)view {
     CATransform3D transform3D = CATransform3DIdentity;
     transform3D = CATransform3DTranslate(transform3D, 0, [self halfHeight:view], 0);
+    view.layer.transform = transform3D;
+}
+
+#pragma mark - Bottom animation
+
+//from bottom to center
+- (void)prepareViewFBTC:(UIView *)view {
+    view.layer.transform = CATransform3DMakeTranslation(0, [self halfHeight:view], 0);
+    view.layer.anchorPoint = CGPointMake(0.5f, 1.0f);
+}
+
+- (void)animateViewFBTC:(UIView *)view {
+    CATransform3D transform3D = view.layer.transform;
+    transform3D = CATransform3DTranslate(transform3D, 0, -[self halfHeight:view], 0);
+    transform3D = CATransform3DRotate(transform3D, (CGFloat) M_PI_2, 1, 0, 0);
+    view.layer.transform = transform3D;
+}
+
+//from center to top
+- (void)prepareViewFCTT:(UIView *)view {
+    view.layer.anchorPoint = CGPointMake(0.5f, 0.0f);
+
+    CATransform3D transform3D = CATransform3DIdentity;
+    transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 1, 0, 0);
+    view.layer.transform = transform3D;
+}
+
+- (void)animateViewFCTT:(UIView *)view {
+    CATransform3D transform3D = CATransform3DIdentity;
+    transform3D = CATransform3DTranslate(transform3D, 0, -[self halfHeight:view], 0);
     view.layer.transform = transform3D;
 }
 
