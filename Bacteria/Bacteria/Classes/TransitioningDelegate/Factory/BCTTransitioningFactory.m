@@ -27,7 +27,9 @@
         return [[BCTSafariTransitioningController alloc] initWithValueObtainer:self];
     } else {
 
-        if (self.presentType == BCTTransitionTypeFlip) {
+        BCTTransitionType type = self.presenting ? self.presentType : self.dismissType;
+
+        if (type == BCTTransitionTypeFlip) {
             return [[BCTFlipTransitioningController alloc] initWithValueObtainer:self];
         } else {
             return [[BCTTransitioningController alloc] initWithValueObtainer:self];

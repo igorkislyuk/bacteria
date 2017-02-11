@@ -62,9 +62,7 @@
     
     controllerToPresent.
     presentFrom([blockModel numberOfSelectedValue]).
-    dismissTo([dismissedBlockModel numberOfSelectedValue]).
-    //    presentFrom(BCTTransitionSideTypeTop).
-    //    dismissTo(BCTTransitionSideTypeTop).
+    dismissTo(dismissedBlockModel.numberOfSelectedValue).
     withPresentedTransitionType([presentedCover numberOfSelectedValue]).
     withDismissedTransitionType([dismissedCover numberOfSelectedValue]).
     presentStartScale(self.startXSlider.value, self.startYSlider.value).
@@ -83,7 +81,9 @@
 
 - (IBAction)actionFlipFromLeft:(id)sender {
     PresentedViewController *controllerToPresent = [self getController];
-    controllerToPresent.flipFromLeft().transite(self.timeSlider.value);
+    controllerToPresent.presentFrom(BCTTransitionSideTypeRight).withPresentedTransitionType(BCTTransitionTypeFlip).
+            dismissTo(BCTTransitionSideTypeRight).withDismissedTransitionType(BCTTransitionTypeCover).
+            transite(self.timeSlider.value);
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 

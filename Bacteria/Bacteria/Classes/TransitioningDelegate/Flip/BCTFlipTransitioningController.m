@@ -8,7 +8,7 @@
 #import "BCTTransitioning.h"
 
 @implementation BCTFlipTransitioningController {
-
+    UIView *_presentView, *_dismissView;
 }
 
 - (instancetype)initWithValueObtainer:(id <BCTTransitioning>)valueObtainer {
@@ -33,10 +33,16 @@
 
     [containerView addSubview:toVC.view];
 
-    //configure layers
+    _dismissView = fromVC.view;
+    _presentView = toVC.view;
+
+    //configure container
     CATransform3D perspective = CATransform3DIdentity;
     perspective.m34 = 1 / -500.f;
     containerView.layer.sublayerTransform = perspective;
+
+    //get value for flip
+    BCTTransitionSideType sideType = [self transitionSideType];
 
     [UIView animateKeyframesWithDuration:self.valueObtainer.duration
                                    delay:0.f
@@ -45,32 +51,56 @@
 
                                   //prepare part
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.0f animations:^{
-                                      [self prepareViewFRTC:fromVC.view];
-
-                                      [self prepareViewFCTL:toVC.view];
+                                      [self prepareForFlipFromSide:sideType];
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.5f animations:^{
-                                      [self collapseViewFRTC:fromVC.view];
+                                      [self collapseViewFRTC:_dismissView];
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.5f animations:^{
-                                      [self collapseViewFCTL:toVC.view];
+                                      [self collapseViewFCTL:_presentView];
                                   }];
 
 
                               } completion:^(BOOL finished) {
 
-                //reset
+                //finish part
                 containerView.layer.sublayerTransform = CATransform3DIdentity;
 
-                [self resetTransformAndAnchorFor:fromVC.view];
-                [self resetTransformAndAnchorFor:toVC.view];
+                [self resetTransformAndAnchorFor:_dismissView];
+                [self resetTransformAndAnchorFor:_presentView];
 
                 [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
             }];
 
 
+}
+
+- (void)prepareForFlipFromSide:(BCTTransitionSideType)sideType {
+    if (sideType == BCTTransitionSideTypeRight) {
+
+        [self prepareViewFRTC:_dismissView];
+        [self prepareViewFCTL:_presentView];
+    } else  if (sideType == BCTTransitionSideTypeLeft) {
+        
+
+    }
+}
+
+- (BCTTransitionSideType)transitionSideType {
+    BCTTransitionSideType sideType;
+
+    if (self.valueObtainer.presenting) {
+
+        sideType = self.valueObtainer.presentSideType;
+
+    } else {
+
+        sideType = self.valueObtainer.dismissSideType;
+    }
+
+    return sideType;
 }
 
 - (void)resetTransformAndAnchorFor:(UIView *)view {

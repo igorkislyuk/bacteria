@@ -12,4 +12,5 @@
 - (instancetype)initWithValueObtainer:(id <BCTTransitioning>)valueObtainer;
 
 @property (nonatomic, readonly, weak) id<BCTTransitioning> valueObtainer;
+
 @end
