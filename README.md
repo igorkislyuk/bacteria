@@ -1,23 +1,25 @@
 # BACTERIA
 
-**It's framework for easy perform custom modal viewcontroller transitions. Current version - 0.2**
+**It's framework for easy perform basic custom modal viewcontroller transitions. Current version - 0.3**
 
 ## Short feature list
 
+* almost human syntax for transitions :)
 * support all side modal controller presentation
-* support scaling for present and dismiss controller
-* support different transition types (parallel, cover)
-* support reverse dismissal / reverse presentation
-* support safari-like controller transitions
+* support scaling for present and dismiss controller views
+* support different transition types (parallel, cover, flip)
+* support reverse functionality
+* support safari-like controller transition (both present & dismiss)
 * ...to be continued
 
-## Functionality
+## Installation
+
+## Docs
 
 ... it can this, and this one...
 
 ## TODO Section
 
-- [ ] Add anchor point for flip presentation
 - [ ] Add interactivity. Users should easily embed transitions in gestures
 - [ ] Add support for segues, not only for modal code presentation
 - [ ] Add spring values for all kind of transitions
@@ -28,7 +30,7 @@
 
 ## Historical notes
 
-Bacteria initially stands for Beautiful Animation Controller Transition. After some time it was renamed to Bacteria, for short.
+Bacteria initially stands for *B*eautiful *A*nimation *C*ontroller *T*ransition. After some time it was renamed to Bacteria, for short and convenience. In other meaning, it can stands for *Ba*sic *C*ontroller *T*ransitions.
 
 ## Contributors
 
@@ -36,4 +38,4 @@ Bacteria initially stands for Beautiful Animation Controller Transition. After s
 
 ## License
 
-FREE SOFTWARE.
+FREE SOFTWARE. License will be added

@@ -12,73 +12,84 @@
 #import "BCT-BlocksHeader.h"
 
 /**
- Current version - 0.2
+ * Current version - 0.3
  */
+
 @interface UIViewController (Bacteria)
 
 /**
- Required. Specify an duration
+ * Required. Specify an duration, like `transite(0.3f)`
+ * @return controller itself
  */
 - (BCTControllerTransitionTime)transite;
 
 /**
- Prepare view controller for presental within an specified direction.
+ * Prepare view controller for presental within an specified direction.
+ * @return controller itself
  */
 - (BCTControllerTransitionSideType)presentFrom;
 
 /**
- Prepare view controller for dismissal within a specified direction.
+ * Prepare view controller for dismissal within a specified direction.
+ * @return controller itself
  */
 - (BCTControllerTransitionSideType)dismissTo;
 
 /**
- * Set reverse for another action. If you set present from - reverse will add dismiss, and vice versa.
+ * Set reverse for another action. If you set `presentFrom()`, than reverse function will add `dismissTo()` silently, and vice versa.
+ * @return controller itself
  */
 - (BCTControllerTransitionEmpty)reverse;
 
 /**
- Otherwise, you can specify a concrete point for presental/dismissal
+ * Otherwise, you can specify a concrete point for presental/dismissal.
+ * @return controller itself
  */
 - (BCTControllerTransitionLocation)fromPoint;
 - (BCTControllerTransitionLocation)toPoint;
 
 /**
- Default behaviour is parallel
+ * Default behaviour is parallel
+ * @return controller itself
  */
 - (BacteriaTransitionBlock)withPresentedTransitionType;
 - (BacteriaTransitionBlock)withDismissedTransitionType;
 
 /**
- * Scale factor, that will be applied to presented view. End scale for view for view is {1, 1}.
- * Measure in units
+ * Initial scale factor for presented view. End scale for view for view is {1, 1}.
+ * Measures in units. Default to { 1, 1}
+ * @return controller itself
  */
 - (BacteriaScaleBlock)presentStartScale;
 
 /**
- * Scale factor for end view. Initial scale of that view {1, 1}
+ * Final scale factor for dismissed view. Initial scale of that view { 1, 1 }
+ * Measures in units. Default to { 1, 1 }
+ * @return controller itself
  */
 - (BacteriaScaleBlock)dismissEndScale;
 
-// block all other properties
+/**
+ * This transition will simulate page-switching in Safari with portrait mode. Block others transitions.
+ * @return controller itself
+ */
 - (BCTControllerTransitionEmpty)safari;
-
 
 @end
 
 // TODO
 
-// todo: flip animation. another type of transition along with parallel, cover.
-// it will have anchor for flipping, so it means only 4 sides are supported: top/bottom & left/right
-// it will be cool to add scale for flipping
-
 // todo: pop from custom shape - https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
 
+// todo: add functionality to retain view within container view. Tip: you should use snapshot, not `addSubview:`
 // todo: add for each method method that will reset safari like value
+
+// todo: think about custom points for presenting & dismissing.
+// Possibly it useless. Will you present controller from center of another?
+
+// todo: check reverse function for all transitions
+// todo: refactor whole project
+// todo: rename: bct -> bacteria
+// todo: made good readme
+
 // fixme: think about refactor simple controller to chain model with keyframes...
-// todo: just implement right stuff
-// todo: view retaining for presentation process.
-// todo: reverse check
-// todo: setup travis
-// todo: review all architecture and all props
-// todo: replace all bct -> bacteria
-// todo: readme
