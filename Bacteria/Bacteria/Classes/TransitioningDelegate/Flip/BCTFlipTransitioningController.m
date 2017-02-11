@@ -38,30 +38,35 @@
     perspective.m34 = 1 / -500.f;
     containerView.layer.sublayerTransform = perspective;
 
-//    toVC.view.layer.transform = [self transformWithAngle:-60.0f];
-
     [UIView animateKeyframesWithDuration:self.valueObtainer.duration
                                    delay:0.f
                                  options:UIViewKeyframeAnimationOptionCalculationModeCubic
                               animations:^{
 
-                                  [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.0f animations:^{
-                                      fromVC.view.layer.transform = CATransform3DIdentity;
+                                  CGFloat toWidth = CGRectGetWidth(toVC.view.bounds);
+                                  CGFloat fromWidth = CGRectGetWidth(fromVC.view.bounds);
 
-                                      CATransform3D transform3D = [self transformWithAngle:(CGFloat) M_PI_2];
-                                      transform3D = CATransform3DTranslate(transform3D, CGRectGetWidth(toVC.view.bounds), 0, 0);
+                                  //prepare part
+                                  [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.0f animations:^{
+                                      fromVC.view.layer.transform = CATransform3DMakeTranslation(fromWidth / 2, 0, 0);
+                                      fromVC.view.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
+
+                                      CATransform3D transform3D = CATransform3DIdentity;
+                                      transform3D = CATransform3DRotate(transform3D, (CGFloat) M_PI_2, 0, 1, 0);
+
                                       toVC.view.layer.transform = transform3D;
-//                                      fromVC.view.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
+                                      toVC.view.layer.anchorPoint = CGPointMake(0.0f, 0.5f);
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.5f animations:^{
-                                      CATransform3D transform3D = [self transformWithAngle:(CGFloat) -M_PI_2];
-                                      transform3D = CATransform3DTranslate(transform3D, -CGRectGetWidth(fromVC.view.bounds), 0, 0);
+                                      CATransform3D transform3D = fromVC.view.layer.transform;
+                                      transform3D = CATransform3DTranslate(transform3D, - fromWidth / 2.0f, 0, 0);
+                                      transform3D = CATransform3DRotate(transform3D, (CGFloat) -M_PI_2, 0, 1, 0);
                                       fromVC.view.layer.transform = transform3D;
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.5f animations:^{
-                                      toVC.view.layer.transform = CATransform3DIdentity;
+                                      toVC.view.layer.transform = CATransform3DMakeTranslation(-toWidth / 2, 0, 0);
                                   }];
 
 
@@ -69,24 +74,17 @@
 
                 //reset
                 containerView.layer.sublayerTransform = CATransform3DIdentity;
+
                 fromVC.view.layer.transform = CATransform3DIdentity;
                 toVC.view.layer.transform = CATransform3DIdentity;
+
+                fromVC.view.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
+                toVC.view.layer.anchorPoint = CGPointMake(0.5f, 0.5f);
 
                 [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
             }];
 
 
 }
-
-/// angle in radians
-- (CATransform3D)transformWithAngle:(CGFloat)angle {
-    CATransform3D transform3D = CATransform3DIdentity;
-//    transform3D = CATransform3DScale(transform3D, 1.0f, 0.8f, f);
-    transform3D = CATransform3DRotate(transform3D, angle, 0, 1, 0);
-//    transform3D = CATransform3DTranslate(transform3D, 0, 0, -100);
-    return transform3D;
-//    return rotation;
-}
-
 
 @end
