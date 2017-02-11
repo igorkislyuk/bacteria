@@ -6,7 +6,7 @@
 #import <UIKit/UIKit.h>
 #import "BCTTypes.h"
 
-#define DEGREES_TO_RADIANS(degrees) (CGFloat)((M_PI * degrees)/180.f)
+#define DEGREES_TO_RADIANS(degrees) (CGFloat)((M_PI * degrees)/180.0f)
 
 @protocol BCTTransitioning <UIViewControllerTransitioningDelegate>
 

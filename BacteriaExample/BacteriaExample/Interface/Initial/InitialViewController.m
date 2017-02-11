@@ -83,7 +83,7 @@
 
 - (IBAction)actionFlipFromLeft:(id)sender {
     PresentedViewController *controllerToPresent = [self getController];
-    controllerToPresent.flipFromLeft().transite(5.f);
+    controllerToPresent.flipFromLeft().transite(self.timeSlider.value);
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 

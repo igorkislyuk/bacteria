@@ -31,47 +31,55 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
-//    if (self.valueObtainer.presenting) {
     [containerView addSubview:toVC.view];
-//    }
 
     //configure layers
-
     CATransform3D perspective = CATransform3DIdentity;
     perspective.m34 = 1 / -500.f;
-    containerView.layer.transform = perspective;
+    containerView.layer.sublayerTransform = perspective;
 
-    toVC.view.layer.transform = [self transformWithAngle:M_PI_2];
+//    toVC.view.layer.transform = [self transformWithAngle:-60.0f];
 
     [UIView animateKeyframesWithDuration:self.valueObtainer.duration
                                    delay:0.f
                                  options:UIViewKeyframeAnimationOptionCalculationModeCubic
                               animations:^{
 
+                                  [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.0f animations:^{
+                                      fromVC.view.layer.transform = CATransform3DIdentity;
+
+                                      toVC.view.layer.transform = [self transformWithAngle:(CGFloat) M_PI_2];
+                                  }];
+
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.5f animations:^{
-                                      CATransform3D transform3D = [self transformWithAngle:-M_PI_2];
-//                                      transform3D = CATransform3DRotate(transform3D, DEGREES_TO_RADIANS(25), 0, 1, 0);
-//                                      transform3D = CATransform3DScale(transform3D, 0.9, 0.9, 1);
-                                      fromVC.view.layer.transform = transform3D;
+                                      fromVC.view.layer.transform = [self transformWithAngle:(CGFloat) -M_PI_2];
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.5f animations:^{
-                                      toVC.view.layer.transform = [self transformWithAngle:0.f];
+                                      toVC.view.layer.transform = CATransform3DIdentity;
                                   }];
 
 
                               } completion:^(BOOL finished) {
+
+                //reset
+                containerView.layer.sublayerTransform = CATransform3DIdentity;
+                fromVC.view.layer.transform = CATransform3DIdentity;
+                toVC.view.layer.transform = CATransform3DIdentity;
+
                 [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
             }];
 
 
 }
 
+/// angle in radians
 - (CATransform3D)transformWithAngle:(CGFloat)angle {
-//    CATransform3D scale = CATransform3DMakeScale(0.5f, 0.5f, 1.f);
-    CATransform3D rotation = CATransform3DMakeRotation(angle, 0, 1, 0);
-//    return CATransform3DConcat(scale, rotation);
-    return rotation;
+    CATransform3D transform3D = CATransform3DIdentity;
+    transform3D = CATransform3DScale(transform3D, 1.0f, 0.8f, 1.f);
+    transform3D = CATransform3DRotate(transform3D, angle, 0, 1, 0);
+    return transform3D;
+//    return rotation;
 }
 
 
