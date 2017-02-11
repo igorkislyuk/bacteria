@@ -85,7 +85,10 @@
     
     //prepare
     
-    
+//    self.testView.layer.anchorPointZ = 1.0f;
+    self.testView.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
+    self.testView.layer.position = CGPointMake(1.0f, 1.0f);
+//    self.testView.layer.position = CGPointMake(0.5f, 1.0f);
     
     [UIView animateKeyframesWithDuration:3.0f delay:0 options:UIViewKeyframeAnimationOptionAutoreverse | UIViewKeyframeAnimationOptionRepeat animations:^{
         

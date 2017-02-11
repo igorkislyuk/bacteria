@@ -48,11 +48,16 @@
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.0f animations:^{
                                       fromVC.view.layer.transform = CATransform3DIdentity;
 
-                                      toVC.view.layer.transform = [self transformWithAngle:(CGFloat) M_PI_2];
+                                      CATransform3D transform3D = [self transformWithAngle:(CGFloat) M_PI_2];
+                                      transform3D = CATransform3DTranslate(transform3D, CGRectGetWidth(toVC.view.bounds), 0, 0);
+                                      toVC.view.layer.transform = transform3D;
+//                                      fromVC.view.layer.anchorPoint = CGPointMake(1.0f, 0.5f);
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.5f animations:^{
-                                      fromVC.view.layer.transform = [self transformWithAngle:(CGFloat) -M_PI_2];
+                                      CATransform3D transform3D = [self transformWithAngle:(CGFloat) -M_PI_2];
+                                      transform3D = CATransform3DTranslate(transform3D, -CGRectGetWidth(fromVC.view.bounds), 0, 0);
+                                      fromVC.view.layer.transform = transform3D;
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.5f animations:^{
@@ -76,8 +81,9 @@
 /// angle in radians
 - (CATransform3D)transformWithAngle:(CGFloat)angle {
     CATransform3D transform3D = CATransform3DIdentity;
-    transform3D = CATransform3DScale(transform3D, 1.0f, 0.8f, 1.f);
+//    transform3D = CATransform3DScale(transform3D, 1.0f, 0.8f, f);
     transform3D = CATransform3DRotate(transform3D, angle, 0, 1, 0);
+//    transform3D = CATransform3DTranslate(transform3D, 0, 0, -100);
     return transform3D;
 //    return rotation;
 }
