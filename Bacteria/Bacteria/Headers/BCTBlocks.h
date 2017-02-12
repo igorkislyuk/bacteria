@@ -18,6 +18,6 @@ typedef UIViewController* (^BacteriaScaleBlock)(CGFloat, CGFloat);
 typedef UIViewController* (^BacteriaLocationBlock)(CGPoint);
 typedef UIViewController* (^BacteriaTransitionBlock)(BCTTransitionType);
 typedef UIViewController* (^BacteriaDirectionBlock)(BCTDirectionType);
-typedef UIViewController* (^BacteriaPopBlock)(CGRect rect);
+typedef UIViewController* (^BacteriaPopBlock)(UIView *);
 
 #endif /* BCTBlocks_h */

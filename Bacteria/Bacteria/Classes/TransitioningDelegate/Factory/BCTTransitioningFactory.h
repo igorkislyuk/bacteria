@@ -23,7 +23,8 @@
 @property (nonatomic, assign) CGPoint presentStartPoint;
 @property (nonatomic, assign) CGPoint dismissEndPoint;
 
-@property(nonatomic, assign) CGRect startPopRect;
-@property(nonatomic, assign) CGRect endPopRect;
+@property(nonatomic, weak) UIView *startPopView;
+@property(nonatomic, weak) UIView *endPopView;
+
 
 @end

@@ -189,15 +189,15 @@
 }
 
 - (BacteriaPopBlock)popFrom {
-    return ^UIViewController *(CGRect rect) {
-        self.transitioningFactory.startPopRect = rect;
+    return ^UIViewController *(UIView *view) {
+        self.transitioningFactory.startPopView = view;
         return self;
     };
 }
 
 - (BacteriaPopBlock)popTo {
-    return ^UIViewController *(CGRect rect) {
-        self.transitioningFactory.endPopRect = rect;
+    return ^UIViewController *(UIView *view) {
+        self.transitioningFactory.endPopView = view;
         return self;
     };
 }

@@ -32,7 +32,7 @@
 @property (nonatomic, assign) CGPoint dismissEndPoint;
 
 //for pop animation
-@property(nonatomic, assign) CGRect startPopRect;
-@property(nonatomic, assign) CGRect endPopRect;
+@property(nonatomic, weak) UIView *startPopView;
+@property(nonatomic, weak) UIView *endPopView;
 
 @end

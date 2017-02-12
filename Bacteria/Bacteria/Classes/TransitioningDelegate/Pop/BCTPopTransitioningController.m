@@ -41,14 +41,24 @@
     _dismissView = fromVC.view;
     _presentView = toVC.view;
 
-    CGRect startPopRect = self.valueObtainer.startPopRect;
+    UIView *startPopView = self.valueObtainer.startPopView;
+
+    CGRect rect = startPopView.frame;
+
+    if (CGPointEqualToPoint(startPopView.frame.origin, CGPointZero)) {
+        CGPoint test = [startPopView convertPoint:startPopView.frame.origin toView:_presentView];
+        rect.origin = test;
+    }
 
     //path
-    UIBezierPath *startPath = [UIBezierPath bezierPathWithOvalInRect:startPopRect];
+    NSLog(@"NSStringFromCGRect(rect) = %@", NSStringFromCGRect(rect));
+    UIBezierPath *startPath = [UIBezierPath bezierPathWithOvalInRect:rect];
 
-    CGPoint extremePoint = [self extremePointWithRect:startPopRect inView:_presentView];
+    CGPoint extremePoint = [self extremePointWithView:startPopView inView:_presentView];
     CGFloat radius = (CGFloat) sqrt((extremePoint.x * extremePoint.x) + (extremePoint.y * extremePoint.y));
-    UIBezierPath *endPath = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(startPopRect, -radius, -radius)];
+    CGRect newRect = CGRectInset(rect, -radius, -radius);
+    NSLog(@"NSStringFromCGRect(newRect) = %@", NSStringFromCGRect(newRect));
+    UIBezierPath *endPath = [UIBezierPath bezierPathWithOvalInRect:newRect];
 
     //create mask for present view
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
@@ -72,15 +82,15 @@
     }
 }
 
-- (CGPoint)extremePointWithRect:(CGRect)rect inView:(UIView *)view {
+- (CGPoint)extremePointWithView:(UIView *)view inView:(UIView *)mainView {
     CGPoint result;
 
-    CGFloat x = ( CGRectGetMidX(rect) <= CGRectGetMidX(view.bounds) ) ?
-            CGRectGetWidth(view.bounds) - CGRectGetMidX(rect) :
-            CGRectGetMidX(rect);
-    CGFloat y = (CGRectGetMidY(rect) <= CGRectGetMidY(view.bounds)) ?
-            CGRectGetHeight(view.bounds) - CGRectGetMidY(rect) :
-            CGRectGetMidY(rect);
+    CGFloat x = ( CGRectGetMidX(view.frame) <= CGRectGetMidX(mainView.frame) ) ?
+            CGRectGetWidth(mainView.frame) - CGRectGetMidX(view.frame) :
+            CGRectGetMidX(view.frame);
+    CGFloat y = (CGRectGetMidY(view.frame) <= CGRectGetMidY(mainView.frame)) ?
+            CGRectGetHeight(mainView.frame) - CGRectGetMidY(view.frame) :
+            CGRectGetMidY(view.frame);
     result.x = x;
     result.y = y;
 
