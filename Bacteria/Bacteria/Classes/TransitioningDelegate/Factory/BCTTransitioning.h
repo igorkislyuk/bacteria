@@ -46,10 +46,12 @@ typedef NS_ENUM(NSUInteger, BCTInnerTransitionType) {
 //points for animation process
 @property (nonatomic, assign) CGPoint presentStartPoint;
 @property (nonatomic, assign) CGPoint dismissEndPoint;
+@property(nonatomic, assign) BOOL safariLike;
 
 #pragma mark - Inner
 
 @property (nonatomic, assign) BCTInnerTransitionType innerPresentType;
 @property (nonatomic, assign) BCTInnerTransitionType innerDismissType;
+
 
 @end
