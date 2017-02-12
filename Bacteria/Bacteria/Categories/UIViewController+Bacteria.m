@@ -14,7 +14,7 @@
 
 @interface UIViewController (Bacteria_Private)
 
-@property(nonatomic, strong) id<BCTTransitioning> transitioningFactory;
+@property(nonatomic, strong) id <BCTTransitioning> transitioningFactory;
 
 @end
 
@@ -41,144 +41,9 @@
 
 @implementation UIViewController (Bacteria)
 
-- (BCTControllerTransitionLocation)fromPoint {
-    BCTControllerTransitionLocation fromLocation = BCTControllerTransitionLocation(point) {
-
-        //just move from point
-        self.transitioningFactory.presentStartPoint = point;
-
-        return self;
-    };
-    return fromLocation;
-}
-
-- (BCTControllerTransitionLocation)toPoint {
-    BCTControllerTransitionLocation toPoint = BCTControllerTransitionLocation(point) {
-
-        self.transitioningFactory.dismissEndPoint = point;
-
-        return self;
-    };
-    return toPoint;
-}
-
-- (BacteriaTransitionBlock)withPresentedTransitionType {
-    BacteriaTransitionBlock transitionType = BCTControllerTransitionType(type) {
-        self.transitioningFactory.presentType = type;
-        return self;
-    };
-    return transitionType;
-}
-
-- (BacteriaTransitionBlock)withDismissedTransitionType {
-    BacteriaTransitionBlock transitionType = BCTControllerTransitionType(type) {
-        self.transitioningFactory.dismissType = type;
-        return self;
-    };
-    return transitionType;
-}
-
-- (BacteriaScaleBlock)presentStartScale {
-    BacteriaScaleBlock scaleBlock = BacteriaScaleBlock(x, y) {
-        self.transitioningFactory.startScale = CGSizeMake(x, y);
-        return self;
-    };
-    return scaleBlock;
-}
-
-- (BacteriaScaleBlock)dismissEndScale {
-    BacteriaScaleBlock scaleBlock = BacteriaScaleBlock(x, y) {
-
-        self.transitioningFactory.endScale = CGSizeMake(x, y);
-
-        return self;
-    };
-    return scaleBlock;
-}
-
-- (BCTControllerTransitionEmpty)withSafariAnimation {
-    return ^UIViewController * {
-
-        //set another delegate
-        self.transitioningFactory.safariLike = YES;
-
-        return self;
-    };
-}
-
-- (BacteriaPathBlock)popFrom {
-    return ^UIViewController *(CGRect rect, BCTScaleType scaleType) {
-        return self;
-    };
-}
-
-- (BacteriaPathBlock)popTo {
-    return ^UIViewController *(CGRect rect, BCTScaleType scaleType) {
-        return self;
-    };
-}
-
-- (BCTControllerTransitionSideType)presentFrom {
-    BCTControllerTransitionSideType plainFrom = BCTControllerTransitionSideType(sideType) {
-
-        //save
-        self.transitioningFactory.presentSideType = sideType;
-
-        //get
-        self.transitioningFactory.presentStartPoint = [self pointWithSideType:sideType];
-
-        return self;
-    };
-    return plainFrom;
-}
-
-- (BCTControllerTransitionSideType)dismissTo {
-    BCTControllerTransitionSideType plainTo = BCTControllerTransitionSideType(sideType) {
-
-        //save
-        self.transitioningFactory.dismissSideType = sideType;
-
-        //get
-        self.transitioningFactory.dismissEndPoint = [self pointWithSideType:sideType];
-
-
-        return self;
-    };
-    return plainTo;
-}
-
-- (BCTControllerTransitionTime)transite {
-    BCTControllerTransitionTime ttime = BCTControllerTransitionTime(time) {
-
-        self.transitioningFactory.duration = time;
-        
-        self.transitioningDelegate = self.transitioningFactory;
-
-        return self;
-    };
-    return ttime;
-}
-
-- (BCTControllerTransitionEmpty)reverse {
-    return ^UIViewController * {
-
-        BCTTransitionSideType dismissedSideType = self.transitioningFactory.dismissSideType;
-        BCTTransitionSideType presentedSideType = self.transitioningFactory.presentSideType;
-
-        if (presentedSideType && !dismissedSideType) {
-            self.dismissTo(presentedSideType);
-        } else if (!presentedSideType && dismissedSideType) {
-            self.presentFrom(dismissedSideType);
-        } else {
-            //do nothing
-        }
-        return self;
-    };
-}
-
 #pragma mark - Helpers
 
-- (CGPoint)pointWithSideType:(BCTTransitionSideType)sideType {
+- (CGPoint)pointWithSideType:(BCTDirectionType)sideType {
 
     CGPoint point = CGPointZero;
 
@@ -187,33 +52,114 @@
 
     switch (sideType) {
 
-        case BCTTransitionSideTypeLeft:
+        case BCTDirectionLeft:
             point = CGPointMake(-width, 0);
             break;
-        case BCTTransitionSideTypeRight:
+        case BCTDirectionRight:
             point = CGPointMake(width, 0);
             break;
-        case BCTTransitionSideTypeTop:
+        case BCTDirectionTop:
             point = CGPointMake(0, -height);
             break;
-        case BCTTransitionSideTypeBottom:
+        case BCTDirectionBottom:
             point = CGPointMake(0, height);
             break;
-        case BCTTransitionSideTypeTopLeftCorner:
+        case BCTDirectionTopLeft:
             point = CGPointMake(-width, -height);
             break;
-        case BCTTransitionSideTypeTopRightCorner:
+        case BCTDirectionTopRight:
             point = CGPointMake(width, -height);
             break;
-        case BCTTransitionSideTypeBottomLeftCorner:
+        case BCTDirectionBottomLeft:
             point = CGPointMake(-width, height);
             break;
-        case BCTTransitionSideTypeBottomRightCorner:
+        case BCTDirectionBottomRight:
             point = CGPointMake(width, height);
             break;
     }
 
     return point;
 }
+
+#pragma mark - Implementation
+
+- (BacteriaTimeBlock)withDuration {
+    return ^UIViewController *(NSTimeInterval time) {
+        self.transitioningFactory.duration = time;
+        self.transitioningDelegate = self.transitioningFactory;
+        return self;
+    };
+}
+
+- (BacteriaTransitionBlock)presentTransition {
+    return ^UIViewController *(BCTTransitionType type) {
+        self.transitioningFactory.presentTransitionType = type;
+        return self;
+    };
+}
+
+- (BacteriaTransitionBlock)dismissTransition {
+    return ^UIViewController *(BCTTransitionType type) {
+        self.transitioningFactory.dismissTransitionType = type;
+        return self;
+    };
+}
+
+- (BacteriaDirectionBlock)fromDirection {
+    return ^UIViewController *(BCTDirectionType type) {
+        self.transitioningFactory.presentDirectionType = type;
+        self.transitioningFactory.presentStartPoint = [self pointWithSideType:type];
+        return self;
+    };
+}
+
+- (BacteriaDirectionBlock)toDirection {
+    return ^UIViewController *(BCTDirectionType type) {
+        self.transitioningFactory.dismissDirectionType = type;
+        self.transitioningFactory.dismissEndPoint = [self pointWithSideType:type];
+        return self;
+    };
+}
+
+- (BacteriaPopBlock)popFrom {
+    return ^UIViewController *(CGRect rect, BCTScaleType scaleType) {
+        return nil;
+    };
+}
+
+- (BacteriaPopBlock)popTo {
+    return ^UIViewController *(CGRect rect, BCTScaleType scaleType) {
+        return nil;
+    };
+}
+
+- (BacteriaScaleBlock)fromScale {
+    return ^UIViewController *(CGFloat x, CGFloat y) {
+        self.transitioningFactory.startScale = CGSizeMake(x, y);
+        return self;
+    };
+}
+
+- (BacteriaScaleBlock)toScale {
+    return ^UIViewController *(CGFloat x, CGFloat y) {
+        self.transitioningFactory.endScale = CGSizeMake(x, y);
+        return self;
+    };
+}
+
+- (BacteriaLocationBlock)fromPoint {
+    return ^UIViewController *(CGPoint point) {
+        self.transitioningFactory.presentStartPoint = point;
+        return self;
+    };
+}
+
+- (BacteriaLocationBlock)toPoint {
+    return ^UIViewController *(CGPoint point) {
+        self.transitioningFactory.dismissEndPoint = point;
+        return self;
+    };
+}
+
 
 @end

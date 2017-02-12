@@ -7,7 +7,7 @@
 
 #import "BCTTransitioning.h"
 
-static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideType with unsupported side. Please contact maintainer";
+NSString *const kBCTTransitionDirectionFlipFailMessage = @"BCTDirectionType with unsupported side. Please contact maintainer";
 
 @implementation BCTFlipTransitioningController {
     UIView *_presentView, *_dismissView;
@@ -44,7 +44,7 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
     containerView.layer.sublayerTransform = perspective;
 
     //get value for flip
-    BCTTransitionSideType sideType = [self transitionSideType];
+    BCTDirectionType directionType = [self directionType];
 
     [UIView animateKeyframesWithDuration:self.valueObtainer.duration
                                    delay:0.f
@@ -53,15 +53,15 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
 
                                   //prepare part
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.0f animations:^{
-                                      [self prepareForFlipFromSide:sideType];
+                                      [self prepareForFlipFromDirection:directionType];
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.0f relativeDuration:0.5f animations:^{
-                                      [self animateFirstPartFromSide:sideType];
+                                      [self animateFirstPartFromDirection:directionType];
                                   }];
 
                                   [UIView addKeyframeWithRelativeStartTime:0.5f relativeDuration:0.5f animations:^{
-                                      [self animateSecondPartFromSide:sideType];
+                                      [self animateSecondPartFromDirection:directionType];
                                   }];
 
 
@@ -81,65 +81,65 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
 
 #pragma mark - Animations
 
-- (void)prepareForFlipFromSide:(BCTTransitionSideType)sideType {
+- (void)prepareForFlipFromDirection:(BCTDirectionType)type {
 
-    if (sideType == BCTTransitionSideTypeRight) {
+    if (type == BCTDirectionRight) {
 
         [self prepareViewFRTC:_dismissView];
         [self prepareViewFCTL:_presentView];
-    } else if (sideType == BCTTransitionSideTypeLeft) {
+    } else if (type == BCTDirectionLeft) {
 
         [self prepareViewFLTC:_dismissView];
         [self prepareViewFCTR:_presentView];
-    } else if (sideType == BCTTransitionSideTypeTop) {
+    } else if (type == BCTDirectionTop) {
 
         [self prepareViewFTTC:_dismissView];
         [self prepareViewFCTB:_presentView];
 
-    } else if (sideType == BCTTransitionSideTypeBottom) {
+    } else if (type == BCTDirectionBottom) {
 
         [self prepareViewFBTC:_dismissView];
         [self prepareViewFCTT:_presentView];
     } else {
-        NSLog(kBCTTransitionSideFlipFailMessage);
+        NSLog(kBCTTransitionDirectionFlipFailMessage);
     }
 }
 
-- (void)animateFirstPartFromSide:(BCTTransitionSideType)sideType {
-    if (sideType == BCTTransitionSideTypeRight) {
+- (void)animateFirstPartFromDirection:(BCTDirectionType)type {
+    if (type == BCTDirectionRight) {
 
         [self animateViewFRTC:_dismissView];
-    } else if (sideType == BCTTransitionSideTypeLeft) {
+    } else if (type == BCTDirectionLeft) {
 
         [self animateViewFLTC:_dismissView];
-    } else if (sideType == BCTTransitionSideTypeTop) {
+    } else if (type == BCTDirectionTop) {
 
         [self animateViewFTTC:_dismissView];
 
-    } else if (sideType == BCTTransitionSideTypeBottom) {
+    } else if (type == BCTDirectionBottom) {
 
         [self animateViewFBTC:_dismissView];
     } else {
-        NSLog(kBCTTransitionSideFlipFailMessage);
+        NSLog(kBCTTransitionDirectionFlipFailMessage);
     }
 }
 
-- (void)animateSecondPartFromSide:(BCTTransitionSideType)sideType {
-    if (sideType == BCTTransitionSideTypeRight) {
+- (void)animateSecondPartFromDirection:(BCTDirectionType)sideType {
+    if (sideType == BCTDirectionRight) {
 
         [self animateViewFCTL:_presentView];
-    } else if (sideType == BCTTransitionSideTypeLeft) {
+    } else if (sideType == BCTDirectionLeft) {
 
         [self animateViewFCTR:_presentView];
-    } else if (sideType == BCTTransitionSideTypeTop) {
+    } else if (sideType == BCTDirectionTop) {
 
         [self animateViewFCTB:_presentView];
 
-    } else if (sideType == BCTTransitionSideTypeBottom) {
+    } else if (sideType == BCTDirectionBottom) {
 
         [self animateViewFCTT:_presentView];
     } else {
-        NSLog(kBCTTransitionSideFlipFailMessage);
+        NSLog(kBCTTransitionDirectionFlipFailMessage);
     }
 }
 
@@ -153,30 +153,27 @@ static NSString *const kBCTTransitionSideFlipFailMessage = @"BCTTransitionSideTy
     return CGRectGetHeight(view.bounds) / 2.0f;
 }
 
-- (BCTTransitionSideType)transitionSideType {
-    BCTTransitionSideType sideType;
+- (BCTDirectionType)directionType {
+    BCTDirectionType sideType;
 
     if (self.valueObtainer.presenting) {
-
-        sideType = self.valueObtainer.presentSideType;
-
+        sideType = self.valueObtainer.presentDirectionType;
     } else {
-
-        sideType = self.valueObtainer.dismissSideType;
+        sideType = self.valueObtainer.dismissDirectionType;
     }
 
     switch (sideType) {
-        case BCTTransitionSideTypeTopLeftCorner:
-            sideType = BCTTransitionSideTypeTop;
+        case BCTDirectionTopLeft:
+            sideType = BCTDirectionTop;
             break;
-        case BCTTransitionSideTypeBottomLeftCorner:
-            sideType = BCTTransitionSideTypeLeft;
+        case BCTDirectionBottomLeft:
+            sideType = BCTDirectionLeft;
             break;
-        case BCTTransitionSideTypeBottomRightCorner:
-            sideType = BCTTransitionSideTypeBottom;
+        case BCTDirectionBottomRight:
+            sideType = BCTDirectionBottom;
             break;
-        case BCTTransitionSideTypeTopRightCorner:
-            sideType = BCTTransitionSideTypeRight;
+        case BCTDirectionTopRight:
+            sideType = BCTDirectionRight;
             break;
         default:
             break;

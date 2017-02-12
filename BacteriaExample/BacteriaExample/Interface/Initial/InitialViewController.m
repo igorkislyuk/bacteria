@@ -61,13 +61,13 @@
     AnimationBlockModel *dismissedCover = [self blockForIndexPath:[NSIndexPath indexPathForRow:1 inSection:3]];
     
     controllerToPresent.
-    presentFrom([blockModel numberOfSelectedValue]).
-    dismissTo(dismissedBlockModel.numberOfSelectedValue).
-    withPresentedTransitionType([presentedCover numberOfSelectedValue]).
-    withDismissedTransitionType([dismissedCover numberOfSelectedValue]).
-    presentStartScale(self.startXSlider.value, self.startYSlider.value).
-    dismissEndScale(self.endXSlider.value, self.endYSlider.value).
-    transite(self.timeSlider.value);
+    fromDirection([blockModel numberOfSelectedValue]).
+    toDirection(dismissedBlockModel.numberOfSelectedValue).
+    presentTransition([presentedCover numberOfSelectedValue]).
+    dismissTransition([dismissedCover numberOfSelectedValue]).
+    fromScale(self.startXSlider.value, self.startYSlider.value).
+    toScale(self.endXSlider.value, self.endYSlider.value).
+    withDuration(self.timeSlider.value);
     
     
     [self presentViewController:controllerToPresent animated:YES completion:nil];
@@ -75,23 +75,19 @@
 
 - (IBAction)actionSafari:(id)sender {
     PresentedViewController *controllerToPresent = [self getController];
-    controllerToPresent.withSafariAnimation().transite(self.timeSlider.value);
+    controllerToPresent.presentTransition(BCTTransitionSafari).dismissTransition(BCTTransitionSafari).withDuration(self.timeSlider.value);
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 
 - (IBAction)actionFlipLeftRight:(id)sender {
     PresentedViewController *controllerToPresent = [self getController];
-    controllerToPresent.presentFrom(BCTTransitionSideTypeLeft).withPresentedTransitionType(BCTTransitionTypeFlip).
-            dismissTo(BCTTransitionSideTypeRight).withDismissedTransitionType(BCTTransitionTypeFlip).
-            transite(self.timeSlider.value);
+    controllerToPresent.fromDirection(BCTDirectionLeft).presentTransition(BCTTransitionFlip).toDirection(BCTDirectionRight).dismissTransition(BCTTransitionFlip).withDuration(self.timeSlider.value);
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 
 - (IBAction)actionFlipTopBottom:(id)sender {
     PresentedViewController *controllerToPresent = [self getController];
-    controllerToPresent.presentFrom(BCTTransitionSideTypeTop).withPresentedTransitionType(BCTTransitionTypeFlip).
-            dismissTo(BCTTransitionSideTypeBottom).withDismissedTransitionType(BCTTransitionTypeFlip).
-            transite(self.timeSlider.value);
+    controllerToPresent.fromDirection(BCTDirectionTop).presentTransition(BCTTransitionFlip).toDirection(BCTDirectionBottom).dismissTransition(BCTTransitionFlip).withDuration(self.timeSlider.value);
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 

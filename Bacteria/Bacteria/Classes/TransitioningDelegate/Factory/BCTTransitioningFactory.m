@@ -8,6 +8,7 @@
 #import "BCTTransitioningController.h"
 #import "BCTSafariTransitioningController.h"
 #import "BCTFlipTransitioningController.h"
+#import "BCTPopTransitioningController.h"
 
 @implementation BCTTransitioningFactory {
 }
@@ -22,18 +23,23 @@
     return self;
 }
 
-- (id <UIViewControllerAnimatedTransitioning>)animationController {
-    if (self.safariLike) {
-        return [[BCTSafariTransitioningController alloc] initWithValueObtainer:self];
-    } else {
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerWithType:(BCTTransitionType)type {
 
-        BCTTransitionType type = self.presenting ? self.presentType : self.dismissType;
+    switch (type) {
 
-        if (type == BCTTransitionTypeFlip) {
-            return [[BCTFlipTransitioningController alloc] initWithValueObtainer:self];
-        } else {
+        case BCTTransitionFlatParallel:
+        case BCTTransitionFlatCover:
             return [[BCTTransitioningController alloc] initWithValueObtainer:self];
-        }
+
+        case BCTTransitionFlip:
+            return [[BCTFlipTransitioningController alloc] initWithValueObtainer:self];
+
+        case BCTTransitionSafari:
+            return [[BCTSafariTransitioningController alloc] initWithValueObtainer:self];
+
+        case BCTTransitionPop:
+            return [[BCTPopTransitioningController alloc] initWithValueObtainer:self];
+            break;
     }
 }
 
@@ -41,12 +47,12 @@
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     self.presenting = YES;
-    return [self animationController];
+    return [self animationControllerWithType:self.presentTransitionType];
 }
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     self.presenting = NO;
-    return [self animationController];
+    return [self animationControllerWithType:self.dismissTransitionType];
 }
 
 @end

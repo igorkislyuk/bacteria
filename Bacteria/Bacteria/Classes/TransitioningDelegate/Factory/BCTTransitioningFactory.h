@@ -3,35 +3,29 @@
 // Copyright (c) 2017 Igor Kislyuk. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "BCTTypes.h"
 #import "BCTTransitioning.h"
 
 @interface BCTTransitioningFactory : NSObject <BCTTransitioning>
 
-//params for storing values
 //duration of transition
 @property (nonatomic, assign) NSTimeInterval duration;
 
-//points for animation process
-@property (nonatomic, assign) CGPoint presentStartPoint;
-@property (nonatomic, assign) CGPoint dismissEndPoint;
+@property (nonatomic, assign) BOOL presenting;
 
 //parallel or cover
-@property (nonatomic, assign) BCTTransitionType presentType;
-@property (nonatomic, assign) BCTTransitionType dismissType;
+@property (nonatomic, assign) BCTTransitionType presentTransitionType;
+@property (nonatomic, assign) BCTTransitionType dismissTransitionType;
 
 //for "reverse" functional
-@property (nonatomic, assign) BCTTransitionSideType presentSideType;
-@property (nonatomic, assign) BCTTransitionSideType dismissSideType;
+@property (nonatomic, assign) BCTDirectionType presentDirectionType;
+@property (nonatomic, assign) BCTDirectionType dismissDirectionType;
 
 //scale: units
 @property (nonatomic, assign) CGSize startScale;
 @property (nonatomic, assign) CGSize endScale;
 
-//bool indicator for safari
-@property (nonatomic, assign) BOOL safariLike;
-
-@property (nonatomic, assign) BOOL presenting;
+//points for animation process
+@property (nonatomic, assign) CGPoint presentStartPoint;
+@property (nonatomic, assign) CGPoint dismissEndPoint;
 
 @end

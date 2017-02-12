@@ -17,6 +17,8 @@
 #import "BCTParallelViewPresenter.h"
 #import "BCTParallelViewDismissal.h"
 
+NSString *const kBCTTransitionDirectionFailMessage = @"BCTDirectionType with unsupported side. Please contact maintainer";
+
 
 @interface BCTTransitioningController ()
 
@@ -67,12 +69,12 @@
 
         _startLocationPoint = self.valueObtainer.presentStartPoint;
 
-        self.performer = [self viewPresenterWithType:self.valueObtainer.presentType];
+        self.performer = [self viewPresenterWithType:self.valueObtainer.presentTransitionType];
 
     } else {
 
         //create performer
-        self.performer = [self viewDismissalWithType:self.valueObtainer.dismissType];
+        self.performer = [self viewDismissalWithType:self.valueObtainer.dismissTransitionType];
 
         [containerView insertSubview:self.presentView belowSubview:self.dismissView];
 
@@ -117,12 +119,14 @@
     id <BCTViewPerformer> result;
     switch (transitionType) {
 
-        case BCTTransitionTypeParallel:
+        case BCTTransitionFlatParallel:
             result = [[BCTParallelViewPresenter alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
             break;
-        case BCTTransitionTypeCover:
+        case BCTTransitionFlatCover:
             result = [[BCTCoverViewPresenter alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
             break;
+        default:
+            NSLog(kBCTTransitionDirectionFailMessage);
     }
 
     return result;
@@ -133,12 +137,14 @@
     id <BCTViewPerformer> result;
     switch (transitionType) {
 
-        case BCTTransitionTypeParallel:
+        case BCTTransitionFlatParallel:
             result = [[BCTParallelViewDismissal alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
             break;
-        case BCTTransitionTypeCover:
+        case BCTTransitionFlatCover:
             result = [[BCTCoverViewDismissal alloc] initWithPresentedView:self.presentView dismissedView:self.dismissView];
             break;
+        default:
+            NSLog(kBCTTransitionDirectionFailMessage);
     }
 
     return result;
