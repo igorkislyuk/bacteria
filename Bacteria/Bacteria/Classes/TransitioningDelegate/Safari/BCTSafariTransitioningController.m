@@ -128,7 +128,6 @@
 #pragma mark - Animation Delegate
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    NSLog(@"%s", sel_getName(_cmd));
 
     _presentSnaphotView.layer.transform = CATransform3DIdentity;
 
