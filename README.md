@@ -20,13 +20,14 @@
 
 ## TODO Section
 
+- [ ] Add separate duration for present / dismiss
+- [ ] Add transitions for viewControllers in navigation stack
 - [ ] Add interactivity. Users should easily embed transitions in gestures
 - [ ] Add support for segues, not only for modal code presentation
 - [ ] Add spring values for all kind of transitions
 - [ ] Add support for background color of container for transitions
 - [ ] Add blur for background container for transitions
 - [ ] Add transitions for collections
-- [ ] Add transitions for viewControllers in navigation stack
 
 ## Historical notes
 

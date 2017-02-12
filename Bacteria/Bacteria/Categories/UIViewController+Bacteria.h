@@ -73,13 +73,19 @@
  * This transition will simulate page-switching in Safari with portrait mode. Block others transitions.
  * @return controller itself
  */
-- (BCTControllerTransitionEmpty)safari;
+- (BCTControllerTransitionEmpty)withSafariAnimation;
+
+//new
+- (BacteriaPathBlock)popFrom;
+- (BacteriaPathBlock)popTo;
+
+
 
 @end
 
 // TODO
 
-// todo: pop from custom shape - https://www.raywenderlich.com/86521/how-to-make-a-view-controller-transition-animation-like-in-the-ping-app
+// todo: pop from custom shape
 
 // todo: add functionality to retain view within container view. Tip: you should use snapshot, not `addSubview:`
 // todo: add for each method method that will reset safari like value

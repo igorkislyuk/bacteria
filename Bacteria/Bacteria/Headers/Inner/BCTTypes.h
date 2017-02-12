@@ -30,4 +30,9 @@ typedef NS_ENUM(NSUInteger, BCTTransitionSideType) {
     BCTTransitionSideTypeTopRightCorner = 7,
 };
 
+typedef NS_ENUM(NSUInteger, BCTScaleType) {
+    BCTScaleTypeLinear = 0,
+    BCTScaleTypeRadial = 1
+};
+
 #endif /* BCTTypes_h */

@@ -37,7 +37,6 @@
     objc_setAssociatedObject(self, @selector(transitioningFactory), transitioningFactory, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-
 @end
 
 @implementation UIViewController (Bacteria)
@@ -97,7 +96,7 @@
     return scaleBlock;
 }
 
-- (BCTControllerTransitionEmpty)safari {
+- (BCTControllerTransitionEmpty)withSafariAnimation {
     return ^UIViewController * {
 
         //set another delegate
@@ -107,6 +106,17 @@
     };
 }
 
+- (BacteriaPathBlock)popFrom {
+    return ^UIViewController *(CGRect rect, BCTScaleType scaleType) {
+        return self;
+    };
+}
+
+- (BacteriaPathBlock)popTo {
+    return ^UIViewController *(CGRect rect, BCTScaleType scaleType) {
+        return self;
+    };
+}
 
 - (BCTControllerTransitionSideType)presentFrom {
     BCTControllerTransitionSideType plainFrom = BCTControllerTransitionSideType(sideType) {

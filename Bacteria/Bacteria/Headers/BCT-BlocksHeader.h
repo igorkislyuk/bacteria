@@ -28,4 +28,7 @@ typedef UIViewController* (^BacteriaTransitionBlock)(BCTTransitionType type);
 typedef UIViewController* (^BCTControllerTransitionSideType)(BCTTransitionSideType sideType);
 #define BCTControllerTransitionSideType(t) ^UIViewController* (BCTTransitionSideType sideType)
 
+//shape and scale type
+typedef UIViewController *(^BacteriaPathBlock)(CGRect rect, BCTScaleType scaleType);
+
 #endif /* BCT_BlocksHeader_h */
