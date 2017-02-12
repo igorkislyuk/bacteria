@@ -189,14 +189,16 @@
 }
 
 - (BacteriaPopBlock)popFrom {
-    return ^UIViewController *(CGRect rect, BCTScaleType scaleType) {
-        return nil;
+    return ^UIViewController *(CGRect rect) {
+        self.transitioningFactory.startPopRect = rect;
+        return self;
     };
 }
 
 - (BacteriaPopBlock)popTo {
-    return ^UIViewController *(CGRect rect, BCTScaleType scaleType) {
-        return nil;
+    return ^UIViewController *(CGRect rect) {
+        self.transitioningFactory.endPopRect = rect;
+        return self;
     };
 }
 

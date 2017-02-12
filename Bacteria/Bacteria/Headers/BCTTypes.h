@@ -20,8 +20,10 @@ typedef NS_ENUM(NSUInteger, BCTTransitionType) {
     BCTTransitionFlip,
     //safari tabs animation
     BCTTransitionSafari,
-    //controller appears from shape
-    BCTTransitionPop
+    //if controller appears from circle
+    BCTTransitionPopRadial,
+    //if controller appears from rectangle
+    BCTTransitionPopLinear
 };
 
 //supported only by flat. Works in flip (only for 4 first type)
@@ -37,12 +39,6 @@ typedef NS_ENUM(NSUInteger, BCTDirectionType) {
     BCTDirectionBottomLeft,
     BCTDirectionBottomRight,
     BCTDirectionTopRight,
-};
-
-//for pop animation
-typedef NS_ENUM(NSUInteger, BCTScaleType) {
-    BCTScaleLinear = 0,
-    BCTScaleRadial = 1
 };
 
 #endif /* BCTTypes_h */

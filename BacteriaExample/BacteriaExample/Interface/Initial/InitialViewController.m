@@ -98,6 +98,17 @@
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 
+- (IBAction)actionTestPop:(id)sender {
+
+    UIButton *button = (UIButton *) sender;
+
+    PresentedViewController *controller = [self getController];
+
+    controller.presentTransition(BCTTransitionPopRadial).popFrom(button.frame).withDuration(self.timeSlider.value);
+
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 - (IBAction)actionFlipTopBottom:(id)sender {
     PresentedViewController *controllerToPresent = [self getController];
     controllerToPresent.fromDirection(BCTDirectionTop).presentTransition(BCTTransitionFlip).toDirection(BCTDirectionBottom).dismissTransition(BCTTransitionFlip).withDuration(self.timeSlider.value);

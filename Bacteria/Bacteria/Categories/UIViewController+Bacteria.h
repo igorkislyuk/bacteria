@@ -61,12 +61,6 @@
 - (BacteriaLocationBlock)fromPoint;
 - (BacteriaLocationBlock)toPoint;
 
-/**
- * This transition will simulate page-switching in Safari with portrait mode. Block others transitions.
- * @return controller itself
- */
-//- (BacteriaEmptyBlock)withSafariAnimation;
-
 
 
 @end
@@ -74,18 +68,11 @@
 // TODO
 
 // todo: pop from custom shape
-
+// todo: add reverse for custom shape
 // todo: add functionality to retain view within container view. Tip: you should use snapshot, not `addSubview:`
-// todo: add for each method method that will reset safari like value
-// todo: reverse
 
-// todo: think about custom points for presenting & dismissing.
-// Possibly it useless. Will you present controller from center of another?
-
-// todo: check reverse function for all transitions
-// todo: refactor whole project
-// todo: remove logs
-// todo: rename: bct -> bacteria
+// todo: rename: bct -> bacteria. If it's needed
 // todo: made good readme
+// todo: deal with example project
 
 // fixme: think about refactor simple controller to chain model with keyframes...

@@ -31,4 +31,8 @@
 @property (nonatomic, assign) CGPoint presentStartPoint;
 @property (nonatomic, assign) CGPoint dismissEndPoint;
 
+//for pop animation
+@property(nonatomic, assign) CGRect startPopRect;
+@property(nonatomic, assign) CGRect endPopRect;
+
 @end

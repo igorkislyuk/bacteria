@@ -16,7 +16,6 @@
 		3927B86B03242FBE7DE07841 /* BCTCoverViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BA16D43769A5275FA919 /* BCTCoverViewPresenter.m */; };
 		3927B98D095046FF6F9418D2 /* BCTParallelViewDismissal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BD1CFE2D91D2B70C4BA4 /* BCTParallelViewDismissal.m */; };
 		3927B9912B6F2B9651AD6A36 /* BCTParallelViewPresenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B2B7A7394A62BDAB45AF /* BCTParallelViewPresenter.h */; };
-		3927B9B20C26E1FAE8034B31 /* BCTTransitioning.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B167CA95E585E38C2656 /* BCTTransitioning.h */; };
 		3927B9EAB89222069F2528FE /* BCTSafariTransitioningController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B1B2E6A87C92C9958C9E /* BCTSafariTransitioningController.h */; };
 		3927B9F30639197EEEB8CE7E /* BCTTransitioningFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B41F3A9EFB90991A02E4 /* BCTTransitioningFactory.h */; };
 		3927BA25DE7D770E9D42B5BE /* BCTSafariTransitioningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B7F4CD3D8A41FC9F7F05 /* BCTSafariTransitioningController.m */; };
@@ -25,6 +24,7 @@
 		3927BCB064745F829F9E7C04 /* BCTViewPerformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927B6C86CA8E3F35DEE365C /* BCTViewPerformer.h */; };
 		3927BD5D5CD4AA1A96539A15 /* BCTPopTransitioningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927B1FE3A4486C7A95B15ED /* BCTPopTransitioningController.m */; };
 		3927BDAE263D9CA2F226C395 /* BCTParallelViewDismissal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927BC8FB4C8DFF344C2084D /* BCTParallelViewDismissal.h */; };
+		3927BDD095AE407D5060133B /* BCTTransitioning.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927BC13BC4D954C341F9131 /* BCTTransitioning.h */; };
 		3927BE39B32EFA3B92890D93 /* BCTCoverViewDismissal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BBF5D85613E24663A0E4 /* BCTCoverViewDismissal.m */; };
 		3927BE42E0D97C76BAC98573 /* BCTTransitioningController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3927BB0C43E5D52206BA942A /* BCTTransitioningController.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		3927BEB2FDCA74185DA79C6F /* BCTParallelViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BA25BD6D0370A61A2EEC /* BCTParallelViewPresenter.m */; };
@@ -39,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		3927B1147BF69CFCE4C90118 /* BCTBasicViewPerformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTBasicViewPerformer.h; sourceTree = "<group>"; };
-		3927B167CA95E585E38C2656 /* BCTTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTTransitioning.h; sourceTree = "<group>"; };
 		3927B1B2E6A87C92C9958C9E /* BCTSafariTransitioningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTSafariTransitioningController.h; sourceTree = "<group>"; };
 		3927B1FE3A4486C7A95B15ED /* BCTPopTransitioningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTPopTransitioningController.m; sourceTree = "<group>"; };
 		3927B2B7A7394A62BDAB45AF /* BCTParallelViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTParallelViewPresenter.h; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		3927BB0C43E5D52206BA942A /* BCTTransitioningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTTransitioningController.h; sourceTree = "<group>"; };
 		3927BBF12D4D0C100B830F67 /* BCTPopTransitioningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTPopTransitioningController.h; sourceTree = "<group>"; };
 		3927BBF5D85613E24663A0E4 /* BCTCoverViewDismissal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTCoverViewDismissal.m; sourceTree = "<group>"; };
+		3927BC13BC4D954C341F9131 /* BCTTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTTransitioning.h; sourceTree = "<group>"; };
 		3927BC55F4807C39385E8931 /* BCTTransitioningFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTTransitioningFactory.m; sourceTree = "<group>"; };
 		3927BC8FB4C8DFF344C2084D /* BCTParallelViewDismissal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTParallelViewDismissal.h; sourceTree = "<group>"; };
 		3927BCB9E6C8E77917D70EF9 /* BCTFlipTransitioningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTFlipTransitioningController.h; sourceTree = "<group>"; };
@@ -113,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				3927B6C86CA8E3F35DEE365C /* BCTViewPerformer.h */,
+				3927BC13BC4D954C341F9131 /* BCTTransitioning.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -131,7 +132,6 @@
 			children = (
 				3927BC55F4807C39385E8931 /* BCTTransitioningFactory.m */,
 				3927B41F3A9EFB90991A02E4 /* BCTTransitioningFactory.h */,
-				3927B167CA95E585E38C2656 /* BCTTransitioning.h */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -263,9 +263,9 @@
 				3927BE42E0D97C76BAC98573 /* BCTTransitioningController.h in Headers */,
 				3927B9EAB89222069F2528FE /* BCTSafariTransitioningController.h in Headers */,
 				3927B9F30639197EEEB8CE7E /* BCTTransitioningFactory.h in Headers */,
-				3927B9B20C26E1FAE8034B31 /* BCTTransitioning.h in Headers */,
 				3927B534AB9DEA224E2D5880 /* BCTFlipTransitioningController.h in Headers */,
 				3927BBC95B0E0C64E0891B94 /* BCTPopTransitioningController.h in Headers */,
+				3927BDD095AE407D5060133B /* BCTTransitioning.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

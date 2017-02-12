@@ -37,9 +37,9 @@
         case BCTTransitionSafari:
             return [[BCTSafariTransitioningController alloc] initWithValueObtainer:self];
 
-        case BCTTransitionPop:
+        case BCTTransitionPopRadial:
+        case BCTTransitionPopLinear:
             return [[BCTPopTransitioningController alloc] initWithValueObtainer:self];
-            break;
     }
 }
 

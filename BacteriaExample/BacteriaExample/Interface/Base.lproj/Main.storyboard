@@ -158,6 +158,9 @@
                                                         <integer key="value" value="22"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionTestPop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="97a-NU-t68"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ti0-zu-U1t">
                                                 <rect key="frame" x="159" y="0.0" width="176" height="44"/>
