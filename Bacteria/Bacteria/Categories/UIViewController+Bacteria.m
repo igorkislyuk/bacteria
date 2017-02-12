@@ -81,10 +81,77 @@
     return point;
 }
 
+- (void)adjustTransitionTypes {
+    if (self.transitioningFactory.presentTransitionType && self.transitioningFactory.dismissTransitionType) {
+        //fine
+        return;
+        
+    } else if (self.transitioningFactory.presentTransitionType && !self.transitioningFactory.dismissTransitionType) {
+        //no dismiss transition type
+        self.dismissTransition(self.transitioningFactory.presentTransitionType);
+
+    } else if (self.transitioningFactory.dismissTransitionType && !self.transitioningFactory.presentTransitionType) {
+        // no present type
+        self.dismissTransition(self.transitioningFactory.presentTransitionType);
+
+    } else {
+        //both are empty
+        self.presentTransition(BCTTransitionFlatParallel).dismissTransition(BCTTransitionFlatParallel);
+    }
+}
+
+- (void)adjustDirectionTypes {
+    if (self.transitioningFactory.presentDirectionType && self.transitioningFactory.dismissDirectionType) {
+        //fine
+        return;
+    } else if (self.transitioningFactory.presentDirectionType && !self.transitioningFactory.dismissDirectionType) {
+
+        self.toDirection([self reverseDirection:self.transitioningFactory.presentDirectionType]);
+    } else if (self.transitioningFactory.dismissDirectionType && !self.transitioningFactory.presentDirectionType) {
+        
+        self.fromDirection([self reverseDirection:self.transitioningFactory.dismissDirectionType]);
+    } else {
+        self.fromDirection(BCTDirectionTop).toDirection(BCTDirectionTop);
+    }
+}
+
+- (BCTDirectionType)reverseDirection:(BCTDirectionType)type {
+    switch (type) {
+
+        case BCTDirectionTop:
+            return BCTDirectionBottom;
+
+        case BCTDirectionLeft:
+            return BCTDirectionRight;
+
+        case BCTDirectionBottom:
+            return BCTDirectionTop;
+
+        case BCTDirectionRight:
+            return BCTDirectionLeft;
+
+        case BCTDirectionTopLeft:
+            return BCTDirectionBottomRight;
+
+        case BCTDirectionBottomLeft:
+            return BCTDirectionTopRight;
+
+        case BCTDirectionBottomRight:
+            return BCTDirectionTopLeft;
+
+        case BCTDirectionTopRight:
+            return BCTDirectionBottomLeft;
+    }
+}
+
 #pragma mark - Implementation
 
 - (BacteriaTimeBlock)withDuration {
     return ^UIViewController *(NSTimeInterval time) {
+
+        [self adjustTransitionTypes];
+        [self adjustDirectionTypes];
+
         self.transitioningFactory.duration = time;
         self.transitioningDelegate = self.transitioningFactory;
         return self;

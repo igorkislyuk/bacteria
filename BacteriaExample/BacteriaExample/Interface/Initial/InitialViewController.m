@@ -75,13 +75,26 @@
 
 - (IBAction)actionSafari:(id)sender {
     PresentedViewController *controllerToPresent = [self getController];
-    controllerToPresent.presentTransition(BCTTransitionSafari).dismissTransition(BCTTransitionSafari).withDuration(self.timeSlider.value);
+    
+    controllerToPresent.
+    presentTransition(BCTTransitionSafari).
+    withDuration(self.timeSlider.value);
+    
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 
 - (IBAction)actionFlipLeftRight:(id)sender {
     PresentedViewController *controllerToPresent = [self getController];
-    controllerToPresent.fromDirection(BCTDirectionLeft).presentTransition(BCTTransitionFlip).toDirection(BCTDirectionRight).dismissTransition(BCTTransitionFlip).withDuration(self.timeSlider.value);
+
+//    controllerToPresent.
+//    presentTransition(BCTTransitionFlip).
+//    fromDirection(BCTDirectionRight).
+//    dismissTransition(BCTTransitionFlip).
+//    toDirection(BCTDirectionLeft).
+//    withDuration(self.timeSlider.value);
+
+    controllerToPresent.presentTransition(BCTTransitionFlip).fromDirection(BCTDirectionBottom).withDuration(0.5);
+
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 

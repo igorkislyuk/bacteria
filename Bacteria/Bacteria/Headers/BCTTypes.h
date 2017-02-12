@@ -24,7 +24,7 @@ typedef NS_ENUM(NSUInteger, BCTTransitionType) {
     BCTTransitionPop
 };
 
-//supported only for flap. Works in flip (only for 4 first type)
+//supported only by flat. Works in flip (only for 4 first type)
 typedef NS_ENUM(NSUInteger, BCTDirectionType) {
     //
     BCTDirectionTop = 0,
