@@ -115,6 +115,13 @@
     [self presentViewController:controllerToPresent animated:YES completion:nil];
 }
 
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    PresentedViewController *controller = segue.destinationViewController;
+    controller.presentTransition(BCTTransitionFlip).fromDirection(BCTDirectionLeft).dismissTransition(BCTTransitionFlatCover).toDirection(BCTDirectionLeft).withDuration(0.5);
+}
+
 #pragma mark - Helpers
 
 - (AnimationBlockModel *)blockForIndexPath:(NSIndexPath *)indexPath {

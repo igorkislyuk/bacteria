@@ -45,10 +45,11 @@
 
     CGRect rect = startPopView.frame;
 
-    if (CGPointEqualToPoint(startPopView.frame.origin, CGPointZero)) {
+//    if (CGPointEqualToPoint(startPopView.frame.origin, CGPointZero)) {
         CGPoint test = [startPopView convertPoint:startPopView.frame.origin toView:_presentView];
-        rect.origin = test;
-    }
+//        rect.origin = test;
+    rect = [_presentView convertRect:startPopView.frame fromView:startPopView];
+//    }
 
     //path
     NSLog(@"NSStringFromCGRect(rect) = %@", NSStringFromCGRect(rect));

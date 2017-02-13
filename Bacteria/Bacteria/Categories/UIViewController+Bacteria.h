@@ -38,7 +38,7 @@
 - (BacteriaDirectionBlock)toDirection;
 
 /**
- * Specify shape for pop transition
+ * Specify view for pop transition
  * @return controller itself
  */
 - (BacteriaPopBlock)popFrom;
