@@ -62,7 +62,6 @@ const float kBCTDefaultRectSize = -100.0f;
         oldRect = [self defaultRectWithSize:kBCTDefaultRectSize];
     }
 
-
     CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:oldRect] inView:_dismissView];
 
     newRect = CGRectInset(oldRect, -radius, -radius);

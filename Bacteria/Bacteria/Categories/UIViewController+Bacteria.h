@@ -73,6 +73,7 @@
 // todo: add functionality to retain view within container view. Tip: you should use snapshot, not `addSubview:`
 
 // todo: rename: bct -> bacteria. If it's needed
+// todo: logs
 // todo: made good readme
 // todo: deal with example project
 // todo: here good podspec - https://github.com/daltoniam/DCAnimationKit
