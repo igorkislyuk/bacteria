@@ -5,9 +5,11 @@
 
 #import "BCTPopTransitioningController.h"
 
-@interface BCTPopTransitioningController() <CAAnimationDelegate>
+const float kBCTDefaultRectSize = -100.0f;
 
-@property (nonatomic, weak) id <UIViewControllerContextTransitioning> transitionContext;
+@interface BCTPopTransitioningController () <CAAnimationDelegate>
+
+@property(nonatomic, weak) id <UIViewControllerContextTransitioning> transitionContext;
 
 @end
 
@@ -43,22 +45,30 @@
 
     UIView *startPopView = self.valueObtainer.startPopView;
 
-    CGRect rect = startPopView.frame;
+    CGRect oldRect, newRect;
 
-//    if (CGPointEqualToPoint(startPopView.frame.origin, CGPointZero)) {
-        CGPoint test = [startPopView convertPoint:startPopView.frame.origin toView:_presentView];
-//        rect.origin = test;
-    rect = [_presentView convertRect:startPopView.frame fromView:startPopView];
-//    }
+    if (startPopView) {
 
-    //path
-    NSLog(@"NSStringFromCGRect(rect) = %@", NSStringFromCGRect(rect));
-    UIBezierPath *startPath = [UIBezierPath bezierPathWithOvalInRect:rect];
+        if ([startPopView.superview isEqual:_dismissView]) {
+            oldRect = startPopView.frame;
+        } else if ([startPopView isDescendantOfView:_dismissView]) {
+            oldRect = [startPopView convertRect:startPopView.bounds toView:_dismissView];
+        } else {
+            //unknown behaviour -> fallback to zero
+            oldRect = [self defaultRectWithSize:kBCTDefaultRectSize];
+        }
 
-    CGPoint extremePoint = [self extremePointWithView:startPopView inView:_presentView];
-    CGFloat radius = (CGFloat) sqrt((extremePoint.x * extremePoint.x) + (extremePoint.y * extremePoint.y));
-    CGRect newRect = CGRectInset(rect, -radius, -radius);
+    } else {
+        oldRect = [self defaultRectWithSize:kBCTDefaultRectSize];
+    }
+
+
+    CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:oldRect] inView:_dismissView];
+
+    newRect = CGRectInset(oldRect, -radius, -radius);
     NSLog(@"NSStringFromCGRect(newRect) = %@", NSStringFromCGRect(newRect));
+
+    UIBezierPath *startPath = [UIBezierPath bezierPathWithOvalInRect:oldRect];
     UIBezierPath *endPath = [UIBezierPath bezierPathWithOvalInRect:newRect];
 
     //create mask for present view
@@ -67,8 +77,8 @@
     _presentView.layer.mask = shapeLayer;
 
     CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
-    basicAnimation.fromValue = (id)startPath.CGPath;
-    basicAnimation.toValue = (id)endPath.CGPath;
+    basicAnimation.fromValue = (id) startPath.CGPath;
+    basicAnimation.toValue = (id) endPath.CGPath;
     basicAnimation.duration = self.valueObtainer.duration;
     basicAnimation.delegate = self;
 
@@ -83,18 +93,36 @@
     }
 }
 
-- (CGPoint)extremePointWithView:(UIView *)view inView:(UIView *)mainView {
+- (CGPoint)centerPointIn:(CGRect)rect {
+    return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+}
+
+//count distance to the most far corner in
+- (CGFloat)distanceToMostFarCornerWithPoint:(CGPoint)point inView:(UIView *)view {
+
     CGPoint result;
 
-    CGFloat x = ( CGRectGetMidX(view.frame) <= CGRectGetMidX(mainView.frame) ) ?
-            CGRectGetWidth(mainView.frame) - CGRectGetMidX(view.frame) :
-            CGRectGetMidX(view.frame);
-    CGFloat y = (CGRectGetMidY(view.frame) <= CGRectGetMidY(mainView.frame)) ?
-            CGRectGetHeight(mainView.frame) - CGRectGetMidY(view.frame) :
-            CGRectGetMidY(view.frame);
-    result.x = x;
-    result.y = y;
+    if (point.x <= CGRectGetMidX(view.bounds)) {
+        //closer to left
+        result.x = CGRectGetWidth(view.bounds) - point.x;
+    } else {
+        //closer to right
+        result.x = point.x;
+    }
+    if (point.y <= CGRectGetMidY(view.bounds)) {
+        result.y = CGRectGetHeight(view.bounds) - point.y;
+    } else {
+        result.y = point.y;
+    }
 
+    return sqrtf((result.x * result.x) + (result.y * result.y));
+}
+
+- (CGRect)defaultRectWithSize:(CGFloat)size {
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGRect result = CGRectMake(CGRectGetMidX(screenRect), CGRectGetMidY(screenRect), 0, 0);
+    result = CGRectInset(result, -size, -size);
+    NSLog(@"screenRect = %@", NSStringFromCGRect(result));
     return result;
 }
 

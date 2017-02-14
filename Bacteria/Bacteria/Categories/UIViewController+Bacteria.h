@@ -38,8 +38,9 @@
 - (BacteriaDirectionBlock)toDirection;
 
 /**
- * Specify view for pop transition
- * @return controller itself
+ * Specify view for pop transition.
+ * NOTE: UIView are not retained.
+ * @return Block with uiview.
  */
 - (BacteriaPopBlock)popFrom;
 - (BacteriaPopBlock)popTo;
@@ -74,5 +75,6 @@
 // todo: rename: bct -> bacteria. If it's needed
 // todo: made good readme
 // todo: deal with example project
+// todo: here good podspec - https://github.com/daltoniam/DCAnimationKit
 
 // fixme: think about refactor simple controller to chain model with keyframes...
