@@ -58,9 +58,11 @@ const float kBCTDefaultRectSize = 100.0f;
     CGRect smallRect, bigRect;
 
     smallRect = [self rectForInitialState];
+    NSLog(@"NSStringFromCGRect(smallRect) = %@", NSStringFromCGRect(smallRect));
 
     CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:smallRect] inView:_dismissView];
     bigRect = CGRectInset(smallRect, -radius, -radius);
+    NSLog(@"NSStringFromCGRect(bigRect) = %@", NSStringFromCGRect(bigRect));
 
     UIBezierPath *smallPath = [UIBezierPath bezierPathWithOvalInRect:smallRect];
     UIBezierPath *bigPath = [UIBezierPath bezierPathWithOvalInRect:bigRect];
@@ -84,9 +86,11 @@ const float kBCTDefaultRectSize = 100.0f;
     CGRect smallRect, bigRect;
 
     smallRect = [self rectForInitialState];
+    NSLog(@"NSStringFromCGRect(smallRect) = %@", NSStringFromCGRect(smallRect));
 
     CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:smallRect] inView:_dismissView];
     bigRect = CGRectInset(smallRect, -radius, -radius);
+    NSLog(@"NSStringFromCGRect(bigRect) = %@", NSStringFromCGRect(bigRect));
 
     UIBezierPath *smallPath = [UIBezierPath bezierPathWithOvalInRect:smallRect];
     UIBezierPath *bigPath = [UIBezierPath bezierPathWithOvalInRect:bigRect];
@@ -146,14 +150,15 @@ const float kBCTDefaultRectSize = 100.0f;
 - (CGRect)defaultRectWithSize:(CGFloat)size {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGRect result = CGRectMake(CGRectGetMidX(screenRect), CGRectGetMidY(screenRect), 0, 0);
-    result = CGRectInset(result, -size, -size);
-    NSLog(@"screenRect = %@", NSStringFromCGRect(result));
+    result = CGRectInset(result, 0, 0);
     return result;
 }
 
 - (CGRect)rectForInitialState {
-    CGRect result = [self defaultRectWithSize:kBCTDefaultRectSize];;
+    CGRect result;
     UIView *view = nil;
+
+    result = [self defaultRectWithSize:kBCTDefaultRectSize];
 
     //get corresponding view otherwise try to get another
     if (self.valueObtainer.presenting) {
@@ -165,7 +170,9 @@ const float kBCTDefaultRectSize = 100.0f;
     //calculate
     if (view) {
         result = [view convertRect:view.bounds toView:view.window];
+        result = CGRectInset(result, CGRectGetWidth(result) / 2.0f, CGRectGetHeight(result) / 2.0f);
     }
+
     return result;
 }
 

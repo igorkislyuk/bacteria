@@ -28,6 +28,8 @@
 @property (nonatomic, weak) IBOutlet UISlider *endXSlider;
 @property (nonatomic, weak) IBOutlet UISlider *endYSlider;
 
+@property (nonatomic, weak) IBOutlet UIButton *testButton;
+
 @end
 
 @implementation InitialViewController
@@ -104,7 +106,7 @@
 
     PresentedViewController *controller = [self getController];
 
-    controller.presentTransition(BCTTransitionPopRadial).popFrom(button).withDuration(0.3f);
+    controller.presentTransition(BCTTransitionPopRadial).popFrom(button).popTo(self.testButton).withDuration(0.45f);
 
     [self presentViewController:controller animated:YES completion:nil];
 }
