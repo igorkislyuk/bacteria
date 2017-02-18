@@ -5,7 +5,7 @@
 
 #import "BCTPopTransitioningController.h"
 
-const float kBCTDefaultRectSize = -100.0f;
+const float kBCTDefaultRectSize = 100.0f;
 
 @interface BCTPopTransitioningController () <CAAnimationDelegate>
 
@@ -33,7 +33,7 @@ const float kBCTDefaultRectSize = -100.0f;
 
     self.transitionContext = transitionContext;
 
-    //get start values
+    //get start values & save it
     UIView *containerView = [transitionContext containerView];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
@@ -43,24 +43,19 @@ const float kBCTDefaultRectSize = -100.0f;
     _dismissView = fromVC.view;
     _presentView = toVC.view;
 
-    UIView *startPopView = self.valueObtainer.startPopView;
+    if (self.valueObtainer.presenting) {
+        [self animatePresent];
+    } else {
+        [self animateDismiss];
+    }
+
+}
+
+- (void)animatePresent {
 
     CGRect oldRect, newRect;
 
-    if (startPopView) {
-
-        if ([startPopView.superview isEqual:_dismissView]) {
-            oldRect = startPopView.frame;
-        } else if ([startPopView isDescendantOfView:_dismissView]) {
-            oldRect = [startPopView convertRect:startPopView.bounds toView:_dismissView];
-        } else {
-            //unknown behaviour -> fallback to zero
-            oldRect = [self defaultRectWithSize:kBCTDefaultRectSize];
-        }
-
-    } else {
-        oldRect = [self defaultRectWithSize:kBCTDefaultRectSize];
-    }
+    oldRect = [self rectForInitialState];
 
     CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:oldRect] inView:_dismissView];
 
@@ -84,11 +79,43 @@ const float kBCTDefaultRectSize = -100.0f;
     [shapeLayer addAnimation:basicAnimation forKey:nil];
 }
 
+- (void)animateDismiss {
+
+    CGRect smallRect, bigRect;
+
+    smallRect = [self rectForInitialState];
+
+    // todo: replace
+    CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:smallRect] inView:_dismissView];
+    bigRect = CGRectInset(smallRect, -radius, -radius);
+
+    UIBezierPath *smallPath = [UIBezierPath bezierPathWithOvalInRect:smallRect];
+    UIBezierPath *bigPath = [UIBezierPath bezierPathWithOvalInRect:bigRect];
+
+    //create mask for present view
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = smallPath.CGPath;
+    _presentView.layer.mask = shapeLayer;
+
+    CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
+    basicAnimation.fromValue = (id) bigPath.CGPath;
+    basicAnimation.toValue = (id) smallPath.CGPath;
+    basicAnimation.duration = self.valueObtainer.duration;
+    basicAnimation.delegate = self;
+
+    [shapeLayer addAnimation:basicAnimation forKey:nil];
+
+}
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     if (self.transitionContext) {
         [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
 
-        _presentView.layer.mask = nil;
+//        if (self.valueObtainer.presenting) {
+            _presentView.layer.mask = nil;
+//        } else {
+//            _dismissView.layer.mask = nil;
+//        }
     }
 }
 
@@ -96,7 +123,7 @@ const float kBCTDefaultRectSize = -100.0f;
     return CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
 }
 
-//count distance to the most far corner in
+///count distance to the most far corner in
 - (CGFloat)distanceToMostFarCornerWithPoint:(CGPoint)point inView:(UIView *)view {
 
     CGPoint result;
@@ -122,6 +149,42 @@ const float kBCTDefaultRectSize = -100.0f;
     CGRect result = CGRectMake(CGRectGetMidX(screenRect), CGRectGetMidY(screenRect), 0, 0);
     result = CGRectInset(result, -size, -size);
     NSLog(@"screenRect = %@", NSStringFromCGRect(result));
+    return result;
+}
+
+- (CGRect)rectForInitialState {
+    CGRect result = CGRectZero;
+    UIView *view = nil;
+
+    //get corresponding view otherwise try to get another
+    if (self.valueObtainer.presenting) {
+        view = self.valueObtainer.startPopView ?: self.valueObtainer.endPopView;
+    } else {
+        view = self.valueObtainer.endPopView ?: self.valueObtainer.startPopView;
+    }
+
+    if (self.valueObtainer.presenting) {
+        //calculate for presenting
+
+        if (view) {
+
+            if ([view.superview isEqual:_dismissView]) {
+                result = view.frame;
+            } else if ([view isDescendantOfView:_dismissView]) {
+                result = [view convertRect:view.bounds toView:_dismissView];
+            } else {
+                //unknown behaviour -> fallback to zero
+                result = [self defaultRectWithSize:kBCTDefaultRectSize];
+            }
+
+        } else {
+            result = [self defaultRectWithSize:kBCTDefaultRectSize];
+        }
+
+    } else {
+        result = [self defaultRectWithSize:0];
+    }
+
     return result;
 }
 
