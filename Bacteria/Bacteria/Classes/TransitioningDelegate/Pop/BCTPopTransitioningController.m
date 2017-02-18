@@ -6,6 +6,7 @@
 #import "BCTPopTransitioningController.h"
 
 const float kBCTDefaultRectSize = 100.0f;
+static NSString *kBCTAnimationViewStoring = @"kAnimationViewStoring";
 
 @interface BCTPopTransitioningController () <CAAnimationDelegate>
 
@@ -16,6 +17,8 @@ const float kBCTDefaultRectSize = 100.0f;
 @implementation BCTPopTransitioningController {
     UIView *_presentView, *_dismissView;
 }
+
+// todo: reorganize methods here
 
 - (instancetype)initWithValueObtainer:(id <BCTTransitioning>)valueObtainer {
     self = [super init];
@@ -43,69 +46,42 @@ const float kBCTDefaultRectSize = 100.0f;
 
     [containerView addSubview:_presentView];
 
+    //animation section
+    CGRect smallRect, bigRect;
+    smallRect = [self rectForInitialState];
+    CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:smallRect] inView:containerView];
+    bigRect = CGRectInset(smallRect, -radius, -radius);
+    UIBezierPath *smallPath = [UIBezierPath bezierPathWithOvalInRect:smallRect];
+    UIBezierPath *bigPath = [UIBezierPath bezierPathWithOvalInRect:bigRect];
+
     if (self.valueObtainer.presenting) {
-        [self animatePresent];
+
+        [self animateShapeMaskFor:_presentView withStartPath:bigPath toEndPath:smallPath];
     } else {
-        [self animateDismiss];
 
         [containerView bringSubviewToFront:_dismissView];
+
+        [self animateShapeMaskFor:_dismissView withStartPath:smallPath toEndPath:bigPath];
+
     }
 
 }
 
-- (void)animatePresent {
-
-    CGRect smallRect, bigRect;
-
-    smallRect = [self rectForInitialState];
-    NSLog(@"NSStringFromCGRect(smallRect) = %@", NSStringFromCGRect(smallRect));
-
-    CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:smallRect] inView:_dismissView];
-    bigRect = CGRectInset(smallRect, -radius, -radius);
-    NSLog(@"NSStringFromCGRect(bigRect) = %@", NSStringFromCGRect(bigRect));
-
-    UIBezierPath *smallPath = [UIBezierPath bezierPathWithOvalInRect:smallRect];
-    UIBezierPath *bigPath = [UIBezierPath bezierPathWithOvalInRect:bigRect];
+- (void)animateShapeMaskFor:(UIView *)view withStartPath:(UIBezierPath *)endPath toEndPath:(UIBezierPath *)startPath {
 
     //create mask for present view
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = bigPath.CGPath;
-    _presentView.layer.mask = shapeLayer;
+    shapeLayer.path = endPath.CGPath;
+
+    view.layer.mask = shapeLayer;
 
     CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
-    basicAnimation.fromValue = (id) smallPath.CGPath;
-    basicAnimation.toValue = (id) bigPath.CGPath;
+    basicAnimation.fromValue = (id) startPath.CGPath;
+    basicAnimation.toValue = (id) endPath.CGPath;
     basicAnimation.duration = self.valueObtainer.duration;
     basicAnimation.delegate = self;
 
-    [shapeLayer addAnimation:basicAnimation forKey:nil];
-}
-
-- (void)animateDismiss {
-
-    CGRect smallRect, bigRect;
-
-    smallRect = [self rectForInitialState];
-    NSLog(@"NSStringFromCGRect(smallRect) = %@", NSStringFromCGRect(smallRect));
-
-    CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:smallRect] inView:_dismissView];
-    bigRect = CGRectInset(smallRect, -radius, -radius);
-    NSLog(@"NSStringFromCGRect(bigRect) = %@", NSStringFromCGRect(bigRect));
-
-    UIBezierPath *smallPath = [UIBezierPath bezierPathWithOvalInRect:smallRect];
-    UIBezierPath *bigPath = [UIBezierPath bezierPathWithOvalInRect:bigRect];
-
-    //create mask for present view
-    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = smallPath.CGPath;
-
-    _dismissView.layer.mask = shapeLayer;
-
-    CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
-    basicAnimation.fromValue = (id) bigPath.CGPath;
-    basicAnimation.toValue = (id) smallPath.CGPath;
-    basicAnimation.duration = self.valueObtainer.duration;
-    basicAnimation.delegate = self;
+    [basicAnimation setValue:view forKey:kBCTAnimationViewStoring];
 
     [shapeLayer addAnimation:basicAnimation forKey:nil];
 }
@@ -114,11 +90,9 @@ const float kBCTDefaultRectSize = 100.0f;
     if (self.transitionContext) {
         [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
 
-        if (self.valueObtainer.presenting) {
-            _presentView.layer.mask = nil;
-        } else {
-            _dismissView.layer.mask = nil;
-        }
+        UIView *view = [anim valueForKey:kBCTAnimationViewStoring];
+        view.layer.mask = nil;
+
     }
 }
 
