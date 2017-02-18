@@ -12,7 +12,7 @@
 #import "BCTBlocks.h"
 
 /**
- * Current version - 0.4
+ * Current version - 0.5
  */
 
 @interface UIViewController (Bacteria)
@@ -65,8 +65,6 @@
 
 
 @end
-
-// todo: add functionality to retain view within container view. Tip: you should use snapshot, not `addSubview:`
 
 // todo: rename: bct -> bacteria. If it's needed
 // todo: logs

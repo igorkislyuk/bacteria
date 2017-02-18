@@ -1,6 +1,6 @@
 # BACTERIA
 
-**It's framework for easy perform basic custom modal viewcontroller transitions. Current version - 0.3**
+**It's framework for easy perform basic custom modal viewcontroller transitions. Current version - 0.5**
 
 ## Short feature list
 
@@ -21,11 +21,17 @@
 
 ## TODO Section
 
+### Version 0.6
+- [ ] Add functionality to retain view within container view. Tip: I should use snapshot, not `addSubview:`
 - [ ] Add separate duration for present / dismiss
 - [ ] Add transitions for viewControllers in navigation stack
+
+### Version 0.7
 - [ ] Add interactivity. Users should easily embed transitions in gestures
 - [ ] Add support for pop initial point depending on user finger location
 - [ ] Add spring values for all kind of transitions
+
+### Version 0.8
 - [ ] Add support for background color of container for transitions
 - [ ] Add blur for background container for transitions
 - [ ] Add transitions for collections
