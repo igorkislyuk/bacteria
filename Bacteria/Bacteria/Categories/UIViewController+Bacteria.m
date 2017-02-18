@@ -92,7 +92,7 @@
 
     } else if (self.transitioningFactory.dismissTransitionType && !self.transitioningFactory.presentTransitionType) {
         // no present type
-        self.dismissTransition(self.transitioningFactory.presentTransitionType);
+        self.presentTransition(self.transitioningFactory.dismissTransitionType);
 
     } else {
         //both are empty

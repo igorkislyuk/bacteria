@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="thd-97-4KM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,15 +23,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXo-6P-0Al">
-                                <rect key="frame" x="315" y="28" width="44" height="44"/>
+                                <rect key="frame" x="336" y="28" width="23" height="134"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.59094087579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="lXo-6P-0Al" secondAttribute="height" multiplier="1:1" id="A64-73-fn5"/>
-                                    <constraint firstAttribute="width" constant="44" id="jsb-cL-glH"/>
+                                    <constraint firstAttribute="width" constant="23" id="XwR-IR-Ifi"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="22"/>
+                                        <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -85,12 +84,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lXo-6P-0Al" firstAttribute="top" secondItem="dDP-u5-7IM" secondAttribute="bottom" constant="8" symbolic="YES" id="5LS-c7-m0T"/>
+                            <constraint firstItem="eoC-gq-j2m" firstAttribute="top" secondItem="lXo-6P-0Al" secondAttribute="bottom" constant="8" symbolic="YES" id="3I9-52-bIy"/>
                             <constraint firstItem="eoC-gq-j2m" firstAttribute="centerX" secondItem="0ze-g9-ZfR" secondAttribute="centerX" id="6cB-Jj-4D7"/>
-                            <constraint firstItem="lXo-6P-0Al" firstAttribute="trailing" secondItem="0ze-g9-ZfR" secondAttribute="trailingMargin" id="9Sr-8E-fqG"/>
                             <constraint firstItem="eoC-gq-j2m" firstAttribute="centerY" secondItem="0ze-g9-ZfR" secondAttribute="centerY" id="Ip6-83-ACT"/>
                             <constraint firstItem="eoC-gq-j2m" firstAttribute="leading" secondItem="0ze-g9-ZfR" secondAttribute="leadingMargin" constant="10" id="TAV-wV-8m7"/>
+                            <constraint firstItem="lXo-6P-0Al" firstAttribute="trailing" secondItem="0ze-g9-ZfR" secondAttribute="trailingMargin" id="lza-n5-oUa"/>
                             <constraint firstItem="eoC-gq-j2m" firstAttribute="top" secondItem="dDP-u5-7IM" secondAttribute="bottom" constant="150" id="wOx-NC-XgO"/>
+                            <constraint firstItem="lXo-6P-0Al" firstAttribute="top" secondItem="dDP-u5-7IM" secondAttribute="bottom" constant="8" symbolic="YES" id="zTg-7r-3DS"/>
                         </constraints>
                     </view>
                     <connections>
@@ -118,7 +118,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="xxR-56-Ydc" style="IBUITableViewCellStyleDefault" id="lg9-9P-jkr">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lg9-9P-jkr" id="LmM-fW-bJ7">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -261,6 +261,9 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="176" id="ImH-EG-4ce"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="actionTestPop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LjV-xD-5CK"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

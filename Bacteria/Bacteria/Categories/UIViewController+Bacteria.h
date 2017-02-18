@@ -66,8 +66,6 @@
 
 @end
 
-// todo: pop from custom shape
-// todo: add reverse for custom shape
 // todo: add functionality to retain view within container view. Tip: you should use snapshot, not `addSubview:`
 
 // todo: rename: bct -> bacteria. If it's needed

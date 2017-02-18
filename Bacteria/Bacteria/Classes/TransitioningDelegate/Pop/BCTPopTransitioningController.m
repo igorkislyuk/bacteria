@@ -5,8 +5,8 @@
 
 #import "BCTPopTransitioningController.h"
 
-const float kBCTDefaultRectSize = 100.0f;
 static NSString *kBCTAnimationViewStoring = @"kAnimationViewStoring";
+const float kBCTDefaultCornerSize = 10.f;
 
 @interface BCTPopTransitioningController () <CAAnimationDelegate>
 
@@ -48,11 +48,30 @@ static NSString *kBCTAnimationViewStoring = @"kAnimationViewStoring";
 
     //animation section
     CGRect smallRect, bigRect;
-    smallRect = [self rectForInitialState];
-    CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:smallRect] inView:containerView];
-    bigRect = CGRectInset(smallRect, -radius, -radius);
-    UIBezierPath *smallPath = [UIBezierPath bezierPathWithOvalInRect:smallRect];
-    UIBezierPath *bigPath = [UIBezierPath bezierPathWithOvalInRect:bigRect];
+
+    UIBezierPath *smallPath, *bigPath;
+
+    if ([self transitionType] == BCTTransitionPopRadial) {
+        smallRect = [self initialZeroSizedRect:YES];
+
+        CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:smallRect] inView:containerView];
+        bigRect = CGRectInset(smallRect, -radius, -radius);
+
+        smallPath = [UIBezierPath bezierPathWithOvalInRect:smallRect];
+        bigPath = [UIBezierPath bezierPathWithOvalInRect:bigRect];
+    } else {
+        //for linear
+
+        smallRect = [self initialZeroSizedRect:NO];
+        bigRect = [containerView bounds];
+
+        CGFloat size = [self size];
+
+        bigRect = CGRectInset(bigRect, -size, -size);
+
+        smallPath = [UIBezierPath bezierPathWithRoundedRect:smallRect cornerRadius:size];
+        bigPath = [UIBezierPath bezierPathWithRoundedRect:bigRect cornerRadius:size];
+    }
 
     if (self.valueObtainer.presenting) {
 
@@ -65,6 +84,20 @@ static NSString *kBCTAnimationViewStoring = @"kAnimationViewStoring";
 
     }
 
+}
+
+- (CGFloat)size {
+    CGFloat result = kBCTDefaultCornerSize;
+
+    if ([self popView]) {
+        result = [self popView].layer.cornerRadius;
+    }
+
+    return result;
+}
+
+- (BCTTransitionType)transitionType {
+    return self.valueObtainer.presenting ? self.valueObtainer.presentTransitionType : self.valueObtainer.dismissTransitionType;
 }
 
 - (void)animateShapeMaskFor:(UIView *)view withStartPath:(UIBezierPath *)endPath toEndPath:(UIBezierPath *)startPath {
@@ -121,33 +154,40 @@ static NSString *kBCTAnimationViewStoring = @"kAnimationViewStoring";
     return sqrtf((result.x * result.x) + (result.y * result.y));
 }
 
-- (CGRect)defaultRectWithSize:(CGFloat)size {
+- (CGRect)defaultRect {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGRect result = CGRectMake(CGRectGetMidX(screenRect), CGRectGetMidY(screenRect), 0, 0);
     result = CGRectInset(result, 0, 0);
     return result;
 }
 
-- (CGRect)rectForInitialState {
+- (CGRect)initialZeroSizedRect:(BOOL)zeroSized {
     CGRect result;
     UIView *view = nil;
 
-    result = [self defaultRectWithSize:kBCTDefaultRectSize];
+    result = [self defaultRect];
+    view = [self popView];
 
-    //get corresponding view otherwise try to get another
+    //calculate
+    if (view) {
+        result = [view convertRect:view.bounds toView:view.window];
+    }
+
+    if (zeroSized) {
+        result = CGRectInset(result, CGRectGetWidth(result) / 2.0f, CGRectGetHeight(result) / 2.0f);
+    }
+
+    return result;
+}
+
+- (UIView *)popView {
+    UIView *view;//get corresponding view otherwise try to get another
     if (self.valueObtainer.presenting) {
         view = self.valueObtainer.startPopView ?: self.valueObtainer.endPopView;
     } else {
         view = self.valueObtainer.endPopView ?: self.valueObtainer.startPopView;
     }
-
-    //calculate
-    if (view) {
-        result = [view convertRect:view.bounds toView:view.window];
-        result = CGRectInset(result, CGRectGetWidth(result) / 2.0f, CGRectGetHeight(result) / 2.0f);
-    }
-
-    return result;
+    return view;
 }
 
 @end
