@@ -38,41 +38,41 @@ const float kBCTDefaultRectSize = 100.0f;
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
 
-    [containerView addSubview:toVC.view];
-
     _dismissView = fromVC.view;
     _presentView = toVC.view;
 
+    [containerView addSubview:_presentView];
+    
     if (self.valueObtainer.presenting) {
         [self animatePresent];
     } else {
         [self animateDismiss];
+        
+        [containerView bringSubviewToFront:_dismissView];
     }
 
 }
 
 - (void)animatePresent {
 
-    CGRect oldRect, newRect;
+    CGRect smallRect, bigRect;
 
-    oldRect = [self rectForInitialState];
+    smallRect = [self rectForInitialState];
 
-    CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:oldRect] inView:_dismissView];
+    CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:smallRect] inView:_dismissView];
+    bigRect = CGRectInset(smallRect, -radius, -radius);
 
-    newRect = CGRectInset(oldRect, -radius, -radius);
-    NSLog(@"NSStringFromCGRect(newRect) = %@", NSStringFromCGRect(newRect));
-
-    UIBezierPath *startPath = [UIBezierPath bezierPathWithOvalInRect:oldRect];
-    UIBezierPath *endPath = [UIBezierPath bezierPathWithOvalInRect:newRect];
+    UIBezierPath *smallPath = [UIBezierPath bezierPathWithOvalInRect:smallRect];
+    UIBezierPath *bigPath = [UIBezierPath bezierPathWithOvalInRect:bigRect];
 
     //create mask for present view
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-    shapeLayer.path = endPath.CGPath;
+    shapeLayer.path = bigPath.CGPath;
     _presentView.layer.mask = shapeLayer;
 
     CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
-    basicAnimation.fromValue = (id) startPath.CGPath;
-    basicAnimation.toValue = (id) endPath.CGPath;
+    basicAnimation.fromValue = (id) smallPath.CGPath;
+    basicAnimation.toValue = (id) bigPath.CGPath;
     basicAnimation.duration = self.valueObtainer.duration;
     basicAnimation.delegate = self;
 
@@ -85,7 +85,6 @@ const float kBCTDefaultRectSize = 100.0f;
 
     smallRect = [self rectForInitialState];
 
-    // todo: replace
     CGFloat radius = [self distanceToMostFarCornerWithPoint:[self centerPointIn:smallRect] inView:_dismissView];
     bigRect = CGRectInset(smallRect, -radius, -radius);
 
@@ -95,7 +94,8 @@ const float kBCTDefaultRectSize = 100.0f;
     //create mask for present view
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = smallPath.CGPath;
-    _presentView.layer.mask = shapeLayer;
+
+    _dismissView.layer.mask = shapeLayer;
 
     CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"path"];
     basicAnimation.fromValue = (id) bigPath.CGPath;
@@ -104,18 +104,17 @@ const float kBCTDefaultRectSize = 100.0f;
     basicAnimation.delegate = self;
 
     [shapeLayer addAnimation:basicAnimation forKey:nil];
-
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
     if (self.transitionContext) {
         [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
 
-//        if (self.valueObtainer.presenting) {
-            _presentView.layer.mask = nil;
-//        } else {
-//            _dismissView.layer.mask = nil;
-//        }
+        if (self.valueObtainer.presenting) {
+        _presentView.layer.mask = nil;
+        } else {
+            _dismissView.layer.mask = nil;
+        }
     }
 }
 
