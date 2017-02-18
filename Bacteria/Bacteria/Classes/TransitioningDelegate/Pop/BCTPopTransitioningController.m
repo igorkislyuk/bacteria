@@ -42,12 +42,12 @@ const float kBCTDefaultRectSize = 100.0f;
     _presentView = toVC.view;
 
     [containerView addSubview:_presentView];
-    
+
     if (self.valueObtainer.presenting) {
         [self animatePresent];
     } else {
         [self animateDismiss];
-        
+
         [containerView bringSubviewToFront:_dismissView];
     }
 
@@ -111,7 +111,7 @@ const float kBCTDefaultRectSize = 100.0f;
         [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
 
         if (self.valueObtainer.presenting) {
-        _presentView.layer.mask = nil;
+            _presentView.layer.mask = nil;
         } else {
             _dismissView.layer.mask = nil;
         }
@@ -152,7 +152,7 @@ const float kBCTDefaultRectSize = 100.0f;
 }
 
 - (CGRect)rectForInitialState {
-    CGRect result = CGRectZero;
+    CGRect result = [self defaultRectWithSize:kBCTDefaultRectSize];;
     UIView *view = nil;
 
     //get corresponding view otherwise try to get another
@@ -162,28 +162,10 @@ const float kBCTDefaultRectSize = 100.0f;
         view = self.valueObtainer.endPopView ?: self.valueObtainer.startPopView;
     }
 
-    if (self.valueObtainer.presenting) {
-        //calculate for presenting
-
-        if (view) {
-
-            if ([view.superview isEqual:_dismissView]) {
-                result = view.frame;
-            } else if ([view isDescendantOfView:_dismissView]) {
-                result = [view convertRect:view.bounds toView:_dismissView];
-            } else {
-                //unknown behaviour -> fallback to zero
-                result = [self defaultRectWithSize:kBCTDefaultRectSize];
-            }
-
-        } else {
-            result = [self defaultRectWithSize:kBCTDefaultRectSize];
-        }
-
-    } else {
-        result = [self defaultRectWithSize:0];
+    //calculate
+    if (view) {
+        result = [view convertRect:view.bounds toView:view.window];
     }
-
     return result;
 }
 
