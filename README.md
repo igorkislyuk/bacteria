@@ -10,6 +10,7 @@
 * support different transition types (parallel, cover, flip)
 * support reverse functionality
 * support safari-like controller transition (both present & dismiss)
+* support for segues, not only for modal code presentation
 * ...to be continued
 
 ## Installation
@@ -23,7 +24,7 @@
 - [ ] Add separate duration for present / dismiss
 - [ ] Add transitions for viewControllers in navigation stack
 - [ ] Add interactivity. Users should easily embed transitions in gestures
-- [ ] Add support for segues, not only for modal code presentation
+- [ ] Add support for pop initial point depending on user finger location
 - [ ] Add spring values for all kind of transitions
 - [ ] Add support for background color of container for transitions
 - [ ] Add blur for background container for transitions

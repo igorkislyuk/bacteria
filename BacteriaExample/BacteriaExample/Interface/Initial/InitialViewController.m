@@ -106,7 +106,7 @@
 
     PresentedViewController *controller = [self getController];
 
-    controller.dismissTransition(BCTTransitionPopRadial).withDuration(0.65f);
+    controller.dismissTransition(BCTTransitionPopLinear).popFrom(button).withDuration(0.65f);
 
     [self presentViewController:controller animated:YES completion:nil];
 }

@@ -18,7 +18,6 @@ const float kBCTDefaultCornerSize = 10.f;
     UIView *_presentView, *_dismissView;
 }
 
-// todo: reorganize methods here
 
 - (instancetype)initWithValueObtainer:(id <BCTTransitioning>)valueObtainer {
     self = [super init];
@@ -27,6 +26,8 @@ const float kBCTDefaultCornerSize = 10.f;
     }
     return self;
 }
+
+#pragma mark - AnimatedTransitioning
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
     return self.valueObtainer.duration;
@@ -86,19 +87,19 @@ const float kBCTDefaultCornerSize = 10.f;
 
 }
 
-- (CGFloat)size {
-    CGFloat result = kBCTDefaultCornerSize;
+#pragma mark - CoreAnimation Delegate
 
-    if ([self popView]) {
-        result = [self popView].layer.cornerRadius;
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
+    if (self.transitionContext) {
+        [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
+
+        UIView *view = [anim valueForKey:kBCTAnimationViewStoring];
+        view.layer.mask = nil;
+
     }
-
-    return result;
 }
 
-- (BCTTransitionType)transitionType {
-    return self.valueObtainer.presenting ? self.valueObtainer.presentTransitionType : self.valueObtainer.dismissTransitionType;
-}
+#pragma mark - Animation
 
 - (void)animateShapeMaskFor:(UIView *)view withStartPath:(UIBezierPath *)endPath toEndPath:(UIBezierPath *)startPath {
 
@@ -119,14 +120,20 @@ const float kBCTDefaultCornerSize = 10.f;
     [shapeLayer addAnimation:basicAnimation forKey:nil];
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    if (self.transitionContext) {
-        [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
+#pragma mark - Helpers
 
-        UIView *view = [anim valueForKey:kBCTAnimationViewStoring];
-        view.layer.mask = nil;
+- (CGFloat)size {
+    CGFloat result = kBCTDefaultCornerSize;
 
+    if ([self popView]) {
+        result = [self popView].layer.cornerRadius;
     }
+
+    return result;
+}
+
+- (BCTTransitionType)transitionType {
+    return self.valueObtainer.presenting ? self.valueObtainer.presentTransitionType : self.valueObtainer.dismissTransitionType;
 }
 
 - (CGPoint)centerPointIn:(CGRect)rect {
