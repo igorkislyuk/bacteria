@@ -66,10 +66,8 @@
 
 @end
 
-// todo: rename: bct -> bacteria. If it's needed
 // todo: logs
 // todo: made good readme
 // todo: deal with example project
-// todo: here good podspec - https://github.com/daltoniam/DCAnimationKit
 
 // fixme: think about refactor simple controller to chain model with keyframes...
