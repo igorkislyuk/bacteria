@@ -2,7 +2,6 @@ language: objective-c
 osx_image: xcode8.2
 
 before_install: 
-- cd Example
 - pod install
 script:
 - xcodebuild clean build -sdk iphonesimulator -workspace Example/Bacteria.xcworkspace -scheme Bacteria
