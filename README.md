@@ -1,7 +1,8 @@
 # BACTERIA
 **It's framework for easy perform basic custom modal viewcontroller transitions. Current version - 0.5**
 
-![Animation example](gifs/first.gif)
+<!-- ![Animation example](gifs/first.gif) -->
+<img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/first.gif" width="267px"/> 
 
 ## Feature list
 
