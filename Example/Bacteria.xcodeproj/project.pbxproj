@@ -7,25 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3927B16757F9C6EE2E97BA6C /* BCTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BC4B49E60FF411A955D2 /* BCTAppDelegate.m */; };
+		3927B36D39773600C1250229 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3927B3F98FF096A2EFB484EA /* Main.storyboard */; };
+		3927B50A4790B8681D664D82 /* BCTPresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BF5A80BA1B86541666DB /* BCTPresentedViewController.m */; };
+		3927BA0935DF2BD70DAAC9AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3927B220F417190B68025180 /* LaunchScreen.storyboard */; };
+		3927BAD00371BEB8F0E01002 /* BCTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BBED437B62DE5F51FC49 /* BCTViewController.m */; };
+		3927BE9BB46FC657616BA537 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3927BE559B0534A03D9617C7 /* Images.xcassets */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F598195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F596195388D20070C39A /* InfoPlist.strings */; };
 		6003F59A195388D20070C39A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F599195388D20070C39A /* main.m */; };
-		6003F59E195388D20070C39A /* BCTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F59D195388D20070C39A /* BCTAppDelegate.m */; };
-		6003F5A7195388D20070C39A /* BCTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5A6195388D20070C39A /* BCTViewController.m */; };
-		6003F5A9195388D20070C39A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5A8195388D20070C39A /* Images.xcassets */; };
-		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		C0A69F40E61F6353DC1AF5CC /* Pods_Bacteria_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2BC2AF961D06526F0DD3BF4 /* Pods_Bacteria_Example.framework */; };
-		EDEFD5E51E58DB5600763871 /* BCTPresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEFD5E41E58DB5600763871 /* BCTPresentedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2E1AB911A2FD298E1D8C3E37 /* Pods-Bacteria_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bacteria_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bacteria_Example/Pods-Bacteria_Example.release.xcconfig"; sourceTree = "<group>"; };
-		45B45765007EDB7CB9AB51E0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		3927B20EF02C26C2FCABB919 /* BCTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTViewController.h; sourceTree = "<group>"; };
+		3927B4CF84B5CFABBEFEC051 /* BCTPresentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTPresentedViewController.h; sourceTree = "<group>"; };
+		3927B527DE1EEC13A3572793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3927B718ACB2870FE0BA5AE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3927BB8927A820961DF8001B /* BCTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTAppDelegate.h; sourceTree = "<group>"; };
+		3927BBED437B62DE5F51FC49 /* BCTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTViewController.m; sourceTree = "<group>"; };
+		3927BC4B49E60FF411A955D2 /* BCTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTAppDelegate.m; sourceTree = "<group>"; };
+		3927BE559B0534A03D9617C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3927BF5A80BA1B86541666DB /* BCTPresentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTPresentedViewController.m; sourceTree = "<group>"; };
+		45B45765007EDB7CB9AB51E0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../../LICENSE; sourceTree = "<group>"; };
 		5384E6F8E63BB7616418DCD5 /* Pods-Bacteria_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bacteria_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bacteria_Tests/Pods-Bacteria_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		569742DF476CF901831AD43F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		569742DF476CF901831AD43F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* Bacteria_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bacteria_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -34,21 +43,12 @@
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6003F59B195388D20070C39A /* Bacteria-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bacteria-Prefix.pch"; sourceTree = "<group>"; };
-		6003F59C195388D20070C39A /* BCTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCTAppDelegate.h; sourceTree = "<group>"; };
-		6003F59D195388D20070C39A /* BCTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCTAppDelegate.m; sourceTree = "<group>"; };
-		6003F5A5195388D20070C39A /* BCTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCTViewController.h; sourceTree = "<group>"; };
-		6003F5A6195388D20070C39A /* BCTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCTViewController.m; sourceTree = "<group>"; };
-		6003F5A8195388D20070C39A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6CB5D02C2B0BC8A03E879580 /* Pods_Bacteria_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bacteria_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		81E51A4588DC34338E2AF43F /* Bacteria.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Bacteria.podspec; path = ../Bacteria.podspec; sourceTree = "<group>"; };
-		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		81E51A4588DC34338E2AF43F /* Bacteria.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Bacteria.podspec; path = ../../Bacteria.podspec; sourceTree = "<group>"; };
 		8D75B1CEB21F4D3F107F01F3 /* Pods-Bacteria_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bacteria_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bacteria_Example/Pods-Bacteria_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C2BC2AF961D06526F0DD3BF4 /* Pods_Bacteria_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bacteria_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBA72C185D4798F22B0EBB22 /* Pods-Bacteria_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bacteria_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bacteria_Tests/Pods-Bacteria_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		EDEFD5E31E58DB5600763871 /* BCTPresentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTPresentedViewController.h; sourceTree = "<group>"; };
-		EDEFD5E41E58DB5600763871 /* BCTPresentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTPresentedViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,14 +77,44 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3927B2E0036820C78F881BCC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3927B4CF84B5CFABBEFEC051 /* BCTPresentedViewController.h */,
+				3927BF5A80BA1B86541666DB /* BCTPresentedViewController.m */,
+				3927B20EF02C26C2FCABB919 /* BCTViewController.h */,
+				3927BBED437B62DE5F51FC49 /* BCTViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3927B908BEAA8C806C6B6970 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				3927BB8927A820961DF8001B /* BCTAppDelegate.h */,
+				3927BC4B49E60FF411A955D2 /* BCTAppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		3927BA5B3B7C400D6B3B5106 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3927B220F417190B68025180 /* LaunchScreen.storyboard */,
+				3927B3F98FF096A2EFB484EA /* Main.storyboard */,
+			);
+			name = Storyboards;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
-				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for Bacteria */,
 				6003F58C195388D20070C39A /* Frameworks */,
-				6003F58B195388D20070C39A /* Products */,
 				2050E64EE4F0A5C3DD6DEF9A /* Pods */,
+				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
+				6003F58B195388D20070C39A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,40 +142,37 @@
 		6003F593195388D20070C39A /* Example for Bacteria */ = {
 			isa = PBXGroup;
 			children = (
-				6003F59C195388D20070C39A /* BCTAppDelegate.h */,
-				6003F59D195388D20070C39A /* BCTAppDelegate.m */,
-				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
-				6003F5A5195388D20070C39A /* BCTViewController.h */,
-				6003F5A6195388D20070C39A /* BCTViewController.m */,
-				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
-				6003F5A8195388D20070C39A /* Images.xcassets */,
+				3927B908BEAA8C806C6B6970 /* AppDelegate */,
+				3927B2E0036820C78F881BCC /* Controllers */,
+				3927BA5B3B7C400D6B3B5106 /* Storyboards */,
 				6003F594195388D20070C39A /* Supporting Files */,
-				EDEFD5E31E58DB5600763871 /* BCTPresentedViewController.h */,
-				EDEFD5E41E58DB5600763871 /* BCTPresentedViewController.m */,
 			);
 			name = "Example for Bacteria";
-			path = Bacteria;
+			path = "Example for Bacteria";
 			sourceTree = "<group>";
 		};
 		6003F594195388D20070C39A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				6003F595195388D20070C39A /* Bacteria-Info.plist */,
+				6003F59B195388D20070C39A /* Bacteria-Prefix.pch */,
+				3927BE559B0534A03D9617C7 /* Images.xcassets */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
-				6003F59B195388D20070C39A /* Bacteria-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
 				81E51A4588DC34338E2AF43F /* Bacteria.podspec */,
-				569742DF476CF901831AD43F /* README.md */,
 				45B45765007EDB7CB9AB51E0 /* LICENSE */,
+				569742DF476CF901831AD43F /* README.md */,
 			);
 			name = "Podspec Metadata";
+			path = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,10 +231,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
-				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
-				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				3927BE9BB46FC657616BA537 /* Images.xcassets in Resources */,
+				3927BA0935DF2BD70DAAC9AA /* LaunchScreen.storyboard in Resources */,
+				3927B36D39773600C1250229 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,30 +293,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F59E195388D20070C39A /* BCTAppDelegate.m in Sources */,
-				EDEFD5E51E58DB5600763871 /* BCTPresentedViewController.m in Sources */,
-				6003F5A7195388D20070C39A /* BCTViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				3927B16757F9C6EE2E97BA6C /* BCTAppDelegate.m in Sources */,
+				3927B50A4790B8681D664D82 /* BCTPresentedViewController.m in Sources */,
+				3927BAD00371BEB8F0E01002 /* BCTViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		3927B220F417190B68025180 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3927B718ACB2870FE0BA5AE3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
+		3927B3F98FF096A2EFB484EA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3927B527DE1EEC13A3572793 /* Base */,
+			);
+			name = Main.storyboard;
+			path = .;
+			sourceTree = "<group>";
+		};
 		6003F596195388D20070C39A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6003F597195388D20070C39A /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				71719F9E1E33DC2100824A3D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -384,8 +422,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bacteria/Bacteria-Prefix.pch";
-				INFOPLIST_FILE = "Bacteria/Bacteria-Info.plist";
+				GCC_PREFIX_HEADER = "Example for Bacteria/Supporting Files/Bacteria-Prefix.pch";
+				INFOPLIST_FILE = "Example for Bacteria/Supporting Files/Bacteria-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -399,8 +437,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Bacteria/Bacteria-Prefix.pch";
-				INFOPLIST_FILE = "Bacteria/Bacteria-Info.plist";
+				GCC_PREFIX_HEADER = "Example for Bacteria/Supporting Files/Bacteria-Prefix.pch";
+				INFOPLIST_FILE = "Example for Bacteria/Supporting Files/Bacteria-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

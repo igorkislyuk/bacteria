@@ -6,11 +6,9 @@
 //  Copyright (c) 2017 igorkislyuk. All rights reserved.
 //
 
-#import "BCTViewController.h"
-
-//#import "UIViewController+Bacteria.h"
 #import <Bacteria/UIViewController+Bacteria.h>
 
+#import "BCTViewController.h"
 #import "BCTPresentedViewController.h"
 
 @interface BCTViewController ()
@@ -21,17 +19,12 @@
 
 @implementation BCTViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     BCTPresentedViewController *presented = segue.destinationViewController;
