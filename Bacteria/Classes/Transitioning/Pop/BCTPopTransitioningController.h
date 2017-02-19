@@ -5,8 +5,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BCTTypes.h"
-#import "BCTTransitioning.h"
+#include "BCTTypes.h"
+#include "BCTTransitioning.h"
 
 @interface BCTPopTransitioningController : NSObject <UIViewControllerAnimatedTransitioning>
 

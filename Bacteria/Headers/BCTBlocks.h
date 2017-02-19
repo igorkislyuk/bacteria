@@ -10,7 +10,7 @@
 #define BCTBlocks_h
 
 #import <UIKit/UIKit.h>
-#import "BCTTypes.h"
+#include "BCTTypes.h"
 
 typedef UIViewController* (^BacteriaEmptyBlock)(void);
 typedef UIViewController* (^BacteriaTimeBlock)(NSTimeInterval);

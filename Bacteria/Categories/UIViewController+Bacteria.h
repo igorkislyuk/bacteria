@@ -14,18 +14,15 @@
 /**
  * Current version - 0.5
  */
-
 @interface UIViewController (Bacteria)
 
 /**
- * Required. Specify an duration, like `withDuration(0.3f)`
- * @return controller itself
+ * Required. Specify an duration in seconds, like `withDuration(0.3f)`
  */
 - (BacteriaTimeBlock)withDuration;
 
 /**
  * Specify transition type. Default transition is FlatParallel
- * @return controller itself
  */
 - (BacteriaTransitionBlock)presentTransition;
 - (BacteriaTransitionBlock)dismissTransition;
@@ -65,9 +62,3 @@
 
 
 @end
-
-// todo: logs
-// todo: made good readme
-// todo: deal with example project
-
-// fixme: think about refactor simple controller to chain model with keyframes...
