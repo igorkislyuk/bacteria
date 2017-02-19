@@ -1,6 +1,8 @@
 # BACTERIA
 **It's framework for easy perform basic custom modal viewcontroller transitions. Current version - 0.5**
 
+![Animation example](gifs/first.gif)
+
 ## Feature list
 
 * human syntax for transitions for ObjC
@@ -27,7 +29,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 target 'TargetName' do
-pod 'Bacteria', '~> 3.0'
+pod 'Bacteria'
 end
 ```
 
@@ -39,12 +41,34 @@ $ pod install
 
 ## How to
 
-0. Any instruction should be applied to presented controller. You can get it two ways
+Any instruction should be applied to presented controller. You can get it two ways:
+
+1. Create it manually and present
+```objective-c
 	
-0.1. Create it and present
-0.2. Using segue tracker
+```
+2. Using segue tracker
+```objective-c
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    //get presented controller
+    BCTPresentedViewController *presented = segue.destinationViewController;
+    
+    //bacteria configuration
+    presented.
+    presentTransition(BCTTransitionFlip).
+    fromDirection(BCTDirectionTop).
+    dismissTransition(BCTTransitionPopRadial).
+    popTo(self.testButton).
+    withDuration(0.45f);
+}
+```
+
+## Functionality overview
 
 1. `withDuration(XXX)` - use this to specify duration for transition. XXX - float value in seconds. Applied both for presentation and dismissal
+2. 
+
+## Enum types
 
 ## TODO Section
 

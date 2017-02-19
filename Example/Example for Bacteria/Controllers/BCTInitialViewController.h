@@ -1,5 +1,5 @@
 //
-//  BCTAppDelegate.h
+//  BCTInitialViewController.h
 //  Bacteria
 //
 //  Created by Igor Kislyuk on 02/18/2017.
@@ -8,8 +8,6 @@
 
 @import UIKit;
 
-@interface BCTAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface BCTInitialViewController : UIViewController
 
 @end

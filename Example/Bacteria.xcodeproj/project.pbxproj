@@ -11,7 +11,7 @@
 		3927B36D39773600C1250229 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3927B3F98FF096A2EFB484EA /* Main.storyboard */; };
 		3927B50A4790B8681D664D82 /* BCTPresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BF5A80BA1B86541666DB /* BCTPresentedViewController.m */; };
 		3927BA0935DF2BD70DAAC9AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3927B220F417190B68025180 /* LaunchScreen.storyboard */; };
-		3927BAD00371BEB8F0E01002 /* BCTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BBED437B62DE5F51FC49 /* BCTViewController.m */; };
+		3927BAD00371BEB8F0E01002 /* BCTInitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3927BBED437B62DE5F51FC49 /* BCTInitialViewController.m */; };
 		3927BE9BB46FC657616BA537 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3927BE559B0534A03D9617C7 /* Images.xcassets */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -23,12 +23,12 @@
 
 /* Begin PBXFileReference section */
 		2E1AB911A2FD298E1D8C3E37 /* Pods-Bacteria_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bacteria_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bacteria_Example/Pods-Bacteria_Example.release.xcconfig"; sourceTree = "<group>"; };
-		3927B20EF02C26C2FCABB919 /* BCTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTViewController.h; sourceTree = "<group>"; };
+		3927B20EF02C26C2FCABB919 /* BCTInitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTInitialViewController.h; sourceTree = "<group>"; };
 		3927B4CF84B5CFABBEFEC051 /* BCTPresentedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTPresentedViewController.h; sourceTree = "<group>"; };
 		3927B527DE1EEC13A3572793 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3927B718ACB2870FE0BA5AE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3927BB8927A820961DF8001B /* BCTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCTAppDelegate.h; sourceTree = "<group>"; };
-		3927BBED437B62DE5F51FC49 /* BCTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTViewController.m; sourceTree = "<group>"; };
+		3927BBED437B62DE5F51FC49 /* BCTInitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTInitialViewController.m; sourceTree = "<group>"; };
 		3927BC4B49E60FF411A955D2 /* BCTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTAppDelegate.m; sourceTree = "<group>"; };
 		3927BE559B0534A03D9617C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3927BF5A80BA1B86541666DB /* BCTPresentedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCTPresentedViewController.m; sourceTree = "<group>"; };
@@ -82,8 +82,8 @@
 			children = (
 				3927B4CF84B5CFABBEFEC051 /* BCTPresentedViewController.h */,
 				3927BF5A80BA1B86541666DB /* BCTPresentedViewController.m */,
-				3927B20EF02C26C2FCABB919 /* BCTViewController.h */,
-				3927BBED437B62DE5F51FC49 /* BCTViewController.m */,
+				3927B20EF02C26C2FCABB919 /* BCTInitialViewController.h */,
+				3927BBED437B62DE5F51FC49 /* BCTInitialViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -206,7 +206,7 @@
 			attributes = {
 				CLASSPREFIX = BCT;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = igorkislyuk;
+				ORGANIZATIONNAME = "Igor Kislyuk";
 			};
 			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "Bacteria" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -296,7 +296,7 @@
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				3927B16757F9C6EE2E97BA6C /* BCTAppDelegate.m in Sources */,
 				3927B50A4790B8681D664D82 /* BCTPresentedViewController.m in Sources */,
-				3927BAD00371BEB8F0E01002 /* BCTViewController.m in Sources */,
+				3927BAD00371BEB8F0E01002 /* BCTInitialViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

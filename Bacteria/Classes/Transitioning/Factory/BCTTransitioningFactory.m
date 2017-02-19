@@ -23,6 +23,10 @@
     return self;
 }
 
+- (void)dealloc {
+    NSLog(@"factory: %s", sel_getName(_cmd));
+}
+
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerWithType:(BCTTransitionType)type {
 
     switch (type) {

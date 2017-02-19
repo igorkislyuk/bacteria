@@ -37,6 +37,10 @@
     objc_setAssociatedObject(self, @selector(transitioningFactory), transitioningFactory, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (void)dealloc {
+    [self setTransitioningFactory:nil];
+}
+
 @end
 
 @implementation UIViewController (Bacteria)
@@ -82,10 +86,13 @@
 }
 
 - (void)adjustTransitionTypes {
+    NSLog(@"self.transitioningFactory.presentTransitionType = %d", self.transitioningFactory.presentTransitionType);
+    NSLog(@"self.transitioningFactory.dismissTransitionType = %d", self.transitioningFactory.dismissTransitionType);
+
     if (self.transitioningFactory.presentTransitionType && self.transitioningFactory.dismissTransitionType) {
         //fine
         return;
-        
+
     } else if (self.transitioningFactory.presentTransitionType && !self.transitioningFactory.dismissTransitionType) {
         //no dismiss transition type
         self.dismissTransition(self.transitioningFactory.presentTransitionType);
@@ -108,7 +115,7 @@
 
         self.toDirection([self reverseDirection:self.transitioningFactory.presentDirectionType]);
     } else if (self.transitioningFactory.dismissDirectionType && !self.transitioningFactory.presentDirectionType) {
-        
+
         self.fromDirection([self reverseDirection:self.transitioningFactory.dismissDirectionType]);
     } else {
         self.fromDirection(BCTDirectionTop).toDirection(BCTDirectionTop);
