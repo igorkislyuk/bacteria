@@ -3,10 +3,4 @@ use_frameworks!
 target 'Bacteria_Example' do
   pod 'Bacteria', :path => '../'
 
-  target 'Bacteria_Tests' do
-    inherit! :search_paths
-
-    pod 'Specta'
-  pod 'Expecta'
-  end
 end

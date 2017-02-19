@@ -8,7 +8,9 @@
 
 #import "BCTViewController.h"
 
-#import "UIViewController+Bacteria.h"
+//#import "UIViewController+Bacteria.h"
+#import <Bacteria/UIViewController+Bacteria.h>
+
 #import "BCTPresentedViewController.h"
 
 @interface BCTViewController ()

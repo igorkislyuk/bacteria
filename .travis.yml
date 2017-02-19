@@ -1,12 +1,3 @@
 language: objective-c
-
 osx_image: xcode8.2
-
-script: xcodebuild clean build -sdk iphonesimulator -project Bacteria/Bacteria.xcodeproj -scheme Bacteria
-
-notifications:
-  email:
-    recipients:
-        - igorkislyuk@icloud.com
-    on_success: always
-    on_failure: always
+script: xcodebuild clean build -sdk iphonesimulator -workspace Example/Bacteria.xcworkspace -scheme Bacteria

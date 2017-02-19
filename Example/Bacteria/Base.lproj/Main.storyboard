@@ -22,8 +22,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wY5-j1-fC2">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="159" y="637" width="56" height="30"/>
+                                <state key="normal" title="Transite"/>
                                 <connections>
                                     <segue destination="aKL-S5-tOC" kind="presentation" id="7Dy-P6-2TT"/>
                                 </connections>
@@ -32,7 +32,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wY5-j1-fC2" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="JYY-XI-VA8"/>
-                            <constraint firstItem="wY5-j1-fC2" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="RLO-2C-ZtH"/>
+                            <constraint firstItem="Mvr-aV-6Um" firstAttribute="top" secondItem="wY5-j1-fC2" secondAttribute="bottom" id="L4s-ce-gI9"/>
                         </constraints>
                     </view>
                     <connections>
