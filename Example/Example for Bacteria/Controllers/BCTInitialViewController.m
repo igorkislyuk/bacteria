@@ -32,10 +32,11 @@
     
     //bacteria configuration
     presented.
-    presentTransition(BCTTransitionFlip).
-    fromDirection(BCTDirectionTop).
-    dismissTransition(BCTTransitionPopRadial).
-    popTo(self.testButton).
+    presentTransition(BCTTransitionFlatCover).
+    fromDirection(BCTDirectionBottomLeft).
+    fromScale(0.5, 0.5).
+    dismissTransition(BCTTransitionFlip).
+    toDirection(BCTDirectionBottom).
     withDuration(0.45f);
     
 }

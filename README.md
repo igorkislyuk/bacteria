@@ -1,7 +1,6 @@
 # BACTERIA
 **It's framework for easy perform basic custom modal viewcontroller transitions. Current version - 0.5**
 
-<!-- ![Animation example](gifs/first.gif) -->
 <img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/example_one.gif" width="267px"/>
 
 This done with following example
@@ -86,9 +85,9 @@ Any instruction should be applied to presented controller. You can get it two wa
 
 ## Functionality overview
 
-There is only one required method to call. It's `withDuration`, because of assigning factory as transition delegate under cover
+There is only one required method to call. It's `withDuration`, because of assigning factory as transition delegate under cover. To help figure out, for which controller you will apply your settings, library use several basic keywords, like: **present** is used for controller that will be shown, **dismiss** is used for controller which that be hidden, **from** is used for controller settings that will be shown, **to** is used for controller settings that will be hidden
 
-1. `withDuration(XXX)` - use this to specify duration for transition. XXX - float value in seconds. Applied both for presentation and dismissal
+1. `withDuration(XXX)` - use this to specify duration for transition. XXX - float value in seconds. Applied both for present and dismiss transition
 
 2. `presentTransition(XXX)` - use this to specify transition type for presented controller. XXX is one of BCTTransitionType values.
 3. `dismissTransition(XXX)` - use this to specify transition for controller, when it will be dismissing. XXX is one of BCTTransitionType values.
@@ -98,7 +97,33 @@ There is only one required method to call. It's `withDuration`, because of assig
 
 Both for 4 & 5: It works only with BCTTransitionFlatParallel, BCTTransitionFlatCover, BCTTransitionFlip (restricted to first 4 types). XXX is one of BCTDirectionType.
 
+6. `popFrom(XXX)` & `popTo(XXX)` - use this to pass view which will be anchor for pop animation. (NOTE: ONLY pop transitions)
+
+7. `fromScale(XXX, YYY)` & `toScale(XXX, YYY)` - use this to determine initial or final scale for controller. XXX & YYY measure in units. Range from 0 to 1. (NOTE: ONLY flat transitions)
+
+8. `fromPoint(XXX)` & `toPoint(XXX)` - use this to specify direct point from controller starts presentation / dismissal. Possibly unused, and should be discussed for removal in future versions. XXX is point.
+
 ## Enum types
+
+Bacteria declares several enum types for configuration.
+
+1.
+
+## Examples
+
+Create this 
+<img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/example_two.gif" width="267px"/>
+with following code:
+```objective-c
+    //bacteria configuration
+    presented.
+    presentTransition(BCTTransitionFlatCover).
+    fromDirection(BCTDirectionBottomLeft).
+    fromScale(0.5, 0.5).
+    dismissTransition(BCTTransitionFlip).
+    toDirection(BCTDirectionBottom).
+    withDuration(0.45f);
+```
 
 ## TODO Section
 
