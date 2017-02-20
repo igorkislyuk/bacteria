@@ -1,5 +1,5 @@
 # BACTERIA
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/AFNetworking.svg)](https://img.shields.io/cocoapods/v/Bacteria.svg)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Bacteria.svg)](https://img.shields.io/cocoapods/v/Bacteria.svg)
 [![Platform](https://img.shields.io/cocoapods/p/Bacteria.svg?style=flat)](http://cocoadocs.org/docsets/Bacteria)
 
 **Framework is for basic modal viewcontroller transitions with human syntax. Special developed for ObjC users**
