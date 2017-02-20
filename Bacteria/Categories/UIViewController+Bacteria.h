@@ -28,7 +28,7 @@
 - (BacteriaTransitionBlock)dismissTransition;
 
 /**
- * Specify direction for presental/dismissal controller. Note: works only for flap & flip.
+ * Specify direction for presental/dismissal controller. Note: works only for flat & flip.
  * @return controller itself
  */
 - (BacteriaDirectionBlock)fromDirection;

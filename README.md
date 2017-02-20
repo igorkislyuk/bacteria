@@ -2,7 +2,17 @@
 **It's framework for easy perform basic custom modal viewcontroller transitions. Current version - 0.5**
 
 <!-- ![Animation example](gifs/first.gif) -->
-<img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/first.gif" width="267px"/> 
+<img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/example_one.gif" width="267px"/>
+
+This done with following example
+```objective-c
+    yourViewController.
+    presentTransition(BCTTransitionFlip).
+    fromDirection(BCTDirectionTop).
+    dismissTransition(BCTTransitionPopRadial).
+    popTo(self.testButton).
+    withDuration(0.45f);
+```
 
 ## Feature list
 
@@ -46,7 +56,17 @@ Any instruction should be applied to presented controller. You can get it two wa
 
 1. Create it manually and present
 ```objective-c
-	
+	//get controller
+	BCTPresentedViewController *presented = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([BCTPresentedViewController class])];
+  
+  	//bacteria configuration  
+    presented.
+    presentTransition(BCTTransitionSafari).
+    dismissTransition(BCTTransitionFlatParallel).
+    toDirection(BCTDirectionTop).
+    withDuration(1.45f);
+    
+    [self presentViewController:presented animated:YES completion:nil];
 ```
 2. Using segue tracker
 ```objective-c
@@ -66,8 +86,17 @@ Any instruction should be applied to presented controller. You can get it two wa
 
 ## Functionality overview
 
+There is only one required method to call. It's `withDuration`, because of assigning factory as transition delegate under cover
+
 1. `withDuration(XXX)` - use this to specify duration for transition. XXX - float value in seconds. Applied both for presentation and dismissal
-2. 
+
+2. `presentTransition(XXX)` - use this to specify transition type for presented controller. XXX is one of BCTTransitionType values.
+3. `dismissTransition(XXX)` - use this to specify transition for controller, when it will be dismissing. XXX is one of BCTTransitionType values.
+
+4. `fromDirection(XXX)` - use this to specify transition direction for presented controller.
+5. `toDirection(XXX)` - use this to specify transition direction, when it will be dismissing.
+
+Both for 4 & 5: It works only with BCTTransitionFlatParallel, BCTTransitionFlatCover, BCTTransitionFlip (restricted to first 4 types). XXX is one of BCTDirectionType.
 
 ## Enum types
 
