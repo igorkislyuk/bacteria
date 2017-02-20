@@ -86,8 +86,6 @@
 }
 
 - (void)adjustTransitionTypes {
-    NSLog(@"self.transitioningFactory.presentTransitionType = %d", self.transitioningFactory.presentTransitionType);
-    NSLog(@"self.transitioningFactory.dismissTransitionType = %d", self.transitioningFactory.dismissTransitionType);
 
     if (self.transitioningFactory.presentTransitionType && self.transitioningFactory.dismissTransitionType) {
         //fine
