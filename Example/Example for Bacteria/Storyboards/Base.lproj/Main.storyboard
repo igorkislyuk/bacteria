@@ -23,6 +23,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OhR-tN-DUY">
+                                <rect key="frame" x="287" y="28" width="80" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="view2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtD-jU-VUJ">
+                                        <rect key="frame" x="17.5" y="29" width="45" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10196078431372549" green="0.81960784313725488" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="5KO-H5-4nh"/>
+                                    <constraint firstAttribute="width" constant="80" id="QeY-jq-8fL"/>
+                                    <constraint firstItem="vtD-jU-VUJ" firstAttribute="centerY" secondItem="OhR-tN-DUY" secondAttribute="centerY" id="TxV-uY-gEY"/>
+                                    <constraint firstItem="vtD-jU-VUJ" firstAttribute="centerX" secondItem="OhR-tN-DUY" secondAttribute="centerX" id="vue-lg-7U4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wY5-j1-fC2">
                                 <rect key="frame" x="159" y="437" width="56" height="30"/>
                                 <state key="normal" title="Transite"/>
@@ -37,27 +60,66 @@
                                     <action selector="actionPresentSafariDismissParallel:" destination="whP-gf-Uak" eventType="touchUpInside" id="OBb-ZJ-DwR"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ipr-uj-KYi">
+                                <rect key="frame" x="16" y="589" width="160" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="view1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywd-EE-cZq">
+                                        <rect key="frame" x="59" y="24.5" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1019607843" green="0.81960784310000001" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="7x2-9B-prd"/>
+                                    <constraint firstItem="Ywd-EE-cZq" firstAttribute="centerX" secondItem="Ipr-uj-KYi" secondAttribute="centerX" id="Ctd-CO-PiM"/>
+                                    <constraint firstAttribute="width" constant="160" id="O0G-jm-y7L"/>
+                                    <constraint firstItem="Ywd-EE-cZq" firstAttribute="centerY" secondItem="Ipr-uj-KYi" secondAttribute="centerY" id="lLr-X4-3Tl"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="8GB-69-LdO" appends="YES" id="oFY-UK-GBi"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wY5-j1-fC2" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="JYY-XI-VA8"/>
                             <constraint firstItem="Mvr-aV-6Um" firstAttribute="top" secondItem="wY5-j1-fC2" secondAttribute="bottom" constant="200" id="L4s-ce-gI9"/>
                             <constraint firstItem="0eA-gp-PML" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leadingMargin" id="OoE-lc-BpC"/>
+                            <constraint firstAttribute="trailing" secondItem="OhR-tN-DUY" secondAttribute="trailing" constant="8" id="P7N-B8-xkk"/>
                             <constraint firstItem="0eA-gp-PML" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="cCO-6h-CX2"/>
+                            <constraint firstItem="Ipr-uj-KYi" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leadingMargin" id="gYT-kl-IHr"/>
+                            <constraint firstItem="Mvr-aV-6Um" firstAttribute="top" secondItem="Ipr-uj-KYi" secondAttribute="bottom" constant="8" id="qdf-xY-xPC"/>
+                            <constraint firstItem="OhR-tN-DUY" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="8" id="xMZ-Jy-1nE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="wY5-j1-fC2"/>
                                 <exclude reference="0eA-gp-PML"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="testButton" destination="wY5-j1-fC2" id="M44-XN-h71"/>
+                        <outlet property="view1" destination="Ipr-uj-KYi" id="iRA-Gs-n5D"/>
+                        <outlet property="view2" destination="OhR-tN-DUY" id="Q8Z-zV-FiH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8GB-69-LdO">
+                    <connections>
+                        <segue destination="aKL-S5-tOC" kind="presentation" id="Cs5-Su-N2v"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="305" y="433"/>
+            <point key="canvasLocation" x="304.80000000000001" y="432.23388305847078"/>
         </scene>
         <!--Presented View Controller-->
         <scene sceneID="OBi-W8-J23">
@@ -78,7 +140,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.10343123070987655" green="0.81962528935185186" blue="0.98735291280864201" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.10196078431372549" green="0.81960784313725488" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Asu-Mt-BZQ" firstAttribute="centerX" secondItem="hVO-Pj-40K" secondAttribute="centerX" id="IeL-95-0B5"/>
@@ -99,4 +161,7 @@
             <point key="canvasLocation" x="1142" y="432"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Dy-P6-2TT"/>
+    </inferredMetricsTieBreakers>
 </document>

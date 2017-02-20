@@ -1,7 +1,10 @@
 # BACTERIA
-**It's framework for easy perform basic custom modal viewcontroller transitions. Current version - 0.5**
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/AFNetworking.svg)](https://img.shields.io/cocoapods/v/Bacteria.svg)
+[![Platform](https://img.shields.io/cocoapods/p/Bacteria.svg?style=flat)](http://cocoadocs.org/docsets/Bacteria)
 
-<img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/example_one.gif" width="267px"/>
+**Framework is for basic modal viewcontroller transitions with human syntax. Special developed for ObjC users**
+
+<img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/example-1.gif" width="267px"/>
 
 This done with following example
 ```objective-c
@@ -125,7 +128,7 @@ Bacteria declares several enum types for configuration.
 
 ## Examples
 
-Do this one:
+ * Do this one:
 
 ```objective-c
     //bacteria configuration
@@ -137,10 +140,33 @@ Do this one:
     toDirection(BCTDirectionBottom).
     withDuration(0.45f);
 ```
-to receive:
+   to receive:
 
-<img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/example_two.gif" width="267px"/>
+   <img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/example-2.gif" width="267px"/>
+   
+ * Do this one:
 
+```objective-c
+    //bacteria configuration
+    presented.
+    presentTransition(BCTTransitionSafari).
+    withDuration(0.45f);
+```
+   to receive:
+
+   <img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/example-3.gif" width="267px"/>
+   
+  * Do this one:
+
+```objective-c
+    //bacteria configuration
+    presented.
+    presentTransition(BCTTransitionSafari).
+    withDuration(0.45f);
+```
+   to receive:
+
+   <img src="https://github.com/igorkislyuk/bacteria/blob/develop/gifs/example-4.gif" width="267px"/>
 
 ## TODO Section
 

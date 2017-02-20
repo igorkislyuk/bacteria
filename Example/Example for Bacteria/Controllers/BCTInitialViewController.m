@@ -15,6 +15,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *testButton;
 
+@property (weak, nonatomic) IBOutlet UIView *view1;
+@property (weak, nonatomic) IBOutlet UIView *view2;
 @end
 
 @implementation BCTInitialViewController
@@ -32,11 +34,10 @@
     
     //bacteria configuration
     presented.
-    presentTransition(BCTTransitionFlatCover).
-    fromDirection(BCTDirectionBottomLeft).
-    fromScale(0.5, 0.5).
-    dismissTransition(BCTTransitionFlip).
-    toDirection(BCTDirectionBottom).
+    presentTransition(BCTTransitionPopLinear).
+    popFrom(self.view1).
+    dismissTransition(BCTTransitionPopRadial).
+    popTo(self.view2).
     withDuration(0.45f);
     
 }
