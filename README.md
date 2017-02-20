@@ -161,7 +161,10 @@ Bacteria declares several enum types for configuration.
 ```objective-c
     //bacteria configuration
     presented.
-    presentTransition(BCTTransitionSafari).
+    presentTransition(BCTTransitionPopLinear).
+    popFrom(self.view1).
+    dismissTransition(BCTTransitionPopRadial).
+    popTo(self.view2).
     withDuration(0.45f);
 ```
    to receive:
