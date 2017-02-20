@@ -85,7 +85,7 @@ Any instruction should be applied to presented controller. You can get it two wa
 
 ## Functionality overview
 
-There is only one required method to call. It's `withDuration`, because of assigning factory as transition delegate under cover. To help figure out, for which controller you will apply your settings, library use several basic keywords, like: **present** is used for controller that will be shown, **dismiss** is used for controller which that be hidden, **from** is used for controller settings that will be shown, **to** is used for controller settings that will be hidden
+   There is only one required method to call. It's `withDuration`, because of assigning factory as transition delegate under cover. To help figure out, for which controller you will apply your settings, library use several basic keywords, like: **present** is used for controller that will be shown, **dismiss** is used for controller which that be hidden, **from** is used for controller settings that will be shown, **to** is used for controller settings that will be hidden
 
 * `withDuration(XXX)` - use this to specify duration for transition. XXX - float value in seconds. Applied both for present and dismiss transition
 
@@ -107,15 +107,21 @@ There is only one required method to call. It's `withDuration`, because of assig
 Bacteria declares several enum types for configuration.
 
 * `BCTTransitionType` - main enum which declares different transition types. There are:
-..* `BCTTransitionFlatParallel` - default one. If you need move your controllers simultaneously, use it.
-..* `BCTTransitionFlatCover` - similar to previous, but original controller 'stands still'.
-..* `BCTTransitionFlip` - basic flip transition like default one, extended for all 4 sides.
-..* `BCTTransitionSafari` - transition's similar to safari-tab with no-customisation. 
-..* `BCTTransitionPopRadial` - pop, when controller appears/disappears from dot in center of view.
-..* `BCTTransitionPopLinear` - similar to previous, but uses rect with rounded corners instead of center dot.
-
-* `BCTDirectionType` - enum for determine direction for transitions. (NOTE: ONLY for Flat, FlatCover, Flip(with restriction for first 4)
-
+  * `BCTTransitionFlatParallel` - default one. If you need move your controllers simultaneously, use it.
+  * `BCTTransitionFlatCover` - similar to previous, but original controller 'stands still'.
+  * `BCTTransitionFlip` - basic flip transition like default one, extended for all 4 sides.
+  * `BCTTransitionSafari` - transition's similar to safari-tab with no-customisation. 
+  * `BCTTransitionPopRadial` - pop, when controller appears/disappears from dot in center of view.
+  * `BCTTransitionPopLinear` - similar to previous, but uses rect with rounded corners instead of center dot.
+* `BCTDirectionType` - enum for determine direction for transitions.(NOTE: ONLY for Flat, FlatCover; for Flip transitions you can use only first 4 sides. Others will be converted to first 4)
+  * `BCTDirectionTop` - top sied.
+  * `BCTDirectionLeft` - left side.
+  * `BCTDirectionBottom` - bottom side.
+  * `BCTDirectionRight` - right side.
+  * `BCTDirectionTopLeft` - top-left corner.
+  * `BCTDirectionBottomLeft` - bottom-left corner.
+  * `BCTDirectionBottomRight` - bottom-right corner.
+  * `BCTDirectionTopRight` - top-right corner.
 
 ## Examples
 
