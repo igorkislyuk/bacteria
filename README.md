@@ -19,7 +19,7 @@ This done with following example
 
 ## Feature list
 
-* human syntax for transitions for ObjC
+* human syntax for transitions for ObjC (Note: Swift version is not added now. You can use drop-in file - BacteriaSwift.swift)
 * support segues, not only for modal code presentation
 * support different transition types (flat, flip, pop, safari)
 * support all side modal controller presentation (note: flat extended)
@@ -175,10 +175,10 @@ Bacteria declares several enum types for configuration.
 ## TODO Section
 
 #### Version 0.6
-- [ ] Add functionality to retain view within container view. Tip: I should use snapshot, not `addSubview:`
+- [ ] Add Swift cover file for convenient syntax. Initially it is designated for ObjC users
+- [ ] Add functionality to retain view within container view. Tip: use snapshot, not `addSubview:`
 - [ ] Add separate duration for present / dismiss
 - [ ] Add transitions for viewControllers in navigation stack
-- [ ] Add Swift cover file for convenient syntax. Initially it is designated for ObjC users
 
 #### Version 0.7
 - [ ] Add interactivity. Users should easily embed transitions in gestures
@@ -200,6 +200,10 @@ Bacteria initially stands for **B**eautiful **A**nimation **C**ontroller **T**ra
 ## Contributors
 
 - [Igor Kislyuk](https://github.com/igorkislyuk)
+
+## Bug section
+
+- [ ] Not working with unwind segues. Figure it out
 
 ## License
 
