@@ -19,7 +19,8 @@ This done with following example
 
 ## Feature list
 
-* human syntax for transitions for ObjC (Note: Swift version is not added now. You can use drop-in file - BacteriaSwift.swift)
+* human syntax for transitions for ObjC
+* swift version is not added now. Use drop-in file - [BacteriaSwift](BacteriaSwift.swift)
 * support segues, not only for modal code presentation
 * support different transition types (flat, flip, pop, safari)
 * support all side modal controller presentation (note: flat extended)
